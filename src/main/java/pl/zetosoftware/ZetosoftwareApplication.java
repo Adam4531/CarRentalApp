@@ -12,3 +12,4 @@ public class ZetosoftwareApplication {
 	}
 //komentarz bylejaki
 }
+//komentarz igora
