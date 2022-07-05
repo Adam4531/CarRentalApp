@@ -10,5 +10,6 @@ public class ZetosoftwareApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ZetosoftwareApplication.class, args);
 	}
-
+//komentarz bylejaki
 }
+//komentarz igora
