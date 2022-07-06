@@ -9,7 +9,6 @@ import javax.persistence.*;
 
 @Getter
 @NoArgsConstructor
-@Builder
 @Entity
 @Table(name = "users")
 public class User {
@@ -18,9 +17,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Embedded
-    private FirstName firstName;
+    private Name firstName;
     @Embedded
-    private SecondName secondName;
+    private Name lastName;
     @Embedded
     private Password password;
     @Embedded
@@ -29,14 +28,22 @@ public class User {
     private Email email;
     @Embedded
     private Pesel pesel;
-
-    public User(FirstName firstName, SecondName secondName, Password password, PhoneNumber phoneNumber, Email email, Pesel pesel) {
+    @Builder
+    public User(Name firstName, Name lastName, Password password, PhoneNumber phoneNumber, Email email, Pesel pesel) {
         this.firstName = firstName;
-        this.secondName = secondName;
+        this.lastName = lastName;
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.pesel = pesel;
+    }
+
+    public void changeFirstName(String firstName){
+        this.firstName = new Name(firstName);
+    }
+
+    public void changeLastName(String lastName){
+        this.lastName = new Name(lastName);
     }
 
 }
