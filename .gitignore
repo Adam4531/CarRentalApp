@@ -25,6 +25,7 @@ project.properties
 ./src/main/resources/application.properties
 ./src/main/resources/application.yaml
 .application.properties
+application.properties
 
 ### NetBeans ###
 /nbproject/private/
