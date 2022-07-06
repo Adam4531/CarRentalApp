@@ -20,11 +20,11 @@ public class Name {
             throw new IllegalStateException("Name can't be null!");
         }
 
-        if ( containValidCharacters(name) ) {
+        if ( !containValidCharacters(name) ) {
             throw new IllegalStateException("Name must contain only letters!");
         }
 
-        if ( isValidLength(name) ) {
+        if ( isInValidLength(name) ) {
             throw new IllegalStateException("Name must be at least 3 characters long!");
         }
 
@@ -36,8 +36,8 @@ public class Name {
         return name.matches("[a-zA-Z- " + POLISH_SIGNS + "]+");
     }
 
-    private boolean isValidLength(String name) {
-        return name.length() < 3 ;
+    private boolean isInValidLength(String name) {
+        return name.length() < 3 || name.length() > 50;
     }
 
     private String toLowerCaseThenCapitalize(String string){
