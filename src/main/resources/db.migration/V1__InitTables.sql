@@ -30,8 +30,8 @@ CREATE TABLE IF NOT EXISTS reservations(
     ID serial NOT NULL,
     user_id int NOT NULL,
     car_id int NOT NULL,
-    date_start date NOT NULL,
-    date_end date NOT NULL,
+    date_start date, --if car is free then that column cannot be NOT NULL
+    date_end date, --if car is free then that column cannot be NOT NULL
     cost numeric(6,2) NOT NULL,
     payment_in_advance numeric(5,2) NOT NULL,
     status reservation_status NOT NULL,
