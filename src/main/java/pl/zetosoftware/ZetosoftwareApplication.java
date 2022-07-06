@@ -9,9 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories
 public class ZetosoftwareApplication {
 
-
-	public static void main(String[] args)
-	{
+	public static void main(String[] args) {
 		SpringApplication.run(ZetosoftwareApplication.class, args);
 	}
 }
