@@ -1,4 +1,4 @@
-CREATE TABLE users(
+CREATE TABLE IF NOT EXISTS users(
     ID serial NOT NULL,
     login VARCHAR(30) NOT NULL,
     password VARCHAR(20),
@@ -7,10 +7,12 @@ CREATE TABLE users(
     phone_number VARCHAR(9),
     email VARCHAR(20) NOT NULL,
     pesel VARCHAR(11) NOT NULL,
-    PRIMARY KEY ID
+    CONSTRAINT users_id_pkey PRIMARY KEY(ID)
     )
 
-CREATE TABLE reservations(ID serial NOT NULL)
+CREATE TABLE IF NOT EXISTS reservations(
+    ID serial NOT NULL,
+    )
 
-CREATE TABLE cars(ID serial NOT NULL)
+CREATE TABLE IF NOT EXISTS cars(ID serial NOT NULL)
 
