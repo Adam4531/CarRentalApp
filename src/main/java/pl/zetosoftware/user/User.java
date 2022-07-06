@@ -1,8 +1,10 @@
 package pl.zetosoftware.user;
 
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import pl.zetosoftware.user.value_objects.*;
 
 import javax.persistence.*;
@@ -15,21 +17,24 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Embedded
-    private Name firstName;
-    @Embedded
-    private Name lastName;
-    @Embedded
-    private Password password;
-    @Embedded
-    private PhoneNumber phoneNumber;
-    @Embedded
-    private Email email;
-    @Embedded
-    private Pesel pesel;
-    @Builder
-    public User(Name firstName, Name lastName, Password password, PhoneNumber phoneNumber, Email email, Pesel pesel) {
+    public Long id;
+
+    @Column(name = "first_name")
+    public String firstName;
+
+    @Column(name = "second_name")
+    public String lastName;
+
+    public String password;
+
+    @Column(name = "phone_number")
+    public String phoneNumber;
+
+    public String email;
+
+    public String pesel;
+
+    public User(String firstName, String lastName, String password, String phoneNumber, String email, String pesel) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
@@ -39,11 +44,11 @@ public class User {
     }
 
     public void changeFirstName(String firstName){
-        this.firstName = new Name(firstName);
+        this.firstName = firstName;
     }
 
     public void changeLastName(String lastName){
-        this.lastName = new Name(lastName);
+        this.lastName = lastName;
     }
 
 }
