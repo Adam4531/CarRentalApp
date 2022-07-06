@@ -58,19 +58,19 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	<build>-->
-		<plugins>-->
-			<plugin>-->
-				<groupId>org.springframework.boot</groupId>-->
-				<artifactId>spring-boot-maven-plugin</artifactId>-->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
 				<version>8.0.0</version>
-				<configuraton>
+				<configuration>
 					<user>postgres</user>
-					<passward>postgres</passward>
+					<password>postgres</password>
 					<schemas>
 						<schema>carrental</schema>
 					</schemas>
-				</configuraton>
+				</configuration>
 			</plugin>
 <!--						<plugin>-->
 <!--						<groupId>org.springframework.boot</groupId>-->
@@ -84,7 +84,7 @@
 <!--							</excludes>-->
 <!--						</configuration>-->
 <!--					</plugin>-->
-		</plugins>-->
-	</build>-->
+		</plugins>
+	</build>
 
 </project>
