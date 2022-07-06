@@ -46,4 +46,8 @@ public class User {
         this.lastName = new Name(lastName);
     }
 
+    public void changePassword(String password){
+        this.password = new Password(password);
+    }
+
 }

@@ -13,11 +13,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/elo")
-    public String elo(){
-        return "elo";
-    }
-
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public User addUser(@RequestBody User user){

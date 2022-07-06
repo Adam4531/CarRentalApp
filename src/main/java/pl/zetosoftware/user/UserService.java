@@ -2,6 +2,8 @@ package pl.zetosoftware.user;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -13,6 +15,10 @@ public class UserService {
 
     public User createUser(User user){
         return userRepository.save(user);
+    }
+
+    public List<Integer> asd(){
+        return List.of(1,23);
     }
 
 }

@@ -1,17 +1,15 @@
 package pl.zetosoftware.user.value_objects;
 
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Embeddable;
 import java.util.Objects;
 
-@Getter
 @Embeddable
 @NoArgsConstructor
 public class Name {
 
-    private final String POLISH_SIGNS = "\\p{IsAlphabetic}";
+    private static final String POLISH_SIGNS = "\\p{IsAlphabetic}";
 
     private String name;
 

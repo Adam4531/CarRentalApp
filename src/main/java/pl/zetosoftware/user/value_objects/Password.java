@@ -1,6 +1,5 @@
 package pl.zetosoftware.user.value_objects;
 
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Embeddable;
@@ -10,28 +9,32 @@ import java.util.Objects;
 @NoArgsConstructor
 public class Password {
 
-    private final String SPECIAL_CHARS_AND_ENGLISH_LETTERS = "\\x21-\\x7E";
+    private static final String SPECIAL_CHARS_AND_ENGLISH_LETTERS = "[\\x21-\\x7E]+";
 
-    @Getter private String password;
+    private String password;
 
     public Password(String password) {
         if ( Objects.isNull(password) ) {
             throw new IllegalStateException("Password cant be null!");
         }
 
-        if ( isInValidLength(password) ) {
+        if ( !isValidLength(password) ) {
             throw new IllegalStateException("Password must be between 7 and 28 characters length!");
         }
 
-        if ( !password.matches("[" + SPECIAL_CHARS_AND_ENGLISH_LETTERS + "]")){
+        if ( !containValidCharacters(password) ) {
             throw new IllegalStateException("Password must contain only special chars and english letters!");
         }
 
         this.password = password;
     }
 
-    private boolean isInValidLength(String password){
-        return password.length() < 7 || password.length() > 28;
+    public boolean containValidCharacters(String password) {
+        return password.matches(SPECIAL_CHARS_AND_ENGLISH_LETTERS);
+    }
+
+    public boolean isValidLength(String password){
+        return password.length() > 7 && password.length() < 28;
     }
 
     @Override
