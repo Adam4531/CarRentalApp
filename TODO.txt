@@ -1,0 +1,33 @@
+==============================================================
+============================TO DO=============================
+==============================================================
+
+FRONT:
+
+1. Polaczyc Angulara z Restem - dojsc do tego zeby na tym widoku ktory nam sie uruchamia wyswietlic dane z bazy
+
+2. Uzupełnić panele (login, reservation, ...) - w każdym HTML,TS,SCSS
+
+3. ...
+
+BACK:
+
+1. Stworzyć kolejne pakiety ( Car, Reservation + może inne ) - i je zaimplementować
+
+2. Utworzyć relacje pomiędzy wszystkimi encjami (OneToMany/ManyToOne)
+
+3. ...
+
+
+OGÓLNIE:
+
+1. Każdy niech zainstaluje sobie angulara według poradnika na kanale ogólnym
+
+2. Jak dzielimy się w kwestii front-backend (może zmiana co 2dni)
+
+3. ...
+
+
+
+
+
