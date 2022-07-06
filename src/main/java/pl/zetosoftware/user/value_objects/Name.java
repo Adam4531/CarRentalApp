@@ -24,23 +24,23 @@ public class Name {
             throw new IllegalStateException("Name must contain only letters!");
         }
 
-        if ( isInValidLength(name) ) {
-            throw new IllegalStateException("Name must be at least 3 characters long!");
+        if ( !isValidLength(name) ) {
+            throw new IllegalStateException("Name must be between 3 and 50 characters long!");
         }
 
         name = toLowerCaseThenCapitalize(name);
         this.name = name;
     }
 
-    private boolean containValidCharacters(String name) {
+    public boolean containValidCharacters(String name) {
         return name.matches("[a-zA-Z- " + POLISH_SIGNS + "]+");
     }
 
-    private boolean isInValidLength(String name) {
-        return name.length() < 3 || name.length() > 50;
+    public boolean isValidLength(String name) {
+        return name.length() > 3 && name.length() < 50;
     }
 
-    private String toLowerCaseThenCapitalize(String string){
+    public String toLowerCaseThenCapitalize(String string){
         return string.substring(0,1).toUpperCase() + string.substring(1).toLowerCase();
     }
 
