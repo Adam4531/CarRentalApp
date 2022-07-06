@@ -2,6 +2,7 @@ package pl.zetosoftware.user.value_objects;
 
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.util.Objects;
 
@@ -11,6 +12,7 @@ public class Pesel {
 
     private static final String DIGITS = "[0-9]+";
 
+    @Column
     private String pesel;
 
     public Pesel(String pesel) {

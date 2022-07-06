@@ -17,8 +17,4 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public List<Integer> asd(){
-        return List.of(1,23);
-    }
-
 }

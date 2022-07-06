@@ -2,6 +2,7 @@ package pl.zetosoftware.user.value_objects;
 
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.util.Objects;
 
@@ -11,6 +12,7 @@ public class Name {
 
     private static final String POLISH_SIGNS = "\\p{IsAlphabetic}";
 
+    @Column
     private String name;
 
     public Name(String name) {

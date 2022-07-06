@@ -2,6 +2,7 @@ package pl.zetosoftware.user.value_objects;
 
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.util.Objects;
 
@@ -11,6 +12,7 @@ public class Password {
 
     private static final String SPECIAL_CHARS_AND_ENGLISH_LETTERS = "[\\x21-\\x7E]+";
 
+    @Column
     private String password;
 
     public Password(String password) {

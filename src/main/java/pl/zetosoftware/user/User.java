@@ -15,11 +15,18 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private Long id;
     @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "name", column = @Column(name = "first_name"))
+    })
     private Name firstName;
     @Embedded
-    private Name lastName;
+    @AttributeOverrides({
+            @AttributeOverride(name = "name", column = @Column(name = "second_name"))
+    })
+    private Name secondName;
     @Embedded
     private Password password;
     @Embedded
@@ -29,9 +36,9 @@ public class User {
     @Embedded
     private Pesel pesel;
     @Builder
-    public User(Name firstName, Name lastName, Password password, PhoneNumber phoneNumber, Email email, Pesel pesel) {
+    public User(Name firstName, Name secondName, Password password, PhoneNumber phoneNumber, Email email, Pesel pesel) {
         this.firstName = firstName;
-        this.lastName = lastName;
+        this.secondName = secondName;
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.email = email;
@@ -43,7 +50,7 @@ public class User {
     }
 
     public void changeLastName(String lastName){
-        this.lastName = new Name(lastName);
+        this.secondName = new Name(lastName);
     }
 
     public void changePassword(String password){

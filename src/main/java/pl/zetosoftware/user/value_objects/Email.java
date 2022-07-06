@@ -2,6 +2,7 @@ package pl.zetosoftware.user.value_objects;
 
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.util.Objects;
 
@@ -23,6 +24,7 @@ public class Email {
     // te zmienne statyczne sa tu dodane tylko do czasu az sprawdzimy czy poniższy pattern sie sprawdza
     private static final String EMAIL_PATERN_FROM_BAELDUNG = "[^(.+)@(\\S+)$]";
 
+    @Column
     private String email;
 
     public Email(String email) {
