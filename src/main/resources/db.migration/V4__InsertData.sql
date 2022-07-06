@@ -1,24 +1,24 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+insert into cars (ID, brand, model, engine_capacity, body_type, type_of_fuel, new_car_cost, production_year) values
+(1, 'GMC', 'Envoy XL', 4.2, 'SUV', 'Benzine', '$2583355.15', 2002),
+(2, 'Chevrolet', 'Impala SS', 3.2, 'Sedan', 'Benzine', '$2794112.89', 1995),
+(3, 'Lexus', 'RX', 'Coupe', 3.0, 'Benzine', '$242138.12', 2005),
+(4, 'Chevrolet', '3500', 3.6, 'Sedan' ,'Benzine', '$1169492.47', 2000),
+(5, 'Hyundai', 'Sonata', 1.7, 'Sedan', 'Diesel', '$619185.83', 1998),
+(6, 'Lexus', 'LS', 2.2, 'Coupe', 'Diesel', '$1167804.06', 2001),
+(7, 'GMC', 'Suburban 1500', 4.2, 'SUV', 'Benzine', '$2070876.68', 1998),
+(8, 'Audi', 'A4', 3.0, 'Station_Wagon', 'Diesel', '$313313.89', 2005),
+(9, 'Audi', 'Q8', 3.0, 'SUV', 'Benzine', '$1938005.44', 2009),
+(10, 'Lexus', 'IS-F', 3.0, 'Coupe', 'Benzine', '$2552772.81', 2009),
+(11, 'Mitsubishi', 1.2, 'Pajero', 'Hatchback', 'LPG', '$411653.59', 2002),
+(12, 'Chrysler', 2.8, 'Grand Voyager', 'SUV', 'LPG', '$356890.01', 2000),
+(13, 'Chrysler', 3.4, 'Pacifica', 'SUV', 'LPG', '$2341958.83', 2007),
+(14, 'Subaru', 4.0, 'Legacy', 'Sedan', 'Benzine', '$1736392.40', 2001),
+(15, 'Nissan', 2.0, 'Pathfinder', 'Hatchback', 'Benzine', '$2664744.42', 2004),
+(16, 'GMC', '1500', 4.2, 'SUV', 'Benzine', '$944749.93', 1998),
+(17, 'Mercedes-Benz', 5.2, 'R-Class', 'Coupe', 'Benzine', '$1979299.45', 2010),
+(18, 'GMC', 'Yukon XL 1500', 4.2, 'SUV', 'Benzine', '$1920072.05', 2000),
+(19, 'Oldsmobile', '88', 1.7, 'Station_Wagon', 'Diesel', '$2966425.83', 1992),
+(20, 'Buick', 2.4, 'Sedan', 'Benzine', 'LaCrosse', '$95234.57', 2008);
 
 insert into users (ID, login, password, first_name, second_name, phone_number, email, pesel) values
 (1, 'ngartin0', 'Qu217b7', 'Nara', 'Gartin', '609724448', 'ngartin0@lulu.com', 87092048473),
@@ -63,4 +63,3 @@ insert into reservations (ID, user_id, car_id, date_start, date_end, cost, payme
 (18, 6, 19, '2022-05-11 14:01:02', '2021-12-06 09:04:22', '$362140.68', '$61687.45'),
 (19, 13, 11, '2023-07-24 16:53:39', '2022-08-04 00:50:07', '$941215.56', '$13159.57'),
 (20, 9, 9, '2022-02-14 13:18:40', '2021-12-26 01:35:11', '$425994.36', '$94523.82');
-
