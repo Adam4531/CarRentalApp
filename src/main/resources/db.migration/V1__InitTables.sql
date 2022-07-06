@@ -10,9 +10,12 @@ CREATE TABLE IF NOT EXISTS users(
     CONSTRAINT users_id_pkey PRIMARY KEY(ID)
     )
 
-CREATE TABLE IF NOT EXISTS reservations(
-    ID serial NOT NULL,
-    )
 
-CREATE TABLE IF NOT EXISTS cars(ID serial NOT NULL)
+-- CREATE TABLE IF NOT EXISTS reservations(
+--     ID serial NOT NULL,
+--
+--     )
+--
+-- CREATE TABLE IF NOT EXISTS cars(ID serial NOT NULL)
+
 
