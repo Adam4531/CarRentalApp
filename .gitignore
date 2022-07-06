@@ -20,7 +20,8 @@ target/
 *.ipr
 
 ### APP PROPERTIES ###
-application.properties
+project.properties
+*.properties
 
 ### NetBeans ###
 /nbproject/private/
@@ -34,3 +35,4 @@ build/
 
 ### VS Code ###
 .vscode/
+
