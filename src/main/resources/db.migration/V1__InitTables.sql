@@ -10,8 +10,8 @@ CREATE TABLE IF NOT EXISTS users(
     CONSTRAINT users_id_pkey PRIMARY KEY(ID)
     )
 
-CREATE TYPE cars_body_type AS ENUM('Coupe', 'Sedan', 'SUV', 'Kombi', 'Hatchback', 'Kabriolet');
-CREATE TYPE cars_type_of_fuel AS ENUM('Benzyna', 'Diesel', 'Electric', 'LPG');
+CREATE TYPE cars_body_type AS ENUM('Coupe', 'Sedan', 'SUV', 'Station_Wagon', 'Hatchback', 'Cabriolet');
+CREATE TYPE cars_type_of_fuel AS ENUM('Benzine', 'Diesel', 'Electric', 'LPG');
 CREATE TABLE IF NOT EXISTS cars(
     ID serial NOT NULL,
     brand VARCHAR(20),
