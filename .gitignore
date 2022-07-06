@@ -22,6 +22,8 @@ target/
 ### APP PROPERTIES ###
 project.properties
 *.properties
+./src/main/resources/application.properties
+./src/main/resources/application.yaml
 
 ### NetBeans ###
 /nbproject/private/
