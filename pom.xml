@@ -68,9 +68,7 @@
                 <configuration>
                     <user>postgres</user>
                     <password>postgres</password>
-                    <schemas>
-                        <schema>carrental</schema>
-                    </schemas>
+                    <url>jdbc:postgresql://localhost:5432/carrental</url>
                 </configuration>
             </plugin>
             <!--			<plugin>-->
