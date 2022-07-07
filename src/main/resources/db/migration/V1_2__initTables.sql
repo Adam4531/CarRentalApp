@@ -1,46 +1,44 @@
 CREATE TABLE IF NOT EXISTS users(
-    ID BIGINT NOT NULL,
+    ID SERIAL,
     login VARCHAR(30) NOT NULL,
     password VARCHAR(20),
     first_name VARCHAR(20),
     second_name VARCHAR(20),
     phone_number VARCHAR(9),
-    email VARCHAR(20) NOT NULL,
+    email VARCHAR(30) NOT NULL,
     pesel VARCHAR(11) NOT NULL,
     CONSTRAINT users_id_pkey PRIMARY KEY(ID)
     );
 
-CREATE TYPE IF NOT EXISTS cars_body_type AS ENUM('Coupe', 'Sedan', 'SUV', 'Station_Wagon', 'Hatchback', 'Cabriolet');
-CREATE TYPE IF NOT EXISTS cars_type_of_fuel AS ENUM('Benzine', 'Diesel', 'Electric', 'LPG');
+CREATE TYPE cars_body_type AS ENUM('Coupe', 'Sedan', 'SUV', 'Station_Wagon', 'Hatchback', 'Cabriolet');
+CREATE TYPE cars_type_of_fuel AS ENUM('Benzine', 'Diesel', 'Electric', 'LPG');
 CREATE TABLE IF NOT EXISTS cars(
-    ID BIGINT NOT NULL,
+    ID SERIAL,
     brand VARCHAR(20),
     model VARCHAR(20),
     engine_capacity numeric(2,1),
     body_type cars_body_type NOT NULL,
     type_of_fuel cars_type_of_fuel NOT NULL,
-    new_car_cost numeric(6,2),
+    new_car_cost numeric(9,2),
     production_year int NOT NULL,
     CONSTRAINT cars_id_pkey PRIMARY KEY(ID)
     );
 
-CREATE TYPE IF NOT EXISTS reservation_status AS ENUM('Free', 'Reserved', 'Taken');
+CREATE TYPE reservation_status AS ENUM('Free', 'Reserved', 'Taken');
 
 CREATE TABLE IF NOT EXISTS reservations(
-    ID BIGINT NOT NULL,
+    ID SERIAL,
     user_id int NOT NULL,
     car_id int NOT NULL,
     date_start date, --if car is free then that column cannot be NOT NULL
     date_end date, --if car is free then that column cannot be NOT NULL
-    cost numeric(6,2) NOT NULL,
+    cost numeric(7,2) NOT NULL,
     payment_in_advance numeric(5,2) NOT NULL,
     status reservation_status NOT NULL,
     CONSTRAINT reservations_id_pkey PRIMARY KEY(ID),
     CONSTRAINT user_id_pkey FOREIGN KEY(user_id) REFERENCES users(ID),
     CONSTRAINT car_id_pkey FOREIGN KEY(car_id) REFERENCES cars(ID)
     );
-
---Insert
 
 insert into cars (ID, brand, model, engine_capacity, body_type, type_of_fuel, new_car_cost, production_year) values
 (1, 'GMC', 'Envoy XL', 4.2, 'SUV', 'Benzine', 2583355.15, 2002),
