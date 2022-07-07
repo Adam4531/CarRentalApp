@@ -12,7 +12,7 @@ public class Pesel implements Validator{
 
     private static final String DIGITS = "[0-9]+";
 
-    @Column(nullable = false)
+    @Column
     private String pesel;
 
     public Pesel(String pesel) {

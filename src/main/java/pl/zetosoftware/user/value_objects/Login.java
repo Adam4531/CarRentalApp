@@ -11,7 +11,7 @@ import java.util.Objects;
 public class Login implements Validator{
     private static final String ENGLISH_LETTERS_NUMBERS_DOT_UNDERSCORE_DASH = "[a-zA-Z\\d._-]+";
 
-    @Column(nullable = false)
+    @Column
     private String login;
 
     public Login(String login) {

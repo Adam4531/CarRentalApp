@@ -21,11 +21,11 @@ public class UserController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public User addUser(@RequestBody User user){
+    public UserDto addUser(@RequestBody User user){
         return userService.createUser(user);
     }
 
-    @GetMapping("/test2")
+    @GetMapping("")
     @ResponseStatus(HttpStatus.OK)
     public List<UserDto> getUsers(){
         return userService.getAllUsers();
@@ -35,12 +35,6 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     public UserDto getUserById(@PathVariable Long id){
         return userService.getUserById(id);
-    }
-
-    @GetMapping("/test")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public List<User> printAllUsers(){
-        return this.userService.findAllUsers();
     }
 
 }

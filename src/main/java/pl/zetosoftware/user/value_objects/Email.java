@@ -17,7 +17,7 @@ public class Email implements Validator{
             "x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)])";
 //Email pattern from EMAILREGEXCOM
 
-    @Column(nullable = false)
+    @Column
     private String email;
 
     public Email(String email) {

@@ -38,7 +38,7 @@ public class User {
     @Embedded
     private Pesel pesel;
     @Builder
-    public User(Login login,Name firstName, Name secondName, Password password, PhoneNumber phoneNumber, Email email, Pesel pesel) {
+    public User(Login login, Name firstName, Name secondName, Password password, PhoneNumber phoneNumber, Email email, Pesel pesel) {
         this.login = login;
         this.firstName = firstName;
         this.secondName = secondName;

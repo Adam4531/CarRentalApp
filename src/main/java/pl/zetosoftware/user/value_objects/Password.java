@@ -12,7 +12,7 @@ public class Password implements Validator{
 
     private static final String ENGLISH_LETTERS_NUMBERS_SPECIAL_CHARACTERS = "[\\x21-\\x7E]+";
 
-    @Column(nullable = false)
+    @Column
     private String password;
 
     public Password(String password) {

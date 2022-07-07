@@ -20,8 +20,9 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-    public User createUser(User user){
-        return userRepository.save(user);
+    public UserDto createUser(User user){
+        userRepository.save(user);
+        return userMapper.fromUserToUserDTO(user);
     }
 
     public List<UserDto> getAllUsers() {
