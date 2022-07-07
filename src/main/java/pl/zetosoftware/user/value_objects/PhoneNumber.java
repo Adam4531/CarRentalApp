@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Embeddable
 @NoArgsConstructor
-public class PhoneNumber {
+public class PhoneNumber implements Validator {
 
     private static final String DIGITS = "[0-9]+";
 
@@ -20,23 +20,15 @@ public class PhoneNumber {
             throw new IllegalArgumentException("Phone number can't be null!");
         }
 
-        if ( !containOnlyDigits(phoneNumber) ){
-            throw new IllegalArgumentException("Phone number must contain only digits!");
-        }
-
-        if ( !isValidLength(phoneNumber) ){
+        if ( !isValidLength(phoneNumber, 9, 9) ){
             throw new IllegalArgumentException("Phone number must be 9 digits length!");
         }
 
+        if ( !containsValidCharacters(phoneNumber, DIGITS) ){
+            throw new IllegalArgumentException("Phone number must contain only digits!");
+        }
+
         this.phoneNumber = phoneNumber;
-    }
-
-    public boolean containOnlyDigits(String phoneNumber){
-        return phoneNumber.matches(DIGITS);
-    }
-
-    public boolean isValidLength(String phoneNumber){
-        return phoneNumber.length() == 9;
     }
 
     @Override
@@ -56,4 +48,5 @@ public class PhoneNumber {
     public int hashCode() {
         return Objects.hash(phoneNumber);
     }
+
 }

@@ -8,8 +8,8 @@ import java.util.Objects;
 
 @Embeddable
 @NoArgsConstructor
-public class Login {
-    private static final String ENGLISH_LETTERS_NUMBERS_DOT_UNDERSCORE_DASH= "[a-zA-Z0-9._\\-]+";
+public class Login implements Validator{
+    private static final String ENGLISH_LETTERS_NUMBERS_DOT_UNDERSCORE_DASH = "[a-zA-Z\\d._-]+";
 
     @Column(nullable = false)
     private String login;
@@ -19,22 +19,15 @@ public class Login {
             throw new IllegalStateException("Login cant be null!");
         }
 
-        if ( !isValidLength(login) ) {
+        if ( !isValidLength(login, 3, 28) ) {
             throw new IllegalStateException("Login must be between 3 and 28 characters length!");
         }
 
-        if ( !containValidCharacters(login) ) {
+        if ( !containsValidCharacters(login, ENGLISH_LETTERS_NUMBERS_DOT_UNDERSCORE_DASH) ) {
             throw new IllegalStateException("Login must contain only english letters, numbers, dots, underscores or dashes!");
         }
 
         this.login = login;
-    }
-    public boolean containValidCharacters(String login) {
-        return login.matches(ENGLISH_LETTERS_NUMBERS_DOT_UNDERSCORE_DASH);
-    }
-
-    public boolean isValidLength(String login) {
-        return login.length() > 3 && login.length() < 28;
     }
 
     @Override
@@ -54,4 +47,5 @@ public class Login {
     public int hashCode() {
         return Objects.hash(login);
     }
+
 }

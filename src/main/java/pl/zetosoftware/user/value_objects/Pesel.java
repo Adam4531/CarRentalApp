@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Embeddable
 @NoArgsConstructor
-public class Pesel {
+public class Pesel implements Validator{
 
     private static final String DIGITS = "[0-9]+";
 
@@ -19,21 +19,15 @@ public class Pesel {
         if ( Objects.isNull(pesel) ) {
             throw new IllegalArgumentException("Pesel can't be null!");
         }
-        if ( !isValidLength(pesel) ){
+
+        if ( !isValidLength(pesel, 11, 11) ){
             throw new IllegalStateException("Pesel must be 11 digits length!");
         }
-        if ( !containsOnlyDigits(pesel) ){
+
+        if ( !containsValidCharacters(pesel, DIGITS) ){
             throw new IllegalArgumentException("Pesel must contain only digits!");
         }
         this.pesel = pesel;
-    }
-
-    public boolean isValidLength(String pesel){
-        return pesel.length() == 11;
-    }
-
-    public boolean containsOnlyDigits(String pesel){
-        return pesel.matches(DIGITS);
     }
 
     @Override
@@ -53,4 +47,5 @@ public class Pesel {
     public int hashCode() {
         return Objects.hash(pesel);
     }
+
 }

@@ -18,6 +18,8 @@ public class User {
     @Column(nullable = false)
     private Long id;
     @Embedded
+    private Login login;
+    @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "name", column = @Column(name = "first_name"))
     })
@@ -36,7 +38,8 @@ public class User {
     @Embedded
     private Pesel pesel;
     @Builder
-    public User(Name firstName, Name secondName, Password password, PhoneNumber phoneNumber, Email email, Pesel pesel) {
+    public User(Login login,Name firstName, Name secondName, Password password, PhoneNumber phoneNumber, Email email, Pesel pesel) {
+        this.login = login;
         this.firstName = firstName;
         this.secondName = secondName;
         this.password = password;

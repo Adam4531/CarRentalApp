@@ -1,6 +1,5 @@
 package pl.zetosoftware.user.value_objects;
 
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
@@ -9,9 +8,8 @@ import java.util.Objects;
 
 @Embeddable
 @NoArgsConstructor
-public class Name {
-
-    private static final String POLISH_SIGNS = "\\p{IsAlphabetic}";
+public class Name implements Validator{
+    private static final String POLISH_ALPHABET = "[a-zA-Z-\\p{IsAlphabetic}]+";
 
     @Column
     private String name;
@@ -21,26 +19,17 @@ public class Name {
             throw new IllegalStateException("Name can't be null!");
         }
 
-        if ( !containValidCharacters(name) ) {
-            throw new IllegalStateException("Name must contain only letters!");
+        if ( !isValidLength(name, 3, 60) ) {
+            throw new IllegalStateException("Name must be between 3 and 60 characters long!");
         }
 
-        if ( !isValidLength(name) ) {
-            throw new IllegalStateException("Name must be between 3 and 50 characters long!");
+        if ( !containsValidCharacters(name, POLISH_ALPHABET) ) {
+            throw new IllegalStateException("Name must contain only letters!");
         }
 
         name = toLowerCaseThenCapitalize(name);
         this.name = name;
     }
-
-    public boolean containValidCharacters(String name) {
-        return name.matches("[a-zA-Z- " + POLISH_SIGNS + "]+");
-    }
-
-    public boolean isValidLength(String name) {
-        return name.length() > 3 && name.length() < 50;
-    }
-
     public String toLowerCaseThenCapitalize(String string){
         return string.substring(0,1).toUpperCase() + string.substring(1).toLowerCase();
     }
