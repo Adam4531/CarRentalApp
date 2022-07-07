@@ -66,8 +66,8 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>8.0.0</version>
                 <configuration>
-                    <user>postgres</user>
-                    <password>osmiornicaZ691</password>
+                    <user>postgres</user>               <!-- change to your own user and password-->
+                    <password>osmiornicaZ691</password>     <!-- change to your own user and password-->
                     <url>jdbc:postgresql://localhost:5432/carrental</url>
                 </configuration>
             </plugin>
