@@ -32,7 +32,7 @@ public class Email {
             throw new IllegalArgumentException("Email can't be null!");
         }
 
-        if ( isValidLength(email) ) {
+        if ( !isValidLength(email) ) {
             throw new IllegalArgumentException("Email must be between 8 to 50 characters length!");
         }
 

@@ -1,5 +1,6 @@
 package pl.zetosoftware.user.value_objects;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
