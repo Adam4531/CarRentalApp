@@ -10,22 +10,21 @@ CREATE TABLE IF NOT EXISTS users(
     CONSTRAINT users_id_pkey PRIMARY KEY(ID)
     );
 
-CREATE TYPE IF NOT EXISTS cars_body_type AS ENUM('Coupe', 'Sedan', 'SUV', 'Station_Wagon', 'Hatchback', 'Cabriolet');
-CREATE TYPE IF NOT EXISTS cars_type_of_fuel AS ENUM('Benzine', 'Diesel', 'Electric', 'LPG');
+CREATE TYPE IF NOT EXISTS car_body_type AS ENUM('Coupe', 'Sedan', 'SUV', 'Station_Wagon', 'Hatchback', 'Cabriolet');
+CREATE TYPE IF NOT EXISTS car_type_of_fuel AS ENUM('Benzine', 'Diesel', 'Electric', 'LPG');
 CREATE TABLE IF NOT EXISTS cars(
     ID BIGINT NOT NULL,
     brand VARCHAR(20),
     model VARCHAR(20),
     engine_capacity numeric(2,1),
-    body_type cars_body_type NOT NULL,
-    type_of_fuel cars_type_of_fuel NOT NULL,
+    body_type car_body_type NOT NULL,
+    type_of_fuel car_type_of_fuel NOT NULL,
     new_car_cost numeric(6,2),
     production_year int NOT NULL,
     CONSTRAINT cars_id_pkey PRIMARY KEY(ID)
     );
 
 CREATE TYPE IF NOT EXISTS reservation_status AS ENUM('Free', 'Reserved', 'Taken');
-
 CREATE TABLE IF NOT EXISTS reservations(
     ID BIGINT NOT NULL,
     user_id int NOT NULL,
