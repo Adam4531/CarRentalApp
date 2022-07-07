@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4253")
 public class UserController {
 
     private final UserService userService;
@@ -25,7 +25,7 @@ public class UserController {
         return userService.createUser(user);
     }
 
-    @GetMapping("")
+    @GetMapping("/test2")
     @ResponseStatus(HttpStatus.OK)
     public List<UserDto> getUsers(){
         return userService.getAllUsers();
@@ -37,5 +37,10 @@ public class UserController {
         return userService.getUserById(id);
     }
 
+    @GetMapping("/test")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public List<User> printAllUsers(){
+        return this.userService.findAllUsers();
+    }
 
 }

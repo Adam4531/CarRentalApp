@@ -1,28 +1,34 @@
 package pl.zetosoftware.car;
 
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @NoArgsConstructor
 @Getter
-public class Car {
+@Table(name = "cars")
+public class Car implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false, updatable = false)
     private Long id;
 
-    private String brand;
+    private String carName;
 
-    private String model;
+    public Car(Long id, String name){
+        this.id = id;
+        this.carName = name;
+    }
 
-    private double engineCapacity;
-
-
-
-
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", name='" + carName + '\'' +
+                '}';
+    }
 }

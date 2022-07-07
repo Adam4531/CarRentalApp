@@ -1,5 +1,6 @@
 package pl.zetosoftware.user;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.zetosoftware.user.dtos.UserDto;
 
@@ -12,6 +13,8 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
 
+
+    @Autowired
     public UserService(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
@@ -35,5 +38,7 @@ public class UserService {
         var user = getUser(id);
         return userMapper.fromUserToUserDTO(user);
     }
+
+    public List<User> findAllUsers(){ return userRepository.findAll();}
 
 }
