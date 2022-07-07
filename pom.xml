@@ -66,7 +66,7 @@
                 <version>8.0.0</version>
                 <configuration>
                     <user>postgres</user>               <!-- change to your own user and password-->
-                    <password>osmiornicaZ691</password>     <!-- change to your own user and password-->
+                    <password>postgres</password>     <!-- change to your own user and password-->
                     <url>jdbc:postgresql://localhost:5432/carrental</url>
                 </configuration>
             </plugin>

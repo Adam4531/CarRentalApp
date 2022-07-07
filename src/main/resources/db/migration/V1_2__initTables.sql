@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS users(
-    ID SERIAL,
+    ID BIGINT NOT NULL,
     login VARCHAR(30) NOT NULL,
     password VARCHAR(20),
     first_name VARCHAR(20),
@@ -14,7 +14,7 @@ CREATE TYPE car_body_type AS ENUM('Coupe', 'Sedan', 'SUV', 'Station_Wagon', 'Hat
 CREATE TYPE car_type_of_fuel AS ENUM('Benzine', 'Diesel', 'Electric', 'LPG');
 
 CREATE TABLE IF NOT EXISTS cars(
-    ID SERIAL,
+    ID BIGINT NOT NULL,
     brand VARCHAR(20),
     model VARCHAR(20),
     engine_capacity numeric(2,1),
@@ -28,9 +28,9 @@ CREATE TABLE IF NOT EXISTS cars(
 CREATE TYPE reservation_status AS ENUM('Free', 'Reserved', 'Taken');
 
 CREATE TABLE IF NOT EXISTS reservations(
-    ID SERIAL,
-    user_id int NOT NULL,
-    car_id int NOT NULL,
+    ID BIGINT NOT NULL,
+    user_id BIGINT NOT NULL,
+    car_id BIGINT NOT NULL,
     date_start date, --if car is free then that column cannot be NOT NULL
     date_end date, --if car is free then that column cannot be NOT NULL
     cost numeric(7,2) NOT NULL,
