@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import pl.zetosoftware.reservation.enums.Status;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -21,8 +22,8 @@ public class Reservation {
     private Integer carId;
     private LocalDateTime dateStart;
     private LocalDateTime dateEnd;
-    private Double cost;
-    private Double paymentInAdvance;
+    private BigDecimal cost;
+    private BigDecimal paymentInAdvance;
     private Status status;
 
 }
