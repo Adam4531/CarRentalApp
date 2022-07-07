@@ -9,25 +9,31 @@ import pl.zetosoftware.car.enums.TypeOfFuel;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
-@Entity
-@Table(name = "cars")
 @NoArgsConstructor
 @Getter
+@Entity
+@Table(name = "cars", schema = "public")
 public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
+    @Column(nullable = false, name = "ID")
     private Long id;
+
+    @Column(name = "brand")
     private String brand;
+
+    @Column(name = "model")
     private String model;
 
     @Column(name = "engine_capacity")
-    private double engineCapacity;
+    private BigDecimal engineCapacity;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "body_type")
     private BodyType bodyType;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "type_of_fuel")
     private TypeOfFuel typeOfFuel;
 

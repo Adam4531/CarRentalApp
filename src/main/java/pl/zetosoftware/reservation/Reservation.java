@@ -22,18 +22,20 @@ public class Reservation {
     private Long userId;
 
     @Column(name = "car_id")
-    private Integer carId;
+    private Long carId;
 
     @Column(name = "date_start")
     private LocalDateTime dateStart;
 
     @Column(name = "date_end")
     private LocalDateTime dateEnd;
+
     private BigDecimal cost;
 
     @Column(name = "payment_in_advance")
     private BigDecimal paymentInAdvance;
 
+    @Enumerated(EnumType.ORDINAL)
     private Status status;
 
 }
