@@ -12,7 +12,7 @@ public class Pesel {
 
     private static final String DIGITS = "[0-9]+";
 
-    @Column
+    @Column(nullable = false)
     private String pesel;
 
     public Pesel(String pesel) {

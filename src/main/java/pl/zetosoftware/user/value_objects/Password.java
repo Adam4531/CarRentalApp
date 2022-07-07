@@ -12,7 +12,7 @@ public class Password {
 
     private static final String SPECIAL_CHARS_AND_ENGLISH_LETTERS = "[\\x21-\\x7E]+";
 
-    @Column
+    @Column(nullable = false)
     private String password;
 
     public Password(String password) {

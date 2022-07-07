@@ -24,7 +24,7 @@ public class Email {
     // te zmienne statyczne sa tu dodane tylko do czasu az sprawdzimy czy poniższy pattern sie sprawdza
     private static final String EMAIL_PATERN_FROM_BAELDUNG = "[^(.+)@(\\S+)$]";
 
-    @Column
+    @Column(nullable = false)
     private String email;
 
     public Email(String email) {
