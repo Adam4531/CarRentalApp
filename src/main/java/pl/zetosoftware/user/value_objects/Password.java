@@ -10,7 +10,7 @@ import java.util.Objects;
 @NoArgsConstructor
 public class Password {
 
-    private static final String SPECIAL_CHARS_AND_ENGLISH_LETTERS = "[\\x21-\\x7E]+";
+    private static final String SPECIAL_CHARS_ENGLISH_LETTERS_NUMBERS = "[\\x21-\\x7E]+";
 
     @Column(nullable = false)
     private String password;
@@ -25,14 +25,14 @@ public class Password {
         }
 
         if ( !containValidCharacters(password) ) {
-            throw new IllegalStateException("Password must contain only special chars and english letters!");
+            throw new IllegalStateException("Password must contain only special characters, numbers and english letters!");
         }
 
         this.password = password;
     }
 
     public boolean containValidCharacters(String password) {
-        return password.matches(SPECIAL_CHARS_AND_ENGLISH_LETTERS);
+        return password.matches(SPECIAL_CHARS_ENGLISH_LETTERS_NUMBERS);
     }
 
     public boolean isValidLength(String password){
@@ -56,5 +56,4 @@ public class Password {
     public int hashCode() {
         return Objects.hash(password);
     }
-
 }
