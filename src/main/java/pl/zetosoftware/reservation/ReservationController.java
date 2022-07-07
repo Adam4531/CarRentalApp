@@ -7,5 +7,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/cars")
 public class ReservationController {
 
-    private final ReservationService reservationService;
 }
