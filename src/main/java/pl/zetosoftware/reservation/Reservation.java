@@ -72,6 +72,3 @@ public class Reservation {
         this.paymentInAdvance = new PaymentInAdvance(paymentInAdvane);
     }
 }
-
-
-
