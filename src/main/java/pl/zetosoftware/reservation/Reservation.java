@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "reservations")
+@Table(name = "RESERVATIONS")
 @NoArgsConstructor
 @Getter
 public class Reservation {
@@ -18,24 +18,31 @@ public class Reservation {
     @Column(nullable = false)
     private Long id;
 
-    @Column(name = "user_id")
     private Long userId;
 
-    @Column(name = "car_id")
     private Long carId;
 
-    @Column(name = "date_start")
+    @Column(columnDefinition = "DATE")
     private LocalDateTime dateStart;
 
-    @Column(name = "date_end")
+    @Column(columnDefinition = "DATE")
     private LocalDateTime dateEnd;
 
     private BigDecimal cost;
 
-    @Column(name = "payment_in_advance")
     private BigDecimal paymentInAdvance;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private Status status;
 
+    public Reservation(Long id, Long userId, Long carId, LocalDateTime dateStart, LocalDateTime dateEnd, BigDecimal cost, BigDecimal paymentInAdvance, Status status) {
+        this.id = id;
+        this.userId = userId;
+        this.carId = carId;
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
+        this.cost = cost;
+        this.paymentInAdvance = paymentInAdvance;
+        this.status = status;
+    }
 }
