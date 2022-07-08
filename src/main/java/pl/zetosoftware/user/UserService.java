@@ -5,7 +5,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pl.zetosoftware.user.dtos.UserDto;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -14,14 +13,12 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
-    private final EntityManager entityManager;
 
 
     @Autowired
-    public UserService(UserRepository userRepository, UserMapper userMapper, EntityManager entityManager) {
+    public UserService(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
-        this.entityManager = entityManager;
     }
 
     public UserDto createUser(User user){
