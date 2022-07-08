@@ -1,5 +1,6 @@
 package pl.zetosoftware.reservation;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import pl.zetosoftware.reservation.enums.Status;
@@ -39,6 +40,37 @@ public class Reservation {
     @Enumerated(EnumType.STRING)
     private Status status;
 
+    @Builder
+    public Reservation(Long id, Long userId, Long carId, LocalDateTime dateStart, LocalDateTime dateEnd, Cost cost, PaymentInAdvance paymentInAdvance, Status status) {
+        this.id = id;
+        this.userId = userId;
+        this.carId = carId;
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
+        this.cost = cost;
+        this.paymentInAdvance = paymentInAdvance;
+        this.status = status;
+    }
+
+    public void changeStatus(Status status){
+        this.status = status;
+    }
+
+    public void changeDateStart(LocalDateTime dateStart){
+        this.dateStart = dateStart;
+    }
+
+    public void changeDateEnd(LocalDateTime dateEnd){
+        this.dateEnd = dateEnd;
+    }
+
+    public void changeCost(BigDecimal cost){
+        this.cost = new Cost(cost);
+    }
+
+    public void changePaymentInAdvance(BigDecimal paymentInAdvane){
+        this.paymentInAdvance = new PaymentInAdvance(paymentInAdvane);
+    }
 }
 
 
