@@ -48,16 +48,18 @@ public class User {
         this.pesel = pesel;
     }
 
-    public void changeFirstName(String firstName){
-        this.firstName = new Name(firstName);
-    }
+    public void changeLogin(Login changedLogin){ this.login = changedLogin; }
 
-    public void changeLastName(String lastName){
-        this.secondName = new Name(lastName);
-    }
+    public void changeFirstName(Name changedFirstName){ this.firstName = changedFirstName; }
 
-    public void changePassword(String password){
-        this.password = new Password(password);
-    }
+    public void changeSecondName(Name changedSecondName){ this.secondName = changedSecondName; }
+
+    public void changePassword(Password changedPassword){ this.password = changedPassword; }
+
+    public void changePhoneNumber(PhoneNumber changedPhoneNumber){ this.phoneNumber = changedPhoneNumber; }
+
+    public void changeEmail(Email changedEmail){ this.email = changedEmail; }
+
+    public void changePesel(Pesel changedPesel){ this.pesel = changedPesel; }
 
 }

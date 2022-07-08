@@ -9,7 +9,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
-//@CrossOrigin(origins = "http://localhost:4253")
 public class UserController {
 
     private final UserService userService;
@@ -35,6 +34,24 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     public UserDto getUserById(@PathVariable Long id){
         return userService.getUserById(id);
+    }
+
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public UserDto changeUserField(@PathVariable Long id, @RequestBody User updatedUser){
+        return userService.updateUserWithPutMapping(id, updatedUser);
+    }
+
+    @PatchMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public UserDto changeUserEmail(@PathVariable Long id, @RequestBody User userWithNewEmail){
+        return userService.updateUserEmail(id, userWithNewEmail);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public String deleteUserById(@PathVariable Long id){
+        return userService.deleteUserById(id);
     }
 
 }
