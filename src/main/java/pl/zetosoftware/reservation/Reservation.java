@@ -25,10 +25,10 @@ public class Reservation {
     private Long carId;
 
     @Column(columnDefinition = "DATE")
-    private LocalDateTime dateStart;
+    private LocalDateTime dateStart; //TODO maybe create its own class to format date if it does have any sense
 
     @Column(columnDefinition = "DATE")
-    private LocalDateTime dateEnd;
+    private LocalDateTime dateEnd; //TODO same as higher
 
     @Embedded
     private Cost cost;

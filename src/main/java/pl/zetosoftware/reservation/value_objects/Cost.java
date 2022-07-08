@@ -7,8 +7,8 @@ import javax.persistence.Embeddable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-@NoArgsConstructor
 @Embeddable
+@NoArgsConstructor
 public class Cost {
 
     @Column
@@ -30,9 +30,9 @@ public class Cost {
             return false;
         }
         return true;
-
-
     }
+
+    //TODO Format of cost xxx.xx  - 2 digits after dot
 
     @Override
     public String toString() {
