@@ -11,6 +11,7 @@ public class UserMapper {
 
     public UserDto fromUserToUserDTO(User user){
         return UserDto.builder()
+                .id(user.getId())
                 .firstName(user.getFirstName().toString())
                 .secondName(user.getSecondName().toString())
                 .phoneNumber(user.getPhoneNumber().toString())
