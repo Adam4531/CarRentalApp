@@ -21,7 +21,9 @@ BACK:
 
 OGÓLNIE:
 
-1. ...
+1. Jak przekazać klase Password do metody w controllerze która odpowiada za zmiane hasła?
+
+2 ...
 
 
 

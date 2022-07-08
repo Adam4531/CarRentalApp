@@ -32,10 +32,8 @@ public class Car implements Serializable {
     @Enumerated(EnumType.STRING)
     private TypeOfFuel typeOfFuel;
 
-    @Column(name = "new_car_cost")
     private BigDecimal newCarCost;
 
-    @Column(name = "production_year")
     private Integer productionYear;
 
 }
