@@ -3,6 +3,8 @@ package pl.zetosoftware.reservation;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import pl.zetosoftware.reservation.enums.Status;
+import pl.zetosoftware.reservation.value_objects.Cost;
+import pl.zetosoftware.reservation.value_objects.PaymentInAdvance;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -28,21 +30,16 @@ public class Reservation {
     @Column(columnDefinition = "DATE")
     private LocalDateTime dateEnd;
 
-    private BigDecimal cost;
+    @Embedded
+    private Cost cost;
 
-    private BigDecimal paymentInAdvance;
+    @Embedded
+    private PaymentInAdvance paymentInAdvance;
 
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    public Reservation(Long id, Long userId, Long carId, LocalDateTime dateStart, LocalDateTime dateEnd, BigDecimal cost, BigDecimal paymentInAdvance, Status status) {
-        this.id = id;
-        this.userId = userId;
-        this.carId = carId;
-        this.dateStart = dateStart;
-        this.dateEnd = dateEnd;
-        this.cost = cost;
-        this.paymentInAdvance = paymentInAdvance;
-        this.status = status;
-    }
 }
+
+
+
