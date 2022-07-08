@@ -13,7 +13,7 @@ public class ReservationController {
     public ReservationController(ReservationService reservationService) {
         this.reservationService = reservationService;
     }
-    @PostMapping("/")
+    @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public Reservation addReservation(@RequestBody Reservation reservation) {
         return reservationService.createReservation(reservation);
