@@ -9,9 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
-import pl.zetosoftware.user.User;
 import pl.zetosoftware.user.UserRepository;
-import pl.zetosoftware.user.value_objects.*;
 
 import java.util.Arrays;
 
