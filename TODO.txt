@@ -12,13 +12,17 @@ FRONT:
 
 BACK:
 
-1. Uzupełnić klasę Car i Reservation
+1. Zaimplementować więcej logiki + poprawić to co jest w serwisie i kontrolerze aut
++  ustawić poprawnie enuma z value objectu dla status, bodytype i typeoffuel
++  Czy data transfer objecty sa na pewno potrzebne do klasy reservation i car?
 
 2. Utworzyć relacje pomiędzy wszystkimi encjami (OneToMany/ManyToOne)
 
 3. Dodać klasę obsługującą raport zwrotny z wypożyczenia / coś w tym stylu
 
-3. ...
+4. Zmienić nazewnictwo w enumie STATUS - free/reserved/taken to bardziej pasuje do statusu auta chyba?
+
+5. ...
 
 
 OGÓLNIE:
