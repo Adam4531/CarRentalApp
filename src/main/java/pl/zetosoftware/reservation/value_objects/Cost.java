@@ -17,18 +17,16 @@ public class Cost {
     private BigDecimal cost;
 
     public Cost(BigDecimal cost) {
-        if (Objects.isNull(cost)) {
+        if (Objects.isNull(cost))
             throw new IllegalArgumentException("Cost can't be null!");
-        }
-        if (isGreaterThanLimit(cost)) {
+        if (isGreaterThanLimit(cost))
             throw new IllegalStateException("Cost must be lower than 7 digits");
-        }
         this.cost = cost;
     }
 
     public boolean isGreaterThanLimit(BigDecimal cost) {
         BigDecimal limit = BigDecimal.valueOf(10000000);
-        if (limit.compareTo(cost) > 0) {
+        if (limit.compareTo(cost) > 0) { //dla wydajności można uprościć
             return false;
         }
         return true;

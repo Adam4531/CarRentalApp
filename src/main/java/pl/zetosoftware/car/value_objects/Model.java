@@ -15,6 +15,8 @@ public class Model implements Validator{
     private String model;
 
     public Model(String model) {
+        if(Objects.isNull(model))
+            throw new IllegalArgumentException("MODEL CANNOT BE NULL !!");
         if(!containsValidCharacters(model, MODEL_NAME_REGEX))
             throw new IllegalStateException("MODEL NAME MAY CONTAIN ONLY LETTERS, " +
                                             "NUMBERS, DOTS, DASHES, UNDERSCORE AND WHITESPACES !!");

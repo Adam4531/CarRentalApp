@@ -15,18 +15,12 @@ public class Name implements Validator{
     private String name;
 
     public Name(String name) {
-        if( Objects.isNull(name) ) {
+        if( Objects.isNull(name) )
             throw new IllegalStateException("Name can't be null!");
-        }
-
-        if ( !isValidLength(name, 3, 60) ) {
+        if ( !isValidLength(name, 3, 60) )
             throw new IllegalStateException("Name must be between 3 and 60 characters long!");
-        }
-
-        if ( !containsValidCharacters(name, POLISH_ALPHABET) ) {
+        if ( !containsValidCharacters(name, POLISH_ALPHABET) )
             throw new IllegalStateException("Name may contain only letters!");
-        }
-
         name = toLowerCaseThenCapitalize(name);
         this.name = name;
     }

@@ -21,18 +21,12 @@ public class Email implements Validator{
     private String email;
 
     public Email(String email) {
-        if ( Objects.isNull(email) ) {
+        if ( Objects.isNull(email) )
             throw new IllegalArgumentException("Email can't be null!");
-        }
-
-        if ( !isValidLength(email, 5, 80) ) {
+        if ( !isValidLength(email, 5, 80) )
             throw new IllegalArgumentException("Email must be between 8 to 50 characters length!");
-        }
-
-        if ( !containsValidCharacters(email, EMAIL_PATTERN) ) {
+        if ( !containsValidCharacters(email, EMAIL_PATTERN) )
             throw new IllegalArgumentException("Email must contain only letters, digits, and '@' '.' signs!");
-        }
-
         this.email = email;
     }
 

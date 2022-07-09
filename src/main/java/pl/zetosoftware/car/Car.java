@@ -18,7 +18,7 @@ import java.math.BigDecimal;
 @RequiredArgsConstructor
 @Getter
 @Table(name = "CARS")
-public class Car implements Serializable {
+public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

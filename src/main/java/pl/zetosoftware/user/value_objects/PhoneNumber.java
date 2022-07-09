@@ -16,18 +16,12 @@ public class PhoneNumber implements Validator {
     private String phoneNumber;
 
     public PhoneNumber(String phoneNumber){
-        if ( Objects.isNull(phoneNumber) ){
+        if ( Objects.isNull(phoneNumber) )
             throw new IllegalArgumentException("Phone number can't be null!");
-        }
-
-        if ( !isValidLength(phoneNumber, 9, 9) ){
+        if ( !isValidLength(phoneNumber, 9, 9) )
             throw new IllegalArgumentException("Phone number must be 9 digits length!");
-        }
-
-        if ( !containsValidCharacters(phoneNumber, DIGITS) ){
+        if ( !containsValidCharacters(phoneNumber, DIGITS) )
             throw new IllegalArgumentException("Phone number may contain only digits!");
-        }
-
         this.phoneNumber = phoneNumber;
     }
 

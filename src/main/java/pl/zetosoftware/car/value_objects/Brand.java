@@ -15,6 +15,8 @@ public class Brand implements Validator{
     private String brand;
 
     public Brand(String brand) {
+        if(Objects.isNull(brand))
+            throw new IllegalArgumentException("BRAND CANNOT BE NULL !!");
         if(!containsValidCharacters(brand, BRAND_NAME_REGEX))
             throw new IllegalStateException("BRAND NAME MAY CONTAIN ONLY LETTERS OR NUMBERS !!");
         if(!isValidLength(brand, 1, 20))

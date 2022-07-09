@@ -1,5 +1,6 @@
 package pl.zetosoftware.car;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,30 +10,24 @@ import java.util.List;
 
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/cars")
 public class CarController {
 
     private final CarService carService;
 
-    @Autowired
-    public CarController(CarService carService) {
-        this.carService = carService;
-    }
-
-    //upload
     @GetMapping("")
-    public ResponseEntity<List<Car>> getAllCars (){
-        List<Car> cars = carService.findAllCars();
-        return new ResponseEntity<>(cars, HttpStatus.OK);
+    @ResponseStatus(HttpStatus.OK)
+    public List<Car> getAllCars (){
+        return carService.findAllCars();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Car> getCarById (@PathVariable("id") Long id){
-        Car car = carService.findCarById(id);
-        return new ResponseEntity<>(car, HttpStatus.OK);
+    @ResponseStatus(HttpStatus.OK)
+    public Car getCarById (@PathVariable("id") Long id){
+        return carService.findCarById(id);
     }
 
-    //edit
     @PostMapping("")
     public ResponseEntity<Car> addCar(@RequestBody Car car){
         Car newCar = carService.addCar(car);

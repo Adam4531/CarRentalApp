@@ -16,18 +16,12 @@ public class Password implements Validator{
     private String password;
 
     public Password(String password) {
-        if ( Objects.isNull(password) ) {
+        if ( Objects.isNull(password) )
             throw new IllegalStateException("Password cant be null!");
-        }
-
-        if ( !isValidLength(password, 7, 28) ) {
+        if ( !isValidLength(password, 7, 28) )
             throw new IllegalStateException("Password must be between 7 and 28 characters length!");
-        }
-
-        if ( !containsValidCharacters(password, ENGLISH_LETTERS_NUMBERS_SPECIAL_CHARACTERS) ) {
+        if ( !containsValidCharacters(password, ENGLISH_LETTERS_NUMBERS_SPECIAL_CHARACTERS) )
             throw new IllegalStateException("Password may contain only english letters, numbers and special characters!");
-        }
-
         this.password = password;
     }
 

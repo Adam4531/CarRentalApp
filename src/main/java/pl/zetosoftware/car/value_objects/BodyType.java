@@ -12,6 +12,8 @@ public class BodyType {
     private Enum<pl.zetosoftware.car.enums.BodyType> bodyType;
 
     public BodyType(Enum<pl.zetosoftware.car.enums.BodyType> bodyType) {
+        if(Objects.isNull(bodyType))
+            throw new IllegalStateException("BODY TYPE CANNOT BE NULL !!");
         this.bodyType = bodyType;
     }
 

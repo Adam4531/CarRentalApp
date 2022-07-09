@@ -16,17 +16,12 @@ public class Pesel implements Validator{
     private String pesel;
 
     public Pesel(String pesel) {
-        if ( Objects.isNull(pesel) ) {
+        if ( Objects.isNull(pesel) )
             throw new IllegalArgumentException("Pesel can't be null!");
-        }
-
-        if ( !isValidLength(pesel, 11, 11) ){
+        if ( !isValidLength(pesel, 11, 11) )
             throw new IllegalStateException("Pesel must be 11 digits length!");
-        }
-
-        if ( !containsValidCharacters(pesel, DIGITS) ){
+        if ( !containsValidCharacters(pesel, DIGITS) )
             throw new IllegalArgumentException("Pesel may contain only digits!");
-        }
         this.pesel = pesel;
     }
 

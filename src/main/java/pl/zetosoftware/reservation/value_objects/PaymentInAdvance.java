@@ -14,9 +14,8 @@ public class PaymentInAdvance {
     private BigDecimal paymentInAdvance;
 
     public PaymentInAdvance(BigDecimal paymentInAdvance) {
-        if(Objects.isNull(paymentInAdvance)){
+        if(Objects.isNull(paymentInAdvance))
             throw new IllegalArgumentException("PaymentInAdvance can't be null");
-        }
         this.paymentInAdvance = paymentInAdvance;
     }
 
