@@ -2,9 +2,11 @@ package pl.zetosoftware.car;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.zetosoftware.car.dto.CarDto;
 
 import java.util.List;
 
@@ -18,32 +20,38 @@ public class CarController {
 
     @GetMapping("")
     @ResponseStatus(HttpStatus.OK)
-    public List<Car> getAllCars (){
-        return carService.findAllCars();
+    public List<CarDto> getAllCars (){
+        return carService.getAllCars();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Car getCarById (@PathVariable("id") Long id){
+    public CarDto getCarById (@PathVariable("id") Long id){
         return carService.findCarById(id);
     }
 
     @PostMapping("")
-    public ResponseEntity<Car> addCar(@RequestBody Car car){
-        Car newCar = carService.addCar(car);
-        return new ResponseEntity<>(newCar, HttpStatus.CREATED);
+    @ResponseStatus(HttpStatus.CREATED)
+    public CarDto addCar(@RequestBody Car car){
+        return carService.addCar(car);
     }
 
     @PutMapping("")
-    public ResponseEntity<Car> updateCar(@RequestBody Car car){
-        Car updatedCar = carService.updateCar(car);
-        return new ResponseEntity<>(updatedCar, HttpStatus.OK);
+    public ResponseEntity<CarDto> updateCar(@RequestBody Car car){
+        CarDto updatedCar = carService.updateCar(car);
+        final HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add("HEADER V1",
+                        "Car with id " + car.getId() + " has been updated successfully");
+        return new ResponseEntity<>(updatedCar, httpHeaders, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteCar(@PathVariable("id") Long id){
+    public ResponseEntity<CarDto> deleteCar(@PathVariable("id") Long id){
         carService.deleteCarById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        final HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add("HEADER V1",
+                "Car with id " + id + " has been successfully deleted ");
+        return new ResponseEntity<>(httpHeaders, HttpStatus.ACCEPTED);
     }
 
 }

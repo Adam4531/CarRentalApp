@@ -29,4 +29,6 @@ public class BodyType {
     public int hashCode() {
         return Objects.hash(bodyType);
     }
+
+    public Enum<pl.zetosoftware.car.enums.BodyType> toEnum() { return bodyType; }
 }

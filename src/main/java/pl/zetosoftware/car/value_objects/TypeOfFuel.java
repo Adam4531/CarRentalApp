@@ -29,4 +29,7 @@ public class TypeOfFuel {
     public int hashCode() {
         return Objects.hash(typeOfFuel);
     }
+
+    public Enum<pl.zetosoftware.car.enums.TypeOfFuel> toEnum() { return typeOfFuel; }
+
 }

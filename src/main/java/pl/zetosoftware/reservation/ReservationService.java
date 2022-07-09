@@ -2,7 +2,7 @@ package pl.zetosoftware.reservation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.zetosoftware.reservation.dtos.ReservationDto;
+import pl.zetosoftware.reservation.dto.ReservationDto;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -11,7 +11,6 @@ import java.util.NoSuchElementException;
 public class ReservationService {
 
     private final ReservationRepository reservationRepository;
-
     private final ReservationMapper reservationMapper;
 
     @Autowired

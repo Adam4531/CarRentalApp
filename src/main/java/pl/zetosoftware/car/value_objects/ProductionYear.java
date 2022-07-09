@@ -3,6 +3,7 @@ package pl.zetosoftware.car.value_objects;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Embeddable;
+import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Objects;
 
@@ -12,7 +13,7 @@ public class ProductionYear {
 
 
     private Integer productionYear;
-    int actualYear = Calendar.getInstance().get(Calendar.YEAR);
+//    int actualYear = Calendar.getInstance().get(Calendar.YEAR);
 
     public ProductionYear(Integer productionYear) {
         if(Objects.isNull(productionYear))
@@ -23,7 +24,7 @@ public class ProductionYear {
     }
 
     public boolean isYearValid(Integer productionYear){
-        return productionYear >= 1884 && productionYear <= actualYear;
+        return productionYear >= 1884 && productionYear <= 2022; // change to actualYear
     }
 
     @Override
@@ -37,5 +38,9 @@ public class ProductionYear {
     @Override
     public int hashCode() {
         return Objects.hash(productionYear);
+    }
+
+    public Integer toInteger(){
+        return productionYear;
     }
 }

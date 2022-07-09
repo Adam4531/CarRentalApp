@@ -1,21 +1,17 @@
 package pl.zetosoftware.car;
 
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import pl.zetosoftware.car.enums.BodyType;
 import pl.zetosoftware.car.enums.TypeOfFuel;
+import pl.zetosoftware.car.value_objects.*;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.math.BigDecimal;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
 @Getter
 @Table(name = "CARS")
 public class Car {
@@ -25,21 +21,28 @@ public class Car {
     @Column(nullable = false)
     private Long id;
 
-    private String brand;
+    @Embedded
+    private Brand brand;
 
-    private String model;
+    @Embedded
+    private Model model;
 
-    @NotNull
-    private BigDecimal engineCapacity;
+    @Embedded
+    private EngineCapacity engineCapacity;
 
+    @Embedded
     @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "NUMERIC(19,0)")
     private BodyType bodyType;
 
+    @Embedded
     @Enumerated(EnumType.STRING)
     private TypeOfFuel typeOfFuel;
 
-    private BigDecimal newCarCost;
+    @Embedded
+    private NewCarCost newCarCost;
 
-    private Integer productionYear;
+    @Embedded
+    private ProductionYear productionYear;
 
 }

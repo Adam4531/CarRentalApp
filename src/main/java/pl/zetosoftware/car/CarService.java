@@ -1,7 +1,9 @@
 package pl.zetosoftware.car;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import pl.zetosoftware.car.dto.CarDto;
 import pl.zetosoftware.car.exception.CarNotFoundException;
 
 import java.util.List;
@@ -10,30 +12,39 @@ import java.util.List;
 public class CarService {
 
     private final CarRepository carRepository;
+    private final CarMapper carMapper;
 
     @Autowired
-    public CarService(CarRepository carRepository) {
+    public CarService(CarRepository carRepository, CarMapper carMapper) {
         this.carRepository = carRepository;
+        this.carMapper = carMapper;
     }
 
-    public Car addCar(Car car){
-        return carRepository.save(car);
+    public CarDto addCar(Car car){
+        carRepository.save(car);
+        return carMapper.mapCarToCarDto(car);
     }
 
-    public Car updateCar(Car car){
-        return carRepository.save(car);
+    public CarDto updateCar(Car car){
+        carRepository.save(car);
+        return carMapper.mapCarToCarDto(car);
     }
 
-    public void deleteCarById(Long id){
+    public String deleteCarById(Long id){
         carRepository.deleteById(id);
+        return("Car with id: " + id + " has been deleted successfully ");
     }
 
-    public List<Car> findAllCars(){
-        return carRepository.findAll();
+    public List<CarDto> getAllCars(){
+        List<Car> cars = carRepository.findAll(Sort.by("brand"));
+        return carMapper.mapCarListToCarListDto(cars);
     }
 
-    public Car findCarById(Long id){
-        return carRepository.findById(id).orElseThrow( () -> new CarNotFoundException("Car by id " + id + " was not found"));
+    public CarDto findCarById(Long id){
+        Car car = carRepository
+                .findById(id)
+                .orElseThrow( () -> new CarNotFoundException("Car with id " + id + " was not found. "));
+        return carMapper.mapCarToCarDto(car);
     }
 
 }

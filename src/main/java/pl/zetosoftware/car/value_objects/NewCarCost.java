@@ -3,6 +3,7 @@ package pl.zetosoftware.car.value_objects;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Embeddable;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 @NoArgsConstructor
@@ -34,5 +35,9 @@ public class NewCarCost {
     @Override
     public int hashCode() {
         return Objects.hash(newCarCost);
+    }
+
+    public Long toLong(){
+        return newCarCost;
     }
 }

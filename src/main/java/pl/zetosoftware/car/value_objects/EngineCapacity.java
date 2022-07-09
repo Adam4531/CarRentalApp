@@ -38,4 +38,8 @@ public class EngineCapacity {
     public int hashCode() {
         return Objects.hash(engineCapacity);
     }
+
+    public BigDecimal toBigDecimal(){
+        return engineCapacity;
+    }
 }

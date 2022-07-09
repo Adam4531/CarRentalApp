@@ -1,9 +1,8 @@
 package pl.zetosoftware.reservation;
 
 import org.springframework.stereotype.Component;
-import pl.zetosoftware.reservation.dtos.ReservationDto;
+import pl.zetosoftware.reservation.dto.ReservationDto;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
