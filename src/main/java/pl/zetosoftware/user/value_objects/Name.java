@@ -24,7 +24,7 @@ public class Name implements Validator{
         }
 
         if ( !containsValidCharacters(name, POLISH_ALPHABET) ) {
-            throw new IllegalStateException("Name must contain only letters!");
+            throw new IllegalStateException("Name may contain only letters!");
         }
 
         name = toLowerCaseThenCapitalize(name);

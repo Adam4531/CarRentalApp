@@ -15,17 +15,14 @@ public class Login implements Validator{
     private String login;
 
     public Login(String login) {
-        if (Objects.isNull(login)) {
+        if (Objects.isNull(login))
             throw new IllegalStateException("Login cant be null!");
-        }
 
-        if ( !isValidLength(login, 3, 28) ) {
+        if ( !isValidLength(login, 3, 28) )
             throw new IllegalStateException("Login must be between 3 and 28 characters length!");
-        }
 
-        if ( !containsValidCharacters(login, ENGLISH_LETTERS_NUMBERS_DOT_UNDERSCORE_DASH) ) {
-            throw new IllegalStateException("Login must contain only english letters, numbers, dots, underscores or dashes!");
-        }
+        if ( !containsValidCharacters(login, ENGLISH_LETTERS_NUMBERS_DOT_UNDERSCORE_DASH) )
+            throw new IllegalStateException("Login may contain only english letters, numbers, dots, underscores or dashes!");
 
         this.login = login;
     }

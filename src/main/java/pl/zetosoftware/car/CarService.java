@@ -33,7 +33,7 @@ public class CarService {
     }
 
     public Car findCarById(Long id){
-        return carRepository.findById(id).orElseThrow( () -> new CarNotFoundException("Car by id " + id + "was not found"));
+        return carRepository.findById(id).orElseThrow( () -> new CarNotFoundException("Car by id " + id + " was not found"));
     }
 
 }

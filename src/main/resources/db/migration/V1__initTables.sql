@@ -1,5 +1,5 @@
-CREATE TYPE public.car_body_type AS ENUM('Coupe', 'Sedan', 'SUV', 'Station_Wagon', 'Hatchback', 'Cabriolet');
-CREATE TYPE public.car_type_of_fuel AS ENUM('Benzine', 'Diesel', 'Electric', 'LPG');
+CREATE TYPE public.car_body_type AS ENUM('COUPE', 'SEDAN', 'SUV', 'STATION_WAGON', 'HATCHBACK', 'CABRIOLET');
+CREATE TYPE public.car_type_of_fuel AS ENUM('BENZINE', 'DIESEL', 'ELECTRIC', 'LPG');
 
 CREATE TABLE IF NOT EXISTS public.CARS(
     ID BIGINT NOT NULL,

@@ -67,9 +67,9 @@
 				<configuration>
 					<user>postgres</user>
 					<password>admin</password>
-                    <url>jdbc:postgresql://localhost:5432/carrental</url>
+                    <url>jdbc:postgresql://localhost:5432/car_rental</url>
 					<schemas>
-						<schema>carrental</schema>
+						<schema>car_rental</schema>
 					</schemas>
 				</configuration>
 			</plugin>
@@ -100,25 +100,25 @@
 
 
 
-			<plugin>
-				<groupId>cz.habarta.typescript-generator</groupId>
-				<artifactId>typescript-generator-maven-plugin</artifactId>
-				<version>2.35.1025</version>
-				<executions>
-					<execution>
-						<id>generate</id>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-						<phase>process-classes</phase>
-					</execution>
-				</executions>
-				<configuration>
-					<jsonLibrary>jackson2</jsonLibrary>
-					<classesWithAnnotations>annotations.GenerateTypescript</classesWithAnnotations>
-					<outputKind>module</outputKind>
-				</configuration>
-			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>cz.habarta.typescript-generator</groupId>-->
+<!--				<artifactId>typescript-generator-maven-plugin</artifactId>-->
+<!--				<version>2.35.1025</version>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<id>generate</id>-->
+<!--						<goals>-->
+<!--							<goal>generate</goal>-->
+<!--						</goals>-->
+<!--						<phase>process-classes</phase>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--				<configuration>-->
+<!--					<jsonLibrary>jackson2</jsonLibrary>-->
+<!--					<classesWithAnnotations>annotations.GenerateTypescript</classesWithAnnotations>-->
+<!--					<outputKind>module</outputKind>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
 
 		</plugins>
 	</build>

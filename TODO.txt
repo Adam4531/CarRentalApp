@@ -16,6 +16,8 @@ BACK:
 
 2. Utworzyć relacje pomiędzy wszystkimi encjami (OneToMany/ManyToOne)
 
+3. Dodać klasę obsługującą raport zwrotny z wypożyczenia / coś w tym stylu
+
 3. ...
 
 

@@ -1,38 +1,43 @@
 package pl.zetosoftware.car;
 
+import com.sun.istack.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import pl.zetosoftware.car.enums.BodyType;
+import lombok.RequiredArgsConstructor;
+import pl.zetosoftware.car.enums.BodyTypeEnum;
 import pl.zetosoftware.car.enums.TypeOfFuel;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
+@RequiredArgsConstructor
 @Getter
 @Table(name = "CARS")
 public class Car implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false)
     private Long id;
 
+    @Enumerated(EnumType.STRING)
     private String brand;
 
+    @Enumerated(EnumType.STRING)
     private String model;
 
-    private BigDecimal engineCapacity;
+    @NotNull
+    private Double engineCapacity;
 
-    @Enumerated(EnumType.STRING)
-    private BodyType bodyType;
+    private BodyTypeEnum bodyTypeEnum;
 
-    @Enumerated(EnumType.STRING)
     private TypeOfFuel typeOfFuel;
 
-    private BigDecimal newCarCost;
+    private Double newCarCost;
 
     private Integer productionYear;
 

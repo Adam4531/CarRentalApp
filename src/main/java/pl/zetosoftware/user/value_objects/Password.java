@@ -25,7 +25,7 @@ public class Password implements Validator{
         }
 
         if ( !containsValidCharacters(password, ENGLISH_LETTERS_NUMBERS_SPECIAL_CHARACTERS) ) {
-            throw new IllegalStateException("Password must contain only english letters, numbers and special characters!");
+            throw new IllegalStateException("Password may contain only english letters, numbers and special characters!");
         }
 
         this.password = password;
