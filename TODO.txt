@@ -28,6 +28,15 @@ OGÓLNIE:
 2 ...
 
 
+DALEKA PRZYSZŁOŚĆ:
+
+1. przekierowania na serwerze frontu
+
+2. testy
+
+3. ...
+
+
 
 
 

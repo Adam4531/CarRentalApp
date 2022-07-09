@@ -16,25 +16,11 @@ import java.util.Arrays;
 
 @SpringBootApplication
 @EnableJpaRepositories
-public class ZetosoftwareApplication implements CommandLineRunner {
+public class ZetosoftwareApplication{
 
 	public static void main(String[] args) {
 		SpringApplication.run(ZetosoftwareApplication.class, args);
 	}
-
-
-	private final UserRepository userRepository;
-
-	@Autowired
-	public ZetosoftwareApplication(UserRepository userRepository){
-		this.userRepository=userRepository;
-	}
-
-	@Override
-	public void run(String...args) throws Exception {
-
-	}
-
 
 	@Bean
 	public CorsFilter corsFilter() {
