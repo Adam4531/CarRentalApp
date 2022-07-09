@@ -5,11 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import pl.zetosoftware.car.enums.BodyTypeEnum;
+import pl.zetosoftware.car.enums.BodyType;
 import pl.zetosoftware.car.enums.TypeOfFuel;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Entity
 @NoArgsConstructor
@@ -24,20 +25,20 @@ public class Car implements Serializable {
     @Column(nullable = false)
     private Long id;
 
-    @Enumerated(EnumType.STRING)
     private String brand;
 
-    @Enumerated(EnumType.STRING)
     private String model;
 
     @NotNull
-    private Double engineCapacity;
+    private BigDecimal engineCapacity;
 
-    private BodyTypeEnum bodyTypeEnum;
+    @Enumerated(EnumType.STRING)
+    private BodyType bodyType;
 
+    @Enumerated(EnumType.STRING)
     private TypeOfFuel typeOfFuel;
 
-    private Double newCarCost;
+    private BigDecimal newCarCost;
 
     private Integer productionYear;
 

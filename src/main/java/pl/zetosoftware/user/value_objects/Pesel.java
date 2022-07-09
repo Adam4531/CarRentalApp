@@ -25,7 +25,7 @@ public class Pesel implements Validator{
         }
 
         if ( !containsValidCharacters(pesel, DIGITS) ){
-            throw new IllegalArgumentException("Pesel must contain only digits!");
+            throw new IllegalArgumentException("Pesel may contain only digits!");
         }
         this.pesel = pesel;
     }

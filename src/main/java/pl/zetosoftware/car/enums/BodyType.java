@@ -1,6 +1,6 @@
 package pl.zetosoftware.car.enums;
 
-public enum BodyTypeEnum {
+public enum BodyType {
     COUPE,
     SEDAN,
     SUV,

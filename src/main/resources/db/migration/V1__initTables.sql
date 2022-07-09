@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS public.USERS(
     CONSTRAINT users_id_pkey PRIMARY KEY(ID)
     );
 
-CREATE TYPE public.reservation_status AS ENUM('Free', 'Reserved', 'Taken');
+CREATE TYPE public.reservation_status AS ENUM('FREE', 'RESERVED', 'TAKEN');
 
 CREATE TABLE IF NOT EXISTS public.RESERVATIONS(
     ID BIGINT NOT NULL,

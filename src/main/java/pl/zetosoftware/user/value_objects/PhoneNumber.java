@@ -25,7 +25,7 @@ public class PhoneNumber implements Validator {
         }
 
         if ( !containsValidCharacters(phoneNumber, DIGITS) ){
-            throw new IllegalArgumentException("Phone number must contain only digits!");
+            throw new IllegalArgumentException("Phone number may contain only digits!");
         }
 
         this.phoneNumber = phoneNumber;

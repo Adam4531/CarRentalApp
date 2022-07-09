@@ -1,7 +1,6 @@
 package pl.zetosoftware.car.value_objects;
 
 import lombok.NoArgsConstructor;
-import pl.zetosoftware.car.enums.BodyTypeEnum;
 
 import javax.persistence.Embeddable;
 import java.util.Objects;
@@ -10,9 +9,9 @@ import java.util.Objects;
 @Embeddable
 public class BodyType {
 
-    private Enum<BodyTypeEnum> bodyType;
+    private Enum<pl.zetosoftware.car.enums.BodyType> bodyType;
 
-    public BodyType(Enum<BodyTypeEnum> bodyType) {
+    public BodyType(Enum<pl.zetosoftware.car.enums.BodyType> bodyType) {
         this.bodyType = bodyType;
     }
 
