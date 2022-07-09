@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS public.CARS(
     engine_capacity numeric(2,1),
     body_type public.car_body_type NOT NULL,
     type_of_fuel public.car_type_of_fuel NOT NULL,
-    new_car_cost numeric(9,2),
+    new_car_cost BIGINT,
     production_year int NOT NULL,
     CONSTRAINT cars_id_pkey PRIMARY KEY(ID)
     );
