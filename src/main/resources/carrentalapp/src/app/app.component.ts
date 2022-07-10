@@ -32,8 +32,8 @@ export class AppComponent implements OnInit{
     this.carService.getCars().subscribe((response: any) => {
       this.cars = response;
       console.log(response);
-      this.cars.push(<Car>{carName:"name561231321", id:212313227});
-      this.cars.push(response[0]);
+      // this.cars.push(<Car>{carName:"name561231321", id:212313227});
+      // this.cars.push(response[0]);
 
     });
 
