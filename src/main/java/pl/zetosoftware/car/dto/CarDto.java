@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 @Builder
 public record CarDto(String brand, String model,
-                     BigDecimal engineCapacity, Enum<BodyType> bodyType,
-                     Enum<TypeOfFuel> typeOfFuel, Long newCarCost, Integer productionYear) {
+                     BigDecimal engineCapacity, BodyType bodyType,
+                     TypeOfFuel typeOfFuel, Long newCarCost, Integer productionYear) {
 
 }

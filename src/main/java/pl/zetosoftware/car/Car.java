@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.SortComparator;
 import pl.zetosoftware.car.enums.BodyType;
-import pl.zetosoftware.car.enums.TypeOfFuel;
 import pl.zetosoftware.car.value_objects.*;
 
 import javax.persistence.*;
@@ -32,14 +31,11 @@ public class Car {
     @Embedded
     private EngineCapacity engineCapacity;
 
-    @Embedded
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "NUMERIC(19,0)")
     private BodyType bodyType;
 
-    @Embedded
     @Enumerated(EnumType.STRING)
-    private TypeOfFuel typeOfFuel;
+    private pl.zetosoftware.car.enums.TypeOfFuel typeOfFuel;
 
     @Embedded
     private NewCarCost newCarCost;

@@ -30,9 +30,8 @@ public class CarService {
         return carMapper.mapCarToCarDto(car);
     }
 
-    public String deleteCarById(Long id){
+    public void deleteCarById(Long id){
         carRepository.deleteById(id);
-        return("Car with id: " + id + " has been deleted successfully ");
     }
 
     public List<CarDto> getAllCars(){
