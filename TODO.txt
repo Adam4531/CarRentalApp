@@ -16,13 +16,19 @@ BACK:
 +  ustawić poprawnie enuma z value objectu dla status, bodytype i typeoffuel
 +  Czy data transfer objecty sa na pewno potrzebne do klasy reservation i car?
 
-2. Utworzyć relacje pomiędzy wszystkimi encjami (OneToMany/ManyToOne)
+2. Uzupełnić kontroler w Reservations
 
-3. Dodać klasę obsługującą raport zwrotny z wypożyczenia / coś w tym stylu
+3. Utworzyć klasę UserRequest, aby dodawać obiekt bez konieczności podawania id (UserResponse jako UserDTO juz jest)
+                  CarRequest                                                    (CarResponse jako CarDTO juz jest)
+                  ReservationRequest                                            (ReservationResponse jako ReservationDTO juz jest)
 
-4. Zmienić nazewnictwo w enumie STATUS - free/reserved/taken to bardziej pasuje do statusu auta chyba?
+4. Utworzyć relacje pomiędzy wszystkimi encjami (OneToMany/ManyToOne)
 
-5. ...
+5. Dodać klasę obsługującą raport zwrotny z wypożyczenia / coś w tym stylu
+
+6. Zmienić nazewnictwo w enumie STATUS - free/reserved/taken to bardziej pasuje do statusu auta chyba?
+
+7. ...
 
 
 OGÓLNIE:
