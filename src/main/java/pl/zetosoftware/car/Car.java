@@ -3,11 +3,13 @@ package pl.zetosoftware.car;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.SortComparator;
 import pl.zetosoftware.car.enums.BodyType;
 import pl.zetosoftware.car.enums.TypeOfFuel;
 import pl.zetosoftware.car.value_objects.*;
 
 import javax.persistence.*;
+import java.util.Comparator;
 
 @Entity
 @NoArgsConstructor

@@ -2,6 +2,7 @@ package pl.zetosoftware.car.value_objects;
 
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.util.Objects;
 
@@ -9,6 +10,7 @@ import java.util.Objects;
 @Embeddable
 public class BodyType {
 
+    @Column
     private Enum<pl.zetosoftware.car.enums.BodyType> bodyType;
 
     public BodyType(Enum<pl.zetosoftware.car.enums.BodyType> bodyType) {

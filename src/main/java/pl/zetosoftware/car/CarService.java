@@ -36,7 +36,9 @@ public class CarService {
     }
 
     public List<CarDto> getAllCars(){
-        List<Car> cars = carRepository.findAll(Sort.by("brand"));
+        List<Car> cars = carRepository.findAll(Sort.by(
+                Sort.Order.asc("brand"),
+                Sort.Order.asc("model")));
         return carMapper.mapCarListToCarListDto(cars);
     }
 

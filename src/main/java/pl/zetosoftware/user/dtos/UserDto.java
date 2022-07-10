@@ -5,7 +5,6 @@ import pl.zetosoftware.annotations.GenerateTypescript;
 
 @GenerateTypescript
 // those fields should be: FirstName, SecondName, PhoneNumber, Email classes?
-// for good communication with front-end probably not?
 public record UserDto(Long id, String firstName, String secondName, String phoneNumber, String email) {
 
     @Builder public UserDto {}

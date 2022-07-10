@@ -10,10 +10,8 @@ import java.util.stream.Collectors;
 
 @Component
 public class CarMapper {
-
-    public CarDto mapCarToCarDto(Car car){
+    public CarDto mapCarToCarDto(Car car) {
         return CarDto.builder()
-                .id(car.getId())
                 .brand(car.getBrand().toString())
                 .model(car.getModel().toString())
                 .engineCapacity(car.getEngineCapacity().toBigDecimal())
@@ -24,11 +22,10 @@ public class CarMapper {
                 .build();
     }
 
-    public List<CarDto> mapCarListToCarListDto(List<Car> cars){
+    public List<CarDto> mapCarListToCarListDto(List<Car> cars) {
         return cars
                 .stream()
                 .map(this::mapCarToCarDto)
                 .collect(Collectors.toList());
     }
-
 }

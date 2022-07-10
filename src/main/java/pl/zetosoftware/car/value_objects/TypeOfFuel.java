@@ -2,6 +2,7 @@ package pl.zetosoftware.car.value_objects;
 
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.util.Objects;
 
@@ -9,6 +10,7 @@ import java.util.Objects;
 @Embeddable
 public class TypeOfFuel {
 
+    @Column
     private Enum<pl.zetosoftware.car.enums.TypeOfFuel> typeOfFuel;
 
     public TypeOfFuel(Enum<pl.zetosoftware.car.enums.TypeOfFuel> typeOfFuel) {

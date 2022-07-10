@@ -2,6 +2,7 @@ package pl.zetosoftware.car.value_objects;
 
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -10,6 +11,7 @@ import java.util.Objects;
 @Embeddable
 public class EngineCapacity {
 
+    @Column
     private BigDecimal engineCapacity;
 
 

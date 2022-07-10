@@ -2,6 +2,7 @@ package pl.zetosoftware.car.value_objects;
 
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.math.BigDecimal;
 import java.util.Calendar;
@@ -12,6 +13,7 @@ import java.util.Objects;
 public class ProductionYear {
 
 
+    @Column
     private Integer productionYear;
 //    int actualYear = Calendar.getInstance().get(Calendar.YEAR);
 

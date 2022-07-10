@@ -10,7 +10,7 @@ import java.util.Objects;
 @Embeddable
 public class Model implements Validator{
 
-    private static final String MODEL_NAME_REGEX = "[a-zA-Z\\d_.- ]+";
+    private static final String MODEL_NAME_REGEX = "[a-zA-Z\\d_.-]+";
     @Column
     private String model;
 
@@ -19,7 +19,7 @@ public class Model implements Validator{
             throw new IllegalArgumentException("MODEL CANNOT BE NULL !!");
         if(!containsValidCharacters(model, MODEL_NAME_REGEX))
             throw new IllegalStateException("MODEL NAME MAY CONTAIN ONLY LETTERS, " +
-                                            "NUMBERS, DOTS, DASHES, UNDERSCORE AND WHITESPACES !!");
+                                            "NUMBERS, DOTS, DASHES AND UNDERSCORE!!"); //add whitespaces option
         if(!isValidLength(model, 2, 30))
             throw new IllegalStateException("MODEL NAME MUST BE BETWEEN 2 AND 30 CHARACTERS !!");
         this.model = model;
