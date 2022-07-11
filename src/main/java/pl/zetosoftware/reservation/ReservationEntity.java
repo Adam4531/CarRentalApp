@@ -3,9 +3,11 @@ package pl.zetosoftware.reservation;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import pl.zetosoftware.car.CarEntity;
 import pl.zetosoftware.reservation.enums.Status;
 import pl.zetosoftware.reservation.value_objects.Cost;
 import pl.zetosoftware.reservation.value_objects.PaymentInAdvance;
+import pl.zetosoftware.user.UserEntity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -23,11 +25,11 @@ public class ReservationEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    private Long userId;
+    private UserEntity userId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "car_id", nullable = false)
-    private Long carId;
+    private CarEntity carId;
 
     @Column(columnDefinition = "DATE")
     private LocalDateTime dateStart;
@@ -45,8 +47,7 @@ public class ReservationEntity {
     private Status status;
 
     @Builder
-    public ReservationEntity(Long id, Long userId, Long carId, LocalDateTime dateStart, LocalDateTime dateEnd, Cost cost, PaymentInAdvance paymentInAdvance, Status status) {
-        this.id = id;
+    public ReservationEntity(UserEntity userId, CarEntity carId, LocalDateTime dateStart, LocalDateTime dateEnd, Cost cost, PaymentInAdvance paymentInAdvance, Status status) {
         this.userId = userId;
         this.carId = carId;
         this.dateStart = dateStart;
