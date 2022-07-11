@@ -1,23 +1,25 @@
+<router-outlet></router-outlet>
+<p>
+    <button type="button" pButton label="Available Cars" class="btn btn-primary-outline pull-right" (click)="btnClick('/cars');"><i class="fa fa-plus1"></i></button>
+</p>
 
 <p>
-    <button type="button" pButton label="List of Users" class="btn btn-primary-outline pull-right" (click)="btnClick('/users');">
-        <i class="fa fa-plus"></i> 
+    <button type="button" pButton label="List of users" class="btn btn-primary-outline pull-right" (click)="btnClick('/users');">
+        <i class="fa fa-plus"></i>
     </button>
-</p>    
-
-<p>
-    <button type="button" pButton label="List of Cars" class="btn btn-primary-outline pull-right" (click)="btnClick('/cars');">
-        <i class="fa fa-plus"></i> 
-    </button> 
-</p>   
+</p>
 
 <p>
     <button type="button" pButton label="Login" class="btn btn-primary-outline pull-right" (click)="btnClick('/login');">
-        <i class="fa fa-plus"></i> 
+        <i class="fa fa-plus"></i>
     </button>
-</p>    
+</p>
 
-<router-outlet></router-outlet>
+
+<!-- <div>
+    <button type="button" pButton label="PrimeNG"></button>
+</div> --> -->
+
 
 <!-- <p-table [value]="cars">
     <ng-template pTemplate="caption">

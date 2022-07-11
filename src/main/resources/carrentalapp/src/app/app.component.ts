@@ -18,7 +18,6 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void{
-
     this.primengConfig.ripple = true;
   }
 
@@ -28,7 +27,6 @@ export class AppComponent implements OnInit{
       this.cars = response;
       console.log(response);
     });
-
     }
 
   public btnClick(url: string): void {

@@ -2,40 +2,51 @@
 ============================TO DO=============================
 ==============================================================
 
+
+Z OPISU WYKONAĆ :
+
+System do zarządzania wypożyczalnią samochodów.
+Użytkownik będzie mógł zalogować się loginem i hasłem do systemu.
+Użytkownik będzie mógł wybrać samochód jaki chce wypożyczyć (marka, model itd.)
+oraz dni, w których chce go wypożyczyć.
+System sprawdzi czy wybrany samochód nie został zarezerwowany przez inną osobę w
+wybranych dniach oraz wyliczy odpowiednią kwotę do zapłaty
+(np. na podstawie wartości samochodu w momencie kupna, rocznika, przebiegu oraz dni wypożyczenia).
+Od daty wypożyczenia samochód znika ze stanu placu do momentu oddania samochodu.
+Użytkownik będzie mógł edytować lub usunąć rezerwację jeśli nie nastąpiło wypożyczenie
+(data rezerwacji > bieżąca data). Użytkownik będzie mógł przeglądać listę samochodów dostępnych do wypożyczenia,
+oraz samochodów już wypożyczonych (przez innych użytkowników). Oddzielnie użytkownik będzie mógł przeglądać
+listę samochodów wypożyczonych przez siebie (aktualnie oraz historycznie).
+
+
 FRONT:
 
-1. Przy dodawaniu resta podłączać wszystko pod Front-End
+1. Dodać bootstrapa + fontAwesome ( do ikonek )
 
-2. Uzupełnić panele (login, reservation, ...) - w każdym HTML,TS,SCSS - dodać bootstrapa i piękne widoki - PrimeNG + FontAwesome
+2. Rent a Car - zakładka nowa ---> dodanie do rezerwacji
 
-3. ...
+3. Logowanie + rejestracja --> dodanie do userów
+
+4. ...
 
 BACK:
 
-1. Zaimplementować więcej logiki + poprawić to co jest w serwisie i kontrolerze aut
-+  ustawić poprawnie enuma z value objectu dla status, bodytype i typeoffuel
-+  Czy data transfer objecty sa na pewno potrzebne do klasy reservation i car?
+1. Uzupełnić kontroler w Reservations
 
-2. Uzupełnić kontroler w Reservations
-
-3. Utworzyć klasę UserRequest, aby dodawać obiekt bez konieczności podawania id (UserResponse jako UserDTO juz jest)
+2. Utworzyć klasę UserRequest, aby dodawać obiekt bez konieczności podawania id (UserResponse jako UserDTO juz jest)
                   CarRequest                                                    (CarResponse jako CarDTO juz jest)
                   ReservationRequest                                            (ReservationResponse jako ReservationDTO juz jest)
 
-4. Utworzyć relacje pomiędzy wszystkimi encjami (OneToMany/ManyToOne)
+3. Dodać klasę obsługującą raport zwrotny z wypożyczenia / coś w tym stylu / co ma mieć w ogóle
 
-5. Dodać klasę obsługującą raport zwrotny z wypożyczenia / coś w tym stylu
+4. Zmienić nazewnictwo w enumie STATUS - free/reserved/taken to bardziej pasuje do statusu auta chyba?
 
-6. Zmienić nazewnictwo w enumie STATUS - free/reserved/taken to bardziej pasuje do statusu auta chyba?
-
-7. ...
+5. ...
 
 
 OGÓLNIE:
 
-1. Jak przekazać klase Password do metody w controllerze która odpowiada za zmiane hasła?
-
-2 ...
+1. ...
 
 
 DALEKA PRZYSZŁOŚĆ:
