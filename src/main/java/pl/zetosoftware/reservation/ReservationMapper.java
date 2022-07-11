@@ -15,8 +15,8 @@ public class ReservationMapper {
                 .carId(reservationEntity.getCarId())
                 .dateStart(reservationEntity.getDateStart())
                 .dateEnd(reservationEntity.getDateEnd())
-                .cost(reservationEntity.getCost())
-                .paymentInAdvance(reservationEntity.getPaymentInAdvance())
+                .cost(reservationEntity.getCost().getCost())
+                .paymentInAdvance(reservationEntity.getPaymentInAdvance().getPaymentInAdvance())
                 .status(reservationEntity.getStatus())
                 .build();
     }

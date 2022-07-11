@@ -1,9 +1,6 @@
-package pl.zetosoftware.user.dtos;
+package pl.zetosoftware.user.dto;
 
 import lombok.Builder;
-import pl.zetosoftware.annotations.GenerateTypescript;
-
-@GenerateTypescript
 
 public record UserDto(Long id, String login, String firstName, String secondName, String phoneNumber, String email) {
 

@@ -1,5 +1,6 @@
 package pl.zetosoftware.reservation.value_objects;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @Embeddable
 public class PaymentInAdvance {
+    @Getter
     @Column
     private BigDecimal paymentInAdvance;
 

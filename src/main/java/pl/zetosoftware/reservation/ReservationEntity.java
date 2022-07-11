@@ -3,6 +3,7 @@ package pl.zetosoftware.reservation;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import pl.zetosoftware.annotations.GenerateTypescript;
 import pl.zetosoftware.reservation.enums.Status;
 import pl.zetosoftware.reservation.value_objects.Cost;
 import pl.zetosoftware.reservation.value_objects.PaymentInAdvance;
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
 @Table(name = "RESERVATIONS")
 @NoArgsConstructor
 @Getter
+@GenerateTypescript
 public class ReservationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

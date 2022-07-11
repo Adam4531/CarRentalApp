@@ -3,7 +3,7 @@ package pl.zetosoftware.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import pl.zetosoftware.user.dtos.UserDto;
+import pl.zetosoftware.user.dto.UserDto;
 
 import java.util.List;
 import java.util.NoSuchElementException;

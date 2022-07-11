@@ -1,7 +1,7 @@
 package pl.zetosoftware.user;
 
 import org.springframework.stereotype.Component;
-import pl.zetosoftware.user.dtos.UserDto;
+import pl.zetosoftware.user.dto.UserDto;
 
 import java.util.List;
 import java.util.stream.Collectors;
