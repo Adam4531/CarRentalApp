@@ -1,6 +1,33 @@
-<div *ngFor="let car of cars">
+<!-- <div *ngFor="let car of cars">
 <div>{{car.model}}</div>
 </div>
 
+<div>
+    <button type="button" pButton label="PrimeNG"></button>
+</div> -->
 
-<button (click)="klik()"></button>
+<p-table [value]="cars">
+
+    <ng-template pTemplate="caption">
+        List of Cars
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th *ngFor="let columns of columns">
+                {{columns.header}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-car>
+        <tr>
+            <td *ngFor="let columns of columns">
+                    {{car[columns.field]}}
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+        There are {{cars?.length}} cars in store
+    </ng-template>
+</p-table>
+
+

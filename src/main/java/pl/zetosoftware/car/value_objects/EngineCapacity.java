@@ -14,7 +14,6 @@ public class EngineCapacity {
     @Column
     private BigDecimal engineCapacity;
 
-
     public EngineCapacity(BigDecimal engineCapacity) {
         if(Objects.isNull(engineCapacity))
             throw new IllegalStateException("ENGINE CAPACITY CANNOT BE NULL !!");
