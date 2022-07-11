@@ -21,15 +21,19 @@ public class ReservationEntity {
     @Column(nullable = false)
     private Long id;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
     private Long userId;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "car_id", nullable = false)
     private Long carId;
 
     @Column(columnDefinition = "DATE")
-    private LocalDateTime dateStart; //TODO maybe create its own class to format date if it does have any sense
+    private LocalDateTime dateStart;
 
     @Column(columnDefinition = "DATE")
-    private LocalDateTime dateEnd; //TODO same as higher
+    private LocalDateTime dateEnd;
 
     @Embedded
     private Cost cost;
