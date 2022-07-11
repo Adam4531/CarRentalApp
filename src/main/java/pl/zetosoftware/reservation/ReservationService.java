@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.zetosoftware.reservation.dto.ReservationDto;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -19,8 +20,8 @@ public class ReservationService {
         this.reservationMapper = reservationMapper;
     }
 
-    public ReservationEntity createReservation(ReservationEntity reservationEntity) {
-        return reservationRepository.save(reservationEntity);
+    public ReservationDto createReservation(ReservationEntity reservationEntity) {
+        return reservationMapper.fromReservationToReservationDto(reservationRepository.save(reservationEntity));
     }
 
     public String deleteReservationById(Long Id) {
@@ -45,5 +46,10 @@ public class ReservationService {
 
     public List<ReservationEntity> findAllReservations() {
         return reservationRepository.findAll();
+    }
+
+    public List<ReservationDto> getAllReservationsById(Long Id) {   //map to Dto
+        List<ReservationEntity> allReservationsByUserId = reservationRepository.getAllReservationsByUserId(Id);
+        return reservationMapper.fromReservationListToReservationDtoList(allReservationsByUserId);
     }
 }

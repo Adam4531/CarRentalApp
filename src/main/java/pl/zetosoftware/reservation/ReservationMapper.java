@@ -26,4 +26,5 @@ public class ReservationMapper {
                 .map(this::fromReservationToReservationDto)
                 .collect(Collectors.toList());
     }
+
 }

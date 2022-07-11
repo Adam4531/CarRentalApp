@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import pl.zetosoftware.reservation.dto.ReservationDto;
 
+import java.util.Collection;
 import java.util.List;
 
 @RestController
@@ -15,7 +16,7 @@ public class ReservationController {
 
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
-    public ReservationEntity addReservation(@RequestBody ReservationEntity reservationEntity) {
+    public ReservationDto addReservation(@RequestBody ReservationEntity reservationEntity) {
         return reservationService.createReservation(reservationEntity);
     }
 
@@ -30,14 +31,18 @@ public class ReservationController {
     @ResponseStatus(HttpStatus.OK)
     public List<ReservationDto> getAllReservations() { return reservationService.getAllReservations(); }
 
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<ReservationDto> getAllReservationsByUser(@PathVariable Long id){
+        return reservationService.getAllReservationsById(id);
+    }
+
 //    @GetMapping("/{id}")
 //    @ResponseStatus(HttpStatus.OK)
 //    public List<ReservationDto> getAllReservationsByUser(@RequestBody Long id){
 //        return reservationService.getAllReservationsById(id);
 //    }
 
-//    @GetMapping("/{id}")
-//    @ResponseStatus(HttpStatus.OK)
-//    public List<ReservationDto> getA
+
 
 }
