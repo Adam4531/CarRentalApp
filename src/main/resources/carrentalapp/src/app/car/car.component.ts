@@ -1,20 +1,14 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Car } from './car/car';
-import { CarService } from './car/car.service';
+import { Car } from './car';
+import { CarService } from './car.service';
 import { PrimeNGConfig } from 'primeng/api';
-import {AccordionModule} from 'primeng/accordion';
-import {MenuItem} from 'primeng/api';
-import {InputTextModule} from 'primeng/inputtext';
-import { CarComponent } from './car/car.component';
-
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-car',
+  templateUrl: './car.component.html',
+  styleUrls: ['./car.component.css']
 })
-export class AppComponent implements OnInit{
+export class CarComponent implements OnInit {
 
   public cars: Car[] = [];
   public columns: any[] = [];
@@ -33,8 +27,7 @@ export class AppComponent implements OnInit{
       { field: 'engineCapacity', header: 'Engine Capacity' },
       { field: 'productionYear', header: 'Production Year' },
       { field: 'cost', header: 'Cost' }
-  ];
-
+    ];
     this.getCars();
   }
 

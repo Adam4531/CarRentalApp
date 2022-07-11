@@ -1,22 +1,10 @@
+<div *ngFor="let car of cars">
+<div>{{car.model}}</div>
+</div> 
 
-<nav>
-    <a routerLink="/cars">Available Cars</a>
-</nav>
-  <router-outlet></router-outlet>
+<p>CARS WORKING !</p>
 
-
-<nav>
-    <a routerLink="/login">Login</a>
-</nav>
-
-
-
-<!-- <div>
-    <button type="button" pButton label="PrimeNG"></button>
-</div> --> -->
-
-
-<!-- <p-table [value]="cars">
+<p-table [value]="cars">
     <ng-template pTemplate="caption">
         List of Cars
     </ng-template>
@@ -37,6 +25,4 @@
     <ng-template pTemplate="summary">
         There are {{cars?.length}} cars in store
     </ng-template>
-</p-table> -->
-
-
+</p-table>
