@@ -16,7 +16,6 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
-    @OneToMany(mappedBy = "user_id")
     private Long id;
     @Embedded
     private Login login;

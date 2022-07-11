@@ -18,7 +18,6 @@ public class CarEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
-    @OneToMany(mappedBy = "car_id")
     private Long id;
 
     @Embedded
