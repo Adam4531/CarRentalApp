@@ -3,9 +3,11 @@ package pl.zetosoftware.reservation;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import pl.zetosoftware.car.CarEntity;
 import pl.zetosoftware.reservation.enums.Status;
 import pl.zetosoftware.reservation.value_objects.Cost;
 import pl.zetosoftware.reservation.value_objects.PaymentInAdvance;
+import pl.zetosoftware.user.UserEntity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -21,15 +23,19 @@ public class ReservationEntity {
     @Column(nullable = false)
     private Long id;
 
-    private Long userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserEntity userId;
 
-    private Long carId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "car_id", nullable = false)
+    private CarEntity carId;
 
     @Column(columnDefinition = "DATE")
-    private LocalDateTime dateStart; //TODO maybe create its own class to format date if it does have any sense
+    private LocalDateTime dateStart;
 
     @Column(columnDefinition = "DATE")
-    private LocalDateTime dateEnd; //TODO same as higher
+    private LocalDateTime dateEnd;
 
     @Embedded
     private Cost cost;
@@ -41,8 +47,7 @@ public class ReservationEntity {
     private Status status;
 
     @Builder
-    public ReservationEntity(Long id, Long userId, Long carId, LocalDateTime dateStart, LocalDateTime dateEnd, Cost cost, PaymentInAdvance paymentInAdvance, Status status) {
-        this.id = id;
+    public ReservationEntity(UserEntity userId, CarEntity carId, LocalDateTime dateStart, LocalDateTime dateEnd, Cost cost, PaymentInAdvance paymentInAdvance, Status status) {
         this.userId = userId;
         this.carId = carId;
         this.dateStart = dateStart;
