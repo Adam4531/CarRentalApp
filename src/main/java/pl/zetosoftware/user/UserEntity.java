@@ -48,18 +48,18 @@ public class UserEntity {
         this.pesel = pesel;
     }
 
-    public void changeLogin(Login changedLogin){ this.login = changedLogin; }
+    public void changeLogin(String changedLogin){ this.login = new Login(changedLogin); }
 
-    public void changeFirstName(Name changedFirstName){ this.firstName = changedFirstName; }
+    public void changeFirstName(String changedFirstName){ this.firstName = new Name(changedFirstName); }
 
-    public void changeSecondName(Name changedSecondName){ this.secondName = changedSecondName; }
+    public void changeSecondName(String changedSecondName){ this.secondName = new Name(changedSecondName); }
 
-    public void changePassword(Password changedPassword){ this.password = changedPassword; }
+    public void changePassword(String changedPassword){ this.password = new Password(changedPassword); }
 
-    public void changePhoneNumber(PhoneNumber changedPhoneNumber){ this.phoneNumber = changedPhoneNumber; }
+    public void changePhoneNumber(String changedPhoneNumber){ this.phoneNumber = new PhoneNumber(changedPhoneNumber); }
 
-    public void changeEmail(Email changedEmail){ this.email = changedEmail; }
+    public void changeEmail(String changedEmail){ this.email = new Email(changedEmail); }
 
-    public void changePesel(Pesel changedPesel){ this.pesel = changedPesel; }
+    public void changePesel(String changedPesel){ this.pesel = new Pesel(changedPesel); }
 
 }

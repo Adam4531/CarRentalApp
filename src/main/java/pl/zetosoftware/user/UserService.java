@@ -14,6 +14,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
 
+
     @Autowired
     public UserService(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
@@ -40,24 +41,22 @@ public class UserService {
         return userMapper.fromUserToUserDTO(user);
     }
 
-    public UserDto updateUserWithPutMapping(Long id, UserEntity updatedUserEntity) {
+    public UserDto updateUserWithPutMapping(Long id, UserDto updatedUser) {
         var userToBeChanged = getUser(id);
 
-        userToBeChanged.changeLogin(updatedUserEntity.getLogin());
-        userToBeChanged.changeEmail(updatedUserEntity.getEmail());
-        userToBeChanged.changeFirstName(updatedUserEntity.getFirstName());
-        userToBeChanged.changeSecondName(updatedUserEntity.getSecondName());
-        userToBeChanged.changePhoneNumber(updatedUserEntity.getPhoneNumber());
-        userToBeChanged.changePesel(updatedUserEntity.getPesel());
-        userToBeChanged.changePassword(updatedUserEntity.getPassword());
+        userToBeChanged.changeLogin(updatedUser.login());
+        userToBeChanged.changeEmail(updatedUser.email());
+        userToBeChanged.changeFirstName(updatedUser.firstName());
+        userToBeChanged.changeSecondName(updatedUser.secondName());
+        userToBeChanged.changePhoneNumber(updatedUser.phoneNumber());
 
         userRepository.save(userToBeChanged);
         return userMapper.fromUserToUserDTO(userToBeChanged);
     }
 
-    public UserDto updateUserEmail(Long id, UserEntity userEntityWithNewEmail) {
+    public UserDto updateUserEmail(Long id, String email) {
         var user = getUser(id);
-        user.changeEmail(userEntityWithNewEmail.getEmail());
+        user.changeEmail(email);
         userRepository.save(user);
         return userMapper.fromUserToUserDTO(user);
     }
