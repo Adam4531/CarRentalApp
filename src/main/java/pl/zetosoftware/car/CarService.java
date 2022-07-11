@@ -25,7 +25,18 @@ public class CarService {
         return carMapper.mapCarToCarDto(carEntity);
     }
 
-    public CarDto updateCar(CarEntity carEntity){
+    private CarEntity getCarEntityById(Long id) {
+        return carRepository.findById(id)
+                .orElseThrow( () -> new CarNotFoundException("Car with id " + id + " was not found. "));
+    }
+
+    public CarDto findCarById(Long id){
+        CarEntity carEntity = getCarEntityById(id);
+        return carMapper.mapCarToCarDto(carEntity);
+    }
+
+    public CarDto updateCar(Long id, CarEntity carEntity){
+        var car = getCarEntityById(id);
         carRepository.save(carEntity);
         return carMapper.mapCarToCarDto(carEntity);
     }
@@ -39,13 +50,6 @@ public class CarService {
                 Sort.Order.asc("brand"),
                 Sort.Order.asc("model")));
         return carMapper.mapCarListToCarListDto(carEntities);
-    }
-
-    public CarDto findCarById(Long id){
-        CarEntity carEntity = carRepository
-                .findById(id)
-                .orElseThrow( () -> new CarNotFoundException("Car with id " + id + " was not found. "));
-        return carMapper.mapCarToCarDto(carEntity);
     }
 
 }

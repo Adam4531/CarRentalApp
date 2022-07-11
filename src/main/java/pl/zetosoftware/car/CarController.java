@@ -35,9 +35,9 @@ public class CarController {
         return carService.addCar(carEntity);
     }
 
-    @PutMapping("")
-    public ResponseEntity<CarDto> updateCar(@RequestBody CarEntity carEntity){
-        CarDto updatedCar = carService.updateCar(carEntity);
+    @PutMapping("/{id}")
+    public ResponseEntity<CarDto> updateCar(@PathVariable Long id, @RequestBody CarEntity carEntity){
+        CarDto updatedCar = carService.updateCar(id, carEntity);
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("HEADER V1",
                         "Car with id " + carEntity.getId() + " has been updated successfully");
