@@ -19,26 +19,31 @@ public class ReservationService {
         this.reservationMapper = reservationMapper;
     }
 
-    public ReservationEntity createReservation(ReservationEntity reservationEntity){
+    public ReservationEntity createReservation(ReservationEntity reservationEntity) {
         return reservationRepository.save(reservationEntity);
     }
 
-    public List<ReservationDto> getAllReservations(){
+    public String deleteReservationById(Long Id) {
+        reservationRepository.deleteById(Id);
+        return "Reservation with id:" + Id + " deleted successfully";
+    }
+
+    public List<ReservationDto> getAllReservations() {
         List<ReservationEntity> reservationEntities = reservationRepository.findAll();
         return reservationMapper.fromReservationListToReservationDtoList(reservationEntities);
     }
 
-    public ReservationEntity getReservation(Long Id){
+    public ReservationEntity getReservation(Long Id) {
         return reservationRepository.findById(Id)
                 .orElseThrow(() -> new NoSuchElementException("ReservationEntity with id: " + Id + " not found!"));
     }
 
-    public ReservationDto getReservationById(Long Id){
+    public ReservationDto getReservationById(Long Id) {
         ReservationEntity reservationEntity = getReservation(Id);
-        return  reservationMapper.fromReservationToReservationDto(reservationEntity);
+        return reservationMapper.fromReservationToReservationDto(reservationEntity);
     }
 
-    public List<ReservationEntity> findAllReservations(){
+    public List<ReservationEntity> findAllReservations() {
         return reservationRepository.findAll();
     }
 }
