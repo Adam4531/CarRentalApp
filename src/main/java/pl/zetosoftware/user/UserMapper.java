@@ -9,18 +9,18 @@ import java.util.stream.Collectors;
 @Component
 public class UserMapper {
 
-    public UserDto fromUserToUserDTO(User user){
+    public UserDto fromUserToUserDTO(UserEntity userEntity){
         return UserDto.builder()
-                .id(user.getId())
-                .firstName(user.getFirstName().toString())
-                .secondName(user.getSecondName().toString())
-                .phoneNumber(user.getPhoneNumber().toString())
-                .email(user.getEmail().toString())
+                .id(userEntity.getId())
+                .firstName(userEntity.getFirstName().toString())
+                .secondName(userEntity.getSecondName().toString())
+                .phoneNumber(userEntity.getPhoneNumber().toString())
+                .email(userEntity.getEmail().toString())
                 .build();
     }
 
-    public List<UserDto> fromUserListToUserDtoList(List<User> userList){
-        return userList.stream()
+    public List<UserDto> fromUserListToUserDtoList(List<UserEntity> userEntityList){
+        return userEntityList.stream()
                 .map(this::fromUserToUserDTO)
                 .collect(Collectors.toList());
     }

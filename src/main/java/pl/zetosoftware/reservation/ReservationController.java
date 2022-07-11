@@ -1,7 +1,6 @@
 package pl.zetosoftware.reservation;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import pl.zetosoftware.reservation.dto.ReservationDto;
@@ -16,8 +15,8 @@ public class ReservationController {
 
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
-    public Reservation addReservation(@RequestBody Reservation reservation) {
-        return reservationService.createReservation(reservation);
+    public ReservationEntity addReservation(@RequestBody ReservationEntity reservationEntity) {
+        return reservationService.createReservation(reservationEntity);
     }
 
     @GetMapping("")

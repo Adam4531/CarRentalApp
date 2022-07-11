@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "USERS")
-public class User {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,7 +38,7 @@ public class User {
     @Embedded
     private Pesel pesel;
     @Builder
-    public User(Login login, Name firstName, Name secondName, Password password, PhoneNumber phoneNumber, Email email, Pesel pesel) {
+    public UserEntity(Login login, Name firstName, Name secondName, Password password, PhoneNumber phoneNumber, Email email, Pesel pesel) {
         this.login = login;
         this.firstName = firstName;
         this.secondName = secondName;

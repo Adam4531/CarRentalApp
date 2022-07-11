@@ -20,9 +20,9 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-    public UserDto createUser(User user){
-        userRepository.save(user);
-        return userMapper.fromUserToUserDTO(user);
+    public UserDto createUser(UserEntity userEntity){
+        userRepository.save(userEntity);
+        return userMapper.fromUserToUserDTO(userEntity);
     }
 
     public List<UserDto> getAllUsers() {
@@ -30,9 +30,9 @@ public class UserService {
         return userMapper.fromUserListToUserDtoList(users);
     }
 
-    public User getUser(Long id){
+    public UserEntity getUser(Long id){
         return userRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("User with id: " + id + " does not exist!"));
+                .orElseThrow(() -> new NoSuchElementException("UserEntity with id: " + id + " does not exist!"));
     }
 
     public UserDto getUserById(Long id) {
@@ -40,24 +40,24 @@ public class UserService {
         return userMapper.fromUserToUserDTO(user);
     }
 
-    public UserDto updateUserWithPutMapping(Long id, User updatedUser) {
+    public UserDto updateUserWithPutMapping(Long id, UserEntity updatedUserEntity) {
         var userToBeChanged = getUser(id);
 
-        userToBeChanged.changeLogin(updatedUser.getLogin());
-        userToBeChanged.changeEmail(updatedUser.getEmail());
-        userToBeChanged.changeFirstName(updatedUser.getFirstName());
-        userToBeChanged.changeSecondName(updatedUser.getSecondName());
-        userToBeChanged.changePhoneNumber(updatedUser.getPhoneNumber());
-        userToBeChanged.changePesel(updatedUser.getPesel());
-        userToBeChanged.changePassword(updatedUser.getPassword());
+        userToBeChanged.changeLogin(updatedUserEntity.getLogin());
+        userToBeChanged.changeEmail(updatedUserEntity.getEmail());
+        userToBeChanged.changeFirstName(updatedUserEntity.getFirstName());
+        userToBeChanged.changeSecondName(updatedUserEntity.getSecondName());
+        userToBeChanged.changePhoneNumber(updatedUserEntity.getPhoneNumber());
+        userToBeChanged.changePesel(updatedUserEntity.getPesel());
+        userToBeChanged.changePassword(updatedUserEntity.getPassword());
 
         userRepository.save(userToBeChanged);
         return userMapper.fromUserToUserDTO(userToBeChanged);
     }
 
-    public UserDto updateUserEmail(Long id, User userWithNewEmail) {
+    public UserDto updateUserEmail(Long id, UserEntity userEntityWithNewEmail) {
         var user = getUser(id);
-        user.changeEmail(userWithNewEmail.getEmail());
+        user.changeEmail(userEntityWithNewEmail.getEmail());
         userRepository.save(user);
         return userMapper.fromUserToUserDTO(user);
     }

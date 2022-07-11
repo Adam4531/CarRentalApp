@@ -1,7 +1,6 @@
 package pl.zetosoftware.user;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import pl.zetosoftware.user.dtos.UserDto;
@@ -17,8 +16,8 @@ public class UserController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public UserDto addUser(@RequestBody User user){
-        return userService.createUser(user);
+    public UserDto addUser(@RequestBody UserEntity userEntity){
+        return userService.createUser(userEntity);
     }
 
     @GetMapping("")
@@ -35,14 +34,14 @@ public class UserController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public UserDto changeUserField(@PathVariable Long id, @RequestBody User updatedUser){
-        return userService.updateUserWithPutMapping(id, updatedUser);
+    public UserDto changeUserField(@PathVariable Long id, @RequestBody UserEntity updatedUserEntity){
+        return userService.updateUserWithPutMapping(id, updatedUserEntity);
     }
 
     @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public UserDto changeUserEmail(@PathVariable Long id, @RequestBody User userWithNewEmail){
-        return userService.updateUserEmail(id, userWithNewEmail);
+    public UserDto changeUserEmail(@PathVariable Long id, @RequestBody UserEntity userEntityWithNewEmail){
+        return userService.updateUserEmail(id, userEntityWithNewEmail);
     }
 
     @DeleteMapping("/{id}")

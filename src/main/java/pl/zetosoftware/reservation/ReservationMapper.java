@@ -9,20 +9,20 @@ import java.util.stream.Collectors;
 @Component
 public class ReservationMapper {
 
-    public ReservationDto fromReservationToReservationDto(Reservation reservation){
+    public ReservationDto fromReservationToReservationDto(ReservationEntity reservationEntity){
         return ReservationDto.builder()
-                .userId(reservation.getUserId())
-                .carId(reservation.getCarId())
-                .dateStart(reservation.getDateStart())
-                .dateEnd(reservation.getDateEnd())
-                .cost(reservation.getCost())
-                .paymentInAdvance(reservation.getPaymentInAdvance())
-                .status(reservation.getStatus())
+                .userId(reservationEntity.getUserId())
+                .carId(reservationEntity.getCarId())
+                .dateStart(reservationEntity.getDateStart())
+                .dateEnd(reservationEntity.getDateEnd())
+                .cost(reservationEntity.getCost())
+                .paymentInAdvance(reservationEntity.getPaymentInAdvance())
+                .status(reservationEntity.getStatus())
                 .build();
     }
 
-    public List<ReservationDto> fromReservationListToReservationDtoList(List<Reservation> reservationList){
-        return reservationList.stream()
+    public List<ReservationDto> fromReservationListToReservationDtoList(List<ReservationEntity> reservationEntityList){
+        return reservationEntityList.stream()
                 .map(this::fromReservationToReservationDto)
                 .collect(Collectors.toList());
     }

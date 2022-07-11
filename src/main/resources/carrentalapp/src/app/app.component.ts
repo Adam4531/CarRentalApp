@@ -17,7 +17,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void{
     // console.log("bla");
-    // this.cars.push(<Car>{car_name:"name56", id:227})
+    // this.cars.push(<CarEntity>{car_name:"name56", id:227})
     this.getCars();
   }
 
@@ -28,23 +28,23 @@ export class AppComponent implements OnInit{
   }
 
   public getCars(): void {
-    
+
     this.carService.getCars().subscribe((response: any) => {
       this.cars = response;
       console.log(response);
-      // this.cars.push(<Car>{carName:"name561231321", id:212313227});
+      // this.cars.push(<CarEntity>{carName:"name561231321", id:212313227});
       // this.cars.push(response[0]);
 
     });
 
     }
-  //     (response: Car[]) => {
+  //     (response: CarEntity[]) => {
   //       this.cars = response;
   //     },
   //     (error: HttpErrorResponse) => {
   //       alert(error.message);
   //     }
-    
+
   //   );
   // }
   title = 'carrentalapp';

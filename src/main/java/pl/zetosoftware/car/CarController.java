@@ -31,16 +31,16 @@ public class CarController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public CarDto addCar(@RequestBody Car car){
-        return carService.addCar(car);
+    public CarDto addCar(@RequestBody CarEntity carEntity){
+        return carService.addCar(carEntity);
     }
 
     @PutMapping("")
-    public ResponseEntity<CarDto> updateCar(@RequestBody Car car){
-        CarDto updatedCar = carService.updateCar(car);
+    public ResponseEntity<CarDto> updateCar(@RequestBody CarEntity carEntity){
+        CarDto updatedCar = carService.updateCar(carEntity);
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("HEADER V1",
-                        "Car with id " + car.getId() + " has been updated successfully");
+                        "Car with id " + carEntity.getId() + " has been updated successfully");
         return new ResponseEntity<>(updatedCar, httpHeaders, HttpStatus.OK);
     }
 

@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Table(name = "RESERVATIONS")
 @NoArgsConstructor
 @Getter
-public class Reservation {
+public class ReservationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
@@ -41,7 +41,7 @@ public class Reservation {
     private Status status;
 
     @Builder
-    public Reservation(Long id, Long userId, Long carId, LocalDateTime dateStart, LocalDateTime dateEnd, Cost cost, PaymentInAdvance paymentInAdvance, Status status) {
+    public ReservationEntity(Long id, Long userId, Long carId, LocalDateTime dateStart, LocalDateTime dateEnd, Cost cost, PaymentInAdvance paymentInAdvance, Status status) {
         this.id = id;
         this.userId = userId;
         this.carId = carId;

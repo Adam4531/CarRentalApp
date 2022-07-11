@@ -20,14 +20,14 @@ public class CarService {
         this.carMapper = carMapper;
     }
 
-    public CarDto addCar(Car car){
-        carRepository.save(car);
-        return carMapper.mapCarToCarDto(car);
+    public CarDto addCar(CarEntity carEntity){
+        carRepository.save(carEntity);
+        return carMapper.mapCarToCarDto(carEntity);
     }
 
-    public CarDto updateCar(Car car){
-        carRepository.save(car);
-        return carMapper.mapCarToCarDto(car);
+    public CarDto updateCar(CarEntity carEntity){
+        carRepository.save(carEntity);
+        return carMapper.mapCarToCarDto(carEntity);
     }
 
     public void deleteCarById(Long id){
@@ -35,17 +35,17 @@ public class CarService {
     }
 
     public List<CarDto> getAllCars(){
-        List<Car> cars = carRepository.findAll(Sort.by(
+        List<CarEntity> carEntities = carRepository.findAll(Sort.by(
                 Sort.Order.asc("brand"),
                 Sort.Order.asc("model")));
-        return carMapper.mapCarListToCarListDto(cars);
+        return carMapper.mapCarListToCarListDto(carEntities);
     }
 
     public CarDto findCarById(Long id){
-        Car car = carRepository
+        CarEntity carEntity = carRepository
                 .findById(id)
                 .orElseThrow( () -> new CarNotFoundException("Car with id " + id + " was not found. "));
-        return carMapper.mapCarToCarDto(car);
+        return carMapper.mapCarToCarDto(carEntity);
     }
 
 }

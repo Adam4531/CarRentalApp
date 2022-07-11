@@ -2,28 +2,26 @@ package pl.zetosoftware.car;
 
 import org.springframework.stereotype.Component;
 import pl.zetosoftware.car.dto.CarDto;
-import pl.zetosoftware.car.enums.BodyType;
-import pl.zetosoftware.car.enums.TypeOfFuel;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
 public class CarMapper {
-    public CarDto mapCarToCarDto(Car car) {
+    public CarDto mapCarToCarDto(CarEntity carEntity) {
         return CarDto.builder()
-                .brand(car.getBrand().toString())
-                .model(car.getModel().toString())
-                .engineCapacity(car.getEngineCapacity().toBigDecimal())
-                .bodyType(car.getBodyType())
-                .typeOfFuel(car.getTypeOfFuel())
-                .newCarCost(car.getNewCarCost().toLong())
-                .productionYear(car.getProductionYear().toInteger())
+                .brand(carEntity.getBrand().toString())
+                .model(carEntity.getModel().toString())
+                .engineCapacity(carEntity.getEngineCapacity().toBigDecimal())
+                .bodyType(carEntity.getBodyType())
+                .typeOfFuel(carEntity.getTypeOfFuel())
+                .newCarCost(carEntity.getNewCarCost().toLong())
+                .productionYear(carEntity.getProductionYear().toInteger())
                 .build();
     }
 
-    public List<CarDto> mapCarListToCarListDto(List<Car> cars) {
-        return cars
+    public List<CarDto> mapCarListToCarListDto(List<CarEntity> carEntities) {
+        return carEntities
                 .stream()
                 .map(this::mapCarToCarDto)
                 .collect(Collectors.toList());
