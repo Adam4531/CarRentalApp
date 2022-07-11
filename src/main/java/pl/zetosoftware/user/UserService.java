@@ -44,7 +44,6 @@ public class UserService {
     public UserDto updateUserWithPutMapping(Long id, UserDto updatedUser) {
         var userToBeChanged = getUser(id);
 
-        userToBeChanged.changeLogin(updatedUser.login());
         userToBeChanged.changeEmail(updatedUser.email());
         userToBeChanged.changeFirstName(updatedUser.firstName());
         userToBeChanged.changeSecondName(updatedUser.secondName());
