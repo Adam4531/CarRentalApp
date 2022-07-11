@@ -66,8 +66,8 @@
 				<version>8.0.0</version>
 				<configuration>
 					<user>postgres</user>
-					<password>admin</password>
-                    <url>jdbc:postgresql://localhost:5432/car_rental</url>
+					<password>postgres</password>
+                    <url>jdbc:postgresql://localhost:5432/carrental</url>
 					<schemas>
 						<schema>car_rental</schema>
 					</schemas>

@@ -4,10 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { CarService } from './car.service';
+import { ReservationsComponent } from './reservations/reservations.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ReservationsComponent
   ],
   imports: [
     BrowserModule,
