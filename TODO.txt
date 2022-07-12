@@ -19,6 +19,7 @@ oraz samochodów już wypożyczonych (przez innych użytkowników). Oddzielnie u
 listę samochodów wypożyczonych przez siebie (aktualnie oraz historycznie).
 
 
+
 FRONT:
 
 1. Dodać bootstrapa + fontAwesome ( do ikonek )
