@@ -3,7 +3,10 @@ package pl.zetosoftware.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import pl.zetosoftware.user.dto.UserDto;
+import pl.zetosoftware.user.dto.UserRequestDto;
+import pl.zetosoftware.user.dto.UserResponseDto;
+import pl.zetosoftware.user.value_objects.Email;
+import pl.zetosoftware.user.value_objects.Login;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -21,43 +24,46 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-    public UserDto createUser(UserEntity userEntity){
+    public UserResponseDto createUser(UserRequestDto user){
+        var userEntity = userMapper.fromUserRequestDtoToUserEntity(user);
         userRepository.save(userEntity);
-        return userMapper.fromUserToUserDTO(userEntity);
+        return userMapper.fromUserEntityToUserResponseDto(userEntity);
     }
 
-    public List<UserDto> getAllUsers() {
+    public List<UserResponseDto> getAllUsers() {
         var users = userRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
-        return userMapper.fromUserListToUserDtoList(users);
+        return userMapper.fromUserEntityListToUserResponseList(users);
     }
 
-    public UserEntity getUser(Long id){
+    private UserEntity getUser(Long id){
         return userRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("UserEntity with id: " + id + " does not exist!"));
     }
 
-    public UserDto getUserById(Long id) {
+    public UserResponseDto getUserById(Long id) {
         var user = getUser(id);
-        return userMapper.fromUserToUserDTO(user);
+        return userMapper.fromUserEntityToUserResponseDto(user);
     }
 
-    public UserDto updateUserWithPutMapping(Long id, UserDto updatedUser) {
+    public UserResponseDto updateUserWithPutMapping(Long id, UserRequestDto updatedUser) {
         var userToBeChanged = getUser(id);
 
         userToBeChanged.changeEmail(updatedUser.email());
         userToBeChanged.changeFirstName(updatedUser.firstName());
         userToBeChanged.changeSecondName(updatedUser.secondName());
         userToBeChanged.changePhoneNumber(updatedUser.phoneNumber());
+        userToBeChanged.changeLogin(updatedUser.login());
+        userToBeChanged.changePesel(updatedUser.pesel());
 
         userRepository.save(userToBeChanged);
-        return userMapper.fromUserToUserDTO(userToBeChanged);
+        return userMapper.fromUserEntityToUserResponseDto(userToBeChanged);
     }
 
-    public UserDto updateUserEmail(Long id, String email) {
+    public UserResponseDto updateUserEmail(Long id, String email) {
         var user = getUser(id);
         user.changeEmail(email);
         userRepository.save(user);
-        return userMapper.fromUserToUserDTO(user);
+        return userMapper.fromUserEntityToUserResponseDto(user);
     }
 
     public String deleteUserById(Long id) {

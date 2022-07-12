@@ -1,6 +1,7 @@
 package pl.zetosoftware.user.value_objects;
 
 import lombok.NoArgsConstructor;
+import pl.zetosoftware.interfaces.Validator;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -8,7 +9,7 @@ import java.util.Objects;
 
 @Embeddable
 @NoArgsConstructor
-public class Login implements Validator{
+public class Login implements Validator {
     private static final String ENGLISH_LETTERS_NUMBERS_DOT_UNDERSCORE_DASH = "[a-zA-Z\\d._-]+";
 
     @Column

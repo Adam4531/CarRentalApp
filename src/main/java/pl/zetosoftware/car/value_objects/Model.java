@@ -1,6 +1,7 @@
 package pl.zetosoftware.car.value_objects;
 
 import lombok.NoArgsConstructor;
+import pl.zetosoftware.interfaces.Validator;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -8,7 +9,7 @@ import java.util.Objects;
 
 @NoArgsConstructor
 @Embeddable
-public class Model implements Validator{
+public class Model implements Validator {
 
     private static final String MODEL_NAME_REGEX = "[a-zA-Z\\d_.-]+";
     @Column
