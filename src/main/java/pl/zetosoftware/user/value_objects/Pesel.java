@@ -1,6 +1,7 @@
 package pl.zetosoftware.user.value_objects;
 
 import lombok.NoArgsConstructor;
+import pl.zetosoftware.interfaces.Validator;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -8,7 +9,7 @@ import java.util.Objects;
 
 @Embeddable
 @NoArgsConstructor
-public class Pesel implements Validator{
+public class Pesel implements Validator {
 
     private static final String DIGITS = "[0-9]+";
 

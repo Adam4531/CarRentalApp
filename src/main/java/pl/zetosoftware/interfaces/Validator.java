@@ -1,4 +1,4 @@
-package pl.zetosoftware.user.value_objects;
+package pl.zetosoftware.interfaces;
 
 public interface Validator {
     default boolean containsValidCharacters(String stringToCheck, String pattern) {

@@ -1,6 +1,7 @@
 package pl.zetosoftware.user.value_objects;
 
 import lombok.NoArgsConstructor;
+import pl.zetosoftware.interfaces.Validator;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -8,7 +9,7 @@ import java.util.Objects;
 
 @Embeddable
 @NoArgsConstructor
-public class Password implements Validator{
+public class Password implements Validator {
 
     private static final String ENGLISH_LETTERS_NUMBERS_SPECIAL_CHARACTERS = "[\\x21-\\x7E]+";
 

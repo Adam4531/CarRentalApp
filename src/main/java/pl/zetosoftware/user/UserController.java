@@ -3,7 +3,8 @@ package pl.zetosoftware.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import pl.zetosoftware.user.dto.UserDto;
+import pl.zetosoftware.user.dto.UserRequestDto;
+import pl.zetosoftware.user.dto.UserResponseDto;
 
 import java.util.List;
 
@@ -20,31 +21,31 @@ public class UserController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public UserDto addUser(@RequestBody UserEntity userEntity){
-        return userService.createUser(userEntity);
+    public UserResponseDto addUser(@RequestBody UserRequestDto user){
+        return userService.createUser(user);
     }
 
     @GetMapping("")
     @ResponseStatus(HttpStatus.OK)
-    public List<UserDto> getUsers(){
+    public List<UserResponseDto> getUsers(){
         return userService.getAllUsers();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public UserDto getUserById(@PathVariable Long id){
+    public UserResponseDto getUserById(@PathVariable Long id){
         return userService.getUserById(id);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public UserDto changeUserField(@PathVariable Long id, @RequestBody UserDto updatedUser){
+    public UserResponseDto changeUserField(@PathVariable Long id, @RequestBody UserRequestDto updatedUser){
         return userService.updateUserWithPutMapping(id, updatedUser);
     }
 
     @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public UserDto changeUserEmail(@PathVariable Long id, @RequestBody String email){
+    public UserResponseDto changeUserEmail(@PathVariable Long id, @RequestBody String email){
         return userService.updateUserEmail(id, email);
     }
 

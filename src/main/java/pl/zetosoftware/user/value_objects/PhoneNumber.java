@@ -1,6 +1,7 @@
 package pl.zetosoftware.user.value_objects;
 
 import lombok.NoArgsConstructor;
+import pl.zetosoftware.interfaces.Validator;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
