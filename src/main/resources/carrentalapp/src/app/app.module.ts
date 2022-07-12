@@ -8,7 +8,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import {TableModule} from 'primeng/table';
 import {AppRoutingModule } from './app-routing.module';
 import { CarComponent } from './car/car.component';
-import { LoginComponent } from './login/login/login.component';
+import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
 
 @NgModule({
