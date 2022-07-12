@@ -1,14 +1,19 @@
+<router-outlet></router-outlet>
+<p>
+    <button type="button" pButton label="Available Cars" class="btn btn-primary-outline pull-right" (click)="btnClick('/cars');"><i class="fa fa-plus1"></i></button>
+</p>
 
-<nav>
-    <a routerLink="/cars">Available Cars</a>
-</nav>
-  <router-outlet></router-outlet>
+<p>
+    <button type="button" pButton label="List of users" class="btn btn-primary-outline pull-right" (click)="btnClick('/users');">
+        <i class="fa fa-plus"></i>
+    </button>
+</p>
 
-
-<nav>
-    <a routerLink="/login">Login</a>
-</nav>
-
+<p>
+    <button type="button" pButton label="Login" class="btn btn-primary-outline pull-right" (click)="btnClick('/login');">
+        <i class="fa fa-plus"></i>
+    </button>
+</p>
 
 
 <!-- <div>

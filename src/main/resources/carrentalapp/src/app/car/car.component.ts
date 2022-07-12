@@ -3,6 +3,9 @@ import { Car } from './car';
 import { CarService } from './car.service';
 import { PrimeNGConfig } from 'primeng/api';
 
+
+
+
 @Component({
   selector: 'app-car',
   templateUrl: './car.component.html',
