@@ -1,6 +1,7 @@
 package pl.zetosoftware.car.value_objects;
 
 import lombok.NoArgsConstructor;
+import pl.zetosoftware.car.enums.BodyTypeEnum;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -8,12 +9,12 @@ import java.util.Objects;
 
 @NoArgsConstructor
 @Embeddable
-public class BodyType {
+public class BodyTypeValidator {
 
     @Column
-    private Enum<pl.zetosoftware.car.enums.BodyType> bodyType;
+    private Enum<BodyTypeEnum> bodyType;
 
-    public BodyType(Enum<pl.zetosoftware.car.enums.BodyType> bodyType) {
+    public BodyTypeValidator(Enum<BodyTypeEnum> bodyType) {
         if(Objects.isNull(bodyType))
             throw new IllegalStateException("BODY TYPE CANNOT BE NULL !!");
         this.bodyType = bodyType;
@@ -23,8 +24,8 @@ public class BodyType {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BodyType bodyType1 = (BodyType) o;
-        return Objects.equals(bodyType, bodyType1.bodyType);
+        BodyTypeValidator bodyTypeValidator1 = (BodyTypeValidator) o;
+        return Objects.equals(bodyType, bodyTypeValidator1.bodyType);
     }
 
     @Override
@@ -32,5 +33,5 @@ public class BodyType {
         return Objects.hash(bodyType);
     }
 
-    public Enum<pl.zetosoftware.car.enums.BodyType> toEnum() { return bodyType; }
+    public Enum<BodyTypeEnum> toEnum() { return bodyType; }
 }

@@ -1,6 +1,6 @@
 package pl.zetosoftware.car.enums;
 
-public enum Status {
+public enum StatusEnum {
     FREE, RESERVED, TAKEN
 }
 

@@ -13,7 +13,7 @@ export class UserComponent implements OnInit {
 
   public users: UserDto[] = [];
   public columns: any[] = [];
-  
+
   constructor(private userService: UserService, private primengConfig: PrimeNGConfig) { }
 
   ngOnInit(): void {

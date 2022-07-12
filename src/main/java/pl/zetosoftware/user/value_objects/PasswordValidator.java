@@ -9,14 +9,14 @@ import java.util.Objects;
 
 @Embeddable
 @NoArgsConstructor
-public class Password implements Validator {
+public class PasswordValidator implements Validator {
 
     private static final String ENGLISH_LETTERS_NUMBERS_SPECIAL_CHARACTERS = "[\\x21-\\x7E]+";
 
     @Column
     private String password;
 
-    public Password(String password) {
+    public PasswordValidator(String password) {
         if ( Objects.isNull(password) )
             throw new IllegalStateException("Password cant be null!");
         if ( !isValidLength(password, 7, 28) )
@@ -35,8 +35,8 @@ public class Password implements Validator {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Password password1 = (Password) o;
-        return password.equals(password1.password);
+        PasswordValidator passwordValidator1 = (PasswordValidator) o;
+        return password.equals(passwordValidator1.password);
     }
 
     @Override

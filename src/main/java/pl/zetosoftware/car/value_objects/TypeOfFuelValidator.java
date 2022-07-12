@@ -1,6 +1,7 @@
 package pl.zetosoftware.car.value_objects;
 
 import lombok.NoArgsConstructor;
+import pl.zetosoftware.car.enums.TypeOfFuelEnum;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -8,12 +9,12 @@ import java.util.Objects;
 
 @NoArgsConstructor
 @Embeddable
-public class TypeOfFuel {
+public class TypeOfFuelValidator {
 
     @Column
-    private Enum<pl.zetosoftware.car.enums.TypeOfFuel> typeOfFuel;
+    private Enum<TypeOfFuelEnum> typeOfFuel;
 
-    public TypeOfFuel(Enum<pl.zetosoftware.car.enums.TypeOfFuel> typeOfFuel) {
+    public TypeOfFuelValidator(Enum<TypeOfFuelEnum> typeOfFuel) {
         if(Objects.isNull(typeOfFuel))
             throw new IllegalStateException("TYPE OF FUEL CANNOT BE NULL !!");
         this.typeOfFuel = typeOfFuel;
@@ -23,7 +24,7 @@ public class TypeOfFuel {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TypeOfFuel that = (TypeOfFuel) o;
+        TypeOfFuelValidator that = (TypeOfFuelValidator) o;
         return typeOfFuel.equals(that.typeOfFuel);
     }
 
@@ -32,6 +33,6 @@ public class TypeOfFuel {
         return Objects.hash(typeOfFuel);
     }
 
-    public Enum<pl.zetosoftware.car.enums.TypeOfFuel> toEnum() { return typeOfFuel; }
+    public Enum<TypeOfFuelEnum> toEnum() { return typeOfFuel; }
 
 }

@@ -10,12 +10,12 @@ import java.util.Objects;
 
 @NoArgsConstructor
 @Embeddable
-public class PaymentInAdvance {
+public class PaymentInAdvanceValidator {
     @Getter
     @Column
     private BigDecimal paymentInAdvance;
 
-    public PaymentInAdvance(BigDecimal paymentInAdvance) {
+    public PaymentInAdvanceValidator(BigDecimal paymentInAdvance) {
         if(Objects.isNull(paymentInAdvance))
             throw new IllegalArgumentException("PaymentInAdvance can't be null");
         this.paymentInAdvance = paymentInAdvance;
@@ -30,7 +30,7 @@ public class PaymentInAdvance {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PaymentInAdvance that = (PaymentInAdvance) o;
+        PaymentInAdvanceValidator that = (PaymentInAdvanceValidator) o;
         return paymentInAdvance.equals(that.paymentInAdvance);
     }
 

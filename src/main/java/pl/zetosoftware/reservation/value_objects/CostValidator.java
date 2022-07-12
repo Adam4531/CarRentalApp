@@ -11,12 +11,12 @@ import java.util.Objects;
 @Embeddable
 @NoArgsConstructor
 @Getter
-public class Cost {
+public class CostValidator {
 
     @Column
     private BigDecimal cost;
 
-    public Cost(BigDecimal cost) {
+    public CostValidator(BigDecimal cost) {
         if (Objects.isNull(cost))
             throw new IllegalArgumentException("Cost can't be null!");
         if (isGreaterThanLimit(cost))
@@ -26,10 +26,7 @@ public class Cost {
 
     public boolean isGreaterThanLimit(BigDecimal cost) {
         BigDecimal limit = BigDecimal.valueOf(10000000);
-        if (limit.compareTo(cost) > 0) { //dla wydajności można uprościć
-            return false;
-        }
-        return true;
+        return limit.compareTo(cost) <= 0;
     }
 
     //TODO Format of cost xxx.xx  - 2 digits after dot
@@ -43,8 +40,8 @@ public class Cost {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Cost cost1 = (Cost) o;
-        return cost.equals(cost1.cost);
+        CostValidator costValidator1 = (CostValidator) o;
+        return cost.equals(costValidator1.cost);
     }
 
     @Override

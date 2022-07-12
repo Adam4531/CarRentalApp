@@ -4,17 +4,16 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import java.math.BigDecimal;
 import java.util.Objects;
 
 @NoArgsConstructor
 @Embeddable
-public class NewCarCost {
+public class NewCarCostValidator {
 
     @Column
     private Long newCarCost;
 
-    public NewCarCost(Long newCarCost) {
+    public NewCarCostValidator(Long newCarCost) {
         if(Objects.isNull(newCarCost))
             throw new IllegalStateException("CAR COST CANNOT BE NULL !!");
         if(!isCostValid(newCarCost))
@@ -30,7 +29,7 @@ public class NewCarCost {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        NewCarCost that = (NewCarCost) o;
+        NewCarCostValidator that = (NewCarCostValidator) o;
         return newCarCost.equals(that.newCarCost);
     }
 

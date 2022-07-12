@@ -9,13 +9,13 @@ import java.util.Objects;
 
 @Embeddable
 @NoArgsConstructor
-public class Login implements Validator {
+public class LoginValidator implements Validator {
     private static final String ENGLISH_LETTERS_NUMBERS_DOT_UNDERSCORE_DASH = "[a-zA-Z\\d._-]+";
 
     @Column
     private String login;
 
-    public Login(String login) {
+    public LoginValidator(String login) {
         if (Objects.isNull(login))
             throw new IllegalStateException("Login cant be null!");
         if ( !isValidLength(login, 3, 28) )
@@ -34,8 +34,8 @@ public class Login implements Validator {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Login login1 = (Login) o;
-        return login.equals(login1.login);
+        LoginValidator loginValidator1 = (LoginValidator) o;
+        return login.equals(loginValidator1.login);
     }
 
     @Override

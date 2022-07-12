@@ -4,20 +4,18 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import java.math.BigDecimal;
-import java.util.Calendar;
 import java.util.Objects;
 
 @NoArgsConstructor
 @Embeddable
-public class ProductionYear {
+public class ProductionYearValidator {
 
 
     @Column
     private Integer productionYear;
 //    int actualYear = Calendar.getInstance().get(Calendar.YEAR);
 
-    public ProductionYear(Integer productionYear) {
+    public ProductionYearValidator(Integer productionYear) {
         if(Objects.isNull(productionYear))
             throw new IllegalStateException("PRODUCTION YEAR CANNOT BE NULL !!");
         if(!isYearValid(productionYear))
@@ -33,7 +31,7 @@ public class ProductionYear {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ProductionYear that = (ProductionYear) o;
+        ProductionYearValidator that = (ProductionYearValidator) o;
         return Objects.equals(productionYear, that.productionYear);
     }
 

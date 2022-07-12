@@ -26,11 +26,11 @@ export class CarComponent implements OnInit {
     this.columns = [
       { field: 'brand', header: 'Brand' },
       { field: 'model', header: 'Model' },
-      { field: 'typeOfFuel', header: 'Type of Fuel' },
+      { field: 'typeOfFuelEnum', header: 'Type of Fuel' },
       { field: 'engineCapacity', header: 'Engine Capacity' },
       { field: 'productionYear', header: 'Production Year' },
-      { field: 'cost', header: 'Cost' },
-      { field: 'status', header: 'Status'}
+      { field: 'newCarCost', header: 'Cost of new car from Saloon' },
+      { field: 'statusEnum', header: 'Status'}
     ];
     this.getCars();
   }

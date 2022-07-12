@@ -5,9 +5,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import pl.zetosoftware.car.CarEntity;
-import pl.zetosoftware.car.enums.Status;
-import pl.zetosoftware.reservation.value_objects.Cost;
-import pl.zetosoftware.reservation.value_objects.PaymentInAdvance;
+import pl.zetosoftware.reservation.value_objects.CostValidator;
+import pl.zetosoftware.reservation.value_objects.PaymentInAdvanceValidator;
 import pl.zetosoftware.user.UserEntity;
 
 import javax.persistence.*;
@@ -41,13 +40,13 @@ public class ReservationEntity {
     private LocalDateTime dateEnd;
 
     @Embedded
-    private Cost cost;
+    private CostValidator cost;
 
     @Embedded
-    private PaymentInAdvance paymentInAdvance;
+    private PaymentInAdvanceValidator paymentInAdvance;
 
     @Builder
-    public ReservationEntity(Long id, UserEntity userId, CarEntity carId, LocalDateTime dateStart, LocalDateTime dateEnd, Cost cost, PaymentInAdvance paymentInAdvance) {
+    public ReservationEntity(Long id, UserEntity userId, CarEntity carId, LocalDateTime dateStart, LocalDateTime dateEnd, CostValidator cost, PaymentInAdvanceValidator paymentInAdvance) {
         this.id = id;
         this.userId = userId;
         this.carId = carId;
@@ -66,10 +65,10 @@ public class ReservationEntity {
     }
 
     public void changeCost(BigDecimal cost){
-        this.cost = new Cost(cost);
+        this.cost = new CostValidator(cost);
     }
 
     public void changePaymentInAdvance(BigDecimal paymentInAdvane){
-        this.paymentInAdvance = new PaymentInAdvance(paymentInAdvane);
+        this.paymentInAdvance = new PaymentInAdvanceValidator(paymentInAdvane);
     }
 }

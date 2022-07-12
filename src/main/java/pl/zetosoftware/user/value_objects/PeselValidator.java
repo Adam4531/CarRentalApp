@@ -9,14 +9,14 @@ import java.util.Objects;
 
 @Embeddable
 @NoArgsConstructor
-public class Pesel implements Validator {
+public class PeselValidator implements Validator {
 
     private static final String DIGITS = "[0-9]+";
 
     @Column
     private String pesel;
 
-    public Pesel(String pesel) {
+    public PeselValidator(String pesel) {
         if ( Objects.isNull(pesel) )
             throw new IllegalArgumentException("Pesel can't be null!");
         if ( !isValidLength(pesel, 11, 11) )
@@ -35,8 +35,8 @@ public class Pesel implements Validator {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Pesel pesel1 = (Pesel) o;
-        return pesel.equals(pesel1.pesel);
+        PeselValidator peselValidator1 = (PeselValidator) o;
+        return pesel.equals(peselValidator1.pesel);
     }
 
     @Override

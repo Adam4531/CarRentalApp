@@ -9,13 +9,13 @@ import java.util.Objects;
 
 @NoArgsConstructor
 @Embeddable
-public class Brand implements Validator {
+public class BrandValidator implements Validator {
 
     private static final String BRAND_NAME_REGEX = "[a-zA-Z\\d]+";
     @Column
     private String brand;
 
-    public Brand(String brand) {
+    public BrandValidator(String brand) {
         if(Objects.isNull(brand))
             throw new IllegalArgumentException("BRAND CANNOT BE NULL !!");
         if(!containsValidCharacters(brand, BRAND_NAME_REGEX))
@@ -34,8 +34,8 @@ public class Brand implements Validator {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Brand brand1 = (Brand) o;
-        return brand.equals(brand1.brand);
+        BrandValidator brandValidator1 = (BrandValidator) o;
+        return brand.equals(brandValidator1.brand);
     }
 
     @Override

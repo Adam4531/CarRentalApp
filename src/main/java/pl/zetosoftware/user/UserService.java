@@ -5,8 +5,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pl.zetosoftware.user.dto.UserRequestDto;
 import pl.zetosoftware.user.dto.UserResponseDto;
-import pl.zetosoftware.user.value_objects.Email;
-import pl.zetosoftware.user.value_objects.Login;
 
 import java.util.List;
 import java.util.NoSuchElementException;

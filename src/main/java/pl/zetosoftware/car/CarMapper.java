@@ -13,11 +13,11 @@ public class CarMapper {
                 .brand(carEntity.getBrand().toString())
                 .model(carEntity.getModel().toString())
                 .engineCapacity(carEntity.getEngineCapacity().toBigDecimal())
-                .bodyType(carEntity.getBodyType())
-                .typeOfFuel(carEntity.getTypeOfFuel())
+                .bodyTypeEnum(carEntity.getBodyType())
+                .typeOfFuelEnum(carEntity.getTypeOfFuel())
                 .newCarCost(carEntity.getNewCarCost().toLong())
                 .productionYear(carEntity.getProductionYear().toInteger())
-                .status(carEntity.getStatus())
+                .statusEnum(carEntity.getStatus())
                 .build();
     }
 

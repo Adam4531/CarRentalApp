@@ -9,13 +9,13 @@ import java.util.Objects;
 
 @Embeddable
 @NoArgsConstructor
-public class Name implements Validator {
+public class NameValidator implements Validator {
     private static final String POLISH_ALPHABET = "[a-zA-Z-\\p{IsAlphabetic}]+";
 
     @Column
     private String name;
 
-    public Name(String name) {
+    public NameValidator(String name) {
         if( Objects.isNull(name) )
             throw new IllegalStateException("Name can't be null!");
         if ( !isValidLength(name, 3, 60) )
@@ -38,8 +38,8 @@ public class Name implements Validator {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Name name1 = (Name) o;
-        return name.equals(name1.name);
+        NameValidator nameValidator1 = (NameValidator) o;
+        return name.equals(nameValidator1.name);
     }
 
     @Override

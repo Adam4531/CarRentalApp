@@ -29,13 +29,13 @@ public class UserMapper {
 
     public UserEntity fromUserRequestDtoToUserEntity(UserRequestDto userRequestDto){
         return UserEntity.builder()
-                .login(new Login(userRequestDto.login()))
-                .firstName(new Name(userRequestDto.firstName()))
-                .secondName(new Name(userRequestDto.secondName()))
-                .email(new Email(userRequestDto.email()))
-                .password(new Password(userRequestDto.password()))
-                .phoneNumber(new PhoneNumber(userRequestDto.phoneNumber()))
-                .pesel(new Pesel(userRequestDto.pesel()))
+                .login(new LoginValidator(userRequestDto.login()))
+                .firstName(new NameValidator(userRequestDto.firstName()))
+                .secondName(new NameValidator(userRequestDto.secondName()))
+                .email(new EmailValidator(userRequestDto.email()))
+                .password(new PasswordValidator(userRequestDto.password()))
+                .phoneNumber(new PhoneNumberValidator(userRequestDto.phoneNumber()))
+                .pesel(new PeselValidator(userRequestDto.pesel()))
                 .build();
     }
 

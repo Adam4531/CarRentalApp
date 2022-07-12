@@ -2,11 +2,10 @@
 ============================TO DO=============================
 ==============================================================
 
-
 Z OPISU WYKONAĆ :
 
 System do zarządzania wypożyczalnią samochodów.
-Użytkownik będzie mógł zalogować się loginem i hasłem do systemu.
+Użytkownik będzie mógł zalogować się loginem i hasłem do systemu. //grzegorz REJESTRACJA
 Użytkownik będzie mógł wybrać samochód jaki chce wypożyczyć (marka, model itd.)
 oraz dni, w których chce go wypożyczyć.
 System sprawdzi czy wybrany samochód nie został zarezerwowany przez inną osobę w
@@ -18,6 +17,14 @@ Użytkownik będzie mógł edytować lub usunąć rezerwację jeśli nie nastąp
 oraz samochodów już wypożyczonych (przez innych użytkowników). Oddzielnie użytkownik będzie mógł przeglądać
 listę samochodów wypożyczonych przez siebie (aktualnie oraz historycznie).
 
+
+
+1.Rejestracja + Walidacja bazowa -> User dodany do bazy danych // GRZEGORZ
+2.Logowanie -> po zalogowaniu uzytkownik widzi swoje rezerwacje // Igor
+3.Status auta // ADAM R.
+4.Wyliczenie ceny wypozyczenia  // MARTYNA
+5.Możliwość edycji + usunięcia rezerwacji // Adam T.
+// 6.Wyświetlanie dostepnych aut, Wyswietlanie wypozyczonych przez innych aut, Wyswietlania wypozyczonych przez siebie aut // Igor
 
 
 FRONT:

@@ -3,8 +3,9 @@ package pl.zetosoftware.car;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import pl.zetosoftware.car.enums.BodyType;
-import pl.zetosoftware.car.enums.Status;
+import pl.zetosoftware.car.enums.BodyTypeEnum;
+import pl.zetosoftware.car.enums.StatusEnum;
+import pl.zetosoftware.car.enums.TypeOfFuelEnum;
 import pl.zetosoftware.car.value_objects.*;
 
 import javax.persistence.*;
@@ -22,27 +23,27 @@ public class CarEntity {
     private Long id;
 
     @Embedded
-    private Brand brand;
+    private BrandValidator brand;
 
     @Embedded
-    private Model model;
+    private ModelValidator model;
 
     @Embedded
-    private EngineCapacity engineCapacity;
+    private EngineCapacityValidator engineCapacity;
 
     @Enumerated(EnumType.STRING)
-    private BodyType bodyType;
+    private BodyTypeEnum bodyType;
 
     @Enumerated(EnumType.STRING)
-    private pl.zetosoftware.car.enums.TypeOfFuel typeOfFuel;
+    private TypeOfFuelEnum typeOfFuel;
 
     @Embedded
-    private NewCarCost newCarCost;
+    private NewCarCostValidator newCarCost;
 
     @Embedded
-    private ProductionYear productionYear;
+    private ProductionYearValidator productionYear;
 
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private StatusEnum status;
 
 }

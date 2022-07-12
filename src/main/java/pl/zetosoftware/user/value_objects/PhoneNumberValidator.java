@@ -9,14 +9,14 @@ import java.util.Objects;
 
 @Embeddable
 @NoArgsConstructor
-public class PhoneNumber implements Validator {
+public class PhoneNumberValidator implements Validator {
 
     private static final String DIGITS = "[0-9]+";
 
     @Column
     private String phoneNumber;
 
-    public PhoneNumber(String phoneNumber){
+    public PhoneNumberValidator(String phoneNumber){
         if ( Objects.isNull(phoneNumber) )
             throw new IllegalArgumentException("Phone number can't be null!");
         if ( !isValidLength(phoneNumber, 9, 9) )
@@ -35,7 +35,7 @@ public class PhoneNumber implements Validator {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PhoneNumber that = (PhoneNumber) o;
+        PhoneNumberValidator that = (PhoneNumberValidator) o;
         return phoneNumber.equals(that.phoneNumber);
     }
 

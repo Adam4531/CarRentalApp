@@ -9,12 +9,12 @@ import java.util.Objects;
 
 @NoArgsConstructor
 @Embeddable
-public class EngineCapacity {
+public class EngineCapacityValidator {
 
     @Column
     private BigDecimal engineCapacity;
 
-    public EngineCapacity(BigDecimal engineCapacity) {
+    public EngineCapacityValidator(BigDecimal engineCapacity) {
         if(Objects.isNull(engineCapacity))
             throw new IllegalStateException("ENGINE CAPACITY CANNOT BE NULL !!");
         if(!isCapacityValid(engineCapacity))
@@ -31,7 +31,7 @@ public class EngineCapacity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        EngineCapacity that = (EngineCapacity) o;
+        EngineCapacityValidator that = (EngineCapacityValidator) o;
         return engineCapacity.equals(that.engineCapacity);
     }
 
