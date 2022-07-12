@@ -48,7 +48,7 @@ public class ReservationService {
         return reservationRepository.findAll();
     }
 
-    public List<ReservationDto> getAllReservationsById(Long Id) {   //map to Dto
+    public List<ReservationDto> getAllReservationsById(Long Id) {
         List<ReservationEntity> allReservationsByUserId = reservationRepository.getAllReservationsByUserId(Id);
         return reservationMapper.fromReservationListToReservationDtoList(allReservationsByUserId);
     }
