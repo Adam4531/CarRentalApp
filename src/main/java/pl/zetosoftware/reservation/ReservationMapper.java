@@ -17,7 +17,6 @@ public class ReservationMapper {
                 .dateEnd(reservationEntity.getDateEnd())
                 .cost(reservationEntity.getCost().getCost())
                 .paymentInAdvance(reservationEntity.getPaymentInAdvance().getPaymentInAdvance())
-                .status(reservationEntity.getStatus())
                 .build();
     }
 

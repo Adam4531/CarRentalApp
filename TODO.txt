@@ -13,8 +13,8 @@ System sprawdzi czy wybrany samochód nie został zarezerwowany przez inną osob
 wybranych dniach oraz wyliczy odpowiednią kwotę do zapłaty
 (np. na podstawie wartości samochodu w momencie kupna, rocznika, przebiegu oraz dni wypożyczenia).
 Od daty wypożyczenia samochód znika ze stanu placu do momentu oddania samochodu.
-Użytkownik będzie mógł edytować lub usunąć rezerwację jeśli nie nastąpiło wypożyczenie
-(data rezerwacji > bieżąca data). Użytkownik będzie mógł przeglądać listę samochodów dostępnych do wypożyczenia,
+Użytkownik będzie mógł edytować lub usunąć rezerwację jeśli nie nastąpił odbiór.
+(data odbioru > bieżąca data). Użytkownik będzie mógł przeglądać listę samochodów dostępnych do wypożyczenia,
 oraz samochodów już wypożyczonych (przez innych użytkowników). Oddzielnie użytkownik będzie mógł przeglądać
 listę samochodów wypożyczonych przez siebie (aktualnie oraz historycznie).
 

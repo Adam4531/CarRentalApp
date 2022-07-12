@@ -1,5 +1,6 @@
 CREATE TYPE public.car_body_type AS ENUM('COUPE', 'SEDAN', 'SUV', 'STATION_WAGON', 'HATCHBACK', 'CABRIOLET');
 CREATE TYPE public.car_type_of_fuel AS ENUM('BENZINE', 'DIESEL', 'ELECTRIC', 'LPG');
+CREATE TYPE public.reservation_status AS ENUM('FREE', 'RESERVED', 'TAKEN');
 
 CREATE TABLE IF NOT EXISTS public.CARS(
     ID BIGINT NOT NULL,
@@ -10,6 +11,7 @@ CREATE TABLE IF NOT EXISTS public.CARS(
     type_of_fuel public.car_type_of_fuel NOT NULL,
     new_car_cost BIGINT,
     production_year int NOT NULL,
+    status public.reservation_status NOT NULL,
     CONSTRAINT cars_id_pkey PRIMARY KEY(ID)
     );
 
@@ -25,7 +27,6 @@ CREATE TABLE IF NOT EXISTS public.USERS(
     CONSTRAINT users_id_pkey PRIMARY KEY(ID)
     );
 
-CREATE TYPE public.reservation_status AS ENUM('FREE', 'RESERVED', 'TAKEN');
 
 CREATE TABLE IF NOT EXISTS public.RESERVATIONS(
     ID BIGINT NOT NULL,
@@ -35,7 +36,6 @@ CREATE TABLE IF NOT EXISTS public.RESERVATIONS(
     date_end timestamp without time zone, --if car is free then that column cannot be NOT NULL
     cost numeric(7,2) NOT NULL,
     payment_in_advance numeric(7,2) NOT NULL,
-    status public.reservation_status NOT NULL,
     CONSTRAINT reservations_id_pkey PRIMARY KEY(ID),
     CONSTRAINT user_id_pkey FOREIGN KEY(user_id) REFERENCES users(ID),
     CONSTRAINT car_id_pkey FOREIGN KEY(car_id) REFERENCES cars(ID)

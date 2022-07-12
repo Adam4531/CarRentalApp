@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import pl.zetosoftware.car.CarEntity;
-import pl.zetosoftware.reservation.enums.Status;
+import pl.zetosoftware.car.enums.Status;
 import pl.zetosoftware.reservation.value_objects.Cost;
 import pl.zetosoftware.reservation.value_objects.PaymentInAdvance;
 import pl.zetosoftware.user.UserEntity;
@@ -34,8 +34,8 @@ public class ReservationEntity {
     @JsonBackReference
     private CarEntity carId;
 
-    @Column(columnDefinition = "DATE")
-    private LocalDateTime dateStart;
+    @Column(columnDefinition = "DATE")      //TODO CHANGE to ReservationsDate class and use one field, add with Embeddable
+    private LocalDateTime dateStart;        // to check if dateEnd is not before dateStart
 
     @Column(columnDefinition = "DATE")
     private LocalDateTime dateEnd;
@@ -46,22 +46,15 @@ public class ReservationEntity {
     @Embedded
     private PaymentInAdvance paymentInAdvance;
 
-    @Enumerated(EnumType.STRING)
-    private Status status;
-
     @Builder
-    public ReservationEntity(UserEntity userId, CarEntity carId, LocalDateTime dateStart, LocalDateTime dateEnd, Cost cost, PaymentInAdvance paymentInAdvance, Status status) {
+    public ReservationEntity(Long id, UserEntity userId, CarEntity carId, LocalDateTime dateStart, LocalDateTime dateEnd, Cost cost, PaymentInAdvance paymentInAdvance) {
+        this.id = id;
         this.userId = userId;
         this.carId = carId;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
         this.cost = cost;
         this.paymentInAdvance = paymentInAdvance;
-        this.status = status;
-    }
-
-    public void changeStatus(Status status){
-        this.status = status;
     }
 
     public void changeDateStart(LocalDateTime dateStart){

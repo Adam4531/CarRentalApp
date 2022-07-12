@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import pl.zetosoftware.car.enums.BodyType;
+import pl.zetosoftware.car.enums.Status;
 import pl.zetosoftware.car.value_objects.*;
 
 import javax.persistence.*;
@@ -40,5 +41,8 @@ public class CarEntity {
 
     @Embedded
     private ProductionYear productionYear;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
 }

@@ -8,4 +8,5 @@ export interface Car{
     typeOfFuel: string;
     newCarCost: number;
     productionYear: number
+    status: string
 }

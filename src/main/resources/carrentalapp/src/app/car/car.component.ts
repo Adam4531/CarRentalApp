@@ -29,7 +29,8 @@ export class CarComponent implements OnInit {
       { field: 'typeOfFuel', header: 'Type of Fuel' },
       { field: 'engineCapacity', header: 'Engine Capacity' },
       { field: 'productionYear', header: 'Production Year' },
-      { field: 'cost', header: 'Cost' }
+      { field: 'cost', header: 'Cost' },
+      { field: 'status', header: 'Status'}
     ];
     this.getCars();
   }

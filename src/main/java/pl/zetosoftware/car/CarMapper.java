@@ -17,6 +17,7 @@ public class CarMapper {
                 .typeOfFuel(carEntity.getTypeOfFuel())
                 .newCarCost(carEntity.getNewCarCost().toLong())
                 .productionYear(carEntity.getProductionYear().toInteger())
+                .status(carEntity.getStatus())
                 .build();
     }
 
