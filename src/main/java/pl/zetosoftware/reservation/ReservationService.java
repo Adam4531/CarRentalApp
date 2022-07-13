@@ -2,6 +2,7 @@ package pl.zetosoftware.reservation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.zetosoftware.car.CarEntity;
 import pl.zetosoftware.car.CarService;
 import pl.zetosoftware.reservation.dto.ReservationDto;
 
@@ -56,7 +57,11 @@ public class ReservationService {
         return reservationMapper.fromReservationListToReservationDtoList(allReservationsByUserId);
     }
 
-    public BigDecimal setPrice(Long Id, Integer days) {
-        return carService.setPrice(Id).multiply(BigDecimal.valueOf(days));
+    public BigDecimal setPrice(Long id, Integer days) {
+        CarEntity car = carService.getCarEntityById(id);
+        return BigDecimal.valueOf(car.getNewCarCost().toLong())
+                .multiply(BigDecimal.valueOf(0.001))
+                .multiply(carService.productionYearFactor(car))
+                .multiply(BigDecimal.valueOf(days));
     }
 }
