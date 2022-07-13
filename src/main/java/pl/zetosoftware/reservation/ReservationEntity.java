@@ -13,7 +13,6 @@ import pl.zetosoftware.user.UserEntity;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "RESERVATIONS")
@@ -58,20 +57,20 @@ public class ReservationEntity {
         this.paymentInAdvance = paymentInAdvance;
     }
 
-//    public void changeDateStart(ReservationDatesValidator dateStart) {
-//        this.date.dateStart = dateStart;
-//    }
+    public void changeDateStart(LocalDate dateStart) {
+        this.date.dateStart = dateStart;
+    }
 
-    public LocalDateTime getStartDate(){
+    public void changeDateEnd(LocalDate dateEnd) {
+        this.date.dateEnd = dateEnd;
+    }
+
+    public LocalDate getStartDate(){
         return date.dateStart;
     }
 
-    public LocalDateTime getEndDate(){
+    public LocalDate getEndDate(){
         return date.dateEnd;
-    }
-
-    public void changeDateEnd(LocalDateTime dateEnd) {
-        this.date.dateEnd = dateEnd;
     }
 
     public void changeCost(BigDecimal cost) {
