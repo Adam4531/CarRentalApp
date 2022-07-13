@@ -1,4 +1,4 @@
-import { Component, Inject, Injectable, Injector, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-registration',
@@ -16,6 +16,9 @@ export class RegistrationComponent implements OnInit {
   password2: string = "";
   phoneNumber: string ="";
   pesel: string="";
+
+  // public btnClick(url: string): void {
+  //   };
 
   ngOnInit(): void {
   }
