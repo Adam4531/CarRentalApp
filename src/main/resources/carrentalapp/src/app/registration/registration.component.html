@@ -1,3 +1,4 @@
+<header>CREATE ACCOUNT</header>
 <div class="p-fixed grid">
     <input type="text" pInputText pKeyFilter="alpha" placeholder="First name">
     <input type="text" pInputText pKeyFilter="alpha" placeholder="Last name">
@@ -14,7 +15,7 @@
     </ng-template>
     <ng-template pTemplate="footer">
         <p-divider></p-divider>
-        <p class="mt-2">Requirements</p>
+        <p class="mt-2">Suggestions</p>
         <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
             <li>At least one lowercase</li>
             <li>At least one uppercase</li>
@@ -28,20 +29,6 @@
 
 <div class="p-fixed grid">
 <p-password [feedback]="false" [toggleMask]="true" [(ngModel)]="password2" placeholder="Repeat password">
-    <ng-template pTemplate="header">
-        <h6>Password</h6>
-    </ng-template>
-    <ng-template pTemplate="footer">
-        <p-divider></p-divider>
-        <p class="mt-2">Suggestions</p>
-        <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
-            <li>At least one lowercase</li>
-            <li>At least one uppercase</li>
-            <li>At least one numeric</li>
-            <li>At least one special character</li>
-            <li>Minimum 8 characters</li>
-        </ul>
-    </ng-template>
 </p-password>
 </div>
 
@@ -54,7 +41,13 @@
     <p-inputMask [(ngModel)]="phoneNumber" mask="999 999 999" placeholder="Phone number"></p-inputMask>
 </div>
 
-
 <div class="p-fixed grid">
     <p-inputMask [(ngModel)]="pesel" mask="99999999999" placeholder="Pesel"></p-inputMask>
 </div>
+
+<p>
+    <!-- (click)="btnClick('/registration??');" -->
+    <button type="button" pButton label="Sign up" class="btn btn-primary-outline pull-right">
+        <i class="fa fa-plus"></i>
+    </button>
+</p>

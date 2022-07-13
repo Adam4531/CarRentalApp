@@ -6,7 +6,6 @@ import pl.zetosoftware.interfaces.Validator;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 @NoArgsConstructor
@@ -30,8 +29,15 @@ public class ReservationDatesValidator implements Validator{
         if(dateStart.isAfter(dateEnd)){
             throw new IllegalArgumentException("Date of start must be before the date of end reservation!");
         }
+        if (!minimumOneDayReservation()) {
+            throw new IllegalStateException("Minimum reservation length is 1 day!");
+        }
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
+    }
+
+    public boolean minimumOneDayReservation(){
+        return this.dateStart.plusDays(1).isBefore(dateEnd) || this.dateStart.plusDays(1).isEqual(dateEnd);
     }
 
     @Override
@@ -46,6 +52,5 @@ public class ReservationDatesValidator implements Validator{
     public int hashCode() {
         return Objects.hash(dateStart);
     }
-
 
 }

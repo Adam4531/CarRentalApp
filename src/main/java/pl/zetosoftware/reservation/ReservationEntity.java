@@ -57,20 +57,20 @@ public class ReservationEntity {
         this.paymentInAdvance = paymentInAdvance;
     }
 
-//    public void changeDateStart(ReservationDatesValidator dateStart) {
-//        this.date.dateStart = dateStart;
-//    }
-
-    public LocalDate getStartDate() {
-        return date.dateStart;
-    }
-
-    public LocalDate getEndDate() {
-        return date.dateEnd;
+    public void changeDateStart(LocalDate dateStart) {
+        this.date.dateStart = dateStart;
     }
 
     public void changeDateEnd(LocalDate dateEnd) {
         this.date.dateEnd = dateEnd;
+    }
+
+    public LocalDate getStartDate(){
+        return date.dateStart;
+    }
+
+    public LocalDate getEndDate(){
+        return date.dateEnd;
     }
 
     public void changeCost(BigDecimal cost) {
