@@ -5,6 +5,7 @@ import pl.zetosoftware.interfaces.Validator;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -14,12 +15,12 @@ public class ReservationDatesValidator implements Validator{
 
 
     @Column
-    public LocalDateTime dateStart;
+    public LocalDate dateStart;
 
     @Column
-    public LocalDateTime dateEnd;
+    public LocalDate dateEnd;
 
-    public ReservationDatesValidator(LocalDateTime dateStart, LocalDateTime dateEnd) {
+    public ReservationDatesValidator(LocalDate dateStart, LocalDate dateEnd) {
         if(Objects.isNull(dateStart)){
             throw new IllegalArgumentException("Date start can't be null!!");
         }

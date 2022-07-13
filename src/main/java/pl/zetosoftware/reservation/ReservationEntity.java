@@ -13,7 +13,6 @@ import pl.zetosoftware.user.UserEntity;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "RESERVATIONS")
@@ -62,15 +61,15 @@ public class ReservationEntity {
 //        this.date.dateStart = dateStart;
 //    }
 
-    public LocalDateTime getStartDate(){
+    public LocalDate getStartDate() {
         return date.dateStart;
     }
 
-    public LocalDateTime getEndDate(){
+    public LocalDate getEndDate() {
         return date.dateEnd;
     }
 
-    public void changeDateEnd(LocalDateTime dateEnd) {
+    public void changeDateEnd(LocalDate dateEnd) {
         this.date.dateEnd = dateEnd;
     }
 
