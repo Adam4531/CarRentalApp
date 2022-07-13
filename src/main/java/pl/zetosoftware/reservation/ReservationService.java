@@ -2,9 +2,10 @@ package pl.zetosoftware.reservation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.zetosoftware.car.CarService;
 import pl.zetosoftware.reservation.dto.ReservationDto;
 
-import java.util.Collection;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -13,6 +14,8 @@ public class ReservationService {
 
     private final ReservationRepository reservationRepository;
     private final ReservationMapper reservationMapper;
+    @Autowired
+    private CarService carService;
 
     @Autowired
     public ReservationService(ReservationRepository reservationRepository, ReservationMapper reservationMapper) {
@@ -53,7 +56,7 @@ public class ReservationService {
         return reservationMapper.fromReservationListToReservationDtoList(allReservationsByUserId);
     }
 
-//    public boolean checkIfIsNotReserved(){
-//        return
-//    }
+    public BigDecimal setPrice(Long Id, Integer days) {
+        return carService.setPrice(Id).multiply(BigDecimal.valueOf(days));
+    }
 }

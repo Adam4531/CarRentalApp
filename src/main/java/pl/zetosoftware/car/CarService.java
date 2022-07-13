@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import pl.zetosoftware.car.dto.CarDto;
 import pl.zetosoftware.car.exception.CarNotFoundException;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -25,7 +27,7 @@ public class CarService {
         return carMapper.mapCarToCarDto(carEntity);
     }
 
-    private CarEntity getCarEntityById(Long id) {
+    public CarEntity getCarEntityById(Long id) {
         return carRepository.findById(id)
                 .orElseThrow( () -> new CarNotFoundException("Car with id " + id + " was not found. "));
     }
@@ -50,6 +52,21 @@ public class CarService {
                 Sort.Order.asc("brand"),
                 Sort.Order.asc("model")));
         return carMapper.mapCarListToCarListDto(carEntities);
+    }
+
+    public BigDecimal setPrice(Long id) {
+        CarEntity car = getCarEntityById(id);
+        BigDecimal price = BigDecimal.valueOf(car.getNewCarCost().toLong()).multiply(BigDecimal.valueOf(0.001)).multiply(productionYearFactor());
+
+        return null;
+    }
+
+    private BigDecimal productionYearFactor() {
+        LocalDate.now().minusYears(2);
+//        switch (){
+
+//        }
+        return null;
     }
 
 
