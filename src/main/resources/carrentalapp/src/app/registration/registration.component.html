@@ -1,0 +1,60 @@
+<div class="p-fixed grid">
+    <input type="text" pInputText pKeyFilter="alpha" placeholder="First name">
+    <input type="text" pInputText pKeyFilter="alpha" placeholder="Last name">
+</div>
+
+<div class="p-fixed grid">
+    <input type="text" pInputText [pKeyFilter]="letterNumberDotDashUnderscore" placeholder="Username">
+</div>
+
+<div class="p-fixed grid">
+<p-password [toggleMask]="true" [(ngModel)]="password1" placeholder="Password">
+    <ng-template pTemplate="header">
+        <h4>Password</h4>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <p-divider></p-divider>
+        <p class="mt-2">Requirements</p>
+        <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+            <li>At least one lowercase</li>
+            <li>At least one uppercase</li>
+            <li>At least one numeric</li>
+            <li>At least one special character</li>
+            <li>Minimum 8 characters</li>
+        </ul>
+    </ng-template>
+</p-password>
+</div>
+
+<div class="p-fixed grid">
+<p-password [feedback]="false" [toggleMask]="true" [(ngModel)]="password2" placeholder="Repeat password">
+    <ng-template pTemplate="header">
+        <h6>Password</h6>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <p-divider></p-divider>
+        <p class="mt-2">Suggestions</p>
+        <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+            <li>At least one lowercase</li>
+            <li>At least one uppercase</li>
+            <li>At least one numeric</li>
+            <li>At least one special character</li>
+            <li>Minimum 8 characters</li>
+        </ul>
+    </ng-template>
+</p-password>
+</div>
+
+<!-- [pKeyFilter]="emailPattern" -->
+<div class="p-fixed grid">
+    <input type="text" pInputText placeholder="Email address">
+</div>
+
+<div class="p-fixed grid">
+    <p-inputMask [(ngModel)]="phoneNumber" mask="999 999 999" placeholder="Phone number"></p-inputMask>
+</div>
+
+
+<div class="p-fixed grid">
+    <p-inputMask [(ngModel)]="pesel" mask="99999999999" placeholder="Pesel"></p-inputMask>
+</div>

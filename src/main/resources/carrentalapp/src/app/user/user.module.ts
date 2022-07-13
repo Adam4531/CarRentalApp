@@ -5,7 +5,6 @@ import { ButtonModule } from 'primeng/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
-import { UserComponent } from './user.component';
 
 @NgModule({
   declarations: [
