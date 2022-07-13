@@ -13,8 +13,8 @@ public class ReservationMapper {
         return ReservationDto.builder()
                 .userId(reservationEntity.getUserId().getId())
                 .carId(reservationEntity.getCarId().getId())
-                .dateStart(reservationEntity.getDateStart())
-                .dateEnd(reservationEntity.getDateEnd())
+                .dateStart(reservationEntity.getDate().dateStart)
+                .dateEnd(reservationEntity.getDate().dateEnd)
                 .cost(reservationEntity.getCost().getCost())
                 .paymentInAdvance(reservationEntity.getPaymentInAdvance().getPaymentInAdvance())
                 .build();

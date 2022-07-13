@@ -52,4 +52,8 @@ public class ReservationService {
         List<ReservationEntity> allReservationsByUserId = reservationRepository.getAllReservationsByUserId(Id);
         return reservationMapper.fromReservationListToReservationDtoList(allReservationsByUserId);
     }
+
+//    public boolean checkIfIsNotReserved(){
+//        return
+//    }
 }

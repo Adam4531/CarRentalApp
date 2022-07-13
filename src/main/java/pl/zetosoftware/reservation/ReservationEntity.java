@@ -7,10 +7,12 @@ import lombok.NoArgsConstructor;
 import pl.zetosoftware.car.CarEntity;
 import pl.zetosoftware.reservation.value_objects.CostValidator;
 import pl.zetosoftware.reservation.value_objects.PaymentInAdvanceValidator;
+import pl.zetosoftware.reservation.value_objects.ReservationDatesValidator;
 import pl.zetosoftware.user.UserEntity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -33,11 +35,12 @@ public class ReservationEntity {
     @JsonBackReference
     private CarEntity carId;
 
-    @Column(columnDefinition = "DATE")      //TODO CHANGE to ReservationsDate class and use one field, add with Embeddable
-    private LocalDateTime dateStart;        // to check if dateEnd is not before dateStart
-
     @Column(columnDefinition = "DATE")
-    private LocalDateTime dateEnd;
+    @AttributeOverrides({
+            @AttributeOverride(name = "dateStart", column = @Column(name = "date_start")),
+            @AttributeOverride(name = "dateEnd", column = @Column(name = "date_end"))
+    })
+    private ReservationDatesValidator date;
 
     @Embedded
     private CostValidator cost;
@@ -46,29 +49,38 @@ public class ReservationEntity {
     private PaymentInAdvanceValidator paymentInAdvance;
 
     @Builder
-    public ReservationEntity(Long id, UserEntity userId, CarEntity carId, LocalDateTime dateStart, LocalDateTime dateEnd, CostValidator cost, PaymentInAdvanceValidator paymentInAdvance) {
+    public ReservationEntity(Long id, UserEntity userId, CarEntity carId, ReservationDatesValidator date, CostValidator cost, PaymentInAdvanceValidator paymentInAdvance) {
         this.id = id;
         this.userId = userId;
         this.carId = carId;
-        this.dateStart = dateStart;
-        this.dateEnd = dateEnd;
+        this.date = date;
         this.cost = cost;
         this.paymentInAdvance = paymentInAdvance;
     }
 
-    public void changeDateStart(LocalDateTime dateStart){
-        this.dateStart = dateStart;
+//    public void changeDateStart(ReservationDatesValidator dateStart) {
+//        this.date.dateStart = dateStart;
+//    }
+
+    public LocalDateTime getStartDate(){
+        return date.dateStart;
     }
 
-    public void changeDateEnd(LocalDateTime dateEnd){
-        this.dateEnd = dateEnd;
+    public LocalDateTime getEndDate(){
+        return date.dateEnd;
     }
 
-    public void changeCost(BigDecimal cost){
+    public void changeDateEnd(LocalDateTime dateEnd) {
+        this.date.dateEnd = dateEnd;
+    }
+
+    public void changeCost(BigDecimal cost) {
         this.cost = new CostValidator(cost);
     }
 
-    public void changePaymentInAdvance(BigDecimal paymentInAdvane){
-        this.paymentInAdvance = new PaymentInAdvanceValidator(paymentInAdvane);
+    public void changePaymentInAdvance(BigDecimal paymentInAdvance) {
+        this.paymentInAdvance = new PaymentInAdvanceValidator(paymentInAdvance);
     }
+
+
 }
