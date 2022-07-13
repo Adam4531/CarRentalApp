@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import pl.zetosoftware.car.CarEntity;
 import pl.zetosoftware.car.CarService;
 import pl.zetosoftware.reservation.dto.ReservationDto;
+import pl.zetosoftware.reservation.value_objects.ReservationDatesValidator;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -55,6 +56,24 @@ public class ReservationService {
     public List<ReservationDto> getAllReservationsById(Long Id) {
         List<ReservationEntity> allReservationsByUserId = reservationRepository.getAllReservationsByUserId(Id);
         return reservationMapper.fromReservationListToReservationDtoList(allReservationsByUserId);
+    }
+
+    //TODO check if it is not supposed to return String, true - its resevered, false - its free
+    //  reserved     11-14, 13-21,
+    //  next client  12-15, 11-14,
+    //  and make tests
+    public boolean checkIfCarIsReserved(ReservationDatesValidator reservationDatesToCheck, Long Id){
+        ReservationDatesValidator reservationOfCar = getReservation(Id).getDate();
+
+        if(reservationDatesToCheck.equals(reservationOfCar)){ //are same
+            return true;
+        }
+        if(reservationOfCar.dateStart.isBefore(reservationDatesToCheck.dateStart)
+                || reservationOfCar.dateEnd.isAfter(reservationDatesToCheck.dateStart)
+        ){
+            return true;
+        }
+        return false;
     }
 
     public BigDecimal setPrice(Long id, Integer days) {
