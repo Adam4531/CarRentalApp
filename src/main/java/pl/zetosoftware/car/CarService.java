@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import pl.zetosoftware.car.dto.CarDto;
 import pl.zetosoftware.car.exception.CarNotFoundException;
 
+import javax.swing.plaf.basic.BasicDesktopIconUI;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -25,7 +27,7 @@ public class CarService {
         return carMapper.mapCarToCarDto(carEntity);
     }
 
-    private CarEntity getCarEntityById(Long id) {
+    public CarEntity getCarEntityById(Long id) {
         return carRepository.findById(id)
                 .orElseThrow( () -> new CarNotFoundException("Car with id " + id + " was not found. "));
     }

@@ -2,9 +2,13 @@ package pl.zetosoftware.reservation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.zetosoftware.car.CarEntity;
+import pl.zetosoftware.car.CarService;
+import pl.zetosoftware.car.value_objects.NewCarCostValidator;
 import pl.zetosoftware.reservation.dto.ReservationDto;
 import pl.zetosoftware.reservation.value_objects.ReservationDatesValidator;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.NoSuchElementException;
 
