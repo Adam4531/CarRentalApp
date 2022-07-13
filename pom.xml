@@ -69,7 +69,7 @@
 					<password>postgres</password>
                     <url>jdbc:postgresql://localhost:5432/carrental</url>
 					<schemas>
-						<schema>car_rental</schema>
+						<schema>carrental</schema>
 					</schemas>
 				</configuration>
 			</plugin>
