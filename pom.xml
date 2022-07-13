@@ -57,6 +57,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+			<version>2.6.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -66,8 +71,8 @@
 				<version>8.0.0</version>
 				<configuration>
 					<user>postgres</user>
-					<password>postgres</password>
-                    <url>jdbc:postgresql://localhost:5432/carrental</url>
+					<password>root</password>
+                    <url>jdbc:postgresql://localhost:5432/car_rental</url>
 					<schemas>
 						<schema>car_rental</schema>
 					</schemas>

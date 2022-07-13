@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.zetosoftware.reservation.dto.ReservationDto;
 
-import java.util.Collection;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -14,10 +14,13 @@ public class ReservationService {
     private final ReservationRepository reservationRepository;
     private final ReservationMapper reservationMapper;
 
+    private final ReservationEditorValidator reservationEditor;
+
     @Autowired
-    public ReservationService(ReservationRepository reservationRepository, ReservationMapper reservationMapper) {
+    public ReservationService(ReservationRepository reservationRepository, ReservationMapper reservationMapper, ReservationEditorValidator reservationEditor) {
         this.reservationRepository = reservationRepository;
         this.reservationMapper = reservationMapper;
+        this.reservationEditor = reservationEditor;
     }
 
     public ReservationDto createReservation(ReservationEntity reservationEntity) {
@@ -27,6 +30,15 @@ public class ReservationService {
     public String deleteReservationById(Long Id) {
         reservationRepository.deleteById(Id);
         return "Reservation with id:" + Id + " deleted successfully";
+    }
+
+    public ReservationDto changeReservationDates(Long id, LocalDate dateStart, LocalDate dateEnd) {
+        var reservation = getReservation(id);
+        if (!reservationEditor.isReservationAvailable(reservation.getCarId().getId(), dateStart, dateEnd))
+            throw new IllegalStateException("Other reservation is in progress during this period!");
+        reservation.changeReservationDates(dateStart, dateEnd);
+        reservationRepository.save(reservation);
+        return reservationMapper.fromReservationToReservationDto(reservation);
     }
 
     public List<ReservationDto> getAllReservations() {

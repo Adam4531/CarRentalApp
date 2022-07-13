@@ -1,5 +1,6 @@
 package pl.zetosoftware.reservation.value_objects;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import pl.zetosoftware.interfaces.Validator;
 
@@ -10,14 +11,15 @@ import java.util.Objects;
 
 @NoArgsConstructor
 @Embeddable
+@Getter
 public class ReservationDatesValidator implements Validator{
 
 
     @Column
-    public LocalDate dateStart;
+    private LocalDate dateStart;
 
     @Column
-    public LocalDate dateEnd;
+    private LocalDate dateEnd;
 
     public ReservationDatesValidator(LocalDate dateStart, LocalDate dateEnd) {
         if(Objects.isNull(dateStart)){
@@ -29,15 +31,15 @@ public class ReservationDatesValidator implements Validator{
         if(dateStart.isAfter(dateEnd)){
             throw new IllegalArgumentException("Date of start must be before the date of end reservation!");
         }
-        if (!minimumOneDayReservation()) {
+        if (!minimumOneDayReservation(dateStart, dateEnd)) {
             throw new IllegalStateException("Minimum reservation length is 1 day!");
         }
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
     }
 
-    public boolean minimumOneDayReservation(){
-        return this.dateStart.plusDays(1).isBefore(dateEnd) || this.dateStart.plusDays(1).isEqual(dateEnd);
+    public boolean minimumOneDayReservation(LocalDate dateStart, LocalDate dateEnd){
+        return dateStart.plusDays(1).isBefore(dateEnd) || dateStart.plusDays(1).isEqual(dateEnd);
     }
 
     @Override
