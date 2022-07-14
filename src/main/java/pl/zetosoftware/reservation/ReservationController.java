@@ -20,10 +20,10 @@ public class ReservationController {
         return reservationService.createReservation(reservationEntity);
     }
 
-    @PostMapping("/delete")
-    @ResponseStatus(HttpStatus.OK)
-    public String deleteReservationById(@RequestBody Long Id){
-        return reservationService.deleteReservationById(Id);
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public String deleteReservationById(@PathVariable Long id){
+        return reservationService.deleteReservationById(id);
     }
 
     @PatchMapping("/{id}")

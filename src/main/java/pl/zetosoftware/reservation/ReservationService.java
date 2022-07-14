@@ -27,9 +27,13 @@ public class ReservationService {
         return reservationMapper.fromReservationToReservationDto(reservationRepository.save(reservationEntity));
     }
 
-    public String deleteReservationById(Long Id) {
-        reservationRepository.deleteById(Id);
-        return "Reservation with id:" + Id + " deleted successfully";
+    public String deleteReservationById(Long id) {
+        var reservation = getReservation(id);
+        if (!reservationEditor.isPresentDayBeforeReservationToChange(reservation))
+            throw new IllegalStateException("Not allowed to delete started/completed reservations!");
+        reservationRepository.delete(reservation);
+        return "Reservation with id:" + id + " deleted successfully";
+
     }
 
     public ReservationDto changeReservationDatesByReservationId(Long id, LocalDate dateStart, LocalDate dateEnd) {
