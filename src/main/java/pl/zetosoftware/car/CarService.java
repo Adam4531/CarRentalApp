@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import pl.zetosoftware.car.dto.CarDto;
 import pl.zetosoftware.car.exception.CarNotFoundException;
 import pl.zetosoftware.car.value_objects.ProductionYearValidator;
+import pl.zetosoftware.reservation.ReservationEntity;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -53,6 +54,24 @@ public class CarService {
                 Sort.Order.asc("brand"),
                 Sort.Order.asc("model")));
         return carMapper.mapCarListToCarListDto(carEntities);
+    }
+    //lista samochodów, status samochodu
+    //to ma być wyświetlone: (czyli nowy DTO)
+    //np. volkswagen, golf, 2019, czerwony, cena za dzień(null), zarezerwowany (status), ...
+
+    /////////////////////
+    //id, marka, model itd.
+    //id samochodu w rezerwacji
+    //a w rezerwacji używając id samochodu porównać date dzisiejszą i daty wypożyczenia
+    public void updateStatus(Long Id){
+
+//        carRepository.findAll().stream().map(CarEntity::getStatus).
+        var rez = new ReservationEntity();
+        if(rez.getStartDate().isBefore(LocalDate.now()) && rez.getEndDate().isAfter(LocalDate.now())){
+            // ListaSamochodowDTO.setStatus("zarezerwowany");
+        } else {
+            // ListaSamochodowDTO.setStatus("aktywny");
+        }
     }
 
     public BigDecimal productionYearFactor(CarEntity car) {

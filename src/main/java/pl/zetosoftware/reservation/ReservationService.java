@@ -62,18 +62,43 @@ public class ReservationService {
     //  reserved     11-14, 13-21,
     //  next client  12-15, 11-14,
     //  and make tests
-    public boolean checkIfCarIsReserved(ReservationDatesValidator reservationDatesToCheck, Long Id){
+    public String checkStatus(ReservationDatesValidator reservationDatesToCheck, Long Id) {
         ReservationDatesValidator reservationOfCar = getReservation(Id).getDate();
 
-        if(reservationDatesToCheck.equals(reservationOfCar)){ //are same
-            return true;
+        if (reservationDatesToCheck.equals(reservationOfCar)) {
+            return "RESERVED";
         }
-        if(reservationOfCar.dateStart.isBefore(reservationDatesToCheck.dateStart)
+        if (reservationOfCar.dateStart.isBefore(reservationDatesToCheck.dateStart)
                 || reservationOfCar.dateEnd.isAfter(reservationDatesToCheck.dateStart)
-        ){
-            return true;
+        ) {
+            return "RESERVED";
         }
-        return false;
+        return "FREE";
+    }
+
+    public BigDecimal popularityOfCar(Long Id) {
+        int numberOfReservationOfTheMostPopularCar = getNumberOfReservationsOfTheMostPopularCar();
+        int numberOfReservationsOfTheSelectedCar = getAllReservationsByCarId(Id).size();
+
+        if (numberOfReservationsOfTheSelectedCar == numberOfReservationOfTheMostPopularCar) {
+            return BigDecimal.valueOf(3);
+        }
+        if (numberOfReservationOfTheMostPopularCar > numberOfReservationsOfTheSelectedCar &&
+                numberOfReservationsOfTheSelectedCar > numberOfReservationOfTheMostPopularCar / 2) {
+            return BigDecimal.valueOf(2);
+        }
+
+        return BigDecimal.ONE;
+    }
+
+    private List<ReservationDto> getAllReservationsByCarId(Long id) {
+        List<ReservationEntity> allReservationsByCarId = reservationRepository.getAllReservationsByCarId(id);
+        return reservationMapper.fromReservationListToReservationDtoList(allReservationsByCarId);
+    }
+
+    private int getNumberOfReservationsOfTheMostPopularCar() {
+        return reservationRepository.getAllCarsByPopularityOfReservations().values().stream().mapToInt(i -> i).max()
+                .orElseThrow(NoSuchElementException::new);
     }
 
     public BigDecimal setPrice(Long id, Integer days) {
