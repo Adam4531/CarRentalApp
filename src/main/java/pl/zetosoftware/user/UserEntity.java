@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.zetosoftware.basic.BasicEntity;
 import pl.zetosoftware.security.Role;
 import pl.zetosoftware.user.value_objects.*;
 
@@ -14,12 +15,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "USERS")
-public class UserEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
-    private Long id;
+public class UserEntity extends BasicEntity {
     @Embedded
     private LoginValidator login;
     @Embedded

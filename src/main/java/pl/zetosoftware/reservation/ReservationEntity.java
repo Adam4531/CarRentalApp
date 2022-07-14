@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import pl.zetosoftware.basic.BasicEntity;
 import pl.zetosoftware.car.CarEntity;
 import pl.zetosoftware.reservation.value_objects.CostValidator;
 import pl.zetosoftware.reservation.value_objects.PaymentInAdvanceValidator;
@@ -17,11 +18,7 @@ import java.time.LocalDateTime;
 @Table(name = "RESERVATIONS")
 @NoArgsConstructor
 @Getter
-public class ReservationEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
-    private Long id;
+public class ReservationEntity extends BasicEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
@@ -46,8 +43,7 @@ public class ReservationEntity {
     private PaymentInAdvanceValidator paymentInAdvance;
 
     @Builder
-    public ReservationEntity(Long id, UserEntity userId, CarEntity carId, LocalDateTime dateStart, LocalDateTime dateEnd, CostValidator cost, PaymentInAdvanceValidator paymentInAdvance) {
-        this.id = id;
+    public ReservationEntity(UserEntity userId, CarEntity carId, LocalDateTime dateStart, LocalDateTime dateEnd, CostValidator cost, PaymentInAdvanceValidator paymentInAdvance) {
         this.userId = userId;
         this.carId = carId;
         this.dateStart = dateStart;
