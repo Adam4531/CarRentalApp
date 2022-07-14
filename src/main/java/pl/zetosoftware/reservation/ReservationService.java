@@ -43,7 +43,7 @@ public class ReservationService {
                 .orElseThrow(() -> new NoSuchElementException("ReservationEntity with id: " + Id + " not found!"));
     }
 
-    public ReservationDto getReservationById(Long Id) {
+    public ReservationDto getReservationByReservationId(Long Id) {
         ReservationEntity reservationEntity = getReservation(Id);
         return reservationMapper.fromReservationToReservationDto(reservationEntity);
     }
@@ -52,16 +52,43 @@ public class ReservationService {
         return reservationRepository.findAll();
     }
 
-    public List<ReservationDto> getAllReservationsById(Long Id) {
+    public List<ReservationDto> getAllReservationsByUserId(Long Id) {
         List<ReservationEntity> allReservationsByUserId = reservationRepository.getAllReservationsByUserId(Id);
         return reservationMapper.fromReservationListToReservationDtoList(allReservationsByUserId);
     }
 
-    public BigDecimal setPrice(Long id, Integer days) {
+    private List<ReservationDto> getAllReservationsByCarId(Long id){
+        List<ReservationEntity> allReservationsByCarId = reservationRepository.getAllReservationsByCarId(id);
+        return reservationMapper.fromReservationListToReservationDtoList(allReservationsByCarId);
+    }
+    public BigDecimal popularityOfCar(Long id){
+        int numberOfReservationsOfTheMostPopularCar = getNumberOfReservationsOfTheMostPopularCar();
+        int numberOfReservationsOfTheSelectedCar = getAllReservationsByCarId(id).size();
+        if(numberOfReservationsOfTheMostPopularCar == numberOfReservationsOfTheSelectedCar){
+            return BigDecimal.valueOf(3);
+        }
+        if(numberOfReservationsOfTheMostPopularCar > numberOfReservationsOfTheSelectedCar &&
+                numberOfReservationsOfTheSelectedCar > numberOfReservationsOfTheMostPopularCar / 2){
+            return BigDecimal.valueOf(2);
+        }
+        return BigDecimal.ONE;
+    }
+
+    private int getNumberOfReservationsOfTheMostPopularCar() {
+        return reservationRepository.getAllCarsByPopularityOfReservations().values().stream().mapToInt(i -> i).max()
+                .orElseThrow(NoSuchElementException::new);
+    }
+
+    public BigDecimal initialPrice(Long id) {
         CarEntity car = carService.getCarEntityById(id);
         return BigDecimal.valueOf(car.getNewCarCost().toLong())
                 .multiply(BigDecimal.valueOf(0.001))
                 .multiply(carService.productionYearFactor(car))
-                .multiply(BigDecimal.valueOf(days));
+                .multiply(popularityOfCar(id));
     }
+
+    public BigDecimal setPrice(Long id, Integer days) {
+        return initialPrice(id).multiply(BigDecimal.valueOf(days));
+    }
+
 }
