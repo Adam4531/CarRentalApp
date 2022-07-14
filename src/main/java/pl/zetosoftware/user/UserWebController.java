@@ -31,30 +31,6 @@ public class UserWebController {
     }
 
 
-//    @GetMapping("/register")
-//    public String showRegistrationForm(ModelMap modelMap) {
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        if ( authentication == null || authentication instanceof AnonymousAuthenticationToken) {
-//            modelMap.addAttribute("userEntity", UserRequestDto.builder().build());
-//            return "register.html";
-//        }
-//        return "redirect:/";
-//    }
-//
-//    @PostMapping("/register")
-//    public String create(@Valid @ModelAttribute("userEntity") UserLoginDto user, BindingResult bindingResult,
-//                         ModelMap modelMap) {
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        if (authentication == null || authentication instanceof AnonymousAuthenticationToken)  {
-//            if (bindingResult.hasErrors()) {
-//                return "register.html";
-//            }
-//            userService.createUser(user);
-//            return "register-success.html";
-//        }
-//        return "redirect:/";
-//    }
-
     @GetMapping("/login")
     public String showLoginForm(ModelMap modelMap) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

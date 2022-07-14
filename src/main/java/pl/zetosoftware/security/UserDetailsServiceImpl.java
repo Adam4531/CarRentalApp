@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import pl.zetosoftware.user.UserEntity;
 import pl.zetosoftware.user.UserRepository;
 import pl.zetosoftware.user.value_objects.EmailValidator;
-import pl.zetosoftware.user.value_objects.LoginValidator;
 
 import java.util.stream.Collectors;
 
@@ -38,7 +37,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         UserEntity user = userRepository.findUserByEmail(new EmailValidator(email));
         if (user == null) {
-            throw new UsernameNotFoundException("user not found in the database");
+            throw new UsernameNotFoundException("user with email: " + email + " not found in the database");
         }
         return new org.springframework.security.core.userdetails.User(user.getEmail().toString(),
                 new BCryptPasswordEncoder().encode(user.getPassword().toString()),

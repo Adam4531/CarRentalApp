@@ -1,25 +1,12 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <title>Login page</title>
-  <link th:href="@{/public/style.css}" rel="stylesheet" />
-</head>
-<body>
-<div id="container">
-  <h2>Zaloguj się</h2>
-  <form th:action="@{/login}" method="post">
-    <label for="username">Login</label>
-    <input type="text" id="username" name="username" autofocus="autofocus" />
-    <p></p>
-    <label for="password">Hasło</label>
-    <input type="password" id="password" name="password" />
-    <input id="submit" type="submit" value="Log in" />
-  </form>
-  <p th:if="${loginError}" class="error">Podałeś złe hasło bądź login !</p>
-</div>
-</body>
-</html>
+<span class="p-float-label">
+    <input id="float-input" type="text" pInputText>
+    <label for="float-input">Login</label>
+</span>
 
+<span class="p-float-label">
+    <input id="float-input" type="text" pInputText>
+    <label for="float-input">Password</label>
+</span>
 
 
 <!-- <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>

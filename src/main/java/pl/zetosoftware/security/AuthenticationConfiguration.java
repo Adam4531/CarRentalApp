@@ -48,18 +48,16 @@ public class AuthenticationConfiguration extends WebSecurityConfigurerAdapter {
         provider.setUserDetailsService(this.userDetailsService);
         return provider;
     }
-
-
+    //login pod template -> reszta pod angular
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-
                 .csrf().disable()
                 .headers()
                 .frameOptions().disable()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/web/users/login", "/web/users/register")
+                .antMatchers("/web/users/login")
                 .permitAll()
                 .and()
                 .formLogin()
