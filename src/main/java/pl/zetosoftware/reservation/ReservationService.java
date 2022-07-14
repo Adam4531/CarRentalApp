@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.zetosoftware.car.CarEntity;
 import pl.zetosoftware.car.CarService;
+import pl.zetosoftware.reservation.dto.ReservationCarDto;
 import pl.zetosoftware.reservation.dto.ReservationDto;
 import pl.zetosoftware.reservation.value_objects.ReservationDatesValidator;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -108,4 +110,32 @@ public class ReservationService {
                 .multiply(carService.productionYearFactor(car))
                 .multiply(BigDecimal.valueOf(days));
     }
+
+    //osobno dla każdego czy od razu update dla wszystkich
+    public void updateStatus(Long id) {    //String or StatusEnum
+        var reservation = new ReservationEntity();
+
+        ReservationEntity car = getReservation(id);
+
+        if (reservation.getStartDate().isBefore(LocalDate.now()) && reservation.getEndDate().isAfter(LocalDate.now())) {
+            // ListaSamochodowDTO.setStatus("zarezerwowany");
+        } else {
+            // ListaSamochodowDTO.setStatus("aktywny");
+        }
+    }
+
+    public void updateStatusForAllCars() {
+//        List<ReservationCarDto> reservationCars =
+//                reservationMapper.fromCarDtoListToReservationCarDtoList(carService.getAllCars());
+
+        List<ReservationEntity> reservations = findAllReservations();
+
+//        for (ReservationCarDto reservationCarDto: reservations){
+//            if (reservation.getStartDate().isBefore(LocalDate.now()) && reservation.getEndDate().isAfter(LocalDate.now())) {
+//                 ListaSamochodowDTO.setStatus("zarezerwowany");
+//            } else {
+//                 ListaSamochodowDTO.setStatus("aktywny");
+//            }
+    }
+
 }
