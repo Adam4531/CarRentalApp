@@ -1,7 +1,6 @@
 package pl.zetosoftware.user;
 
 
-import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.zetosoftware.reservation.ReservationService;
 import pl.zetosoftware.user.dto.UserLoginDto;
 import pl.zetosoftware.user.dto.UserRequestDto;
 
@@ -22,12 +20,10 @@ import javax.validation.Valid;
 @RequestMapping("/web/users")
 public class UserWebController {
 
-    private final UserService userService;
-    private final ReservationService reservationService;
+    private final UserRegistrationService userRegistrationService;
 
-    public UserWebController(UserService userService, ReservationService reservationService) {
-        this.userService = userService;
-        this.reservationService = reservationService;
+    public UserWebController(UserRegistrationService userRegistrationService) {
+        this.userRegistrationService = userRegistrationService;
     }
 
 
@@ -49,4 +45,29 @@ public class UserWebController {
         }
         return "/";
     }
+
+    @GetMapping("/register")
+    public String showRegistrationForm(ModelMap modelMap) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if ( authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+            modelMap.addAttribute("UserRequestDto", UserRequestDto.builder().build());
+            return "register.html";
+        }
+        return "redirect:/";
+    }
+
+    @PostMapping("/register")
+    public String create(@Valid @ModelAttribute("UserRequestDto") UserRequestDto user, BindingResult bindingResult,
+                         ModelMap modelMap) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || authentication instanceof AnonymousAuthenticationToken)  {
+            if (bindingResult.hasErrors()) {
+                return "register.html";
+            }
+            userRegistrationService.register(user);
+            return "register-success.html";
+        }
+        return "redirect:/";
+    }
+
 }

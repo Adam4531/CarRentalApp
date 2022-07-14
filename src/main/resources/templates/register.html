@@ -32,7 +32,7 @@
                             <a sec:authorize="hasRole('ROLE_USER')" class="nav-link" th:href="@{/web/cars/search}">Rent a car</a>
                         </li>
                         <li class="nav-item">
-                            <a sec:authorize="isAnonymous()" class="nav-link" th:href="@{/web/cars/search}">Rent a car</a>
+                            <a sec:authorize="isAnonymous()" class="nav-link" th:href="@{/users}">Rent a car</a>
                         </li>
                         <li sec:authorize="isAnonymous()" class="nav-item">
                             <a class="nav-link" th:href="@{/web/users/login}">Login</a>
@@ -79,8 +79,18 @@
                             <hr />
                         </div>
                     </div>
-                    <form th:action="@{/web/users/register}" th:object="${userEntity}" method="post">
+                    <form th:action="@{/web/users/register}" th:object="${UserRequestDto}" method="post">
                         <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="login">Login</label>
+                                    <input type="text" th:field="*{login}" class="form-control" id="login"
+                                           placeholder="Login">
+                                    <p style="color: #FF0000;" th:if="${#fields.hasErrors('login')}"
+                                       th:errors="*{login}">
+                                        Login Error</p>
+                                </div>
+                            </div>
                             <div class="col-sm-12 col-md-6">
                                 <div class="form-group">
                                     <label for="firstName">First name</label>
@@ -88,30 +98,19 @@
                                            placeholder="First name">
                                     <p style="color: #FF0000;" th:if="${#fields.hasErrors('firstName')}"
                                        th:errors="*{firstName}">
-                                        Name Error</p>
+                                        First Name Error</p>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <div class="form-group">
-                                    <label for="secondName">SecondName</label>
+                                    <label for="SecondName">SecondName</label>
                                     <input type="text" th:field="*{secondName}" class="form-control" id="secondName"
-                                           placeholder="Second name">
+                                           placeholder="Last name">
                                     <p style="color: #FF0000;" th:if="${#fields.hasErrors('secondName')}"
-                                       th:errors="*{secondName}">Second
-                                        Name Error</p>
+                                       th:errors="*{secondName}">
+                                        Second Name Error</p>
                                 </div>
                             </div>
-                            <div class="col-sm-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="Email">Email</label>
-                                    <input type="email" th:field="*{email}" class="form-control" id="email"
-                                           placeholder="Email">
-                                    <p style="color: #FF0000;" th:if="${#fields.hasErrors('email')}"
-                                       th:errors="*{email}">Email
-                                        Error</p>
-                                </div>
-                            </div>
-                        </div>
                             <div class="col-sm-12 col-md-6">
                                 <div class="form-group">
                                     <label for="password">Password</label>
@@ -122,26 +121,54 @@
                                         Password Error</p>
                                 </div>
                             </div>
-                        </div>
-                        <br>
-                        <div class="d-flex flex-row">
-                            <input type="checkbox" value="" id="flexCheckDefault" th:field="*{termsAccepted}" required>
-                            <button type="button" class="btn btn-link">Accept terms and policy</button>
-                        </div>
-                        <div class="row d-flex justify-content-center">
-                            <div class="col-12 col-md-5 d-flex justify-content-center">
-                                <button type="submit" class="btn btn-primary">Register</button>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="Email">Email</label>
+                                    <input type="email" th:field="*{email}" class="form-control" id="email"
+                                           placeholder="Email">
+                                    <p style="color: #FF0000;" th:if="${#fields.hasErrors('email')}"
+                                       th:errors="*{email}">
+                                        Email Error</p>
+                                </div>
                             </div>
-                            <div style="text-align: center;">
-                                <hr />
-                                <button type="button" class="btn btn-link">Login </button>
-                                <button type="button" class="btn btn-link">Reset Password</button>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="PhoneNumber">PhoneNumber</label>
+                                    <input type="text" th:field="*{phoneNumber}" class="form-control" id="phoneNumber"
+                                           placeholder="PhoneNumber">
+                                    <p style="color: #FF0000;" th:if="${#fields.hasErrors('phoneNumber')}"
+                                       th:errors="*{phoneNumber}">
+                                        Phone Number Error</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="Pesel">Pesel</label>
+                                    <input type="text" th:field="*{pesel}" class="form-control" id="pesel"
+                                           placeholder="Pesel">
+                                    <p style="color: #FF0000;" th:if="${#fields.hasErrors('pesel')}"
+                                       th:errors="*{pesel}">
+                                        Pesel Error</p>
+                                </div>
                             </div>
                         </div>
-                    </form>
+
                 </div>
+                <br>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12 col-md-5 d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </div>
+                    <div style="text-align: center;">
+                        <hr />
+                        <button type="button" class="btn btn-link">Login </button>
+                        <button type="button" class="btn btn-link">Reset Password</button>
+                    </div>
+                </div>
+                </form>
             </div>
         </div>
+    </div>
     </div>
 </section>
 

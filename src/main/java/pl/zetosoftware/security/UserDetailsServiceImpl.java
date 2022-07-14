@@ -23,26 +23,26 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         this.userRepository = userRepository;
     }
 
-//    @Override
-//    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-//        UserEntity user = userRepository.findUserByEmail(new EmailValidator(email));
-//
-//        if(user == null){
-//            user = new UserEntity();
-//        }
-//        return new MyUserDetails(user);
-//    }
-
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         UserEntity user = userRepository.findUserByEmail(new EmailValidator(email));
-        if (user == null) {
-            throw new UsernameNotFoundException("user with email: " + email + " not found in the database");
+
+        if(user == null){
+            user = new UserEntity();
         }
-        return new org.springframework.security.core.userdetails.User(user.getEmail().toString(),
-                new BCryptPasswordEncoder().encode(user.getPassword().toString()),
-                user.getRoles().stream()
-                .map(role -> new SimpleGrantedAuthority(role.getName()))
-                .collect(Collectors.toSet()));
+        return new MyUserDetails(user);
     }
+
+//    @Override
+//    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+//        UserEntity user = userRepository.findUserByEmail(new EmailValidator(email));
+//        if (user == null) {
+//            throw new UsernameNotFoundException("user with email: " + email + " not found in the database");
+//        }
+//        return new org.springframework.security.core.userdetails.User(user.getEmail().toString(),
+//                new BCryptPasswordEncoder().encode(user.getPassword().toString()),
+//                user.getRoles().stream()
+//                .map(role -> new SimpleGrantedAuthority(role.getName()))
+//                .collect(Collectors.toSet()));
+//    }
 }

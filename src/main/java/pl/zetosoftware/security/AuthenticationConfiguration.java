@@ -28,9 +28,9 @@ import pl.zetosoftware.user.UserRepository;
 //        securedEnabled = true,
 //        jsr250Enabled = true)
 public class AuthenticationConfiguration extends WebSecurityConfigurerAdapter {
-
-    @Autowired
-    UserRepository userRepository;
+//
+//    @Autowired
+//    UserRepository userRepository;
 
     private final UserDetailsService userDetailsService;
 
@@ -57,8 +57,12 @@ public class AuthenticationConfiguration extends WebSecurityConfigurerAdapter {
                 .frameOptions().disable()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/web/users/login")
+                .antMatchers("/web/users/login","/web/users/register", "users/**")
                 .permitAll()
+                .and()
+                .authorizeRequests()
+                .antMatchers("/cars/{id}")
+                .hasAnyRole("ROLE_ADMIN")
                 .and()
                 .formLogin()
                 .loginPage("/web/users/login")
@@ -69,15 +73,5 @@ public class AuthenticationConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/");
     }
-
-//
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication()
-//                .withUser("user")
-//                .password("{noop}pass") // Spring Security 5 requires specifying the password storage format
-//                .roles("USER");
-//    }
-
 
 }

@@ -3,19 +3,12 @@ package pl.zetosoftware.user;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import lombok.Setter;
 import pl.zetosoftware.security.Role;
 import pl.zetosoftware.user.value_objects.*;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Getter
 @NoArgsConstructor
@@ -49,6 +42,7 @@ public class UserEntity {
     private PeselValidator pesel;
 
     @ManyToMany(fetch = FetchType.EAGER)
+    @Setter
     private Set<Role> roles;
 
     @Builder

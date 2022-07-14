@@ -19,8 +19,8 @@ public class PasswordValidator implements Validator {
     public PasswordValidator(String password) {
         if ( Objects.isNull(password) )
             throw new IllegalStateException("Password cant be null!");
-        if ( !isValidLength(password, 7, 28) )
-            throw new IllegalStateException("Password must be between 7 and 28 characters length!");
+//        if ( !isValidLength(password, 7, 28) )
+//            throw new IllegalStateException("Password must be between 7 and 28 characters length!");
         if ( !containsValidCharacters(password, ENGLISH_LETTERS_NUMBERS_SPECIAL_CHARACTERS) )
             throw new IllegalStateException("Password may contain only english letters, numbers and special characters!");
         this.password = password;
