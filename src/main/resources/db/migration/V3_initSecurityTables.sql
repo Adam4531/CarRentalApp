@@ -1,0 +1,11 @@
+--CREATE TABLE roles (
+--    ID BIGINT NOT NULL PRIMARY KEY,
+--    name VARCHAR(40)
+--);
+--
+--CREATE TABLE users_roles (
+--    user_entity_id BIGINT REFERENCES users (ID) ON UPDATE CASCADE ON DELETE CASCADE,
+--    roleS_id BIGINT REFERENCES roles (ID) ON UPDATE CASCADE,
+--    name VARCHAR(40)
+--);
+

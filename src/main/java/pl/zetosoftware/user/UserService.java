@@ -2,9 +2,14 @@ package pl.zetosoftware.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 import pl.zetosoftware.user.dto.UserRequestDto;
 import pl.zetosoftware.user.dto.UserResponseDto;
+import pl.zetosoftware.user.value_objects.EmailValidator;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -14,7 +19,6 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
-
 
     @Autowired
     public UserService(UserRepository userRepository, UserMapper userMapper) {
@@ -69,5 +73,17 @@ public class UserService {
         userRepository.delete(user);
         return "User with id: " + id + " deleted successfully!";
     }
+
+    public UserResponseDto getCurrentLoggedUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            String email = authentication.getName();
+            UserEntity user = userRepository.findUserByEmail(new EmailValidator(email));
+            return userMapper.fromUserEntityToUserResponseDto(user);
+        }
+        return null;
+    }
+
+
 
 }

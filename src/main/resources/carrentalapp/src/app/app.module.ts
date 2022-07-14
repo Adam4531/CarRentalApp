@@ -6,10 +6,14 @@ import {ButtonModule} from 'primeng/button';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {InputTextModule} from 'primeng/inputtext';
 import {TableModule} from 'primeng/table';
-import {AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { CarComponent } from './car/car.component';
 import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { PasswordModule } from 'primeng/password';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +29,10 @@ import { UserComponent } from './user/user.component';
     BrowserAnimationsModule,
     InputTextModule,
     TableModule,
-    AppRoutingModule
+    AppRoutingModule,
+    InputNumberModule,
+    PasswordModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

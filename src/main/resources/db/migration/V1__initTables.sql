@@ -17,10 +17,10 @@ CREATE TABLE IF NOT EXISTS public.CARS(
 
 CREATE TABLE IF NOT EXISTS public.USERS(
     ID BIGINT NOT NULL,
-    login VARCHAR(30) NOT NULL,
-    password VARCHAR(20),
-    first_name VARCHAR(20),
-    second_name VARCHAR(20),
+    login VARCHAR(100) NOT NULL,
+    password VARCHAR(200),
+    first_name VARCHAR(100),
+    second_name VARCHAR(100),
     phone_number VARCHAR(9),
     email VARCHAR(30) NOT NULL,
     pesel VARCHAR(11) NOT NULL,

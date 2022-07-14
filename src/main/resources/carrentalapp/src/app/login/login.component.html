@@ -1,9 +1,45 @@
-<span class="p-float-label">
-    <input id="float-input" type="text" pInputText> 
-    <label for="float-input">Login</label>
-</span>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Login page</title>
+  <link th:href="@{/public/style.css}" rel="stylesheet" />
+</head>
+<body>
+<div id="container">
+  <h2>Zaloguj się</h2>
+  <form th:action="@{/login}" method="post">
+    <label for="username">Login</label>
+    <input type="text" id="username" name="username" autofocus="autofocus" />
+    <p></p>
+    <label for="password">Hasło</label>
+    <input type="password" id="password" name="password" />
+    <input id="submit" type="submit" value="Log in" />
+  </form>
+  <p th:if="${loginError}" class="error">Podałeś złe hasło bądź login !</p>
+</div>
+</body>
+</html>
 
-<span class="p-float-label">
-    <input id="float-input" type="text" pInputText> 
-    <label for="float-input">Password</label>
-</span>
+
+
+<!-- <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+    <div [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+        <label for="username">Username</label>
+        <input type="text"
+          name="username" [(ngModel)]="model.username"
+            #username="ngModel" required />
+        <div *ngIf="f.submitted
+          && !username.valid">Username is required</div>
+    </div>
+    <div [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+        <label for="password">Password</label>
+        <input type="password"
+          name="password" [(ngModel)]="model.password"
+            #password="ngModel" required />
+        <div *ngIf="f.submitted
+          && !password.valid">Password is required</div>
+    </div>
+    <div>
+        <button [disabled]="">Login</button>
+    </div>
+</form> -->
