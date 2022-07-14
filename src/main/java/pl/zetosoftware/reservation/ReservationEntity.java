@@ -39,6 +39,7 @@ public class ReservationEntity {
             @AttributeOverride(name = "dateStart", column = @Column(name = "date_start")),
             @AttributeOverride(name = "dateEnd", column = @Column(name = "date_end"))
     })
+    @JsonBackReference
     private ReservationDatesValidator date;
 
     @Embedded
@@ -57,20 +58,8 @@ public class ReservationEntity {
         this.paymentInAdvance = paymentInAdvance;
     }
 
-    public void changeDateStart(LocalDate dateStart) {
-        this.date.dateStart = dateStart;
-    }
-
-    public void changeDateEnd(LocalDate dateEnd) {
-        this.date.dateEnd = dateEnd;
-    }
-
-    public LocalDate getStartDate(){
-        return date.dateStart;
-    }
-
-    public LocalDate getEndDate(){
-        return date.dateEnd;
+    public void changeReservationDates(LocalDate dateStart,LocalDate dateEnd) {
+        this.date = new ReservationDatesValidator(dateStart, dateEnd);
     }
 
     public void changeCost(BigDecimal cost) {

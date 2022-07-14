@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import pl.zetosoftware.reservation.dto.ReservationDto;
+import pl.zetosoftware.reservation.value_objects.ReservationDatesValidator;
 
 import java.util.List;
 
@@ -19,12 +20,17 @@ public class ReservationController {
         return reservationService.createReservation(reservationEntity);
     }
 
-
-    @PostMapping("/delete")
-    @ResponseStatus(HttpStatus.OK)
-    public String deleteReservationById(@RequestBody Long Id){
-        return reservationService.deleteReservationById(Id);
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public String deleteReservationById(@PathVariable Long id){
+        return reservationService.deleteReservationById(id);
     }
+
+    @PatchMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ReservationDto changeReservationDatesByReservationId(@PathVariable Long id, @RequestBody ReservationDatesValidator date){
+    return reservationService.changeReservationDatesByReservationId(id, date.getDateStart(), date.getDateEnd());
+}
 
     @GetMapping("")
     @ResponseStatus(HttpStatus.OK)
