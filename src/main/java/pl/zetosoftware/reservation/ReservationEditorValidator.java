@@ -13,39 +13,46 @@ public class ReservationEditorValidator {
         this.reservationRepository = reservationRepository;
     }
 
-    public boolean datesEquals(LocalDate dateStart, LocalDate dateEnd, LocalDate reservationDateStart, LocalDate reservationDateEnd){
+    public boolean areDatesEquals(LocalDate dateStart, LocalDate dateEnd, LocalDate reservationDateStart, LocalDate reservationDateEnd){
         return dateStart.equals(reservationDateStart) || dateStart.equals(reservationDateEnd)
                 || dateEnd.equals(reservationDateStart) || dateEnd.equals(reservationDateEnd);
     }
 
-    public boolean dateBetween(LocalDate dateBetween, LocalDate firstDate, LocalDate secondDate){
+    public boolean isDateBetween(LocalDate dateBetween, LocalDate firstDate, LocalDate secondDate){
         return dateBetween.isAfter(firstDate) && dateBetween.isBefore(secondDate);
     }
 
-    public boolean reservationContainsNewReservation(LocalDate dateStart, LocalDate dateEnd, LocalDate reservationDateStart, LocalDate reservationDateEnd){
+    public boolean isReservationContainingNewReservation(LocalDate dateStart, LocalDate dateEnd, LocalDate reservationDateStart, LocalDate reservationDateEnd){
         return reservationDateStart.isBefore(dateStart) && reservationDateEnd.isAfter(dateEnd);
     }
 
-//Nie działa jeśli zmieniamy czas rezerwacji, który zawiera się w aktualnie zmienianej rezerwacji:
-//trzeba usunąć akutalnie zmienianą rezerwację z listy
-    public boolean isReservationAvailable(Long carId, LocalDate dateStart, LocalDate dateEnd){
-        List<ReservationEntity> reservationEntities = reservationRepository.findAll();
-        reservationEntities.removeIf(reservation -> !reservation.getCarId().getId().equals(carId));
+    public boolean isPresentDayBeforeReservationToChange (ReservationEntity reservationToChange){
+        return LocalDate.now().isBefore(reservationToChange.getDate().getDateStart());
+    }
 
-        for (ReservationEntity reservation: reservationEntities) {
-            if ((datesEquals (dateStart, dateEnd, reservation.getDate().getDateStart(), reservation.getDate().getDateEnd()))
-            || (dateBetween (reservation.getDate().getDateEnd(), dateStart, dateEnd))
-            || (dateBetween (reservation.getDate().getDateStart(), dateStart, dateEnd)
-            || (reservationContainsNewReservation (dateStart, dateEnd, reservation.getDate().getDateStart(), reservation.getDate().getDateEnd()))))
-                return false;
+    public boolean isNewStartDayReservationAfterToday (LocalDate dateStart){
+        return dateStart.isAfter(LocalDate.now());
+    }
+
+    public boolean isReservationAvailable(ReservationEntity reservationToChange, LocalDate dateStart, LocalDate dateEnd){
+        if (isPresentDayBeforeReservationToChange(reservationToChange)) {
+            if (isNewStartDayReservationAfterToday(dateStart)){
+
+                List<ReservationEntity> reservationEntitiesForSpecifiedCar = reservationRepository.findAll();
+                reservationEntitiesForSpecifiedCar.removeIf(reservation -> !reservation.getCarId().getId().equals(reservationToChange.getCarId().getId()));
+                reservationEntitiesForSpecifiedCar.remove(reservationToChange);
+
+                for (ReservationEntity reservation : reservationEntitiesForSpecifiedCar) {
+                    if ((areDatesEquals(dateStart, dateEnd, reservation.getDate().getDateStart(), reservation.getDate().getDateEnd()))
+                            || (isDateBetween(reservation.getDate().getDateEnd(), dateStart, dateEnd))
+                            || (isDateBetween(reservation.getDate().getDateStart(), dateStart, dateEnd)
+                            || (isReservationContainingNewReservation(dateStart, dateEnd, reservation.getDate().getDateStart(), reservation.getDate().getDateEnd()))))
+                        return false;
+                }
+                return true;
+            }
+            throw new IllegalStateException("Not allowed to change reservation's date to historical or present date!");
         }
-        return true;
-
-//        for (ReservationEntity reservation: reservationEntities) {
-//            if ((dateStart.equals(reservation.getDate().getDateStart()) || dateStart.equals(reservation.getDate().getDateEnd())
-//                    || dateEnd.equals(reservation.getDate().getDateStart()) || dateEnd.equals(reservation.getDate().getDateEnd()))
-//            || (reservation.getDate().getDateEnd().isAfter(dateStart) && reservation.getDate().getDateEnd().isBefore(dateEnd))
-//            || (reservation.getDate().getDateStart().isAfter(dateStart) && reservation.getDate().getDateStart().isBefore(dateEnd))
-//            || (reservation.getDate().getDateStart().isBefore(dateStart) && reservation.getDate().getDateEnd().isAfter(dateEnd)))
+        throw new IllegalStateException("Not allowed to change started/completed reservations!");
     }
 }

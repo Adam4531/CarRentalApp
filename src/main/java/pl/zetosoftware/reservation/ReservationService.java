@@ -32,9 +32,9 @@ public class ReservationService {
         return "Reservation with id:" + Id + " deleted successfully";
     }
 
-    public ReservationDto changeReservationDates(Long id, LocalDate dateStart, LocalDate dateEnd) {
+    public ReservationDto changeReservationDatesByReservationId(Long id, LocalDate dateStart, LocalDate dateEnd) {
         var reservation = getReservation(id);
-        if (!reservationEditor.isReservationAvailable(reservation.getCarId().getId(), dateStart, dateEnd))
+        if (!reservationEditor.isReservationAvailable(reservation, dateStart, dateEnd))
             throw new IllegalStateException("Other reservation is in progress during this period!");
         reservation.changeReservationDates(dateStart, dateEnd);
         reservationRepository.save(reservation);
