@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class CarMapper {
 
     @Autowired
-    CarService carService;
+    ReservationService reservationService;
 
 
     public CarDto mapCarToCarDto(CarEntity carEntity) {
@@ -42,8 +42,8 @@ public class CarMapper {
                 .model(carEntity.getModel().toString())
                 .engineCapacity(carEntity.getEngineCapacity().toBigDecimal())
                 .bodyTypeEnum(carEntity.getBodyType())
-                .status(carService.refreshStatus(carEntity.getId()))
-                .pricePerDayRent(carService.initialPrice(carEntity.getId()))
+                .status(reservationService.refreshStatus(carEntity.getId()))
+                .pricePerDayRent(reservationService.initialPrice(carEntity.getId()))
                 .build();
     }
 
