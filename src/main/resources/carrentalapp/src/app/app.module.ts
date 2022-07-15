@@ -17,6 +17,7 @@ import { DividerModule } from 'primeng/divider';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import {InputMaskModule} from 'primeng/inputmask';
 import { HomeComponent } from './home/home.component';
+import { FilterComponent } from './filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     UserComponent,
     RegistrationComponent,
-    HomeComponent
+    HomeComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,

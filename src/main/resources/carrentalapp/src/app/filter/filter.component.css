@@ -1,0 +1,45 @@
+  h1 {
+    text-align: center;
+  }
+
+  h3 {
+    text-align: center;
+  }
+  
+  .container {
+    box-shadow: 0 0 15px purple;
+    background-color: #1a001a;
+    width: 500px;
+    height: 820px;
+    margin: 0 auto;
+  }
+  
+  button {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    height: 60px;
+    width: 400px;
+    font-size: large;
+  }
+  .container p {
+    text-align: center;
+  }
+  
+  input {
+    margin-top: 15px;
+    margin-left: 20px;
+    margin-right: 30px;
+    width: 150px;
+  }
+
+  :host ::ng-deep .input-mask{
+    margin-top: 15px;
+    margin-left: 20px;
+    margin-right: 30px;
+    width: 150px;
+    }
+
+  :host ::ng-deep .input-mask-date{
+    margin-top: 15px;
+    width: 100px;
+    }
