@@ -2,12 +2,13 @@ package pl.zetosoftware.user;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import pl.zetosoftware.user.dto.ErrorDto;
+import pl.zetosoftware.user.dto.UserRegisterValidDto;
 import pl.zetosoftware.user.dto.UserRequestDto;
-import pl.zetosoftware.user.dto.UserResponseDto;
-import pl.zetosoftware.user.exception.EmailAlreadyExist;
-import pl.zetosoftware.user.exception.LoginAlreadyExist;
 import pl.zetosoftware.user.value_objects.EmailValidator;
 import pl.zetosoftware.user.value_objects.LoginValidator;
+
+import java.util.ArrayList;
 
 @Service
 public class UserRegistrationService {
@@ -20,16 +21,20 @@ public class UserRegistrationService {
         this.userMapper = userMapper;
     }
 
-    public UserResponseDto register(UserRequestDto userRequestDto){
+    public UserRegisterValidDto register(UserRequestDto userRequestDto) {
+
+        UserRegisterValidDto userRegisterValidDto = new UserRegisterValidDto( new ArrayList<>() );
         if ( existWithEmail(userRequestDto.email()) ) {
-            throw new EmailAlreadyExist();
+            userRegisterValidDto.getErrors().add( new ErrorDto(" User with this email already exists !! ") );
         }
         if ( existWithLogin(userRequestDto.login()) ) {
-            throw new LoginAlreadyExist();
+            userRegisterValidDto.getErrors().add( new ErrorDto(" User with this login already exists !! ") );
         }
-        var userEntity = userMapper.fromUserRequestDtoToUserEntity(userRequestDto);
-        userRepository.save(userEntity);
-        return userMapper.fromUserEntityToUserResponseDto(userEntity);
+        if( userRegisterValidDto.isListOfErrorsEmpty() ) {
+            var userEntity = userMapper.fromUserRequestDtoToUserEntity(userRequestDto);
+            userRepository.save(userEntity);
+        }
+        return userRegisterValidDto;
     }
 
     public Boolean existWithEmail(String email) {

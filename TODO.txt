@@ -67,5 +67,12 @@ DALEKA PRZYSZŁOŚĆ:
 
 
 
+    //NOTATKA PIOTR :
+    // WalidacjaDto {
+    // pole typu lista<BladDto> -> BladDto posiada pole string}
+    // if(walidacja(userRequestDto).brakBledow()) {
+    //save
+    // }
+
 
 
