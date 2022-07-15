@@ -33,15 +33,7 @@ public class ReservationController {
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public List<ReservationDto> getAllReservationsByUser(@PathVariable Long id){
-        return reservationService.getAllReservationsById(id);
+        return reservationService.getAllReservationsByUserId(id);
     }
-
-//    @GetMapping("/{id}")
-//    @ResponseStatus(HttpStatus.OK)
-//    public List<ReservationDto> getAllReservationsByUser(@RequestBody Long id){
-//        return reservationService.getAllReservationsById(id);
-//    }
-
-
 
 }
