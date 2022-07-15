@@ -17,6 +17,7 @@ export class RegistrationComponent implements OnInit {
   email!: string;
   phoneNumber!: string;
   pesel!: string;
+  // DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY
 
   constructor(private router: Router){
   }
