@@ -1,0 +1,33 @@
+h1 {
+    text-align: center;
+    margin-top: 4%;
+  
+  }
+  
+  .container {
+    box-shadow: 0 0 15px purple;
+    background-color: #1a001a;
+    width: 500px;
+    height: 630px;
+    margin: 0 auto;
+  }
+  
+  button {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    height: 60px;
+    width: 400px;
+    font-size: large;
+  }
+
+  .container p {
+    text-align: center;
+  }
+
+  input {
+    width: 222px;
+  }
+
+  :host ::ng-deep .input-mask{
+    width: 222px;
+    }
