@@ -26,7 +26,6 @@ public class UserWebController {
         this.userRegistrationService = userRegistrationService;
     }
 
-
     @GetMapping("/login")
     public String showLoginForm(ModelMap modelMap) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

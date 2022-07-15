@@ -1,6 +1,8 @@
 package pl.zetosoftware.user.value_objects;
 
 import lombok.NoArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import pl.zetosoftware.interfaces.Validator;
 
 import javax.persistence.Column;
@@ -12,18 +14,23 @@ import java.util.Objects;
 public class PasswordValidator implements Validator {
 
     private static final String ENGLISH_LETTERS_NUMBERS_SPECIAL_CHARACTERS = "[\\x21-\\x7E]+";
-
+    private static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     @Column
     private String password;
 
     public PasswordValidator(String password) {
         if ( Objects.isNull(password) )
             throw new IllegalStateException("Password cant be null!");
-//        if ( !isValidLength(password, 7, 28) )
-//            throw new IllegalStateException("Password must be between 7 and 28 characters length!");
+        if ( !isValidLength(password, 7, 28) )
+            throw new IllegalStateException("Password must be between 7 and 28 characters length!");
         if ( !containsValidCharacters(password, ENGLISH_LETTERS_NUMBERS_SPECIAL_CHARACTERS) )
             throw new IllegalStateException("Password may contain only english letters, numbers and special characters!");
+        password = encryptPassword(password);
         this.password = password;
+    }
+
+    private String encryptPassword(String password){
+        return this.password = passwordEncoder.encode(password);
     }
 
     @Override

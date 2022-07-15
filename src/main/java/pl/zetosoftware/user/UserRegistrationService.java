@@ -13,12 +13,10 @@ import pl.zetosoftware.user.value_objects.LoginValidator;
 public class UserRegistrationService {
 
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
 
-    public UserRegistrationService(UserRepository userRepository, PasswordEncoder passwordEncoder, UserMapper userMapper) {
+    public UserRegistrationService(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
         this.userMapper = userMapper;
     }
 
@@ -30,7 +28,6 @@ public class UserRegistrationService {
             throw new LoginAlreadyExist();
         }
         var userEntity = userMapper.fromUserRequestDtoToUserEntity(userRequestDto);
-        encryptUserPassword(userEntity);
         userRepository.save(userEntity);
         return userMapper.fromUserEntityToUserResponseDto(userEntity);
     }
@@ -41,10 +38,6 @@ public class UserRegistrationService {
 
     public Boolean existWithLogin(String login) {
         return userRepository.existsUserEntityByLogin(new LoginValidator(login));
-    }
-
-    private void encryptUserPassword(UserEntity userEntity) {
-        userEntity.changePassword(passwordEncoder.encode(userEntity.getPassword().toString()));
     }
 
 }
