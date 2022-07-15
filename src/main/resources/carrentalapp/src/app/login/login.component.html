@@ -9,17 +9,17 @@
         </header>
             <main>
                 <div class="container">
-                    <P>
+                    <p>
                         <input type="text" pInputText [(ngModel)]="email" placeholder="Email address">
                         <!-- EMAIL DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
-                    </P>
+                    </p>
                     <p>
                         <p-password [feedback]="false" [toggleMask]="true" [(ngModel)]="password" placeholder="Repeat password"></p-password>
                         <!-- PASSWORD DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
                     </p>
                 
                     <p>
-                        <button type="button" pButton label="Sign in" class="btn btn-primary-outline pull-right" (click)="btnClick('/home');"></button>
+                        <button type="button" pButton label="Sign in" (click)="btnClick('/home');"></button>
                         <!-- PRZEKIEROWANIE NA STRONE GLOWNA BEZ LOGOWANIA -->
                     </p>
                 </div>
