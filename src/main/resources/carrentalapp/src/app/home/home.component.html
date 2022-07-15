@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Car Rental</title>
+    </head>
+    <body>
+        <header>
+            <h1>CAR RENTAL</h1>
+            <h2>We are a car rental company.<br>
+                We have over twenty years of experience in the industry, which guarantees the high quality of our services.<br>
+                We operate in Poland, Germany and Slovakia.<br>
+            </h2>
+        </header>
+            <main>
+                <div class="container">
+                    <p>
+                        <button type="button" pButton label="Available Cars" class="btn btn-primary-outline pull-right" (click)="btnClick('/cars');"></button>
+                    </p>
+                    <p>
+                        <button type="button" pButton label="Login" class="btn btn-primary-outline pull-right" (click)="btnClick('/login');"></button>
+                    </p>
+                    <p>
+                        <button type="button" pButton label="Register" class="btn btn-primary-outline pull-right" (click)="btnClick('/registration');"></button>
+                    </p>
+                </div>
+            </main>
+    </body>
+</html>
