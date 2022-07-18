@@ -1,5 +1,6 @@
 import Big from 'big.js';
-export interface Car{
+
+export interface SelectedCar {
     id: number;
     brand: string;
     model: string;
@@ -7,6 +8,9 @@ export interface Car{
     bodyType: string;
     typeOfFuel: string;
     newCarCost: number;
-    productionYear: number
-    status: string
+    productionYear: number;
+    status: string;
+    //rentCost: Big;
+
+    // DO ZMIANY POD NOWĄ LISTĘ KTÓRĄ ROBI ADAM
 }

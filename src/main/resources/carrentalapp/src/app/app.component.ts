@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Car } from './car/car';
-import { CarService } from './car/car.service';
+import { Car } from './cars/car';
+import { CarService } from './cars/car.service';
 import { PrimeNGConfig } from 'primeng/api';
 import { Router } from '@angular/router';
 

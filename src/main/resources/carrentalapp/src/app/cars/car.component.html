@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Car List</title>
+    </head>
+    <body>
+        <p-table [value]="cars">
+            <ng-template pTemplate="caption">
+                <div class="table-header">
+                    List of Cars
+                    <p>
+                        <a href="http://localhost:4200/home">HOME PAGE</a>
+                    </p>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <!-- <tr>
+                    <th *ngFor="let columns of columns">
+                        {{columns.header}}
+                    </th>
+                </tr> -->
+                <tr>
+                    <th>Image</th>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>Body Type</th>
+                    <th>Engine Capacity</th>
+                    <th>Production Year</th>
+                    <th>Rent Cost(/day)</th>
+                    <th>Status</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-car>
+                <!-- <tr>
+                    <td *ngFor="let columns of columns">
+                            {{car[columns.field]}}
+                    </td>
+                </tr> -->
+                <tr>
+                    <!-- <td><img [src]="'assets/images/example_car.jpeg'" [alt]="car.brand" width="100" class="shadow-4" /></td>
+                    <td> {{ car.brand }}</td>
+                    <td> {{ car.model }}</td>
+                    <td> {{ car.bodyTypeEnum }}</td>
+                    <td> {{ car.engineCapacity }}</td>
+                    <td> {{ car.productionYear }}</td>
+                    <td> {{ car.rentCost | currency: 'EUR'}}</td>
+                    <td> {{ car.statusEnum }}</td> -->
+
+                    <td><a [routerLink]="['/selected-car',car.id]" class="row-link"><img [src]="'assets/images/example_car.jpeg'" [alt]="car.brand" width="100"/></a></td>
+                    <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.brand }}</a></td>
+                    <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.model }}</a></td>
+                    <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.bodyTypeEnum }}</a></td>
+                    <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.engineCapacity }}</a></td>
+                    <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.productionYear }}</a></td>
+                    <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.rentCost | currency: 'EUR'}}</a></td>
+                    <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.statusEnum }}</a></td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="summary">
+                <div class="p-d-flex p-ai-center p-jc-between">
+                    In total there are {{cars?.length}} cars in store.
+                </div>
+            </ng-template>
+        </p-table>
+    </body>
+</html> 
