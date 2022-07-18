@@ -13,17 +13,17 @@ import java.util.List;
 public class ReservationController {
     private final ReservationService reservationService;
 
-    @PostMapping("/add")
+    @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public ReservationDto addReservation(@RequestBody ReservationEntity reservationEntity) {
         return reservationService.createReservation(reservationEntity);
     }
 
 
-    @PostMapping("/delete")
-    @ResponseStatus(HttpStatus.OK)
-    public String deleteReservationById(@RequestBody Long Id){
-        return reservationService.deleteReservationById(Id);
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public String deleteReservationById(@PathVariable Long id){
+        return reservationService.deleteReservationById(id);
     }
 
     @GetMapping("")
@@ -35,5 +35,8 @@ public class ReservationController {
     public List<ReservationDto> getAllReservationsByUser(@PathVariable Long id){
         return reservationService.getAllReservationsByUserId(id);
     }
+
+//    @GetMapping("/show")
+//    @ResponseStatus(HttpStatus.OK)
 
 }

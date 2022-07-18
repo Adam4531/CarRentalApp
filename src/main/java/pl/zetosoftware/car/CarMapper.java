@@ -1,19 +1,14 @@
 package pl.zetosoftware.car;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.zetosoftware.car.dto.CarDto;
-import pl.zetosoftware.reservation.ReservationService;
-import pl.zetosoftware.reservation.dto.ReservationCarDto;
+import pl.zetosoftware.car.dto.ReservationCarDto;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
 public class CarMapper {
-
-    @Autowired
-    ReservationService reservationService;
 
 
     public CarDto mapCarToCarDto(CarEntity carEntity) {
@@ -42,8 +37,8 @@ public class CarMapper {
                 .model(carEntity.getModel().toString())
                 .engineCapacity(carEntity.getEngineCapacity().toBigDecimal())
                 .bodyTypeEnum(carEntity.getBodyType())
-                .status(reservationService.refreshStatus(carEntity.getId()))
-                .pricePerDayRent(reservationService.initialPrice(carEntity.getId()))
+                .status(carEntity.getStatus())
+//                .pricePerDayRent(carEntity.getPricePerDay())      //to tez ma się odbywać przez kontroler, czy tak jak teraz robie?
                 .build();
     }
 

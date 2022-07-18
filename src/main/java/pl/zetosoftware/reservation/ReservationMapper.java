@@ -2,9 +2,7 @@ package pl.zetosoftware.reservation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.zetosoftware.car.CarEntity;
 import pl.zetosoftware.car.CarService;
-import pl.zetosoftware.reservation.dto.ReservationCarDto;
 import pl.zetosoftware.reservation.dto.ReservationDto;
 
 import java.util.List;
