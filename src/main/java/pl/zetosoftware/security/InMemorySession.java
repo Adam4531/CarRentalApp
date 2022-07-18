@@ -12,12 +12,12 @@ public class InMemorySession {
 
     private static final HashMap<String, String> SESSIONS = new HashMap<>();
 
-    public String registerSession(final String username) {
-        if (username == null) {
+    public String registerSession(final String email) {
+        if (email == null) {
             throw new RuntimeException("Email needs to be provided !! ");
         }
         final String sessionId = generateSessionId();
-        SESSIONS.put(sessionId, username);
+        SESSIONS.put(sessionId, email);
         return sessionId;
     }
 

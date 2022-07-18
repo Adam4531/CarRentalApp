@@ -20,7 +20,7 @@ export class AuthenticationGuard implements CanActivate {
       let token = sessionStorage.getItem('token');
 
       if(!token) {
-        // console.log("NIE JESTES ZALOGOWANY !!!!!!!!111!")
+        console.log("NIE JESTES ZALOGOWANY !!!!!!!!111!")
         return this.router.parseUrl('/login');
       }
 

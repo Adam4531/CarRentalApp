@@ -14,7 +14,6 @@ public class CurrentUserService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-
     @Autowired
     public CurrentUserService(UserRepository userRepository) {
         this.userRepository = userRepository;

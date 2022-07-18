@@ -3,12 +3,15 @@ package pl.zetosoftware.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.lang.NonNull;
+import org.springframework.lang.NonNullApi;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -22,7 +25,6 @@ public class SessionFilter extends OncePerRequestFilter {
     private final InMemorySession sessionRegistry;
     private final CurrentUserService currentUserService;
 
-
     @Autowired
     public SessionFilter(final InMemorySession sessionRegistry,
                          final CurrentUserService currentUserService) {
@@ -31,18 +33,18 @@ public class SessionFilter extends OncePerRequestFilter {
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
-                                    FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request,  @NonNull HttpServletResponse response,
+                                    @NonNull FilterChain filterChain) throws ServletException, IOException {
         final String sessionId = request.getHeader(HttpHeaders.AUTHORIZATION);
         if (sessionId == null || sessionId.length() == 0) {
             filterChain.doFilter(request, response);
         }
-        final String username = sessionRegistry.getUsernameForSession(sessionId);
-        if (username == null) {
+        final String email = sessionRegistry.getUsernameForSession(sessionId);
+        if (email == null) {
             filterChain.doFilter(request, response);
             return;
         }
-        final CurrentUser currentUser = currentUserService.loadUserByUsername(username);
+        final CurrentUser currentUser = currentUserService.loadUserByUsername(email);
         final UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                 currentUser,
                 null,

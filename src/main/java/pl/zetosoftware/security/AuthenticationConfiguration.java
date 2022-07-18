@@ -22,9 +22,6 @@ import javax.servlet.http.HttpServletResponse;
 //        securedEnabled = true,
 //        jsr250Enabled = true)
 public class AuthenticationConfiguration extends WebSecurityConfigurerAdapter {
-//
-//    @Autowired
-//    UserRepository userRepository;
 
 
     private final CurrentUserService currentUserService;
@@ -56,9 +53,8 @@ public class AuthenticationConfiguration extends WebSecurityConfigurerAdapter {
         http = http
                 .exceptionHandling()
                 .authenticationEntryPoint(
-                        (request, response, exception) -> {
-                            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, exception.getMessage());
-                        })
+                        (request, response, exception) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED,
+                                exception.getMessage()))
                 .and();
 
         http

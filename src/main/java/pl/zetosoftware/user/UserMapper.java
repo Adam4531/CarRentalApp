@@ -1,6 +1,7 @@
 package pl.zetosoftware.user;
 
 import org.springframework.stereotype.Component;
+import pl.zetosoftware.user.dto.UserLoginDto;
 import pl.zetosoftware.user.dto.UserRequestDto;
 import pl.zetosoftware.user.dto.UserResponseDto;
 import pl.zetosoftware.user.value_objects.*;
@@ -38,5 +39,13 @@ public class UserMapper {
                 .pesel(new PeselValidator(userRequestDto.pesel()))
                 .build();
     }
+
+
+//    public UserEntity fromUserLoginDtoZDtoToUserEntity(UserLoginDto userLoginDto){
+//        return UserEntity.builder()
+//                .email(new EmailValidator(userLoginDto.getEmail()))
+//                .password(new PasswordValidator(userLoginDto.getPassword()))
+//                .build();
+//    }
 
 }

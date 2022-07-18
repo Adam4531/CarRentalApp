@@ -30,28 +30,22 @@ public class CurrentUser implements UserDetails {
     public String getPassword() {
         return user.getPassword().toString();
     }
-
     @Override
     public String getUsername() {
         return user.getEmail().toString();
     }
-
-    // if user has Id, his account exists, otherwise not
     @Override
     public boolean isAccountNonExpired() {
         return user.getId() != null;
     }
-
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
-
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
-
     @Override
     public boolean isEnabled() {
         return true;

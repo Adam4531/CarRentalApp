@@ -29,7 +29,9 @@ export class LoginComponent implements OnInit {
     this.http.post<any>(url, {
       email: this.model.email,
       password: this.model.password
-    }).subscribe(res => {
+    }).subscribe(
+      res => {
+      // nie wywala w ogóle w konsoli response, czyli backend nie wysyła tego response'a...
       if (res) {
         this.sessionId = res.sessionId;
           

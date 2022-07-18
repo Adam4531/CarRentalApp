@@ -10,16 +10,10 @@ import { HomeComponent } from './home/home.component';
 import { AuthenticationGuard } from './authentication.guard';
 
 const routes: Routes = [
-  // { path: '', component: HomeComponent},
-  // { path: 'login', component: LoginComponent },
-  // { path: 'registration', component: RegistrationComponent },
+
     { path: '', canActivate:[AuthenticationGuard], children: [
-    { path: 'cars', component: CarComponent },
-    { path: 'reservations', component: ReservationsComponent }, // DLA TESTU DO UPRAWNIEN I LOGINU
     { path: '', component: HomeComponent},
     { path: 'login', component: LoginComponent },
-    { path: 'registration', component: RegistrationComponent },
-    { path: 'users', component: UserComponent},
     { path: '**', redirectTo: '' }
   ]}
 ];

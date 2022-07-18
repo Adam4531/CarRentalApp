@@ -22,20 +22,23 @@ import javax.validation.Valid;
 @RequestMapping("/api")
 public class UserWebController {
 
-    private final UserRegistrationService userRegistrationService;
+//    private final UserRegistrationService userRegistrationService;
     @Autowired
     public AuthenticationManager manager;
     @Autowired
     public InMemorySession inMemorySession;
 
-    public UserWebController(UserRegistrationService userRegistrationService) {
-        this.userRegistrationService = userRegistrationService;
-    }
+//    public UserWebController(UserRegistrationService userRegistrationService) {
+//        this.userRegistrationService = userRegistrationService;
+//    }
 
     @PostMapping("/login")
     public ResponseEntity<UserLoginResponseDTO> login(@RequestBody UserLoginDto user) {
+
         manager.authenticate(
-                new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
+                new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword())
+        );
+
         final String sessionId = inMemorySession.registerSession(user.getEmail());
         UserLoginResponseDTO response = new UserLoginResponseDTO();
         response.setSessionId(sessionId);
@@ -43,8 +46,8 @@ public class UserWebController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping("/registration")
-    public UserRegisterValidDto create(@RequestBody UserRequestDto user) {
-        return userRegistrationService.register(user);
-    }
+//    @PostMapping("/registration")
+//    public UserRegisterValidDto create(@RequestBody UserRequestDto user) {
+//        return userRegistrationService.register(user);
+//    }
 }
