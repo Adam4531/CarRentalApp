@@ -18,7 +18,7 @@ import { DividerModule } from 'primeng/divider';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { InputMaskModule } from 'primeng/inputmask';
 import { HomeComponent } from './home/home.component';
-// import { RequestInterceptor } from './request.interceptor';
+import { RequestInterceptor } from './request.interceptor';
 
 
 @NgModule({
@@ -44,7 +44,7 @@ import { HomeComponent } from './home/home.component';
     KeyFilterModule,
     InputMaskModule
   ],
-  // providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
