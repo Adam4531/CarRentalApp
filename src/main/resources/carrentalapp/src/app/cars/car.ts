@@ -8,8 +8,8 @@ export interface Car{
     typeOfFuel: string;
     newCarCost: number;
     productionYear: number;
+    pricePerDayRent: number;
     status: string;
-    //rentCost: Big;
 
     // DO ZMIANY POD NOWĄ LISTĘ KTÓRĄ ROBI ADAM
 }

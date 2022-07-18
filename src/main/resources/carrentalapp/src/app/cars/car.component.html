@@ -52,8 +52,8 @@
                     <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.bodyTypeEnum }}</a></td>
                     <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.engineCapacity }}</a></td>
                     <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.productionYear }}</a></td>
-                    <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.rentCost | currency: 'EUR'}}</a></td>
-                    <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.statusEnum }}</a></td>
+                    <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.pricePerDayRent | currency: 'EUR'}}</a></td>
+                    <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.status }}</a></td>
                 </tr>
             </ng-template>
             <ng-template pTemplate="summary">
@@ -63,4 +63,4 @@
             </ng-template>
         </p-table>
     </body>
-</html> 
+</html>
