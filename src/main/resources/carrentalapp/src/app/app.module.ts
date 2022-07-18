@@ -18,6 +18,7 @@ import { KeyFilterModule } from 'primeng/keyfilter';
 import { InputMaskModule } from 'primeng/inputmask';
 import { HomeComponent } from './home/home.component';
 import { FilterComponent } from './filter/filter.component';
+import { SelectedCarComponent } from './selected-car/selected-car.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FilterComponent } from './filter/filter.component';
     UserComponent,
     RegistrationComponent,
     HomeComponent,
-    FilterComponent
+    FilterComponent,
+    SelectedCarComponent,
   ],
   imports: [
     BrowserModule,

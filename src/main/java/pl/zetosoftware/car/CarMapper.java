@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 public class CarMapper {
     public CarDto mapCarToCarDto(CarEntity carEntity) {
         return CarDto.builder()
+                .id(carEntity.getId())
                 .brand(carEntity.getBrand().toString())
                 .model(carEntity.getModel().toString())
                 .engineCapacity(carEntity.getEngineCapacity().toBigDecimal())
