@@ -21,7 +21,6 @@ public class CarMapper {
                 .typeOfFuelEnum(carEntity.getTypeOfFuel())
                 .newCarCost(carEntity.getNewCarCost().toLong())
                 .productionYear(carEntity.getProductionYear().toInteger())
-                .statusEnum(carEntity.getStatus())
                 .build();
     }
 

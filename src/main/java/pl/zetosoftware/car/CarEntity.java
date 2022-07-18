@@ -43,7 +43,4 @@ public class CarEntity {
     @Embedded
     private ProductionYearValidator productionYear;
 
-    @Enumerated(EnumType.STRING)
-    private StatusEnum status;
-
 }
