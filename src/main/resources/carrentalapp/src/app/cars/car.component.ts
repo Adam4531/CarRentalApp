@@ -26,25 +26,27 @@ export class CarComponent implements OnInit {
     this.columns = [
       { field: 'brand', header: 'Brand' },
       { field: 'model', header: 'Model' },
-      { field: 'typeOfFuelEnum', header: 'Type of Fuel' },
+      // { field: 'typeOfFuelEnum', header: 'Type of Fuel' },
+      { field: 'bodyTypeEnum', header: 'Body Type' },
       { field: 'engineCapacity', header: 'Engine Capacity' },
       { field: 'productionYear', header: 'Production Year' },
-      { field: 'newCarCost', header: 'Cost of new car from Saloon' },
+      // { field: 'newCarCost', header: 'Cost of new car from Saloon' },
+      { field: 'rentCost', header: 'Rent Cost(/day)' },
       { field: 'statusEnum', header: 'Status'}
     ];
     this.getCars();
   }
 
-  klik(): void{
-    console.log(this.cars);
+  // klik(): void{
+  //   console.log(this.cars);
 
-  }
+  // }
 
   public getCars(): void {
 
     this.carService.getCars().subscribe((response: any) => {
       this.cars = response;
-      console.log(response);
+      // console.log(response);
       // this.cars.push(<CarEntity>{carName:"name561231321", id:212313227});
       // this.cars.push(response[0]);
     });
@@ -59,5 +61,4 @@ export class CarComponent implements OnInit {
 
   //   );
   // }
-  title = 'carrentalapp';
 }

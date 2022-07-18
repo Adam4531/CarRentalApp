@@ -1,0 +1,28 @@
+.table-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+  
+  table {
+    border-collapse: collapse;
+  }
+  
+  td {
+    border: 2px solid #ccd2ff;
+    position: relative;
+  }
+  
+  tr:hover,
+  tr:focus-within {
+    background: #1a001a;
+    outline: none;
+  }
+  
+  td > a:first-child {
+    display: flex;
+    padding: 18px;
+    text-decoration: none;
+    color: inherit;
+    z-index: 0;
+  }

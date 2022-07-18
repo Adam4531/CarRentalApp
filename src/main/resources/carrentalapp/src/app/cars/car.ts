@@ -7,6 +7,9 @@ export interface Car{
     bodyType: string;
     typeOfFuel: string;
     newCarCost: number;
-    productionYear: number
-    status: string
+    productionYear: number;
+    status: string;
+    //rentCost: Big;
+
+    // DO ZMIANY POD NOWĄ LISTĘ KTÓRĄ ROBI ADAM
 }
