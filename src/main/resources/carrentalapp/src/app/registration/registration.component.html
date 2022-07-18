@@ -3,19 +3,19 @@
 
 
 <div class="p-fixed grid">
-    <input type="text" pInputText [(ngModel)]="userRequestDto2.login" placeholder="Login">
+    <input type="text" pInputText [(ngModel)]="userRequestDto.login" placeholder="Login">
 </div>
 
 <div class="p-fixed grid">
-    <input type="text" pInputText [(ngModel)]="userRequestDto2.firstName" placeholder="First name">
+    <input type="text" pInputText [(ngModel)]="userRequestDto.firstName" placeholder="First name">
 </div>
 
 <div class="p-fixed grid">
-    <input type="text" pInputText [(ngModel)]="userRequestDto2.secondName" placeholder="Second name">
+    <input type="text" pInputText [(ngModel)]="userRequestDto.secondName" placeholder="Second name">
 </div>
 
 <div class="p-fixed grid">
-<p-password [toggleMask]="true" [(ngModel)]="userRequestDto2.password" placeholder="Password">
+<p-password [toggleMask]="true" [(ngModel)]="userRequestDto.password" placeholder="Password">
     <ng-template pTemplate="header">
         <h4>Password</h4>
     </ng-template>
@@ -39,16 +39,16 @@
 </div> -->
 
 <div class="p-fixed grid">
-    <p-inputMask [(ngModel)]="userRequestDto2.phoneNumber" mask="999999999" placeholder="Phone Number"></p-inputMask>
+    <p-inputMask [(ngModel)]="userRequestDto.phoneNumber" mask="999999999" placeholder="Phone Number"></p-inputMask>
 </div>
 
 <!-- [pKeyFilter]="emailPattern" -->
 <div class="p-fixed grid">
-    <input type="text" pInputText [(ngModel)]="userRequestDto2.email" placeholder="Email address">
+    <input type="text" pInputText [(ngModel)]="userRequestDto.email" placeholder="Email address">
 </div>
 
 <div class="p-fixed grid">
-    <p-inputMask [(ngModel)]="userRequestDto2.pesel" mask="99999999999" placeholder="Pesel"></p-inputMask>
+    <p-inputMask [(ngModel)]="userRequestDto.pesel" mask="99999999999" placeholder="Pesel"></p-inputMask>
 </div>
 
 <p>

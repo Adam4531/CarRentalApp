@@ -1,4 +1,4 @@
-package pl.zetosoftware.basic;
+package pl.zetosoftware.global;
 
 import lombok.Getter;
 import lombok.Setter;

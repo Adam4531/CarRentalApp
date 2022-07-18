@@ -40,7 +40,7 @@ import {InputMaskModule} from 'primeng/inputmask';
     FormsModule,
     DividerModule,
     KeyFilterModule,
-    InputMaskModule
+    InputMaskModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

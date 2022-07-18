@@ -4,7 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.zetosoftware.basic.BasicEntity;
+import pl.zetosoftware.global.BasicEntity;
 import pl.zetosoftware.security.Role;
 import pl.zetosoftware.user.value_objects.*;
 

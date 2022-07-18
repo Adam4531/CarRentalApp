@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import pl.zetosoftware.basic.BasicEntity;
+import pl.zetosoftware.global.BasicEntity;
 import pl.zetosoftware.car.CarEntity;
 import pl.zetosoftware.reservation.value_objects.CostValidator;
 import pl.zetosoftware.reservation.value_objects.PaymentInAdvanceValidator;

@@ -22,12 +22,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("")
-    @ResponseStatus(HttpStatus.CREATED)
-    public UserResponseDto addUser(@RequestBody UserRequestDto user){
-        return userService.createUser(user);
-    }
-
     @GetMapping("")
     @ResponseStatus(HttpStatus.OK)
     public List<UserResponseDto> getUsers(){
@@ -57,18 +51,5 @@ public class UserController {
     public String deleteUserById(@PathVariable Long id){
         return userService.deleteUserById(id);
     }
-
-//    @RequestMapping("/login")
-//    public boolean login(@RequestBody UserRequestDto user) {
-//        return userService.login(user);
-//    }
-//
-//    @RequestMapping("/login/fetch")
-//    public Principal user(HttpServletRequest request) {
-//        String authToken = request.getHeader("Authorization")
-//                .substring("Basic".length()).trim();
-//        return () ->  new String(Base64.getDecoder()
-//                .decode(authToken)).split(":")[0];
-//    }
 
 }

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { UserRequestDto } from 'C:/PRAKTYKA/SPRING/zetosoftware/src/main/resources/carrentalapp/src/app/user/user-request-dto';
+import { UserRequestDto } from 'src/app/user/user-request-dto';
 import { environment } from 'src/environments/environment';
+import { ErrorsListDto } from '../errorsList/errors-list-dto';
 
 @Injectable({
   providedIn: 'root'

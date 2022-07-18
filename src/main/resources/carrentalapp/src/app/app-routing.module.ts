@@ -15,10 +15,6 @@ const routes: Routes = [
   { path: 'register', component: RegistrationComponent}
 ];
 
-// localhost:4200/users
-// localhost:4200/register
-// localhost:4200/web/users/register
-
 
 @NgModule({
   declarations: [],
