@@ -5,27 +5,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+import java.util.List;
+
+@RestController
+@RequestMapping("/api")
 public class WebController {
 
-//    @GetMapping("/")
-//    @ResponseBody
-//    public String index() {
-//        return "/";
-//    }
-
-//    // Login form
-//    @RequestMapping("/web/users/login")
-//    public String login() {
-//        return "login.html";
-//    }
-//
-//    // Login form with error
-//    @RequestMapping("/web/users/login-error")
-//    public String loginError(Model model) {
-//        model.addAttribute("loginError", true);
-//        return "login.html";
-//    }
+    @GetMapping("/logged")
+    public List<String> getListItems() {
+        return List.of("1", "2", "3");
+    }
 
 }

@@ -11,6 +11,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/reservations")
 public class ReservationController {
+
     private final ReservationService reservationService;
 
     @PostMapping("/add")
@@ -18,7 +19,6 @@ public class ReservationController {
     public ReservationDto addReservation(@RequestBody ReservationEntity reservationEntity) {
         return reservationService.createReservation(reservationEntity);
     }
-
 
     @PostMapping("/delete")
     @ResponseStatus(HttpStatus.OK)

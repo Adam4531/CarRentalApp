@@ -1,61 +1,112 @@
-
 <header>CREATE ACCOUNT</header>
 
 
+
+
 <div class="p-fixed grid">
+
     <input type="text" pInputText [(ngModel)]="userRequestDto2.login" placeholder="Login">
+
 </div>
 
+
+
 <div class="p-fixed grid">
+
     <input type="text" pInputText [(ngModel)]="userRequestDto2.firstName" placeholder="First name">
+
 </div>
 
+
+
 <div class="p-fixed grid">
+
     <input type="text" pInputText [(ngModel)]="userRequestDto2.secondName" placeholder="Second name">
+
 </div>
 
 <div class="p-fixed grid">
-<p-password [toggleMask]="true" [(ngModel)]="userRequestDto2.password" placeholder="Password">
-    <ng-template pTemplate="header">
-        <h4>Password</h4>
-    </ng-template>
-    <ng-template pTemplate="footer">
-        <p-divider></p-divider>
-        <p class="mt-2">Suggestions</p>
-        <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
-            <li>At least one lowercase</li>
-            <li>At least one uppercase</li>
-            <li>At least one numeric</li>
-            <li>At least one special character</li>
-            <li>Minimum 8 characters</li>
-        </ul>
-    </ng-template>
-</p-password>
-</div>
-<!-- 
-<div class="p-fixed grid">
+
+    <p-password [toggleMask]="true" [(ngModel)]="userRequestDto2.password" placeholder="Password">
+    
+        <ng-template pTemplate="header">
+    
+            <h4>Password</h4>
+    
+        </ng-template>
+    
+        <ng-template pTemplate="footer">
+    
+            <p-divider></p-divider>
+    
+            <p class="mt-2">Suggestions</p>
+    
+            <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+    
+                <li>At least one lowercase</li>
+    
+                <li>At least one uppercase</li>
+    
+                <li>At least one numeric</li>
+    
+                <li>At least one special character</li>
+    
+                <li>Minimum 8 characters</li>
+    
+            </ul>
+    
+        </ng-template>
+    
+    </p-password>
+    
+    </div>
+    
+    <!--
+
+        <div class="p-fixed grid">
+
 <p-password [feedback]="false" [toggleMask]="true" [(ngModel)]="password2" placeholder="Repeat password">
+
 </p-password>
+
 </div> -->
 
+
+
 <div class="p-fixed grid">
+
     <p-inputMask [(ngModel)]="userRequestDto2.phoneNumber" mask="999999999" placeholder="Phone Number"></p-inputMask>
+
 </div>
+
+
 
 <!-- [pKeyFilter]="emailPattern" -->
-<div class="p-fixed grid">
-    <input type="text" pInputText [(ngModel)]="userRequestDto2.email" placeholder="Email address">
-</div>
 
 <div class="p-fixed grid">
-    <p-inputMask [(ngModel)]="userRequestDto2.pesel" mask="99999999999" placeholder="Pesel"></p-inputMask>
+
+    <input type="text" pInputText [(ngModel)]="userRequestDto2.email" placeholder="Email address">
+
 </div>
+
+
+
+<div class="p-fixed grid">
+
+    <p-inputMask [(ngModel)]="userRequestDto2.pesel" mask="99999999999" placeholder="Pesel"></p-inputMask>
+
+</div>
+
+
 
 <p>
-    <button type="button" 
-    pButton label="Register" 
-    class="btn btn-primary-outline pull-right" 
+
+    <button type="button"
+
+    pButton label="Register"
+
+    class="btn btn-primary-outline pull-right"
+
     (click)="btnRegister();"><i class="fa fa-plus1"></i></button>
+
 </p>
-
-

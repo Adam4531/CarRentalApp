@@ -6,19 +6,24 @@ import { ReservationsComponent } from './reservations/reservations.component';
 import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { HomeComponent } from './home/home.component';
+// import { AuthenticationGuard } from './authentication.guard';
 
 const routes: Routes = [
-  { path: 'cars', component: CarComponent },
-  { path: 'reservations', component: ReservationsComponent },
+  { path: '', component: HomeComponent},
   { path: 'login', component: LoginComponent },
-  { path: 'users', component: UserComponent},
-  { path: 'register', component: RegistrationComponent}
+  { path: 'registration', component: RegistrationComponent },
+  // { path: '', canActivate:[AuthenticationGuard], children: [
+  // { path: 'cars', component: CarComponent },
+  // { path: 'reservations', component: ReservationsComponent }, // DLA TESTU DO UPRAWNIEN I LOGINU
+    // { path: '', component: HomeComponent},
+    // { path: 'login', component: LoginComponent },
+    // { path: 'registration', component: RegistrationComponent },
+  // { path: 'users', component: UserComponent},
+  // { path: 'registration', component: RegistrationComponent},
+    // { path: '**', redirectTo: '' }
+  // ]}
 ];
-
-// localhost:4200/users
-// localhost:4200/register
-// localhost:4200/web/users/register
-
 
 @NgModule({
   declarations: [],

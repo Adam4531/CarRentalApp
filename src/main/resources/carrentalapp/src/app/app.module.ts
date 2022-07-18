@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Input, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
@@ -16,21 +16,24 @@ import { FormsModule } from '@angular/forms';
 import { RegistrationComponent } from './registration/registration.component';
 import { DividerModule } from 'primeng/divider';
 import { KeyFilterModule } from 'primeng/keyfilter';
-import {InputMaskModule} from 'primeng/inputmask';
+import { InputMaskModule } from 'primeng/inputmask';
+import { HomeComponent } from './home/home.component';
+// import { RequestInterceptor } from './request.interceptor';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CarComponent,
+    HomeComponent,
     LoginComponent,
-    UserComponent,
     RegistrationComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    ButtonModule,
+    AppRoutingModule,
+    FormsModule,
+    DividerModule,
     BrowserAnimationsModule,
     InputTextModule,
     TableModule,
@@ -38,11 +41,10 @@ import {InputMaskModule} from 'primeng/inputmask';
     InputNumberModule,
     PasswordModule,
     FormsModule,
-    DividerModule,
     KeyFilterModule,
     InputMaskModule
   ],
-  providers: [],
+  // providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
