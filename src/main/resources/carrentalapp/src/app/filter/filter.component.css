@@ -1,14 +1,16 @@
-h1 {
+  h1 {
     text-align: center;
-    margin-top: 4%;
-  
+  }
+
+  h3 {
+    text-align: center;
   }
   
   .container {
     box-shadow: 0 0 15px purple;
     background-color: #1a001a;
     width: 500px;
-    height: 640px;
+    height: 820px;
     margin: 0 auto;
   }
   
@@ -19,15 +21,25 @@ h1 {
     width: 400px;
     font-size: large;
   }
-
   .container p {
     text-align: center;
   }
-
+  
   input {
-    width: 222px;
+    margin-top: 15px;
+    margin-left: 20px;
+    margin-right: 30px;
+    width: 150px;
   }
 
   :host ::ng-deep .input-mask{
-    width: 222px;
+    margin-top: 15px;
+    margin-left: 20px;
+    margin-right: 30px;
+    width: 150px;
+    }
+
+  :host ::ng-deep .input-mask-date{
+    margin-top: 15px;
+    width: 100px;
     }

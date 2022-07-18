@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Filter</title>
+    </head>
+    <body>
+        <header>
+            <h1>FILTER</h1>
+        </header>
+            <main>
+                <div class="container">
+                    <p>
+                        <button type="button" pButton label="All Cars" (click)="btnClick('/cars');"></button>
+                        <!-- wysyła zapytanie o wszystkie samochody -->
+                    </p>
+                    <h3>Search car by:</h3>
+                    <p>
+                        <input type="text" pInputText [(ngModel)]="brand" placeholder="Brand" style="margin-top: 25px;">
+                        <!-- BRAND DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
+                        <input type="text" pInputText [(ngModel)]="model" placeholder="Model">
+                        <!-- MODEL DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
+                    </p>
+                    <p>
+                        <p-inputMask [(ngModel)]="engineCapacity" mask="99.9" placeholder="Engine Capacity" styleClass="input-mask"></p-inputMask>
+                        <!-- unmask na false/true? albo . na ,? -->
+                        <!-- ENGINECAPACITY DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
+                        <input type="text" pInputText [(ngModel)]="bodyType" placeholder="Body Type">
+                        <!-- enum selector: COUPE, SEDAN, SUV, STATION_WAGON, HATCHBACK, CABRIOLET -->
+                        <!-- BODYTYPE DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
+                    </p>
+                    <p>
+                        <input type="text" pInputText [(ngModel)]="typeOfFuel" placeholder="Type of Fuel">
+                        <!-- enum selector: DIESEL, BENZINE, LPG, ELECTRIC -->
+                        <!-- TYPEOFFUEL DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
+                        <p-inputMask [(ngModel)]="productionYear" mask="9999" [unmask]="true" placeholder="Production Year" styleClass="input-mask"></p-inputMask>
+                        <!-- PRODUCTIONYEAR DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
+                    </p>
+                    <p>
+                        <button type="button" pButton label="Search" (click)="btnClick('/cars');"></button>
+                        <!-- wysyła zapytanie o samochod z podanymi danymi -->
+                    </p>
+                    <h3>Search by period:</h3>
+                    <p>
+                        <p-inputMask [(ngModel)]="from" mask="9999-99-99" placeholder="From" styleClass="input-mask"></p-inputMask>
+                        <!-- FROM DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
+                        <p-inputMask [(ngModel)]="to" mask="9999-99-99" placeholder="To" styleClass="input-mask"></p-inputMask>
+                        <!-- TO DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
+                    </p>
+                    <p>
+                        <button type="button" pButton label="Search" (click)="btnClick('/cars');"></button>
+                        <!-- wysyła zapytanie o samochod z podanymi danymi rezerwacji -->
+                    </p>
+                    <p>
+                        <a href="http://localhost:4200/home">HOME PAGE</a>
+                    </p>
+                </div>
+            </main>
+    </body>
+</html>
+

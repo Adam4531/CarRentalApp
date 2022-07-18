@@ -1,9 +1,31 @@
-<span class="p-float-label">
-    <input id="float-input" type="text" pInputText> 
-    <label for="float-input">Login</label>
-</span>
-
-<span class="p-float-label">
-    <input id="float-input" type="text" pInputText> 
-    <label for="float-input">Password</label>
-</span>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+    </head>
+    <body>
+        <header>
+            <h1>LOGIN</h1>
+        </header>
+            <main>
+                <div class="container">
+                    <p>
+                        <input type="text" pInputText [(ngModel)]="email" placeholder="Email address">
+                        <!-- EMAIL DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
+                    </p>
+                    <p>
+                        <p-password [feedback]="false" [toggleMask]="true" [(ngModel)]="password" placeholder="Repeat password"></p-password>
+                        <!-- PASSWORD DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
+                    </p>
+                
+                    <p>
+                        <button type="button" pButton label="Sign in" (click)="btnClick('/home');"></button>
+                        <!-- PRZEKIEROWANIE NA STRONE GLOWNA BEZ LOGOWANIA -->
+                    </p>
+                    <p>
+                        <a href="http://localhost:4200/home">HOME PAGE</a>
+                    </p>
+                </div>
+            </main>
+    </body>
+</html>

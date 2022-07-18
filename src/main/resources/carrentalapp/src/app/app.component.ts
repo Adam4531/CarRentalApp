@@ -33,7 +33,6 @@ export class AppComponent implements OnInit{
     this.router.navigateByUrl(url);
     };
 
-  title = 'carrentalapp';
 }
 
 

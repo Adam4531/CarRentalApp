@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.zetosoftware.reservation.dto.ReservationDto;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -13,10 +14,13 @@ public class ReservationService {
     private final ReservationRepository reservationRepository;
     private final ReservationMapper reservationMapper;
 
+    private final ReservationEditorValidator reservationEditor;
+
     @Autowired
-    public ReservationService(ReservationRepository reservationRepository, ReservationMapper reservationMapper) {
+    public ReservationService(ReservationRepository reservationRepository, ReservationMapper reservationMapper, ReservationEditorValidator reservationEditor) {
         this.reservationRepository = reservationRepository;
         this.reservationMapper = reservationMapper;
+        this.reservationEditor = reservationEditor;
     }
 
     public ReservationDto createReservation(ReservationEntity reservationEntity) {
@@ -24,8 +28,21 @@ public class ReservationService {
     }
 
     public String deleteReservationById(Long id) {
-        reservationRepository.deleteById(id);
+        var reservation = getReservation(id);
+        if (!reservationEditor.isPresentDayBeforeReservationToChange(reservation))
+            throw new IllegalStateException("Not allowed to delete started/completed reservations!");
+        reservationRepository.delete(reservation);
         return "Reservation with id:" + id + " deleted successfully";
+
+    }
+
+    public ReservationDto changeReservationDatesByReservationId(Long id, LocalDate dateStart, LocalDate dateEnd) {
+        var reservation = getReservation(id);
+        if (!reservationEditor.isReservationAvailable(reservation, dateStart, dateEnd))
+            throw new IllegalStateException("Other reservation is in progress during this period!");
+        reservation.changeReservationDates(dateStart, dateEnd);
+        reservationRepository.save(reservation);
+        return reservationMapper.fromReservationToReservationDto(reservation);
     }
 
     public List<ReservationDto> getAllReservations() {
@@ -38,7 +55,7 @@ public class ReservationService {
                 .orElseThrow(() -> new NoSuchElementException("ReservationEntity with id: " + Id + " not found!"));
     }
 
-    public ReservationDto getReservationById(Long Id) {
+    public ReservationDto getReservationByReservationId(Long Id) {
         ReservationEntity reservationEntity = getReservation(Id);
         return reservationMapper.fromReservationToReservationDto(reservationEntity);
     }
@@ -61,5 +78,4 @@ public class ReservationService {
         return reservationRepository.getAllCarsByPopularityOfReservations().values().stream().mapToInt(i -> i).max()
                 .orElseThrow(NoSuchElementException::new);
     }
-
 }
