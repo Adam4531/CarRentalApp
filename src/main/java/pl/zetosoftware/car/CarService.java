@@ -7,12 +7,15 @@ import pl.zetosoftware.car.dto.ReservationCarDto;
 import pl.zetosoftware.car.enums.StatusEnum;
 import pl.zetosoftware.car.exception.CarNotFoundException;
 import pl.zetosoftware.car.value_objects.ProductionYearValidator;
-import pl.zetosoftware.reservation.ReservationEntity;
 import pl.zetosoftware.reservation.ReservationService;
+import pl.zetosoftware.reservation.dto.ReservationDto;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
 
 @Service
 public class CarService {
@@ -55,32 +58,33 @@ public class CarService {
     }
 
 
-    public List<ReservationCarDto> getAllCars(){ //TODO metoda dla controller'a? TAK, zamienić z getAllCars i pozmieniać kolumny na frontendzie
+    public List<ReservationCarDto> getAllCars(){
         List<CarEntity> carEntityList = carRepository.findAll();
         List<ReservationCarDto> carDtoList = new ArrayList<>();
         for (CarEntity carEntity: carEntityList) {
             ReservationCarDto reservationCarDto = ReservationCarDto.builder()
-                    .model(carEntity.getModel().toString())
                     .brand(carEntity.getBrand().toString())
+                    .model(carEntity.getModel().toString())
                     .engineCapacity(carEntity.getEngineCapacity().toBigDecimal())
                     .productionYear(carEntity.getProductionYear().toInteger())
+                    .typeOfFuelEnum(carEntity.getTypeOfFuel())
                     .pricePerDayRent(setInitialPrice(carEntity.getId()))
                     .bodyTypeEnum(carEntity.getBodyType())
                     .status(getStatus(carEntity.getId()))
                     .build();
             carDtoList.add(reservationCarDto);
         }
-        carDtoList.sort(Comparator.comparing(ReservationCarDto::getBrand).thenComparing(ReservationCarDto::getModel));
+        carDtoList.sort(Comparator.comparing(ReservationCarDto::brand).thenComparing(ReservationCarDto::model));
 
         return carDtoList;
     }
 
     public StatusEnum getStatus(Long CarId) {
-        List<ReservationEntity> allReservationsById = carRepository.getAllReservationsByCarId(CarId);
+        List<ReservationDto> allReservationsById = reservationService.getAllReservationsByCarId(CarId);
 
-        for (ReservationEntity reservationEntity : allReservationsById) {
-            if (!Objects.isNull(reservationEntity)) {
-                if (reservationEntity.getStartDate().isBefore(LocalDate.now()) && reservationEntity.getEndDate().isAfter(LocalDate.now())) {
+        for (ReservationDto reservationDto : allReservationsById) {
+            if (!Objects.isNull(reservationDto)) {
+                if (reservationDto.dateStart().isBefore(LocalDate.now()) && reservationDto.dateEnd().isAfter(LocalDate.now())) {
                     return StatusEnum.RESERVED;
                 }
             }

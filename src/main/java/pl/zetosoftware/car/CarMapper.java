@@ -30,24 +30,4 @@ public class CarMapper {
                 .map(this::mapCarToCarDto)
                 .collect(Collectors.toList());
     }
-
-    public ReservationCarDto fromCarEntityToReservationCarDto(CarEntity carEntity){
-        return ReservationCarDto.builder()
-                .brand(carEntity.getBrand().toString())
-                .model(carEntity.getModel().toString())
-                .engineCapacity(carEntity.getEngineCapacity().toBigDecimal())
-                .bodyTypeEnum(carEntity.getBodyType())
-                .status(carEntity.getStatus())
-//                .pricePerDayRent(carEntity.getPricePerDay())      //to tez ma się odbywać przez kontroler, czy tak jak teraz robie?
-                .build();
-    }
-
-    public List<ReservationCarDto> fromCarEntityListToReservationCarDtoList(List<CarEntity> carEntityList){
-        return carEntityList.stream()
-                .map(this::fromCarEntityToReservationCarDto)
-                .collect(Collectors.toList());
-    }
-
-
-
 }
