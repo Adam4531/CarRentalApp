@@ -10,7 +10,7 @@
             <main>
                 <div class="container">
                     <p>
-                        <input type="text" pInputText [(ngModel)]="firstName" placeholder="First name" style="margin-top: 25px;">
+                        <input class="input-top" type="text" pInputText [(ngModel)]="firstName" placeholder="First name">
                         <!-- FISRTNAME DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
                     </p>
                     <p>
@@ -29,8 +29,8 @@
                             </ng-template>
                             <ng-template pTemplate="footer">
                                 <p-divider></p-divider>
-                                <p class="mt-2">Suggestions</p>
-                                <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                                <p>Suggestions</p>
+                                <ul>
                                     <li>At least one lowercase</li>
                                     <li>At least one uppercase</li>
                                     <li>At least one numeric</li>

@@ -46,7 +46,7 @@
                     <td> {{ car.rentCost | currency: 'EUR'}}</td>
                     <td> {{ car.statusEnum }}</td> -->
 
-                    <td><a [routerLink]="['/selected-car',car.id]" class="row-link"><img [src]="'assets/images/example_car.jpeg'" [alt]="car.brand" width="100"/></a></td>
+                    <td><a [routerLink]="['/selected-car',car.id]" class="row-link"><img [src]="'assets/images/example_car.jpeg'" [alt]="car.brand"/></a></td>
                     <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.brand }}</a></td>
                     <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.model }}</a></td>
                     <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.bodyTypeEnum }}</a></td>
@@ -57,7 +57,7 @@
                 </tr>
             </ng-template>
             <ng-template pTemplate="summary">
-                <div class="p-d-flex p-ai-center p-jc-between">
+                <div>
                     In total there are {{cars?.length}} cars in store.
                 </div>
             </ng-template>
