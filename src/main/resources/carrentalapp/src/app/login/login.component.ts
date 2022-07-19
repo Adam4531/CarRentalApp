@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { MessageService } from 'primeng/api';
 
 
 
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
       private router: Router,
-      private http: HttpClient
+      private http: HttpClient,
+      private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
@@ -38,19 +40,24 @@ export class LoginComponent implements OnInit {
       if (res) {
         // this.router.navigate(['localhost:4200/']);
         this.sessionId = res.sessionId;
-        console.log(res.sessionId);
-        console.log(res);
-        console.log(this.sessionId);
 
         sessionStorage.setItem(
           'token',
           this.sessionId
         );
         this.router.navigate(['localhost:4200/']);
-      } else {
-          alert("Authentication failed.")
+        this.messageService.add({life:3000, severity:'success', summary:'Login', detail:" Zostałeś pomyślnie zalogowany !! "})
+      }
+      // if(this.sessionId == ""){
+      //   this.messageService.add({life:10000, severity:'info', summary:'Login', detail:" Już jesteś zalogowany !! "})
+      //   console.log("TOST POWINIEN WYKOSCZYC !!!!!!!!!!!!!!!!!12121")
+      // }
+      else {
+          console.log("NIE UDALO SIE ZALOGOWAC !!!")
       }
     });
+
+
   }
 //ewq
 }

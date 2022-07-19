@@ -4,17 +4,20 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class UserRegisterValidDto {
+public class ErrorsListDto {
 
-    List<ErrorDto> errors;
+    List<String> errors;
 
     public boolean isListOfErrorsEmpty(){
         return this.errors.size()==0;
+    }
+
+    public void add(String error){
+        errors.add(error);
     }
 }

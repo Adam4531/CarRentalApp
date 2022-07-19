@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-home',
@@ -9,10 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.http.get<any>('/api/logged').subscribe(res => {
+    this.http.get<any>('/').subscribe(res => {
       if (res) {
         console.log('YOU ARE LOGGED IN !! ', res);
       } else {
@@ -20,6 +21,4 @@ export class HomeComponent implements OnInit {
       }
     });
   }
-  
-
 }

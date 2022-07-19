@@ -19,6 +19,8 @@ import { KeyFilterModule } from 'primeng/keyfilter';
 import { InputMaskModule } from 'primeng/inputmask';
 import { HomeComponent } from './home/home.component';
 import { RequestInterceptor } from './request.interceptor';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { RequestInterceptor } from './request.interceptor';
     AppComponent,
     HomeComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    CarComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -42,9 +46,10 @@ import { RequestInterceptor } from './request.interceptor';
     PasswordModule,
     FormsModule,
     KeyFilterModule,
-    InputMaskModule
+    InputMaskModule,
+    ToastModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

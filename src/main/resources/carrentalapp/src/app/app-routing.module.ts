@@ -14,6 +14,9 @@ const routes: Routes = [
     { path: '', canActivate:[AuthenticationGuard], children: [
     { path: '', component: HomeComponent},
     { path: 'login', component: LoginComponent },
+    { path: 'cars', component: CarComponent },
+    { path: 'reservations', component: ReservationsComponent },
+    { path: 'users', component: UserComponent },
     { path: '**', redirectTo: '' }
   ]}
 ];

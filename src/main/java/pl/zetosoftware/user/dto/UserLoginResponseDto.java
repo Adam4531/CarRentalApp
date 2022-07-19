@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserLoginResponseDTO implements Serializable {
+public class UserLoginResponseDto implements Serializable {
     private String sessionId;
 
     public String getSessionId() {

@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("")
 public class WebController {
 
-    @GetMapping("/logged")
-    public List<String> getListItems() {
-        return List.of("1", "2", "3");
+    @GetMapping("/")
+    public String getListItems() {
+        return "HOMEPAGE";
     }
 
 }
