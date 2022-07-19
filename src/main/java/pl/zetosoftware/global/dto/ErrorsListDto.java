@@ -20,5 +20,4 @@ public class ErrorsListDto {
     public void add(String error){
         errors.add(error);
     }
-
 }

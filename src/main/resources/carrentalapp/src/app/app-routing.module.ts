@@ -6,13 +6,20 @@ import { ReservationsComponent } from './reservations/reservations.component';
 import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { HomeComponent } from './home/home.component';
+import { AuthenticationGuard } from './authentication.guard';
 
 const routes: Routes = [
-  { path: 'cars', component: CarComponent },
-  { path: 'reservations', component: ReservationsComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'users', component: UserComponent},
-  { path: 'register', component: RegistrationComponent}
+
+    { path: '', canActivate:[AuthenticationGuard], children: [
+    { path: '', component: HomeComponent},
+    { path: 'login', component: LoginComponent },
+    { path: 'cars', component: CarComponent },
+    { path: 'reservations', component: ReservationsComponent },
+    { path: 'users', component: UserComponent },
+    { path: 'register', component: RegistrationComponent },
+    { path: '**', redirectTo: '' }
+  ]}
 ];
 
 

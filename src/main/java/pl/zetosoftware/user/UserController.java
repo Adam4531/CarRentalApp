@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.*;
 import pl.zetosoftware.user.dto.UserRequestDto;
 import pl.zetosoftware.user.dto.UserResponseDto;
 
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
+import java.util.Base64;
 import java.util.List;
 
 @RestController

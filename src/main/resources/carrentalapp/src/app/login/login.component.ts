@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { MessageService } from 'primeng/api';
+
 
 
 @Component({
@@ -16,32 +15,47 @@ import { map } from 'rxjs/operators';
 export class LoginComponent implements OnInit {
 
   model: any = {};
+  sessionId: any = "";
 
-    constructor(
-        private route: ActivatedRoute,
-        private router: Router,
-        private http: HttpClient
-    ) { }
+  constructor(
+      private router: Router,
+      private http: HttpClient,
+      private messageService: MessageService
+  ) { }
 
   ngOnInit(): void {
-    // sessionStorage.setItem('token', '');
   }
 
-//   login() {
-//     let url = 'http://localhost:8080/users/login';
-//     let result = this.http.post(url, {
-//         userName: this.model.username,
-//         password: this.model.password
-//     }).pipe(map(res => res)).subscribe(isValid => {
-//         if (isValid) {
-//             sessionStorage.setItem(
-//               'token',
-//               btoa(this.model.username + ':' + this.model.password)
-//             );
-//             this.router.navigate(['']);
-//         } else {
-//             alert("Authentication failed.");
-//         }
-//     });
-// }
+  login() {
+    let url = '/api/login';
+    this.http.post<any>(url, {
+      email: this.model.email,
+      password: this.model.password
+    }).subscribe(
+
+      res => {
+        console.log(res);
+
+      if (res) {
+        this.sessionId = res.sessionId;
+
+        sessionStorage.setItem(
+          'token',
+          this.sessionId
+        );
+        this.router.navigate(['localhost:4200/']);
+        this.messageService.add({life:3000, severity:'success', summary:'Login', detail:" Zostałeś pomyślnie zalogowany !! "})
+      }
+      // if(this.sessionId == ""){
+      //   this.messageService.add({life:10000, severity:'info', summary:'Login', detail:" Już jesteś zalogowany !! "})
+      //   console.log("TOST POWINIEN WYKOSCZYC !!!!!!!!!!!!!!!!!12121")
+      // }
+      else {
+          console.log("NIE UDALO SIE ZALOGOWAC !!!")
+      }
+    });
+
+
+  }
+
 }

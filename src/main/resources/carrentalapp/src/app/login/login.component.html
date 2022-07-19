@@ -1,13 +1,17 @@
-<span class="p-float-label">
-    <input id="float-input" type="text" pInputText>
-    <label for="float-input">Login</label>
-</span>
-
-<span class="p-float-label">
-    <input id="float-input" type="text" pInputText>
-    <label for="float-input">Password</label>
-</span>
-
+<form name="form" (ngSubmit)="login()" #f="ngForm">
+    <div>
+        <label for="email">Email</label>
+        <input type="text" name="email" [(ngModel)]="model.email" #email="ngModel" required />
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" [(ngModel)]="model.password" #password="ngModel" required />
+    </div>
+    <div>
+        <button>Login</button>
+        <p-toast position="top-right"></p-toast>
+    </div>
+</form>
 
 <!-- <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
     <div [ngClass]="{ 'has-error': f.submitted && !username.valid }">

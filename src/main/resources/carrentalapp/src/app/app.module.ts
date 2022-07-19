@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Input, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
@@ -16,24 +16,28 @@ import { FormsModule } from '@angular/forms';
 import { RegistrationComponent } from './registration/registration.component';
 import { DividerModule } from 'primeng/divider';
 import { KeyFilterModule } from 'primeng/keyfilter';
-import {InputMaskModule} from 'primeng/inputmask';
-import {ToastModule} from 'primeng/toast';
+import { InputMaskModule } from 'primeng/inputmask';
+import { HomeComponent } from './home/home.component';
+import { RequestInterceptor } from './request.interceptor';
+import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
-
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CarComponent,
+    HomeComponent,
     LoginComponent,
-    UserComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    CarComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    ButtonModule,
+    AppRoutingModule,
+    FormsModule,
+    DividerModule,
     BrowserAnimationsModule,
     InputTextModule,
     TableModule,
@@ -41,12 +45,11 @@ import { MessageService } from 'primeng/api';
     InputNumberModule,
     PasswordModule,
     FormsModule,
-    DividerModule,
     KeyFilterModule,
     InputMaskModule,
     ToastModule
   ],
-  providers: [MessageService],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
