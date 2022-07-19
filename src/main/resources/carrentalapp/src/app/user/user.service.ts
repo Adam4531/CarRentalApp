@@ -17,17 +17,4 @@ export class UserService {
   public getUsers(): Observable<UserDto[]> {
     return this.http.get<UserDto[]>(`${this.apiServerUrl}/users`);
   }
-
-  public addUser(user: UserDto): Observable<UserDto> {
-    return this.http.post<UserDto>(`${this.apiServerUrl}/users`, user);
-  }
-
-  public putUser(user: UserDto): Observable<UserDto> {
-    return this.http.put<UserDto>(`${this.apiServerUrl}/users`, user);
-  }
-
-  public deleteUser(userId: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiServerUrl}/users/${userId}`);
-  }
-
 }

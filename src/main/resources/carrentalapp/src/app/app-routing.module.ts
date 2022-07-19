@@ -9,6 +9,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { HomeComponent } from './home/home.component';
 import { FilterComponent } from './filter/filter.component';
 import { SelectedCarComponent } from './selected-car/selected-car.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 const routes: Routes = [
   { path: 'cars', component: CarComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'filter', component: FilterComponent},
   { path: 'selected-car/:id', component: SelectedCarComponent},
+  { path: 'edit', component: EditUserComponent},
 ];
 
 @NgModule({
