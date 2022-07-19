@@ -28,8 +28,6 @@ public class AuthenticationConfiguration extends WebSecurityConfigurerAdapter {
     private final SessionFilter sessionFilter;
     private final PasswordEncoder passwordEncoder;
 
-
-    //tUTAJ PROBLEM ???
     @Lazy
     public AuthenticationConfiguration(CurrentUserService currentUserService, SessionFilter sessionFilter, PasswordEncoder passwordEncoder) {
         this.currentUserService = currentUserService;

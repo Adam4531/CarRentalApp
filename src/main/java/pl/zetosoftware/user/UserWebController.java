@@ -33,7 +33,7 @@ public class UserWebController {
         final String sessionId = sessionRegistry.registerSession(user.getEmail());
         UserLoginResponseDTO response = new UserLoginResponseDTO();
         response.setSessionId(sessionId);
-//        return ResponseEntity.ok(sessionId);
+
         return ResponseEntity.ok(response);
     }
 
