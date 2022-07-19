@@ -4,10 +4,8 @@ package pl.zetosoftware.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.lang.NonNull;
-import org.springframework.lang.NonNullApi;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -22,11 +20,11 @@ import java.io.IOException;
 @Component
 public class SessionFilter extends OncePerRequestFilter {
 
-    private final InMemorySession sessionRegistry;
+    private final SessionRegistry sessionRegistry;
     private final CurrentUserService currentUserService;
 
     @Autowired
-    public SessionFilter(final InMemorySession sessionRegistry,
+    public SessionFilter(final SessionRegistry sessionRegistry,
                          final CurrentUserService currentUserService) {
         this.sessionRegistry = sessionRegistry;
         this.currentUserService = currentUserService;
@@ -38,6 +36,7 @@ public class SessionFilter extends OncePerRequestFilter {
         final String sessionId = request.getHeader(HttpHeaders.AUTHORIZATION);
         if (sessionId == null || sessionId.length() == 0) {
             filterChain.doFilter(request, response);
+            return;
         }
         final String email = sessionRegistry.getUsernameForSession(sessionId);
         if (email == null) {

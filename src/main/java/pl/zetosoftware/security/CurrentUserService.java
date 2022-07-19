@@ -19,12 +19,18 @@ public class CurrentUserService implements UserDetailsService {
         this.userRepository = userRepository;
     }
 
+
     @Override
-    public CurrentUser loadUserByUsername(String email) throws UsernameNotFoundException {
-        UserEntity user = userRepository.findUserByEmail(new EmailValidator(email));
-        if(user == null){
-            throw new UsernameNotFoundException("Failed to find user with email : " + email);
+    public CurrentUser loadUserByUsername(String username) throws UsernameNotFoundException {
+        final UserEntity user = userRepository.findUserByEmail(new EmailValidator(username));
+        if (user != null) {
+            final CurrentUser currentUser = new CurrentUser();
+            currentUser.setUsername(user.getEmail().toString());
+            currentUser.setPassword(user.getPassword().toString());
+
+            return currentUser;
         }
-        return new CurrentUser(user);
+        else
+            throw new UsernameNotFoundException("Failed to find user with email: " + username);
     }
 }

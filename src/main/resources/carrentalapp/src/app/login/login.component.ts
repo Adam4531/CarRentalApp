@@ -29,21 +29,28 @@ export class LoginComponent implements OnInit {
     this.http.post<any>(url, {
       email: this.model.email,
       password: this.model.password
+      // this.router.navigate(['localhost:4200/']);
     }).subscribe(
+      
       res => {
-      // nie wywala w ogóle w konsoli response, czyli backend nie wysyła tego response'a...
+        console.log(res);
+      
       if (res) {
+        // this.router.navigate(['localhost:4200/']);
         this.sessionId = res.sessionId;
-          
+        console.log(res.sessionId);
+        console.log(res);
+        console.log(this.sessionId);
+
         sessionStorage.setItem(
           'token',
           this.sessionId
         );
-        this.router.navigate(['']);
+        this.router.navigate(['localhost:4200/']);
       } else {
           alert("Authentication failed.")
       }
     });
   }
-  
+//ewq
 }
