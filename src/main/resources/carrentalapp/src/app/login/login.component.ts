@@ -26,6 +26,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  btnLogin() {
+    this.login();
+  }
+
   login() {
     let url = '/api/login';
     this.http.post<any>(url, {

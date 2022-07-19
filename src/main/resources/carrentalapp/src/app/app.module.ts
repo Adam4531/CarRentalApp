@@ -47,7 +47,8 @@ import { MessageService } from 'primeng/api';
     FormsModule,
     KeyFilterModule,
     InputMaskModule,
-    ToastModule
+    ToastModule,
+    ButtonModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }, MessageService],
   bootstrap: [AppComponent]

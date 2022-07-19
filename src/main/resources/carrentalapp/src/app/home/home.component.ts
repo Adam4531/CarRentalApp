@@ -21,4 +21,8 @@ export class HomeComponent implements OnInit {
       }
     });
   }
+
+  public btnClick(url: string): void {
+    this.router.navigateByUrl(url);
+    };
 }
