@@ -1,0 +1,62 @@
+h1 {
+    font-size: 70px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 15px purple;
+    background-color: #1a001a;
+    width: 95%;
+    height: 750px;
+    margin: 0 auto;
+  }
+
+  .scroller {
+    box-shadow: 0 0 15px rgb(107, 21, 93);
+    background-color: #2e052e;
+    width: 400px;
+    height: 100px;
+    margin: 0 auto;
+  }
+
+  .details {
+    margin-right: 16%;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  img {
+    margin-left: 3%;
+    width: 40%;
+  }
+
+  button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 60px;
+    width: 400px;
+    font-size: large;
+  }
+  .container p {
+    text-align: center;
+  }
+
+  .reservations {
+    text-align: center;
+  }
+
+  .scroll-item {
+    height: 50px;
+    font-size: 25px;
+    text-align: center;
+    margin-top: 5px;
+  }
+
+  :host ::ng-deep .input-mask-date{
+    margin-left: 20px;
+    margin-right: 30px;
+    width: 150px;
+    }

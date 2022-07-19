@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 import { SelectedCar } from './selected-car';
+import { ReservationForCar } from './reservation-for-car';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,10 @@ export class SelectedCarService {
 
   public getCar(id: number): Observable<SelectedCar[]> {
     return this.http.get<SelectedCar[]>(`${this.apiServerUrl}/cars/${id}`);
-    // PO UKOŚNIKU ID ŻEBY POBRAĆ Z BACKENDU /cars/{id} (getCarById)
   }
 
+  public getReservationsForCar(id: number): Observable<ReservationForCar[]> {
+    return this.http.get<ReservationForCar[]>(`${this.apiServerUrl}/reservations/car/${id}`);
+  }
 
 }

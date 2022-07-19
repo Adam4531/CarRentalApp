@@ -3,9 +3,6 @@ import { Car } from './car';
 import { CarService } from './car.service';
 import { PrimeNGConfig } from 'primeng/api';
 
-
-
-
 @Component({
   selector: 'app-car',
   templateUrl: './car.component.html',
@@ -38,28 +35,11 @@ export class CarComponent implements OnInit {
     this.getCars();
   }
 
-  // klik(): void{
-  //   console.log(this.cars);
-
-  // }
-
   public getCars(): void {
 
     this.carService.getCars().subscribe((response: any) => {
       this.cars = response;
-      // console.log(response);
-      // this.cars.push(<CarEntity>{carName:"name561231321", id:212313227});
-      // this.cars.push(response[0]);
     });
 
     }
-  //     (response: CarEntity[]) => {
-  //       this.cars = response;
-  //     },
-  //     (error: HttpErrorResponse) => {
-  //       alert(error.message);
-  //     }
-
-  //   );
-  // }
 }

@@ -1,2 +1,53 @@
-<p>WORKS</p>
-<p>CAR ID: {{selectedCar.id}}, brand: {{selectedCar.brand}}</p>
+<!-- <p>WORKS</p>
+<p>CAR ID: {{selectedCar.id}}, brand: {{selectedCar.brand}}</p> -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{selectedCar.brand}}</title>
+    </head>
+    <body>
+        <header>
+            <h1>{{selectedCar.brand}} {{selectedCar.model}}</h1>
+        </header>
+            <main>
+                <div class="container">
+                    <img [src]="'assets/images/example_car.jpeg'" [alt]="selectedCar.brand + selectedCar.model"/>
+                    <div class="details">
+                        <h3>Engine Capacity: {{selectedCar.engineCapacity}}</h3>
+                        <h3>Body Type: {{selectedCar.bodyTypeEnum}}</h3>
+                        <h3>Type of Fuel: {{selectedCar.typeOfFuelEnum}}</h3>
+                        <h3>Production Year: {{selectedCar.productionYear}}</h3>
+                        <h3>Rent Cost Per Day: {{selectedCar.pricePerDayRent}}€</h3>
+                        <h3>Status: {{selectedCar.status}}</h3>
+                        <div>
+                            <!-- DOBRZE BY BYLO ZMIENIC FUNKCJE getAllReservationsForCarId
+                                 NA FUNKCJE: getAllReservationsForCarIdFromToday (nie wyswietlac rezerwacji historycznych,
+                                        ale przy okazji wyswietlic te, ktora jeszcze trwa) -->
+                            <h3 class="reservations">Reservations:</h3>
+                            <div class="scroller">
+                                <p-scroller [items]="reservations" scrollHeight="100px" [itemSize]="50">
+                                    <ng-template pTemplate="item" let-item let-options="options">
+                                        <div class="scroll-item">{{item.dateStart}} --- {{item.dateEnd}}</div>
+                                    </ng-template>
+                                </p-scroller>
+                            </div>
+                        </div>
+                        <h3 class="reservations">Enter Reservation Period:</h3>
+                        <p>
+                            <p-inputMask [(ngModel)]="from" mask="9999-99-99" placeholder="From" styleClass="input-mask-date"></p-inputMask>
+                            <!-- FROM DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
+                            <p-inputMask [(ngModel)]="to" mask="9999-99-99" placeholder="To" styleClass="input-mask-date"></p-inputMask>
+                            <!-- TO DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
+                        </p>
+                        <p>
+                            <button type="button" pButton label="Reserve" (click)="btnClick('/reservations');"></button>
+                        </p>
+                        <p>
+                            <a href="http://localhost:4200/home">HOME PAGE</a>
+                        </p>
+                    </div>
+                </div>
+            </main>
+    </body>
+</html>
+

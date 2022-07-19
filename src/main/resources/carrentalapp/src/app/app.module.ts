@@ -43,7 +43,7 @@ import { SelectedCarComponent } from './selected-car/selected-car.component';
     FormsModule,
     DividerModule,
     KeyFilterModule,
-    InputMaskModule
+    InputMaskModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
