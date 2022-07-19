@@ -55,19 +55,20 @@ public class UserRegistrationService {
 //        return userRepository.existsUserEntityByLogin(new LoginValidator(login));
 //    }
     public Boolean loginIsValidLength(String login) {
-        return login.length() > 6;
+        return login != null && login.length() > 6;
     }
 
     public Boolean emailContainsAtSign(String email) {
-        return email.contains("@");
+        return email != null && email.contains("@");
     }
 
     public Boolean passwordIsValidLength(String password) {
-        return password.length() > 6;
+        return password != null && password.length() > 6;
     }
 
     public Boolean nameContainsValidSigns(String firstName, String secondName) {
-        return firstName.matches(POLISH_ALPHABET) && secondName.matches(POLISH_ALPHABET);
+        return firstName != null && firstName.matches(POLISH_ALPHABET) &&
+                secondName != null && secondName.matches(POLISH_ALPHABET);
     }
 
 }

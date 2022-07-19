@@ -5,6 +5,7 @@ import { Message, PrimeNGConfig } from 'primeng/api';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { ErrorsListDto } from '../errorsList/errors-list-dto';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-registration',
@@ -22,7 +23,8 @@ export class RegistrationComponent implements OnInit {
 
   errorsListDto: ErrorsListDto = new ErrorsListDto();
 
-  constructor(private registrationService: RegistrationService, private primengConfig: PrimeNGConfig, private router: Router){
+
+  constructor(private registrationService: RegistrationService, private primengConfig: PrimeNGConfig, private router: Router, private messageService: MessageService){
   }
 
   ngOnInit(): void {
@@ -42,11 +44,15 @@ export class RegistrationComponent implements OnInit {
       .register(this.userRequestDto)
       .subscribe( (response: any) => {
         this.errorsListDto = response;
-
+        
         if( !this.errorsListDto.listOfErrorsEmpty ) {
-          this.errorsListDto.errors.forEach((error) => alert(error));
+          this.errorsListDto.errors.forEach((error) => 
+          this.messageService.add({life:10000, severity:'error', summary:'Rejestracja', detail:error}) // dodac dluzszy czas wyswietlania
+          );
+          
         }
         else{
+          this.messageService.add({severity:'success', summary:'Rejestracja', detail:'Udalo sie zarejestrowac!'});
           this.router.navigateByUrl('/users');
         }
         });

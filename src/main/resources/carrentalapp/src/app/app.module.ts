@@ -17,6 +17,9 @@ import { RegistrationComponent } from './registration/registration.component';
 import { DividerModule } from 'primeng/divider';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import {InputMaskModule} from 'primeng/inputmask';
+import {ToastModule} from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+
 
 
 @NgModule({
@@ -41,8 +44,9 @@ import {InputMaskModule} from 'primeng/inputmask';
     DividerModule,
     KeyFilterModule,
     InputMaskModule,
+    ToastModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
