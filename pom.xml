@@ -113,7 +113,7 @@
 				<version>8.0.0</version>
 				<configuration>
 					<user>postgres</user>
-					<password>postgres</password>
+					<password>osmiornicaZ691</password>
                     <url>jdbc:postgresql://localhost:5432/carrental</url>
 					<schemas>
 						<schema>carrental</schema>

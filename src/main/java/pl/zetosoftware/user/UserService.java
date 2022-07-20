@@ -38,8 +38,15 @@ public class UserService {
         return userMapper.fromUserEntityToUserResponseDto(user);
     }
 
-    public UserResponseDto updateUserWithPutMapping(Long id, UserRequestDto updatedUser) {//TODO uzupełnić
-        var userToBeChanged = getUser(id);
+    public UserEntity getUserByEmail(EmailValidator email){
+        if(userRepository.findUserByEmail(email) == null){
+            throw new NoSuchElementException("UserEntity with email: " + email + " does not exist!");
+        }
+        return  userRepository.findUserByEmail(email);
+    }
+
+    public UserResponseDto updateUserWithPutMapping(EmailValidator email, UserRequestDto updatedUser) {//TODO uzupełnić
+        var userToBeChanged = getUserByEmail(email);
 
         userToBeChanged.changeEmail(updatedUser.email());
         userToBeChanged.changeFirstName(updatedUser.firstName());
