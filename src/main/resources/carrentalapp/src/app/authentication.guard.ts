@@ -20,7 +20,7 @@ export class AuthenticationGuard implements CanActivate {
 
       if (state.url == "/login") {
         if(token){
-          this.messageService.add({life:3000, severity:'info', summary:'Login', detail:" Już jesteś zalogowany !! "})
+          this.messageService.add({life:3000, severity:'info', summary:'Login', detail:" You are already logged in ! "})
           return this.router.parseUrl('/'); 
         }
         return true;
@@ -32,14 +32,12 @@ export class AuthenticationGuard implements CanActivate {
         let url3 = "/cars"
         if(state.url == url3) { //TU DODAC /user/**
           console.log("NIE JESTES ZALOGOWANY !!!!!!!!111!")
-          this.messageService.add({life:3000, severity:'info', summary:'Login', detail:" Musisz się najpierw zalogować !! "})
+          this.messageService.add({life:3000, severity:'info', summary:'Login', detail:" You have to login first ! "})
           return this.router.parseUrl('/login');
         }
         return true;
-        // console.log("NIE JESTES ZALOGOWANY !!!!!!!!111!")
-        // this.messageService.add({life:10000, severity:'info', summary:'Login', detail:" Musisz się najpierw zalogować !! "})
-        // return this.router.parseUrl('/login');
       }
+      
     return true;
   }
   

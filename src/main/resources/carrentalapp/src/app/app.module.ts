@@ -24,6 +24,7 @@ import { MessageService } from 'primeng/api';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { FilterComponent } from './filter/filter.component';
 import { SelectedCarComponent } from './selected-car/selected-car.component';
+import { ReservationsComponent } from './reservations/reservations.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { SelectedCarComponent } from './selected-car/selected-car.component';
     UserComponent,
     FilterComponent,
     SelectedCarComponent,
-    EditUserComponent
+    EditUserComponent,
+    ReservationsComponent
   ],
   imports: [
     BrowserModule,

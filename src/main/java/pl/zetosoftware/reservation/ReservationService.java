@@ -3,6 +3,7 @@ package pl.zetosoftware.reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.zetosoftware.reservation.dto.ReservationDto;
+import pl.zetosoftware.user.value_objects.EmailValidator;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -63,9 +64,14 @@ public class ReservationService {
         return reservationRepository.findAll();
     }
 
-    public List<ReservationDto> getAllReservationsByUserId(Long Id) {
+    public List<ReservationDto> getAllReservationsByEmail(Long Id) {
         List<ReservationEntity> allReservationsByUserId = reservationRepository.getAllReservationsByUserId(Id);
         return reservationMapper.fromReservationListToReservationDtoList(allReservationsByUserId);
+    }
+
+    public List<ReservationDto> getAllReservationsByEmail(EmailValidator email) {
+        List<ReservationEntity> allReservationsByEmail = reservationRepository.findAllByUserIdEmail(email);
+        return reservationMapper.fromReservationListToReservationDtoList(allReservationsByEmail);
     }
 
     public List<ReservationDto> getAllReservationsByCarId(Long id){

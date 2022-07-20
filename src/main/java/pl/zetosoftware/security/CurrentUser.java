@@ -9,9 +9,11 @@ import java.util.List;
 
 public class CurrentUser implements UserDetails {
 
-    private String username;
-    private String password;
+    private Long id;
 
+    private String username;
+
+    private String password;
 
     public void setUsername(String username) {
         this.username = username;
@@ -24,6 +26,10 @@ public class CurrentUser implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("ADMIN"));
+    }
+
+    public Long getId() {
+        return id;
     }
 
     @Override
