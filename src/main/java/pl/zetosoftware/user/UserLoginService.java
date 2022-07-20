@@ -16,13 +16,13 @@ import java.util.ArrayList;
 @Service
 public class UserLoginService {
 
-    @Autowired
-    public AuthenticationManager manager;
-    @Autowired
-    public SessionRegistry sessionRegistry;
+    private final AuthenticationManager manager;
+    private final SessionRegistry sessionRegistry;
 
-    @Autowired
-    private UserRepository userRepository;
+    public UserLoginService(AuthenticationManager manager, SessionRegistry sessionRegistry) {
+        this.manager = manager;
+        this.sessionRegistry = sessionRegistry;
+    }
 
     public UserLoginResponseDto login(UserLoginDto user) {
         UserLoginResponseDto response = new UserLoginResponseDto(new ErrorsListDto(new ArrayList<>()));
@@ -37,7 +37,6 @@ public class UserLoginService {
                 response.addToErrorList("Email musi zawierać znak '@'!");
             }
             response.addToErrorList("Podano nieprawidlowe dane, sprobuj jeszcze raz!");
-            return response;
         }
 
         return response;
