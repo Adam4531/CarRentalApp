@@ -11,4 +11,6 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
     Boolean existsUserEntityByEmail(EmailValidator email);
     Boolean existsUserEntityByLogin(LoginValidator login);
 
+    UserEntity findUserByEmail(EmailValidator email);
+
 }

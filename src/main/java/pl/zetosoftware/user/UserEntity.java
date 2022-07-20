@@ -3,6 +3,7 @@ package pl.zetosoftware.user;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import pl.zetosoftware.global.BasicEntity;
 import pl.zetosoftware.user.value_objects.*;
 
 import javax.persistence.*;
@@ -11,12 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "USERS")
-public class UserEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
-    private Long id;
+public class UserEntity extends BasicEntity {
     @Embedded
     private LoginValidator login;
     @Embedded
@@ -37,6 +33,7 @@ public class UserEntity {
     private EmailValidator email;
     @Embedded
     private PeselValidator pesel;
+
     @Builder
     public UserEntity(LoginValidator login, NameValidator firstName, NameValidator secondName, PasswordValidator password, PhoneNumberValidator phoneNumber, EmailValidator email, PeselValidator pesel) {
         this.login = login;

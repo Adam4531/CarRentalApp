@@ -2,30 +2,25 @@ package pl.zetosoftware.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import pl.zetosoftware.user.dto.UserRequestDto;
 import pl.zetosoftware.user.dto.UserResponseDto;
+import pl.zetosoftware.user.value_objects.EmailValidator;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
 public class UserService {
-
     private final UserRepository userRepository;
     private final UserMapper userMapper;
-
-
     @Autowired
     public UserService(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
-    }
-
-    public UserResponseDto createUser(UserRequestDto user){
-        var userEntity = userMapper.fromUserRequestDtoToUserEntity(user);
-        userRepository.save(userEntity);
-        return userMapper.fromUserEntityToUserResponseDto(userEntity);
     }
 
     public List<UserResponseDto> getAllUsers() {
@@ -68,6 +63,17 @@ public class UserService {
         var user = getUser(id);
         userRepository.delete(user);
         return "User with id: " + id + " deleted successfully!";
+    }
+
+    //do usuniecia?
+    public UserResponseDto getCurrentLoggedUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            String email = authentication.getName();
+            UserEntity user = userRepository.findUserByEmail(new EmailValidator(email));
+            return userMapper.fromUserEntityToUserResponseDto(user);
+        }
+        return null;
     }
 
 }
