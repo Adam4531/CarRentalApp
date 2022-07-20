@@ -24,7 +24,12 @@ export class RegistrationComponent implements OnInit {
   errorsListDto: ErrorsListDto = new ErrorsListDto();
 
 
-  constructor(private registrationService: RegistrationService, private primengConfig: PrimeNGConfig, private router: Router, private messageService: MessageService){
+  constructor(
+    private registrationService: RegistrationService,
+    private primengConfig: PrimeNGConfig,
+    private router: Router,
+    private messageService: MessageService
+    ){
   }
 
   ngOnInit(): void {
@@ -34,11 +39,10 @@ export class RegistrationComponent implements OnInit {
   btnRegister(): void {
     console.log(this.userRequestDto);
     this.registerUser();
-
   }
 
   public registerUser() {
-      console.log("REGISTER.............." + this.userRequestDto);
+      console.log(" REGISTRATION... " + this.userRequestDto);
 
       this.registrationService
       .register(this.userRequestDto)
@@ -47,25 +51,15 @@ export class RegistrationComponent implements OnInit {
 
         if( !this.errorsListDto.listOfErrorsEmpty ) {
           this.errorsListDto.errors.forEach((error) =>
-          this.messageService.add({life:10000, severity:'error', summary:'Rejestracja', detail:error})
+          this.messageService.add({life:3000, severity:'error', summary:'Register', detail:error})
           );
-
         }
         else{
-          this.messageService.add({severity:'success', summary:'Rejestracja', detail:'Udalo sie zarejestrowac!'});
-          this.router.navigateByUrl('/users');
+          this.messageService.add({life: 3000, severity:'success', summary:'Register', detail:' You have successfully signed up !'});
+          this.messageService.add({life: 5500, severity:'info', summary:'Register', detail:' Now you can log in with your credentials !'});
+          this.router.navigateByUrl('/login');
         }
         });
       }
-
-
-  // public getErrorList() {
-  //   this.registerUser.getErrorsList().subscribe(
-  //     data => {
-  //       this.projects = data;
-  //     }
-  //   );
-  // }
-
 
 }

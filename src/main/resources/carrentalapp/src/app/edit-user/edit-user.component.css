@@ -1,17 +1,18 @@
 h1 {
     text-align: center;
     margin-top: 4%;
-  
+
   }
-  
+
   .container {
     box-shadow: 0 0 15px purple;
     background-color: #1a001a;
     width: 500px;
     height: 640px;
     margin: 0 auto;
+    margin-top: 50px;
   }
-  
+
   button {
     margin-top: 40px;
     margin-bottom: 20px;

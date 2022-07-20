@@ -22,7 +22,6 @@ const routes: Routes = [
     { path: 'reservations', component: ReservationsComponent },
     { path: 'users', component: UserComponent },
     { path: 'register', component: RegistrationComponent },
-    { path: 'home', component: HomeComponent},
     { path: 'filter', component: FilterComponent},
     { path: 'selected-car/:id', component: SelectedCarComponent},
     { path: 'edit', component: EditUserComponent},

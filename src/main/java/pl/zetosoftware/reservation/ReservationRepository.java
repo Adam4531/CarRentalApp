@@ -23,5 +23,7 @@ public interface ReservationRepository extends JpaRepository<ReservationEntity, 
     @Query(value = "SELECT car_id FROM reservations WHERE id=?1", nativeQuery = true)
     Long getCarIdByReservationId(Long Id);
 
+    ReservationEntity getReservationEntityByUserId(Long id);
+
 
 }

@@ -9,6 +9,8 @@ import java.util.List;
 
 public class CurrentUser implements UserDetails {
 
+
+
     private String username;
     private String password;
 
