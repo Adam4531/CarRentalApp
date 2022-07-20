@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         this.sessionId = res.sessionId;
         sessionStorage.setItem('token',this.sessionId);
         this.router.navigate(['localhost:4200/']);
-        this.messageService.add({life:3000, severity:'success', summary:'Login', detail:" Zostałeś pomyślnie zalogowany !! "})
+        this.messageService.add({life:3000, severity:'success', summary:'Login', detail:" You have successfully logged in ! "})
       }
       else {
         res.errorsListDto.errors.forEach((error: any) =>

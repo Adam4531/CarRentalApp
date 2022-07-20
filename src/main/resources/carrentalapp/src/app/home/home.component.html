@@ -14,7 +14,7 @@
             <main>
                 <div class="container">
                     <p>
-                        <button type="button" pButton label="Available Cars" (click)="btnClick('/cars');"></button>
+                        <button type="button" *ngIf="isLogged()" pButton label="Available Cars" (click)="btnClick('/cars');"></button>
                     </p>
                     <p>
                         <button type="button" pButton label="Login" (click)="btnClick('/login');"></button>
@@ -22,6 +22,10 @@
                     <p>
                         <button type="button" pButton label="Register" (click)="btnClick('/register');"></button>
                     </p>
+                    <p>
+                        <button type="button" pButton label="Logout" (click)="btnLogout()"></button>
+                    </p>
+                    <p-toast position="top-right"></p-toast>
                 </div>
             </main>
     </body>
