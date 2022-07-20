@@ -79,7 +79,6 @@ public class CarService {
         List<ReservationCarDto> carDtoList = new ArrayList<>();
         for (CarEntity carEntity: carEntityList) {
             ReservationCarDto reservationCarDto = ReservationCarDto.builder()
-                    .id(carEntity.getId())
                     .brand(carEntity.getBrand().toString())
                     .model(carEntity.getModel().toString())
                     .engineCapacity(carEntity.getEngineCapacity().toBigDecimal())
