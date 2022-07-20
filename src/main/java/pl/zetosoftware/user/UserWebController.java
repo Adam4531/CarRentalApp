@@ -27,8 +27,7 @@ public class UserWebController {
     @Autowired
     private UserRegistrationService userRegistrationService;
 
-    @PostMapping(path = "/login", consumes = MediaType.APPLICATION_JSON_VALUE,
-                produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/login", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserLoginResponseDto> login(@RequestBody UserLoginDto user) {
         return ResponseEntity.ok(userLoginService.login(user));
     }

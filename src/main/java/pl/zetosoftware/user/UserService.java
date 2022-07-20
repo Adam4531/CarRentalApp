@@ -5,7 +5,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 import pl.zetosoftware.user.dto.UserRequestDto;
 import pl.zetosoftware.user.dto.UserResponseDto;
@@ -22,12 +21,6 @@ public class UserService {
     public UserService(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
-    }
-
-    public UserResponseDto createUser(UserRequestDto user){
-        var userEntity = userMapper.fromUserRequestDtoToUserEntity(user);
-        userRepository.save(userEntity);
-        return userMapper.fromUserEntityToUserResponseDto(userEntity);
     }
 
     public List<UserResponseDto> getAllUsers() {
@@ -72,6 +65,7 @@ public class UserService {
         return "User with id: " + id + " deleted successfully!";
     }
 
+    //do usuniecia?
     public UserResponseDto getCurrentLoggedUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {

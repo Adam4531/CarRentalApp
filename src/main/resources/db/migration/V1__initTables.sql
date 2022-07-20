@@ -41,14 +41,3 @@ CREATE TABLE IF NOT EXISTS public.RESERVATIONS(
     CONSTRAINT user_id_pkey FOREIGN KEY(user_id) REFERENCES users(ID),
     CONSTRAINT car_id_pkey FOREIGN KEY(car_id) REFERENCES cars(ID)
     );
-
-CREATE TABLE roles (
-    ID BIGINT NOT NULL PRIMARY KEY,
-    name VARCHAR(40)
-);
-
-CREATE TABLE users_roles (
-    user_entity_id BIGINT REFERENCES users (ID) ON UPDATE CASCADE ON DELETE CASCADE,
-    roles_id BIGINT REFERENCES roles (ID) ON UPDATE CASCADE,
-    name VARCHAR(40)
-);

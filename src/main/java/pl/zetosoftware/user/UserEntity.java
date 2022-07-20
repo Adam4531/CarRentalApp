@@ -3,13 +3,10 @@ package pl.zetosoftware.user;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import pl.zetosoftware.global.BasicEntity;
-import pl.zetosoftware.security.Role;
 import pl.zetosoftware.user.value_objects.*;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Getter
 @NoArgsConstructor
@@ -36,10 +33,6 @@ public class UserEntity extends BasicEntity {
     private EmailValidator email;
     @Embedded
     private PeselValidator pesel;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @Setter
-    private Set<Role> roles;
 
     @Builder
     public UserEntity(LoginValidator login, NameValidator firstName, NameValidator secondName, PasswordValidator password, PhoneNumberValidator phoneNumber, EmailValidator email, PeselValidator pesel) {

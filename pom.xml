@@ -114,7 +114,7 @@
 				<configuration>
 					<user>postgres</user>
 					<password>admin</password>
-                    <url>jdbc:postgresql://localhost:5432/car_rental</url>
+                    <url>jdbc:postgresql://localhost:5432/carrental</url>
 					<schemas>
 						<schema>public</schema>
 					</schemas>

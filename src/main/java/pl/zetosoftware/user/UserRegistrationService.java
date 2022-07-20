@@ -45,7 +45,7 @@ public class UserRegistrationService {
     }
 
     // komentujemy to, bo na frontend przechodzi exception zwiazany z EmailValidatorem
-    // rozwiazaniem moze byc napisanie derived query
+    // rozwiazaniem moze byc napisanie custom query
     // albo wrzucenie validatorow pod frontend, takich jak nizej
 //    public Boolean existWithEmail(String email) {
 //        return userRepository.existsUserEntityByEmail(new EmailValidator(email));

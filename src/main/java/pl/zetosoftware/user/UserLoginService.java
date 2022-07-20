@@ -10,8 +10,6 @@ import pl.zetosoftware.user.dto.*;
 @Service
 public class UserLoginService {
 
-    private static final String POLISH_ALPHABET = "[a-zA-Z-\\p{IsAlphabetic}]+";
-
     @Autowired
     public AuthenticationManager manager;
     @Autowired
