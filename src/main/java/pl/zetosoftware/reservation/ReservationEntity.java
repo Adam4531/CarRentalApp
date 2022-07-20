@@ -46,7 +46,7 @@ public class ReservationEntity extends BasicEntity {
     private PaymentInAdvanceValidator paymentInAdvance;
 
     @Builder
-    public ReservationEntity(UserEntity userId, CarEntity carId, LocalDateTime dateStart, LocalDateTime dateEnd, CostValidator cost, PaymentInAdvanceValidator paymentInAdvance) {
+    public ReservationEntity(UserEntity userId, CarEntity carId, ReservationDatesValidator date, CostValidator cost, PaymentInAdvanceValidator paymentInAdvance) {
         this.userId = userId;
         this.carId = carId;
         this.date = date;

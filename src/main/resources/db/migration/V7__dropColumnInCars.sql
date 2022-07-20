@@ -1,1 +1,1 @@
-ALTER TABLE public.CARS DROP COLUMN status;
+--ALTER TABLE public.CARS DROP COLUMN status;

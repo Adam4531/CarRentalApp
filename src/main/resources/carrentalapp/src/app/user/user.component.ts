@@ -36,7 +36,6 @@ export class UserComponent implements OnInit {
       this.users = response;
       console.log(response);
     });
-    //
 
   }
 
