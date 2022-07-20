@@ -51,7 +51,6 @@ public class CarService {
         CarEntity carEntity = getCarEntityById(id);
 
         return ReservationCarDto.builder()
-                .id(carEntity.getId())
                 .brand(carEntity.getBrand().toString())
                 .model(carEntity.getModel().toString())
                 .engineCapacity(carEntity.getEngineCapacity().toBigDecimal())
