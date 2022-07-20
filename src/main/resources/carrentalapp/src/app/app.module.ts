@@ -45,7 +45,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     FormsModule,
     DividerModule,
     KeyFilterModule,
-    InputMaskModule
+    InputMaskModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -69,7 +69,7 @@ public class ReservationService {
         return reservationMapper.fromReservationListToReservationDtoList(allReservationsByUserId);
     }
 
-    public List<ReservationDto> getAllReservationsByCarId(Long id) {
+    public List<ReservationDto> getAllReservationsByCarId(Long id){
         List<ReservationEntity> allReservationsByCarId = reservationRepository.getAllReservationsByCarId(id);
         return reservationMapper.fromReservationListToReservationDtoList(allReservationsByCarId);
     }

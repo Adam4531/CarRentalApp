@@ -42,4 +42,10 @@ public class ReservationController {
         return reservationService.getAllReservationsByUserId(id);
     }
 
+    @GetMapping("/car/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<ReservationDto> getAllReservationsByCar(@PathVariable Long id){
+        return reservationService.getAllReservationsByCarId(id);
+    }
+
 }

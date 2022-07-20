@@ -5,12 +5,12 @@ export interface SelectedCar {
     brand: string;
     model: string;
     engineCapacity: Big;
-    bodyType: string;
-    typeOfFuel: string;
+    bodyTypeEnum: string;
+    typeOfFuelEnum: string;
     newCarCost: number;
     productionYear: number;
     status: string;
-    //rentCost: Big;
+    pricePerDayRent: Big;
 
     // DO ZMIANY POD NOWĄ LISTĘ KTÓRĄ ROBI ADAM
 }

@@ -11,6 +11,7 @@ import pl.zetosoftware.reservation.ReservationService;
 import pl.zetosoftware.reservation.dto.ReservationDto;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -42,9 +43,19 @@ public class CarService {
                 .orElseThrow(() -> new CarNotFoundException("Car with id " + id + " was not found. "));
     }
 
-    public CarDto findCarById(Long id) {
+    public ReservationCarDto findCarById(Long id) {
         CarEntity carEntity = getCarEntityById(id);
-        return carMapper.mapCarToCarDto(carEntity);
+
+        return ReservationCarDto.builder()
+                .brand(carEntity.getBrand().toString())
+                .model(carEntity.getModel().toString())
+                .engineCapacity(carEntity.getEngineCapacity().toBigDecimal())
+                .productionYear(carEntity.getProductionYear().toInteger())
+                .typeOfFuelEnum(carEntity.getTypeOfFuel())
+                .pricePerDayRent(setInitialPrice(carEntity.getId()))
+                .bodyTypeEnum(carEntity.getBodyType())
+                .status(getStatus(carEntity.getId()))
+                .build();
     }
 
     public CarDto updateCar(Long id, CarEntity carEntity) {
@@ -97,8 +108,10 @@ public class CarService {
         CarEntity car = carRepository.getReferenceById(id);
         return BigDecimal.valueOf(car.getNewCarCost().toLong())
                 .multiply(BigDecimal.valueOf(0.001))
-                .multiply(productionYearFactor(car));
+                .multiply(productionYearFactor(car))
+                .multiply(productionYearFactor(car)).setScale(2, RoundingMode.CEILING);
 //                .multiply(popularityOfCar(car.getId())
+
     }
 
     public BigDecimal setPricePerDays(Long Id, Integer days) {
