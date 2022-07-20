@@ -111,8 +111,8 @@ public class CarService {
         return BigDecimal.valueOf(car.getNewCarCost().toLong())
                 .multiply(BigDecimal.valueOf(0.001))
                 .multiply(productionYearFactor(car))
-                .multiply(productionYearFactor(car)).setScale(2, RoundingMode.CEILING);
-//                .multiply(popularityOfCar(car.getId())
+                .multiply(productionYearFactor(car)).setScale(2, RoundingMode.CEILING)
+                .multiply(popularityOfCar(car.getId()));
 
     }
 
