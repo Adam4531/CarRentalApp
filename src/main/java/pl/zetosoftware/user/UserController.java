@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import pl.zetosoftware.user.dto.UserRequestDto;
 import pl.zetosoftware.user.dto.UserResponseDto;
+import pl.zetosoftware.user.value_objects.EmailValidator;
 
 import java.util.List;
 //
@@ -31,10 +32,10 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("")
     @ResponseStatus(HttpStatus.OK)
-    public UserResponseDto changeUserField(@PathVariable Long id, @RequestBody UserRequestDto updatedUser){
-        return userService.updateUserWithPutMapping(id, updatedUser);
+    public UserResponseDto changeUserByEmail(@RequestBody EmailValidator email, @RequestBody UserRequestDto updatedUser){
+        return userService.updateUserWithPutMapping(email, updatedUser);
     }
 
     @PatchMapping("/{id}")
