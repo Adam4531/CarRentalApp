@@ -98,6 +98,7 @@ public class CarService {
         return BigDecimal.valueOf(car.getNewCarCost().toLong())
                 .multiply(BigDecimal.valueOf(0.001))
                 .multiply(productionYearFactor(car));
+//                .multiply(popularityOfCar(car.getId())
     }
 
     public BigDecimal setPricePerDays(Long Id, Integer days) {
@@ -122,19 +123,19 @@ public class CarService {
 
     public BigDecimal productionYearFactor(CarEntity car) {
         if (isBetween(car.getProductionYear(), LocalDate.now().minusYears(2), LocalDate.now())) {
-            return BigDecimal.valueOf(0.15);
+            return BigDecimal.valueOf(0.13);
         }
         if (isBetween(car.getProductionYear(), LocalDate.now().minusYears(8), LocalDate.now().minusYears(3))) {
             return BigDecimal.valueOf(0.10);
         }
         if (isBetween(car.getProductionYear(), LocalDate.now().minusYears(12), LocalDate.now().minusYears(9))) {
-            return BigDecimal.valueOf(0.07);
+            return BigDecimal.valueOf(0.09);
         }
         if (isBetween(car.getProductionYear(), LocalDate.now().minusYears(22), LocalDate.now().minusYears(13))) {
-            return BigDecimal.valueOf(0.05);
+            return BigDecimal.valueOf(0.07);
         }
 
-        return BigDecimal.ONE;
+        return BigDecimal.valueOf(0.01);
     }
 
     private boolean isBetween(ProductionYearValidator productionYear, LocalDate lower, LocalDate upper) {
