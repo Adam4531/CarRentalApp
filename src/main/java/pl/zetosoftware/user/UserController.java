@@ -19,12 +19,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("")
-    @ResponseStatus(HttpStatus.CREATED)
-    public UserResponseDto addUser(@RequestBody UserRequestDto user){
-        return userService.createUser(user);
-    }
-
     @GetMapping("")
     @ResponseStatus(HttpStatus.OK)
     public List<UserResponseDto> getUsers(){

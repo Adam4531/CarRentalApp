@@ -24,7 +24,7 @@ listę samochodów wypożyczonych przez siebie (aktualnie oraz historycznie).
 3.Status auta // ADAM R.
 4.Wyliczenie ceny wypozyczenia  // MARTYNA
 5.Możliwość edycji + usunięcia rezerwacji // Adam T.
-// 6.Wyświetlanie dostepnych aut, Wyswietlanie wypozyczonych przez innych aut, Wyswietlania wypozyczonych przez siebie aut // Igor
+6.Wyświetlanie dostepnych aut, Wyswietlanie wypozyczonych przez innych aut, Wyswietlania wypozyczonych przez siebie aut // Igor
 
 
 FRONT:
@@ -66,6 +66,13 @@ DALEKA PRZYSZŁOŚĆ:
 3. ...
 
 
+
+    //NOTATKA PIOTR :
+    // WalidacjaDto {
+    // pole typu lista<BladDto> -> BladDto posiada pole string}
+    // if(walidacja(userRequestDto).brakBledow()) {
+    //save
+    // }
 
 
 

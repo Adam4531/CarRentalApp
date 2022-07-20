@@ -10,27 +10,27 @@
             <main>
                 <div class="container">
                     <p>
-                        <input class="input-top" type="text" pInputText [(ngModel)]="firstName" placeholder="First name">
+                        <input type="text" pInputText [(ngModel)]="userRequestDto.firstName" placeholder="First name" style="margin-top: 25px;">
                         <!-- FISRTNAME DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
                     </p>
                     <p>
-                        <input type="text" pInputText [(ngModel)]="lastName" placeholder="Last name">
+                        <input type="text" pInputText [(ngModel)]="userRequestDto.secondName" placeholder="Second name">
                         <!-- SECONDNAME DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
                     </p>
                     <p>
-                        <input type="text" pInputText [(ngModel)]="username" placeholder="Username">
+                        <input type="text" pInputText [(ngModel)]="userRequestDto.login" placeholder="Login">
                         <!-- USERNAME DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
                     </p>
                     <p>
-                        <p-password [toggleMask]="true" [(ngModel)]="password1" placeholder="Password">
+                        <p-password [toggleMask]="true" [(ngModel)]="userRequestDto.password" placeholder="Password">
                             <!-- PASSWORD1 DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
                             <ng-template pTemplate="header">
                                 <h4>Password</h4>
                             </ng-template>
                             <ng-template pTemplate="footer">
                                 <p-divider></p-divider>
-                                <p>Suggestions</p>
-                                <ul>
+                                <p class="mt-2">Suggestions</p>
+                                <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
                                     <li>At least one lowercase</li>
                                     <li>At least one uppercase</li>
                                     <li>At least one numeric</li>
@@ -45,25 +45,28 @@
                         PASSWORD2 DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY
                     </p> -->
                     <p>
-                        <input type="text" pInputText [(ngModel)]="email" placeholder="Email address">
+                        <input type="text" pInputText [(ngModel)]="userRequestDto.email" placeholder="Email address">
                         <!-- EMAIL DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
                     </p>
                     <p>
-                        <p-inputMask [(ngModel)]="phoneNumber" mask="999 999 999" [unmask]="true" placeholder="Phone number" styleClass="input-mask"></p-inputMask>
+                        <p-inputMask [(ngModel)]="userRequestDto.phoneNumber" mask="999 999 999" [unmask]="true" placeholder="Phone number" styleClass="input-mask"></p-inputMask>
                         <!-- PHONENUMBER DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
                     </p>
                     <p>
-                        <p-inputMask [(ngModel)]="pesel" mask="99999999999" [unmask]="true" placeholder="Pesel" styleClass="input-mask"></p-inputMask>
+                        <p-inputMask [(ngModel)]="userRequestDto.pesel" mask="99999999999" [unmask]="true" placeholder="Pesel" styleClass="input-mask"></p-inputMask>
                         <!-- PESEL DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
                     </p>
                     <p>
-                        <button type="button" pButton label="Sign up" (click)="btnClick('/home');"></button>
+                        <button type="button" pButton label="Sign up" (click)="btnRegister();"></button>
                         <!-- PRZEKIEROWANIE NA STRONE GLOWNA BEZ REJESTRACJI -->
                     </p>
                     <p>
                         <a href="http://localhost:4200/home">HOME PAGE</a>
                     </p>
                 </div>
+
+                <p-toast position="top-right"></p-toast>
+
             </main>
     </body>
 </html>
