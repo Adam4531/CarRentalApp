@@ -3,7 +3,6 @@ package pl.zetosoftware.reservation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import pl.zetosoftware.reservation.dto.ReservationDto;
 
 import java.util.List;
 import java.util.Map;
@@ -17,11 +16,18 @@ public interface ReservationRepository extends JpaRepository<ReservationEntity, 
     @Query(value = "SELECT * FROM reservations WHERE car_id=?1 ", nativeQuery = true)
     List<ReservationEntity> getAllReservationsByCarId(Long Id);
 
-    @Query(value = "SELECT car_id, COUNT(car_id) FROM reservations GROUP BY car_id ORDER BY car_id", nativeQuery = true)
-    Map<Integer, Integer> getAllCarsByPopularityOfReservations();
+    @Query(value = "SELECT COUNT(car_id) FROM reservations WHERE car_id=?1 GROUP BY car_id ORDER BY car_id", nativeQuery = true)
+    Integer getCarsWithNumberOfReservations(Long Id);
+
+    @Query(value = "SELECT id FROM cars", nativeQuery = true)
+    List<Long> getAllCarsId();
 
     @Query(value = "SELECT car_id FROM reservations WHERE id=?1", nativeQuery = true)
     Long getCarIdByReservationId(Long Id);
+
+
+    @Query(value = "SELECT car_id, COUNT(car_id) FROM reservations RIGHT JOIN cars ON cars.id=reservations.car_id GROUP BY car_id ORDER BY car_id", nativeQuery = true)
+    Map<Long, Integer> getCarsWithNumberOfReservations();
 
 
 }

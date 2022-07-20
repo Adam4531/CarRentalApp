@@ -5,8 +5,7 @@ import org.springframework.stereotype.Service;
 import pl.zetosoftware.reservation.dto.ReservationDto;
 
 import java.time.LocalDate;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 @Service
 public class ReservationService {
@@ -75,7 +74,7 @@ public class ReservationService {
     }
 
     public int getNumberOfReservationsOfTheMostPopularCar() {
-        return reservationRepository.getAllCarsByPopularityOfReservations().values().stream().mapToInt(i -> i).max()
+        return reservationRepository.getCarsWithNumberOfReservations().values().stream().mapToInt(i -> i).max()
                 .orElseThrow(NoSuchElementException::new);
     }
 }

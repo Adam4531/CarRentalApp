@@ -109,10 +109,9 @@ public class CarService {
     public BigDecimal setInitialPrice(Long id) {
         CarEntity car = carRepository.getReferenceById(id);
         return BigDecimal.valueOf(car.getNewCarCost().toLong())
-                .multiply(BigDecimal.valueOf(0.001))
-                .multiply(productionYearFactor(car))
+                .multiply(BigDecimal.valueOf(0.01))
                 .multiply(productionYearFactor(car)).setScale(2, RoundingMode.CEILING);
-//                .multiply(popularityOfCar(car.getId())
+//                .multiply(popularityOfCar(car.getId()));
 
     }
 
