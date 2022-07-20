@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
           this.sessionId
         );
         this.router.navigate(['localhost:4200/']);
-        this.messageService.add({life:3000, severity:'success', summary:'Login', detail:" Zostałeś pomyślnie zalogowany !! "})
+        this.messageService.add({life:3000, severity:'success', summary:'Login', detail:" You have successfully logged in ! "})
       }
       // if(this.sessionId == ""){
       //   this.messageService.add({life:10000, severity:'info', summary:'Login', detail:" Już jesteś zalogowany !! "})
