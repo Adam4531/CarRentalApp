@@ -47,7 +47,7 @@ export class RegistrationComponent implements OnInit {
 
         if( !this.errorsListDto.listOfErrorsEmpty ) {
           this.errorsListDto.errors.forEach((error) =>
-          this.messageService.add({life:10000, severity:'error', summary:'Rejestracja', detail:error}) // dodac dluzszy czas wyswietlania
+          this.messageService.add({life:10000, severity:'error', summary:'Rejestracja', detail:error})
           );
 
         }
