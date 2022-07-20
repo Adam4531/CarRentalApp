@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import pl.zetosoftware.car.enums.BodyTypeEnum;
-import pl.zetosoftware.car.enums.StatusEnum;
 import pl.zetosoftware.car.enums.TypeOfFuelEnum;
 import pl.zetosoftware.car.value_objects.*;
 

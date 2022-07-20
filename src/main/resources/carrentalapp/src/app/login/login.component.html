@@ -1,3 +1,18 @@
+<!-- <form name="form" (ngSubmit)="login()" #f="ngForm">
+    <div>
+        <label for="email">Email</label>
+        <input type="text" name="email" [(ngModel)]="model.email" #email="ngModel" required />
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" [(ngModel)]="model.password" #password="ngModel" required />
+    </div>
+    <div>
+        <button>Login</button>
+        <p-toast position="top-right"></p-toast>
+    </div>
+</form> -->
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,20 +25,20 @@
             <main>
                 <div class="container">
                     <p>
-                        <input type="text" pInputText [(ngModel)]="email" placeholder="Email address">
+                        <input type="text" pInputText [(ngModel)]="model.email" placeholder="Email address">
                         <!-- EMAIL DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
                     </p>
                     <p>
-                        <p-password [feedback]="false" [toggleMask]="true" [(ngModel)]="password" placeholder="Repeat password"></p-password>
+                        <p-password [feedback]="false" [toggleMask]="true" [(ngModel)]="model.password" placeholder="Password"></p-password>
                         <!-- PASSWORD DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
                     </p>
-                
                     <p>
-                        <button type="button" pButton label="Sign in" (click)="btnClick('/home');"></button>
+                        <button type="button" pButton label="Sign in" (click)="btnLogin();"></button>
                         <!-- PRZEKIEROWANIE NA STRONE GLOWNA BEZ LOGOWANIA -->
                     </p>
                     <p>
                         <a href="http://localhost:4200/home">HOME PAGE</a>
+                        <p-toast position="top-right"></p-toast>
                     </p>
                 </div>
             </main>
