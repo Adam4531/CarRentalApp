@@ -1,21 +1,26 @@
 package pl.zetosoftware.user.dto;
 
 
-import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import pl.zetosoftware.global.dto.ErrorsListDto;
 
 import java.io.Serializable;
 
 @NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@Setter
 public class UserLoginResponseDto implements Serializable {
+
     private String sessionId;
+    private ErrorsListDto errorsListDto;
 
-    public String getSessionId() {
-        return sessionId;
+    public UserLoginResponseDto(ErrorsListDto errorsListDto) {
+        this.errorsListDto = errorsListDto;
+    }
+    public void addToErrorList(String error){
+        this.errorsListDto.add(error);
     }
 
-    public void setSessionId(String sessionId) {
-        this.sessionId = sessionId;
-    }
 }

@@ -1,17 +1,20 @@
 package pl.zetosoftware.global.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.List;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class ErrorsListDto {
+public class ErrorsListDto implements Serializable {
 
-    List<String> errors;
+    private List<String> errors;
+
+    public ErrorsListDto(List<String> errors) {
+        this.errors = errors;
+    }
 
     public boolean isListOfErrorsEmpty(){
         return this.errors.size()==0;
@@ -20,4 +23,5 @@ public class ErrorsListDto {
     public void add(String error){
         errors.add(error);
     }
+
 }
