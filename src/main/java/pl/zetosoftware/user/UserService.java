@@ -43,7 +43,7 @@ public class UserService {
         return userMapper.fromUserEntityToUserResponseDto(user);
     }
 
-    public UserResponseDto updateUserWithPutMapping(Long id, UserRequestDto updatedUser) {
+    public UserResponseDto updateUserWithPutMapping(Long id, UserRequestDto updatedUser) {//TODO uzupełnić
         var userToBeChanged = getUser(id);
 
         userToBeChanged.changeEmail(updatedUser.email());
