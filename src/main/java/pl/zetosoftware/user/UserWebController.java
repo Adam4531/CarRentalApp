@@ -18,14 +18,13 @@ import pl.zetosoftware.user.dto.UserRequestDto;
 @RequestMapping("/api")
 public class UserWebController {
 
-    @Autowired
-    public AuthenticationManager manager;
-    @Autowired
-    public SessionRegistry sessionRegistry;
-    @Autowired
-    private UserLoginService userLoginService;
-    @Autowired
-    private UserRegistrationService userRegistrationService;
+    private final UserLoginService userLoginService;
+    private final UserRegistrationService userRegistrationService;
+
+    public UserWebController(UserLoginService userLoginService, UserRegistrationService userRegistrationService) {
+        this.userLoginService = userLoginService;
+        this.userRegistrationService = userRegistrationService;
+    }
 
     @PostMapping(path = "/login", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserLoginResponseDto> login(@RequestBody UserLoginDto user) {

@@ -26,21 +26,18 @@
                 <div class="container">
                     <p>
                         <input type="text" pInputText [(ngModel)]="model.email" placeholder="Email address">
-                        <!-- EMAIL DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
                     </p>
                     <p>
                         <p-password [feedback]="false" [toggleMask]="true" [(ngModel)]="model.password" placeholder="Password"></p-password>
-                        <!-- PASSWORD DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
                     </p>
                     <p>
                         <button type="button" pButton label="Sign in" (click)="btnLogin();"></button>
-                        <!-- PRZEKIEROWANIE NA STRONE GLOWNA BEZ LOGOWANIA -->
                     </p>
                     <p>
                         <a href="http://localhost:4200/home">HOME PAGE</a>
-                        <p-toast position="top-right"></p-toast>
                     </p>
                 </div>
+                <p-toast position="top-right"></p-toast>
             </main>
     </body>
 </html>

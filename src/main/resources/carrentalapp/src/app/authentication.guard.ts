@@ -21,24 +21,24 @@ export class AuthenticationGuard implements CanActivate {
       if (state.url == "/login") {
         if(token){
           this.messageService.add({life:3000, severity:'info', summary:'Login', detail:" You are already logged in ! "})
-          return this.router.parseUrl('/'); 
+          return this.router.parseUrl('/');
         }
         return true;
       }
 
       if(!token) {
-        let url1 = "/user/edit"
-        let url2 = "/user/history"
-        let url3 = "/cars"
-        if(state.url == url3) { //TU DODAC /user/**
+        let urlEdit = "/user/edit"
+        let urlHistory = "/user/history"
+        let urlCars = "/cars"
+        if(state.url == urlCars || state.url == urlHistory || state.url == urlEdit) { //TU DODAC /user/**
           console.log("NIE JESTES ZALOGOWANY !!!!!!!!111!")
-          this.messageService.add({life:3000, severity:'info', summary:'Login', detail:" You have to login first ! "})
+          this.messageService.add({life:3500, severity:'info', summary:'Login', detail:" You have to login first ! "})
           return this.router.parseUrl('/login');
         }
         return true;
       }
-      
+
     return true;
   }
-  
+
 }
