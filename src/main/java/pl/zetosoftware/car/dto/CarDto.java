@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 public record CarDto(Long id, String brand, String model,
                      BigDecimal engineCapacity, BodyTypeEnum bodyTypeEnum,
                      TypeOfFuelEnum typeOfFuelEnum, BigDecimal pricePerDayRent,
-                     StatusEnum status, Integer productionYear) {
+                     StatusEnum status, Integer productionYear, Long newCarCost) {
 
 
 

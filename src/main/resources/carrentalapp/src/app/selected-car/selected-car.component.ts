@@ -48,7 +48,12 @@ export class SelectedCarComponent implements OnInit {
     this.reservationRequestDto.email = localStorage.getItem('email');
   }
 
-  public finalPrice(): void {
+  public finalPrice(): void{
+    this.rentCost();
+    this.payment();
+  }
+
+  public rentCost(): void {
     const fromDate = new Date(this.from);
     const toDate = new Date(this.to);
     var diff = toDate.getTime() - fromDate.getTime();
@@ -58,6 +63,13 @@ export class SelectedCarComponent implements OnInit {
       this.price = Number(this.price.toFixed(2));
     }
       else this.price = 0;
+  }
+
+  public payment(): void {
+    this.selectedCar.paymentInAdvance = this.selectedCar.newCarCost * 0.01;
+
+    if (this.selectedCar.paymentInAdvance < 1000) this.selectedCar.paymentInAdvance = 1000;
+    this.selectedCar.paymentInAdvance = Number(this.selectedCar.paymentInAdvance.toFixed(2));
   }
 
   public getCar(): void {

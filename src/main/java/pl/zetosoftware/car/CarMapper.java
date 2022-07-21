@@ -24,6 +24,7 @@ public class CarMapper {
                 .pricePerDayRent(carFieldsService.setInitialPrice(carEntity.getId()))
                 .bodyTypeEnum(carEntity.getBodyType())
                 .status(carFieldsService.getStatus(carEntity.getId()))
+                .newCarCost(carEntity.getNewCarCost().toLong())
                 .build();
     }
 

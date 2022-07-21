@@ -17,7 +17,6 @@
                         <h3>Production Year: {{selectedCar.productionYear}}</h3>
                         <h3>Rent Cost Per Day: {{selectedCar.pricePerDayRent}}€</h3>
                         <h3>Status: {{selectedCar.status}}</h3>
-                        <h3>Payment in Advance: {{selectedCar.paymentInAdvance}}</h3>
                         <div>
                             <!-- DOBRZE BY BYLO ZMIENIC FUNKCJE getAllReservationsForCarId
                                  NA FUNKCJE: getAllReservationsForCarIdFromPresentDay (nie wyswietlac rezerwacji historycznych,
@@ -38,7 +37,8 @@
                             <p-inputMask [(ngModel)]="to" mask="9999-99-99" placeholder="To" styleClass="input-mask-date"></p-inputMask>
                             <!-- TO DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
                         </p>
-                        <h3 class="reservations">Final Price: {{price}}€</h3>
+                        <h3 class="reservations">Payment in Advance: {{selectedCar.paymentInAdvance}}€</h3>
+                        <h3 class="reservations">Rent Cost: {{price}}€</h3>
                         <button class="calculate" type="button" pButton label="Calculate Price" (click)="finalPrice()"></button>
                         <p>
                             <button type="button" pButton label="Reserve" (click)="btnReserve();"></button>
