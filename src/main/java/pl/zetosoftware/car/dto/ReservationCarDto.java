@@ -9,7 +9,10 @@ import pl.zetosoftware.car.enums.TypeOfFuelEnum;
 import java.math.BigDecimal;
 
 @Builder
-public record ReservationCarDto(Long id, String brand, String model, BigDecimal engineCapacity, Integer productionYear, TypeOfFuelEnum typeOfFuelEnum, BodyTypeEnum bodyTypeEnum, BigDecimal pricePerDayRent, StatusEnum status) {
+public record ReservationCarDto(Long id, String brand, String model,
+                                BigDecimal engineCapacity, Integer productionYear,
+                                TypeOfFuelEnum typeOfFuelEnum, BodyTypeEnum bodyTypeEnum,
+                                BigDecimal pricePerDayRent, StatusEnum status, Long newCarCost) {
 
 
 

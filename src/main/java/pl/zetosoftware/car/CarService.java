@@ -38,7 +38,7 @@ public class CarService {
         return carMapper.mapCarToCarDto(carEntity);
     }
 
-    private CarEntity getCarEntityById(Long id) {
+    public CarEntity getCarEntityById(Long id) {
         return carRepository.findById(id)
                 .orElseThrow(() -> new CarNotFoundException("Car with id " + id + " was not found. "));
     }
@@ -56,6 +56,7 @@ public class CarService {
                 .pricePerDayRent(setInitialPrice(carEntity.getId()))
                 .bodyTypeEnum(carEntity.getBodyType())
                 .status(getStatus(carEntity.getId()))
+                .newCarCost(carEntity.getNewCarCost().toLong())
                 .build();
     }
 

@@ -28,7 +28,7 @@ public class UserService {
         return userMapper.fromUserEntityListToUserResponseList(users);
     }
 
-    private UserEntity getUser(Long id){
+    public UserEntity getUser(Long id){
         return userRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("UserEntity with id: " + id + " does not exist!"));
     }

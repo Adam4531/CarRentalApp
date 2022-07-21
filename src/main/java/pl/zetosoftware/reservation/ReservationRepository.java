@@ -3,6 +3,7 @@ package pl.zetosoftware.reservation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import pl.zetosoftware.car.CarEntity;
 import pl.zetosoftware.reservation.dto.ReservationDto;
 
 import java.util.List;
@@ -24,6 +25,5 @@ public interface ReservationRepository extends JpaRepository<ReservationEntity, 
     Long getCarIdByReservationId(Long Id);
 
     ReservationEntity getReservationEntityByUserId(Long id);
-
 
 }

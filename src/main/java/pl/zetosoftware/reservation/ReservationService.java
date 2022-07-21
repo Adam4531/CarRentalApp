@@ -78,4 +78,5 @@ public class ReservationService {
         return reservationRepository.getAllCarsByPopularityOfReservations().values().stream().mapToInt(i -> i).max()
                 .orElseThrow(NoSuchElementException::new);
     }
+
 }

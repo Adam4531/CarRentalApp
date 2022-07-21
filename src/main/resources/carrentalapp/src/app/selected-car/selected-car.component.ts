@@ -4,6 +4,9 @@ import { ReservationForCar } from './reservation-for-car';
 import { SelectedCarService } from './selected-car.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { ReservationRequestDto } from 'src/app/reservations/reservation-request-dto';
+import { ErrorsListDto } from '../errorsList/errors-list-dto';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-selected-car',
@@ -14,17 +17,19 @@ export class SelectedCarComponent implements OnInit {
 
   public reservations: ReservationForCar[] = [];
   public columns: any[] = [];
-  selectedCar!: SelectedCar;
-  id!: number;
+  public price!: number;
+  public selectedCar!: SelectedCar;
+  public carId!: number;
+  public from!: string;
+  public to!: string;
 
-  from!: string;
-  to!: string;
-  // DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY
+  reservationRequestDto: ReservationRequestDto = new ReservationRequestDto();
+  errorsListDto: ErrorsListDto = new ErrorsListDto();
 
-  constructor(private selectedCarService: SelectedCarService, private _Activatedroute:ActivatedRoute, private router: Router) { }
+  constructor(private selectedCarService: SelectedCarService, private _Activatedroute:ActivatedRoute, private router: Router, private messageService: MessageService) { }
 
   ngOnInit(): void {
-    this.id = this._Activatedroute.snapshot.params['id'];
+    this.carId = this._Activatedroute.snapshot.params['id'];
     this.getCar();
 
     this.columns = [
@@ -36,24 +41,63 @@ export class SelectedCarComponent implements OnInit {
       { field: 'paymentInAdvance', header: 'Payment in Advance' },
     ];
     this.getReservationsForCar();
+
+    this.reservationRequestDto.carId = this.carId;
+    this.reservationRequestDto.userId = 10000;
+    //DO ZMIANY NA EMAIL
+  }
+
+  public finalPrice(): void {
+    const fromDate = new Date(this.from);
+    const toDate = new Date(this.to);
+    var diff = toDate.getTime() - fromDate.getTime();
+    if (diff > 0) {
+      diff = Math.ceil(diff / (1000 * 3600 * 24));
+      this.price = diff * this.selectedCar.pricePerDayRent;}
+      else this.price = 0;
   }
 
   public getCar(): void {
 
-    this.selectedCarService.getCar(this.id).subscribe((response: any) => {
+    this.selectedCarService.getCar(this.carId).subscribe((response: any) => {
       this.selectedCar = response;
     });
   }
 
   public getReservationsForCar(): void {
 
-    this.selectedCarService.getReservationsForCar(this.id).subscribe((response: any) => {
+    this.selectedCarService.getReservationsForCar(this.carId).subscribe((response: any) => {
       this.reservations = response;
     });
   }
 
-  public btnClick(url: string): void {
-    this.router.navigateByUrl(url);
-    };
+  btnReserve(): void {
+    console.log(this.reservationRequestDto);
+    this.createReservation();
+  }
+
+  public createReservation() {
+    this.reservationRequestDto.dateStart = new Date(this.from);
+    this.reservationRequestDto.dateEnd = new Date(this.to);
+    console.log("RESERVE.............." + this.reservationRequestDto);
+
+    this.selectedCarService
+    .createReservation(this.reservationRequestDto)
+    .subscribe( (response: any) => {
+      this.errorsListDto = response;
+
+      if( !this.errorsListDto.listOfErrorsEmpty ) {
+        this.errorsListDto.errors.forEach((error) =>
+        this.messageService.add({life:10000, severity:'error', summary:'Reservation', detail:error})
+        );
+
+      }
+      else{
+        this.messageService.add({severity:'success', summary:'Reservation', detail:'Reserved successfully!'});
+        // this.router.navigateByUrl('/users');
+        window.location.reload();
+      }
+      });
+    }
 
 }

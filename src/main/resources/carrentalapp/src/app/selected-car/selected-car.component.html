@@ -1,10 +1,8 @@
-<!-- <p>WORKS</p>
-<p>CAR ID: {{selectedCar.id}}, brand: {{selectedCar.brand}}</p> -->
 <!DOCTYPE html>
 <html>
-    <head>
+    <!-- <head>
         <title>{{selectedCar.brand}}</title>
-    </head>
+    </head> -->
     <body>
         <header>
             <h1>{{selectedCar.brand}} {{selectedCar.model}}</h1>
@@ -19,9 +17,10 @@
                         <h3>Production Year: {{selectedCar.productionYear}}</h3>
                         <h3>Rent Cost Per Day: {{selectedCar.pricePerDayRent}}€</h3>
                         <h3>Status: {{selectedCar.status}}</h3>
+                        <h3>Payment in Advance: {{selectedCar.paymentInAdvance}}</h3>
                         <div>
                             <!-- DOBRZE BY BYLO ZMIENIC FUNKCJE getAllReservationsForCarId
-                                 NA FUNKCJE: getAllReservationsForCarIdFromToday (nie wyswietlac rezerwacji historycznych,
+                                 NA FUNKCJE: getAllReservationsForCarIdFromPresentDay (nie wyswietlac rezerwacji historycznych,
                                         ale przy okazji wyswietlic te, ktora jeszcze trwa) -->
                             <h3 class="reservations">Reservations:</h3>
                             <div class="scroller">
@@ -39,14 +38,17 @@
                             <p-inputMask [(ngModel)]="to" mask="9999-99-99" placeholder="To" styleClass="input-mask-date"></p-inputMask>
                             <!-- TO DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
                         </p>
+                        <h3 class="reservations">Final Price: {{price}}€</h3>
+                        <button class="calculate" type="button" pButton label="Calculate Price" (click)="finalPrice()"></button>
                         <p>
-                            <button type="button" pButton label="Reserve" (click)="btnClick('/reservations');"></button>
+                            <button type="button" pButton label="Reserve" (click)="btnReserve();"></button>
                         </p>
                         <p>
                             <a href="http://localhost:4200/home">HOME PAGE</a>
                         </p>
                     </div>
                 </div>
+                <p-toast position="top-right"></p-toast>
             </main>
     </body>
 </html>

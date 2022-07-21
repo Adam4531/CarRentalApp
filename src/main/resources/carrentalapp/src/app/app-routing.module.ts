@@ -9,12 +9,11 @@ import { RegistrationComponent } from './registration/registration.component';
 import { HomeComponent } from './home/home.component';
 import { FilterComponent } from './filter/filter.component';
 import { SelectedCarComponent } from './selected-car/selected-car.component';
+import { ReservationSummaryComponent } from './reservation-summary/reservation-summary.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { AuthenticationGuard } from './authentication.guard';
 
 const routes: Routes = [
-
-
     { path: '', canActivate:[AuthenticationGuard], children: [
     { path: '', component: HomeComponent},
     { path: 'login', component: LoginComponent },

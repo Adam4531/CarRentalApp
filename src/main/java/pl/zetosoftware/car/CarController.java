@@ -26,7 +26,6 @@ public class CarController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-//  public CarDto getCarById (@PathVariable("id") Long id){
     public ReservationCarDto getCarById (@PathVariable("id") Long id){
         return carService.findCarById(id);
     }

@@ -10,7 +10,8 @@ export interface SelectedCar {
     newCarCost: number;
     productionYear: number;
     status: string;
-    pricePerDayRent: Big;
+    pricePerDayRent: number;
+    paymentInAdvance: number;
 
     // DO ZMIANY POD NOWĄ LISTĘ KTÓRĄ ROBI ADAM
 }
