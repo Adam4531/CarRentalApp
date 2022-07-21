@@ -1,0 +1,84 @@
+package pl.zetosoftware.car;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import pl.zetosoftware.car.enums.StatusEnum;
+import pl.zetosoftware.car.value_objects.ProductionYearValidator;
+import pl.zetosoftware.reservation.ReservationService;
+import pl.zetosoftware.reservation.dto.ReservationDto;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Objects;
+
+@Service
+@RequiredArgsConstructor
+public class CarFieldsService {
+
+    private final ReservationService reservationService;
+    private final CarRepository carRepository;
+
+    public BigDecimal setInitialPrice(Long id) {
+        CarEntity car = carRepository.getReferenceById(id);
+        return BigDecimal.valueOf(car.getNewCarCost().toLong())
+                .multiply(BigDecimal.valueOf(0.001))
+                .multiply(productionYearFactor(car))
+                .multiply(productionYearFactor(car)).setScale(2, RoundingMode.CEILING);
+    }
+
+    public BigDecimal popularityOfCar(Long Id) {
+        int numberOfReservationOfTheMostPopularCar = reservationService.getNumberOfReservationsOfTheMostPopularCar();
+        int numberOfReservationsOfTheSelectedCar = reservationService.getAllReservationsByCarId(Id).size();
+
+        if (numberOfReservationsOfTheSelectedCar == numberOfReservationOfTheMostPopularCar) {
+            return BigDecimal.valueOf(3);
+        }
+        if (numberOfReservationOfTheMostPopularCar > numberOfReservationsOfTheSelectedCar &&
+                numberOfReservationsOfTheSelectedCar > numberOfReservationOfTheMostPopularCar / 2) {
+            return BigDecimal.valueOf(2);
+        }
+
+        return BigDecimal.ONE;
+    }
+
+    public BigDecimal setPricePerDays(Long Id, Integer days) {
+        return setInitialPrice(Id).multiply(BigDecimal.valueOf(days));
+    }
+    public StatusEnum getStatus(Long CarId) {
+        List<ReservationDto> allReservationsById = reservationService.getAllReservationsByCarId(CarId);
+
+        for (ReservationDto reservationDto : allReservationsById) {
+            if (!Objects.isNull(reservationDto)) {
+                if (reservationDto.dateStart().isBefore(LocalDate.now()) && reservationDto.dateEnd().isAfter(LocalDate.now())) {
+                    return StatusEnum.RESERVED;
+                }
+            }
+            return StatusEnum.FREE;
+        }
+        return StatusEnum.FREE;
+    }
+
+    public BigDecimal productionYearFactor(CarEntity car) {
+        if (isBetween(car.getProductionYear(), LocalDate.now().minusYears(2), LocalDate.now())) {
+            return BigDecimal.valueOf(0.13);
+        }
+        if (isBetween(car.getProductionYear(), LocalDate.now().minusYears(8), LocalDate.now().minusYears(3))) {
+            return BigDecimal.valueOf(0.10);
+        }
+        if (isBetween(car.getProductionYear(), LocalDate.now().minusYears(12), LocalDate.now().minusYears(9))) {
+            return BigDecimal.valueOf(0.09);
+        }
+        if (isBetween(car.getProductionYear(), LocalDate.now().minusYears(22), LocalDate.now().minusYears(13))) {
+            return BigDecimal.valueOf(0.07);
+        }
+
+        return BigDecimal.valueOf(0.01);
+    }
+
+    private boolean isBetween(ProductionYearValidator productionYear, LocalDate lower, LocalDate upper) {
+        return lower.getYear() <= productionYear.toInteger() && productionYear.toInteger() <= upper.getYear();
+    }
+
+}

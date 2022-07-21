@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CarFilterDto } from '../cars/car-filter-dto';
 
 @Component({
   selector: 'app-filter',
@@ -8,17 +9,9 @@ import { Router } from '@angular/router';
 })
 export class FilterComponent implements OnInit {
 
-  brand!: string;
-  model!: string;
-  engineCapacity!: string;
-  bodyType!: string;
-  typeOfFuel!: string;
-  productionYear!: string;
-  from!: string;
-  to!: string;
-  // DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY
+  carFilterDto : CarFilterDto = new CarFilterDto();
 
-  constructor(private router: Router) { 
+  constructor(private router: Router) {
 
   }
 

@@ -4,6 +4,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @NoArgsConstructor
@@ -24,7 +25,7 @@ public class ProductionYearValidator {
     }
 
     public boolean isYearValid(Integer productionYear){
-        return productionYear >= 1884 && productionYear <= 2022; // change to actualYear
+        return productionYear >= 1884 && productionYear <= LocalDate.now().getYear();
     }
 
     @Override

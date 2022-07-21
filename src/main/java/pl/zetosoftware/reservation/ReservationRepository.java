@@ -24,4 +24,5 @@ public interface ReservationRepository extends JpaRepository<ReservationEntity, 
 
     ReservationEntity getReservationEntityByUserId(Long id);
 
+
 }

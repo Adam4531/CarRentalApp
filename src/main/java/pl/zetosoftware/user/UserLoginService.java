@@ -1,6 +1,6 @@
 package pl.zetosoftware.user;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
@@ -14,15 +14,11 @@ import pl.zetosoftware.user.dto.UserLoginResponseDto;
 import java.util.ArrayList;
 
 @Service
+@RequiredArgsConstructor
 public class UserLoginService {
 
     private final AuthenticationManager manager;
     private final SessionRegistry sessionRegistry;
-
-    public UserLoginService(AuthenticationManager manager, SessionRegistry sessionRegistry) {
-        this.manager = manager;
-        this.sessionRegistry = sessionRegistry;
-    }
 
     public UserLoginResponseDto login(UserLoginDto user) {
         UserLoginResponseDto response = new UserLoginResponseDto(new ErrorsListDto(new ArrayList<>()));
