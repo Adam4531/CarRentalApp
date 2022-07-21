@@ -9,8 +9,6 @@ import java.util.List;
 
 public class CurrentUser implements UserDetails {
 
-    private Long id;
-
     private String username;
 
     private String password;
@@ -28,9 +26,6 @@ public class CurrentUser implements UserDetails {
         return List.of(new SimpleGrantedAuthority("ADMIN"));
     }
 
-    public Long getId() {
-        return id;
-    }
 
     @Override
     public String getPassword() {

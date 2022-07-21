@@ -15,21 +15,18 @@ export class ReservationsComponent implements OnInit {
   public reservations: ReservationDto[] = [];
   public columns: any[] = [];
 
-  private email!: string
+  emailTemp: any;
 
-  user!: UserRequestDto
-
-  constructor(private reservationsService: ReservationsService, private userService: UserService, private primengConfig: PrimeNGConfig) { }
+  constructor(private reservationsService: ReservationsService, private primengConfig: PrimeNGConfig) { }
 
   ngOnInit(): void {
 
+    console.log(localStorage.getItem('email'))
     this.primengConfig.ripple = true;
 
-    // this.email = this.user.email
-
     this.columns = [
-      { field: 'id', header: 'ID'},
-      { field: 'carId', header: 'car'},
+      // { field: 'id', header: 'ID'},
+      { field: 'carId', header: 'Car'},
       { field: 'dateStart', header: 'Start of reservation'},
       { field: 'dateEnd', header: 'End of reservation'},
       { field: 'cost', header: 'Total Cost'},
@@ -39,10 +36,16 @@ export class ReservationsComponent implements OnInit {
     this.getReservations();
   }
 
+  public btnReservations(){
+    this.emailTemp = localStorage.getItem('email');
+    this.getReservations
+  }
+
   public getReservations(): void {
-    this.reservationsService.getAllReservationsByUserEmail(this.email).subscribe((response: any) => {
+    this.reservationsService.getAllReservationsByUserEmail(this.emailTemp).subscribe((response: any) => {
       this.reservations = response;
       console.log(response);
+      console.log(localStorage.getItem('email'))
     });
 
   }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ReservationDto } from './reservations';
@@ -11,9 +11,10 @@ export class ReservationsService {
 
   private apiServerUrl = environment.apiBaseUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+  }
 
   public getAllReservationsByUserEmail(email: string): Observable<ReservationDto[]> {
-    return this.http.get<ReservationDto[]>(`${this.apiServerUrl}/reservations`);
+    return this.http.get<ReservationDto[]>(`${this.apiServerUrl}/reservations?email=${localStorage.getItem('email')}`);
   }
 }

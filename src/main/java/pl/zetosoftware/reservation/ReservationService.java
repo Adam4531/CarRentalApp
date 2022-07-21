@@ -69,8 +69,9 @@ public class ReservationService {
         return reservationMapper.fromReservationListToReservationDtoList(allReservationsByUserId);
     }
 
-    public List<ReservationDto> getAllReservationsByEmail(EmailValidator email) {
-        List<ReservationEntity> allReservationsByEmail = reservationRepository.findAllByUserIdEmail(email);
+    public List<ReservationDto> getAllReservationsByEmail(String email) {
+        EmailValidator emailValidator = new EmailValidator(email);
+        List<ReservationEntity> allReservationsByEmail = reservationRepository.findAllByUserIdEmail(emailValidator);
         return reservationMapper.fromReservationListToReservationDtoList(allReservationsByEmail);
     }
 

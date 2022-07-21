@@ -37,7 +37,7 @@ public class ReservationController {
 
     @GetMapping("")
     @ResponseStatus(HttpStatus.OK)
-    public List<ReservationDto> getAllReservationsByUserEmail(@RequestBody EmailValidator email){
+    public List<ReservationDto> getAllReservationsByUserEmail(@RequestParam String email){
         return reservationService.getAllReservationsByEmail(email);
     }
 

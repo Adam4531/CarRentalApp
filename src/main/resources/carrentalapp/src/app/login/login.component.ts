@@ -4,14 +4,11 @@ import { HttpClient } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
 import { ErrorsListDto } from '../errorsList/errors-list-dto';
 
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-
 
 export class LoginComponent implements OnInit {
 
@@ -47,6 +44,7 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('token',this.sessionId);
         this.router.navigate(['localhost:4200/']);
         this.messageService.add({life:3000, severity:'success', summary:'Login', detail:" You have successfully logged in ! "})
+        localStorage.setItem('email', this.model.email)
       }
       else {
         res.errorsListDto.errors.forEach((error: any) =>
@@ -55,7 +53,10 @@ export class LoginComponent implements OnInit {
       }
     });
 
+  }
+  history() {
 
   }
+
 
 }

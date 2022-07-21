@@ -19,7 +19,8 @@ h2 {
 }
 
 button {
-    margin-top: 40px;
+    background-color:rgb(88, 3, 88);
+    margin-top: 20px;
     margin-bottom: 20px;
     height: 60px;
     width: 400px;

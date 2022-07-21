@@ -22,5 +22,7 @@ public interface ReservationRepository extends JpaRepository<ReservationEntity, 
     @Query(value = "SELECT car_id, COUNT(car_id) FROM reservations RIGHT JOIN cars ON cars.id=reservations.car_id GROUP BY car_id ORDER BY car_id", nativeQuery = true)
     Map<Long, Integer> getCarsWithNumberOfReservations();
 
+    ReservationEntity getReservationEntityByUserId(Long id);
+
 
 }
