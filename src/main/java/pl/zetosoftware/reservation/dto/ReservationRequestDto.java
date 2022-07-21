@@ -4,7 +4,9 @@ import lombok.Builder;
 
 import java.time.LocalDate;
 
-public record ReservationRequestDto(Long userId, Long carId, LocalDate dateStart, LocalDate dateEnd) {
+//Long userId,
+// OPCJONALNIE DO ZMIANY NA userId ZAMIAST EMAIL
+public record ReservationRequestDto(String email, Long carId, LocalDate dateStart, LocalDate dateEnd) {
 
     @Builder public ReservationRequestDto{}
 }

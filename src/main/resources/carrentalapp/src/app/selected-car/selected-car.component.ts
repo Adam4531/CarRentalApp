@@ -43,8 +43,9 @@ export class SelectedCarComponent implements OnInit {
     this.getReservationsForCar();
 
     this.reservationRequestDto.carId = this.carId;
-    this.reservationRequestDto.userId = 10000;
-    //DO ZMIANY NA EMAIL
+    //this.reservationRequestDto.userId = 10000;
+    //DO ZMIANY NA EMAIL - tu na sztywno przypisana wartość dla testów
+    this.reservationRequestDto.email = localStorage.getItem('email');
   }
 
   public finalPrice(): void {
@@ -53,7 +54,9 @@ export class SelectedCarComponent implements OnInit {
     var diff = toDate.getTime() - fromDate.getTime();
     if (diff > 0) {
       diff = Math.ceil(diff / (1000 * 3600 * 24));
-      this.price = diff * this.selectedCar.pricePerDayRent;}
+      this.price = diff * this.selectedCar.pricePerDayRent;
+      this.price = Number(this.price.toFixed(2));
+    }
       else this.price = 0;
   }
 
@@ -72,14 +75,12 @@ export class SelectedCarComponent implements OnInit {
   }
 
   btnReserve(): void {
-    console.log(this.reservationRequestDto);
     this.createReservation();
   }
 
   public createReservation() {
     this.reservationRequestDto.dateStart = new Date(this.from);
     this.reservationRequestDto.dateEnd = new Date(this.to);
-    console.log("RESERVE.............." + this.reservationRequestDto);
 
     this.selectedCarService
     .createReservation(this.reservationRequestDto)

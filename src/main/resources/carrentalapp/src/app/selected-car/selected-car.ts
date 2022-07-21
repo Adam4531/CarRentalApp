@@ -13,5 +13,4 @@ export interface SelectedCar {
     pricePerDayRent: number;
     paymentInAdvance: number;
 
-    // DO ZMIANY POD NOWĄ LISTĘ KTÓRĄ ROBI ADAM
 }

@@ -8,7 +8,8 @@ import pl.zetosoftware.reservation.dto.ReservationRequestDto;
 import pl.zetosoftware.reservation.value_objects.CostValidator;
 import pl.zetosoftware.reservation.value_objects.PaymentInAdvanceValidator;
 import pl.zetosoftware.reservation.value_objects.ReservationDatesValidator;
-import pl.zetosoftware.user.UserService;
+import pl.zetosoftware.user.UserRepository;
+import pl.zetosoftware.user.value_objects.EmailValidator;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -18,15 +19,17 @@ import static java.time.temporal.ChronoUnit.DAYS;
 @Component
 @RequiredArgsConstructor
 public class ReservationWebMapper {
-    private final UserService userService;
-
     private final CarService carService;
+
+    private final UserRepository userRepository;
 
     private final CarFieldsService carFieldsService;
 
     public ReservationEntity fromReservationRequestDtoToReservationEntity(ReservationRequestDto reservationRequestDto){
         return ReservationEntity.builder()
-                .userId(userService.getUser(reservationRequestDto.userId()))
+                //.userId(userService.getUser(reservationRequestDto.userId()))
+                //OPCJONALNA ZMIANA NA userId ZAMIAST EMAILU
+                .userId(userRepository.findUserByEmail(new EmailValidator(reservationRequestDto.email())))
                 .carId(carService.getCarEntityById(reservationRequestDto.carId()))
                 .date(new ReservationDatesValidator(reservationRequestDto.dateStart(), reservationRequestDto.dateEnd()))
                 .cost(new CostValidator(setTotalCost(reservationRequestDto)))
