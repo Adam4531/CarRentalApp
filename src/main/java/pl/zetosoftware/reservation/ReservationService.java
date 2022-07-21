@@ -3,10 +3,10 @@ package pl.zetosoftware.reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.zetosoftware.reservation.dto.ReservationDto;
+import pl.zetosoftware.user.value_objects.EmailValidator;
 
 import java.time.LocalDate;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 @Service
 public class ReservationService {
@@ -64,9 +64,15 @@ public class ReservationService {
         return reservationRepository.findAll();
     }
 
-    public List<ReservationDto> getAllReservationsByUserId(Long Id) {
+    public List<ReservationDto> getAllReservationsByEmail(Long Id) {
         List<ReservationEntity> allReservationsByUserId = reservationRepository.getAllReservationsByUserId(Id);
         return reservationMapper.fromReservationListToReservationDtoList(allReservationsByUserId);
+    }
+
+    public List<ReservationDto> getAllReservationsByEmail(String email) {
+        EmailValidator emailValidator = new EmailValidator(email);
+        List<ReservationEntity> allReservationsByEmail = reservationRepository.findAllByUserIdEmail(emailValidator);
+        return reservationMapper.fromReservationListToReservationDtoList(allReservationsByEmail);
     }
 
     public List<ReservationDto> getAllReservationsByCarId(Long id){
@@ -75,7 +81,7 @@ public class ReservationService {
     }
 
     public int getNumberOfReservationsOfTheMostPopularCar() {
-        return reservationRepository.getAllCarsByPopularityOfReservations().values().stream().mapToInt(i -> i).max()
+        return reservationRepository.getCarsWithNumberOfReservations().values().stream().mapToInt(i -> i).max()
                 .orElseThrow(NoSuchElementException::new);
     }
 

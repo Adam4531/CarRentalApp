@@ -1,5 +1,3 @@
---INSERT INTO roles(ID, name) values(1, 'ROLE_USER'),(2, 'ROLE_EMPLOYEE'),(3, 'ROLE_ADMIN');
-
 insert into public.CARS(ID, brand, model, engine_capacity, body_type, type_of_fuel, new_car_cost, production_year) values
     (1, 'GMC', 'Envoy XL', 4.2, 'SUV', 'BENZINE', 2583355.15, 2002),
     (2, 'Chevrolet', 'Impala SS', 3.2, 'SEDAN', 'BENZINE', 2794112.89, 1995),

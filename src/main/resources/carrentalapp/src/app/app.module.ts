@@ -25,6 +25,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { FilterComponent } from './filter/filter.component';
 import { SelectedCarComponent } from './selected-car/selected-car.component';
 import { ReservationSummaryComponent } from './reservation-summary/reservation-summary.component';
+import { ReservationsComponent } from './reservations/reservations.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ReservationSummaryComponent } from './reservation-summary/reservation-s
     FilterComponent,
     SelectedCarComponent,
     ReservationSummaryComponent,
-    EditUserComponent
+    EditUserComponent,
+    ReservationsComponent
   ],
   imports: [
     BrowserModule,
@@ -65,4 +67,3 @@ import { ReservationSummaryComponent } from './reservation-summary/reservation-s
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
