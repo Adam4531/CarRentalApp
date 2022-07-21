@@ -34,9 +34,9 @@ public class UserLoginService {
         }
         catch (BadCredentialsException | InternalAuthenticationServiceException exception) {
             if ( !emailContainsAtSign(user.getEmail()) ) {
-                response.addToErrorList("Email musi zawierać znak '@'!");
+                response.addToErrorList(" Email must contain '@' sign ! ");
             }
-            response.addToErrorList("Podano nieprawidlowe dane, sprobuj jeszcze raz!");
+            response.addToErrorList(" You have entered bad credentials, try again !");
         }
 
         return response;
