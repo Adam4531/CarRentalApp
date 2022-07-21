@@ -16,12 +16,12 @@ public class ReservationCreateService {
 
     private final ReservationRepository reservationRepository;
 
-    private final ReservationEditorValidator reservationEditorValidator;
+    private final ReservationValidator reservationValidator;
 
-    public ReservationCreateService(ReservationWebMapper reservationWebMapper, ReservationRepository reservationRepository, ReservationEditorValidator reservationEditorValidator) {
+    public ReservationCreateService(ReservationWebMapper reservationWebMapper, ReservationRepository reservationRepository, ReservationValidator reservationValidator) {
         this.reservationWebMapper = reservationWebMapper;
         this.reservationRepository = reservationRepository;
-        this.reservationEditorValidator = reservationEditorValidator;
+        this.reservationValidator = reservationValidator;
     }
 
     public ErrorsListDto create(ReservationRequestDto reservationRequestDto) {
@@ -67,11 +67,11 @@ public class ReservationCreateService {
         reservationEntitiesForSpecifiedCar.removeIf(reservation -> !reservation.getCarId().getId().equals(reservationRequestDto.carId()));
 
         for (ReservationEntity reservation : reservationEntitiesForSpecifiedCar) {
-            if ((reservationEditorValidator.areDatesEquals(reservationRequestDto.dateStart(), reservationRequestDto.dateEnd(),
+            if ((reservationValidator.areDatesEquals(reservationRequestDto.dateStart(), reservationRequestDto.dateEnd(),
                     reservation.getDate().getDateStart(), reservation.getDate().getDateEnd()))
-                    || (reservationEditorValidator.isDateBetween(reservation.getDate().getDateEnd(), reservationRequestDto.dateStart(), reservationRequestDto.dateEnd()))
-                    || (reservationEditorValidator.isDateBetween(reservation.getDate().getDateStart(), reservationRequestDto.dateStart(), reservationRequestDto.dateEnd())
-                    || (reservationEditorValidator.isReservationContainingNewReservation(reservationRequestDto.dateStart(), reservationRequestDto.dateEnd(),
+                    || (reservationValidator.isDateBetween(reservation.getDate().getDateEnd(), reservationRequestDto.dateStart(), reservationRequestDto.dateEnd()))
+                    || (reservationValidator.isDateBetween(reservation.getDate().getDateStart(), reservationRequestDto.dateStart(), reservationRequestDto.dateEnd())
+                    || (reservationValidator.isReservationContainingNewReservation(reservationRequestDto.dateStart(), reservationRequestDto.dateEnd(),
                     reservation.getDate().getDateStart(), reservation.getDate().getDateEnd())))){
                 return false;
             }

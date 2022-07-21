@@ -1,10 +1,8 @@
 package pl.zetosoftware.reservation;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 import pl.zetosoftware.global.dto.ErrorsListDto;
 import pl.zetosoftware.reservation.dto.ReservationRequestDto;
 
@@ -16,6 +14,7 @@ public class ReservationWebController {
     private ReservationCreateService reservationCreateService;
 
     @PostMapping("/reservation")
+    @ResponseStatus(HttpStatus.CREATED)
     public ErrorsListDto create(@RequestBody ReservationRequestDto reservation) {
         return reservationCreateService.create(reservation);
     }

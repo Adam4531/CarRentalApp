@@ -6,10 +6,10 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Component
-public class ReservationEditorValidator {
+public class ReservationValidator {
     private final ReservationRepository reservationRepository;
 
-    public ReservationEditorValidator(ReservationRepository reservationRepository) {
+    public ReservationValidator(ReservationRepository reservationRepository) {
         this.reservationRepository = reservationRepository;
     }
 

@@ -108,7 +108,10 @@ export class SelectedCarComponent implements OnInit {
       else{
         this.messageService.add({severity:'success', summary:'Reservation', detail:'Reserved successfully!'});
         // this.router.navigateByUrl('/users');
-        window.location.reload();
+        setTimeout(() => {
+          window.location.reload();
+       }, 2000);
+        
       }
       });
     }

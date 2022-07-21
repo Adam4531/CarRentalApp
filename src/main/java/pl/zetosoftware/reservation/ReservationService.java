@@ -14,10 +14,10 @@ public class ReservationService {
     private final ReservationRepository reservationRepository;
     private final ReservationMapper reservationMapper;
 
-    private final ReservationEditorValidator reservationEditor;
+    private final ReservationValidator reservationEditor;
 
     @Autowired
-    public ReservationService(ReservationRepository reservationRepository, ReservationMapper reservationMapper, ReservationEditorValidator reservationEditor) {
+    public ReservationService(ReservationRepository reservationRepository, ReservationMapper reservationMapper, ReservationValidator reservationEditor) {
         this.reservationRepository = reservationRepository;
         this.reservationMapper = reservationMapper;
         this.reservationEditor = reservationEditor;
