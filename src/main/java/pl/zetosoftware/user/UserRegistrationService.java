@@ -7,6 +7,7 @@ import pl.zetosoftware.user.dto.UserRequestDto;
 import pl.zetosoftware.user.value_objects.EmailValidator;
 import pl.zetosoftware.user.value_objects.LoginValidator;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Service
@@ -22,22 +23,24 @@ public class UserRegistrationService {
         ErrorsListDto errorsListDto = new ErrorsListDto( new ArrayList<>() );
 
         if ( !emailContainsAtSign(userRequestDto.email()) ) {
-            errorsListDto.add(" Email must contains '@' sign !!");
+            errorsListDto.add("Email must contains '@' sign!");
         }
         if ( !passwordIsValidLength(userRequestDto.password()) ) {
-            errorsListDto.add(" Password must be at least 7 chars long !!");
+            errorsListDto.add("Password must be at least 7 chars long!");
         }
         if ( !loginIsValidLength(userRequestDto.login()) ) {
-            errorsListDto.add(" Login must be at least 7 chars long !!");
+            errorsListDto.add("Login must be at least 7 chars long!");
         }
         if ( !nameContainsValidSigns(userRequestDto.firstName(), userRequestDto.secondName()) ) {
-            errorsListDto.add(" First name and second name must contains only letters !!");
+            errorsListDto.add("First name and second name must contains only letters!");
+        }
+        if ( !isAnAdult(userRequestDto.pesel())){
+            errorsListDto.add("You must be an adult!");
         }
         if( errorsListDto.isListOfErrorsEmpty() ) {
             var userEntity = userMapper.fromUserRequestDtoToUserEntity(userRequestDto);
             userRepository.save(userEntity);
         }
-        // sprawdzanie po peselu czy uzytkownik ktory chce sie zarejestrowac jest pelnoletni
 
         return errorsListDto;
     }
@@ -69,4 +72,18 @@ public class UserRegistrationService {
                 secondName != null && secondName.matches(POLISH_ALPHABET);
     }
 
+    public Boolean isAnAdult(String pesel){
+        return pesel != null && LocalDate.now().getYear() - yearOfBirth(pesel) >= 18;
+    }
+
+    public int yearOfBirth (String pesel){
+        int lastTwoDigitsYearOfBirth = Integer.parseInt(pesel.substring(0,2));
+        int codedCentury = Integer.parseInt(pesel.substring(2,4));
+        int century = 1800;  //Powinno byc > 80 && < 93, ale nie robimy walidacji calego peselu
+
+        if (codedCentury < 13) century = 1900;  //Powinno byc > 0 && < 13, ale nie robimy walidacji calego peselu
+        if (codedCentury > 12 && codedCentury < 33) century = 2000; //Powinno byc > 20 && < 33, ale nie robimy walidacji calego peselu
+
+        return century + lastTwoDigitsYearOfBirth;
+    }
 }
