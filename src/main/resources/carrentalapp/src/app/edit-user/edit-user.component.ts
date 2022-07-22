@@ -3,6 +3,8 @@ import { EditUser } from './edit-user';
 import { EditUserService } from './edit-user.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { UserRequestDto } from '../user/user-request-dto';
+import { UserService} from '../user/user.service';
 
 @Component({
     selector: 'app-edit-user',
@@ -11,12 +13,15 @@ import { Router } from '@angular/router';
   })
   export class EditUserComponent implements OnInit {
 
-    firstName!: string;
-    lastName!: string;
-    username!: string;
-    email!: string;
-    phoneNumber!: string;
-    // id!: number;
+    // firstName!: string;
+    // secondName!: string;
+    // login!: string;
+    // password!: string;
+    // email!: string;
+    // phoneNumber!: string;
+    // pesel!: string;
+    user!: UserRequestDto; 
+    emailTemp: any;
 
     constructor(private editUserService: EditUserService, private router: Router) { }
 
@@ -25,8 +30,27 @@ import { Router } from '@angular/router';
         };
 
     ngOnInit(): void {
-        // this.id = this._Activatedroute.snapshot.params['id'];
-        // this.getUser();
+
+         this.getUserByEmail();
+         
+      }
+
+      public btnUpdate(): void{
+        // this.updateUser(this.login, this.firstName, this.secondName, this.phoneNumber, this.email, this.password, this.pesel);
+        // console.log(this.user)
+        // console.log(this.user.login)
+        this.editUserService.putUser(this.user)     
+       }
+      
+
+      public getUserByEmail(){
+         this.emailTemp = localStorage.getItem('email');
+         
+         this.editUserService.getUserByEmail().subscribe((response: any) => {
+          this.user = response;
+          console.log(response)
+          console.log(this.user)
+         })
       }
 
 

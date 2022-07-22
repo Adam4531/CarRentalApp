@@ -38,14 +38,15 @@ public class UserService {
         return userMapper.fromUserEntityToUserResponseDto(user);
     }
 
-    public UserEntity getUserByEmail(EmailValidator email){
-        if(userRepository.findUserByEmail(email) == null){
+    public UserEntity getUserByEmail(String email){
+        EmailValidator emailValidator = new EmailValidator(email);
+        if(userRepository.findUserByEmail(emailValidator) == null){
             throw new NoSuchElementException("UserEntity with email: " + email + " does not exist!");
         }
-        return  userRepository.findUserByEmail(email);
+        return  userRepository.findUserByEmail(emailValidator);
     }
 
-    public UserResponseDto updateUserWithPutMapping(EmailValidator email, UserRequestDto updatedUser) {//TODO uzupełnić
+    public UserResponseDto updateUserWithPutMapping(String email, UserRequestDto updatedUser) {
         var userToBeChanged = getUserByEmail(email);
 
         userToBeChanged.changeEmail(updatedUser.email());
@@ -53,7 +54,6 @@ public class UserService {
         userToBeChanged.changeSecondName(updatedUser.secondName());
         userToBeChanged.changePhoneNumber(updatedUser.phoneNumber());
         userToBeChanged.changeLogin(updatedUser.login());
-        userToBeChanged.changePesel(updatedUser.pesel());
 
         userRepository.save(userToBeChanged);
         return userMapper.fromUserEntityToUserResponseDto(userToBeChanged);

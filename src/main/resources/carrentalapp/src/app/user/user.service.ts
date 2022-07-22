@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserDto } from './user';
 import { environment } from 'src/environments/environment';
+import { UserRequestDto } from './user-request-dto';
 
 @Injectable({
   providedIn: 'root'
