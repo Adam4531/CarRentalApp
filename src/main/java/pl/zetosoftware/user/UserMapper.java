@@ -1,6 +1,7 @@
 package pl.zetosoftware.user;
 
 import org.springframework.stereotype.Component;
+import pl.zetosoftware.user.dto.UserEditRequestDto;
 import pl.zetosoftware.user.dto.UserRequestDto;
 import pl.zetosoftware.user.dto.UserResponseDto;
 import pl.zetosoftware.user.value_objects.*;
@@ -18,6 +19,17 @@ public class UserMapper {
                 .secondName(userEntity.getSecondName().toString())
                 .phoneNumber(userEntity.getPhoneNumber().toString())
                 .email(userEntity.getEmail().toString())
+                .build();
+    }
+
+    public UserEditRequestDto fromUserEntityToUserEditRequestDto(UserEntity userEntity) {
+        return UserEditRequestDto.builder()
+                .login(userEntity.getLogin().toString())
+                .firstName(userEntity.getFirstName().toString())
+                .secondName(userEntity.getSecondName().toString())
+                .phoneNumber(userEntity.getPhoneNumber().toString())
+                .email(userEntity.getEmail().toString())
+                .pesel(userEntity.getPesel().toString())
                 .build();
     }
 
