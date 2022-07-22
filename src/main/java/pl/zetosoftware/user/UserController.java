@@ -2,10 +2,10 @@ package pl.zetosoftware.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.zetosoftware.user.dto.UserRequestDto;
 import pl.zetosoftware.user.dto.UserResponseDto;
-import pl.zetosoftware.user.value_objects.EmailValidator;
 
 import java.util.List;
 //
@@ -32,11 +32,27 @@ public class UserController {
         return userService.getUserById(id);
     }
 
+    @GetMapping("/{email}")
+    @ResponseStatus(HttpStatus.OK)
+    public UserResponseDto getUserByEmail(@PathVariable String email){
+        UserEntity userEntity = userService.getUserByEmail(email);
+        return UserResponseDto.builder()
+                .id(userEntity.getId())
+                .firstName(userEntity.getFirstName().toString())
+                .secondName(userEntity.getSecondName().toString())
+                .phoneNumber(userEntity.getPhoneNumber().toString())
+                .email(userEntity.getEmail().toString())
+                .build();
+    }
+
+
+
     @PutMapping("")
     @ResponseStatus(HttpStatus.OK)
-    public UserResponseDto changeUserByEmail(@RequestBody EmailValidator email, @RequestBody UserRequestDto updatedUser){
-        return userService.updateUserWithPutMapping(email, updatedUser);
+    public UserResponseDto changeUserByEmail(@RequestParam String email, @RequestBody UserRequestDto updatedUser){
+       return userService.updateUserWithPutMapping(email, updatedUser);
     }
+
 
     @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
