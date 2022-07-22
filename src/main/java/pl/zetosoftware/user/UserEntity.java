@@ -30,6 +30,7 @@ public class UserEntity extends BasicEntity {
     @Embedded
     private PhoneNumberValidator phoneNumber;
     @Embedded
+    @Column(unique = true)
     private EmailValidator email;
     @Embedded
     private PeselValidator pesel;

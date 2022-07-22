@@ -25,6 +25,9 @@ public class UserRegistrationService {
         if ( !emailContainsAtSign(userRequestDto.email()) ) {
             errorsListDto.add("Email must contains '@' sign!");
         }
+        if ( !isEmailUnique(userRequestDto.email()) ) {
+            errorsListDto.add("User with this email already exists!");
+        }
         if ( !passwordIsValidLength(userRequestDto.password()) ) {
             errorsListDto.add("Password must be at least 7 chars long!");
         }
@@ -35,26 +38,15 @@ public class UserRegistrationService {
             errorsListDto.add("First name and second name must contains only letters!");
         }
         if ( !isAnAdult(userRequestDto.pesel())){
-            errorsListDto.add("You must be an adult!");
+            errorsListDto.add("You need to be an adult to use our service!");
         }
         if( errorsListDto.isListOfErrorsEmpty() ) {
             var userEntity = userMapper.fromUserRequestDtoToUserEntity(userRequestDto);
             userRepository.save(userEntity);
         }
-
         return errorsListDto;
     }
 
-    // komentujemy to, bo na frontend przechodzi exception zwiazany z EmailValidatorem
-    // rozwiazaniem moze byc napisanie custom query
-    // albo wrzucenie validatorow pod frontend, takich jak nizej
-//    public Boolean existWithEmail(String email) {
-//        return userRepository.existsUserEntityByEmail(new EmailValidator(email));
-//    }
-//
-//    public Boolean existWithLogin(String login) {
-//        return userRepository.existsUserEntityByLogin(new LoginValidator(login));
-//    }
     public Boolean loginIsValidLength(String login) {
         return login != null && login.length() > 6;
     }
@@ -85,5 +77,10 @@ public class UserRegistrationService {
         if (codedCentury > 12 && codedCentury < 33) century = 2000; //Powinno byc > 20 && < 33, ale nie robimy walidacji calego peselu
 
         return century + lastTwoDigitsYearOfBirth;
+    }
+
+    public boolean isEmailUnique(String email){
+        final UserEntity user = userRepository.findUserByEmail(new EmailValidator(email));
+        return user == null;
     }
 }

@@ -26,9 +26,11 @@ import { FilterComponent } from './filter/filter.component';
 import { SelectedCarComponent } from './selected-car/selected-car.component';
 import { ReservationSummaryComponent } from './reservation-summary/reservation-summary.component';
 import { ReservationsComponent } from './reservations/reservations.component';
-import {MenubarModule} from 'primeng/menubar';
-import {MenuItem} from 'primeng/api';
+import { MenubarModule } from 'primeng/menubar';
+import { MenuItem } from 'primeng/api';
 import { FaqComponent } from './faq/faq.component';
+import { DialogModule } from 'primeng/dialog';
+import { GMapModule } from 'primeng/gmap';
 
 @NgModule({
   declarations: [
@@ -66,7 +68,9 @@ import { FaqComponent } from './faq/faq.component';
     KeyFilterModule,
     ToastModule,
     ButtonModule,
-    MenubarModule
+    MenubarModule,
+    DialogModule,
+    GMapModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }, MessageService],
   bootstrap: [AppComponent]

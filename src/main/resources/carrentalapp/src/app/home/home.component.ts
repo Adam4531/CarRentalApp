@@ -21,8 +21,13 @@ export class HomeComponent implements OnInit {
 
   public emailTemp: any;
   items: MenuItem[] = [];
+  displayBasic: boolean = false;
+  options: any;
+
+  overlays: any[] = [];
 
   ngOnInit(): void {
+
     this.http.get<any>('/').subscribe(res => {
       if (res) {
         console.log('YOU ARE LOGGED IN !! ', res);
@@ -32,7 +37,6 @@ export class HomeComponent implements OnInit {
     });
     console.log(localStorage.getItem('email'))
     this.emailTemp = localStorage.getItem('email');
-
 
     if(this.isLogged()) {
 
@@ -91,10 +95,12 @@ export class HomeComponent implements OnInit {
           routerLink: '/help'
         },
     ];
-
   }
 
-
+  this.options = {
+    center: {lat: 53.7732837, lng: 20.4570858},
+    zoom: 12
+  };
 }
 
   public btnClick(url: string): void {
@@ -120,5 +126,10 @@ export class HomeComponent implements OnInit {
       this.messageService.add({life:3000, severity:'info', summary:'Logout', detail:" You have to log in first ! "})
     }
   }
+
+  showBasicDialog() {
+    this.displayBasic = true;
+  }
+
 
 }
