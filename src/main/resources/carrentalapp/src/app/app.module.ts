@@ -31,6 +31,7 @@ import { MenuItem } from 'primeng/api';
 import { FaqComponent } from './faq/faq.component';
 import { DialogModule } from 'primeng/dialog';
 import { GMapModule } from 'primeng/gmap';
+import {DropdownModule} from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,9 @@ import { GMapModule } from 'primeng/gmap';
     ButtonModule,
     MenubarModule,
     DialogModule,
-    GMapModule
+    GMapModule,
+    ButtonModule,
+    DropdownModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }, MessageService],
   bootstrap: [AppComponent]

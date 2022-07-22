@@ -18,10 +18,6 @@ export class CarService {
     return this.http.get<Car[]>(`${this.apiServerUrl}/cars`);
   }
 
-  public getCarsWithFilter(): Observable<Car[]>{
-    return this.http.get<Car[]>(`${this.apiServerUrl}/cars/filter`);
-  }
-
   public addCars(car: Car): Observable<Car> {
     return this.http.post<Car>(`${this.apiServerUrl}/cars`, car);
   }

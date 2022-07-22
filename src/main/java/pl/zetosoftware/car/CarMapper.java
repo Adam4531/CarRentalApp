@@ -3,6 +3,9 @@ package pl.zetosoftware.car;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import pl.zetosoftware.car.dto.CarDto;
+import pl.zetosoftware.car.dto.CarFilterDto;
+import pl.zetosoftware.car.enums.BodyTypeEnum;
+import pl.zetosoftware.car.value_objects.*;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.zetosoftware.car.dto.CarDto;
+import pl.zetosoftware.car.dto.CarFilterDto;
 
 import java.util.List;
 

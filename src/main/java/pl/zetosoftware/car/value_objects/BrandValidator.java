@@ -1,5 +1,6 @@
 package pl.zetosoftware.car.value_objects;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import pl.zetosoftware.interfaces.Validator;
 
