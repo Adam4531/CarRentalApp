@@ -14,24 +14,22 @@ h2 {
 }
 
 .container {
-    box-shadow: 0 0 15px rgb(67, 61, 70);
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 100%;
     width: 500px;
     height: auto;
     margin: 0 auto;
 }
 
 button {
-    position: initial;
-    background-color:rgb(90, 26, 128);
-    margin-top: 20px;
-    margin-bottom: 20px;
+    background-color:rgb(92, 0, 128);
+    margin-top: 1px;
+    margin-bottom: 1px;
     height: 50px;
-    width: 350px;
+    width: 250px;
     font-size: large;
-    z-index: 1001;
-    opacity: 100%;
+}
+
+.btn {
+    text-align: right;
 }
 .container p {
     text-align: center;
@@ -47,18 +45,6 @@ nav {
     box-shadow: 0 0 15px rgb(162, 150, 194);
     text-align: left;
 }
-
-/* .showcase video {
-  box-shadow: 0 0 15px rgb(157, 140, 201);
-  position:fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit:cover;
-  opacity: 0.6;
-  z-index: -1;
-} */
 
 .showcase img {
     box-shadow: 0 0 15px rgb(157, 140, 201);

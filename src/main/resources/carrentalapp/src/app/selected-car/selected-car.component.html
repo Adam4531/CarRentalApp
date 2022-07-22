@@ -9,7 +9,12 @@
         </header>
             <main>
                 <div class="container">
-                    <img [src]="'assets/images/example_car.jpeg'" [alt]="selectedCar.brand + selectedCar.model"/>
+                    <img *ngIf="selectedCar.id%6==0" [src]="'assets/images/car1.jpg'" [alt]="selectedCar.brand + selectedCar.model"/>
+                    <img *ngIf="selectedCar.id%6==1" [src]="'assets/images/car2.jpg'" [alt]="selectedCar.brand + selectedCar.model"/>
+                    <img *ngIf="selectedCar.id%6==2" [src]="'assets/images/car3.jpg'" [alt]="selectedCar.brand + selectedCar.model"/>
+                    <img *ngIf="selectedCar.id%6==3" [src]="'assets/images/car4.jpg'" [alt]="selectedCar.brand + selectedCar.model"/>
+                    <img *ngIf="selectedCar.id%6==4" [src]="'assets/images/car5.jpg'" [alt]="selectedCar.brand + selectedCar.model"/>
+                    <img *ngIf="selectedCar.id%6==5" [src]="'assets/images/car6.jpg'" [alt]="selectedCar.brand + selectedCar.model"/>
                     <div class="details">
                         <h3>Engine Capacity: {{selectedCar.engineCapacity}}</h3>
                         <h3>Body Type: {{selectedCar.bodyTypeEnum}}</h3>

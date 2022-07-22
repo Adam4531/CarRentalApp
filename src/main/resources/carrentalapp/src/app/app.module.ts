@@ -26,6 +26,9 @@ import { FilterComponent } from './filter/filter.component';
 import { SelectedCarComponent } from './selected-car/selected-car.component';
 import { ReservationSummaryComponent } from './reservation-summary/reservation-summary.component';
 import { ReservationsComponent } from './reservations/reservations.component';
+import {MenubarModule} from 'primeng/menubar';
+import {MenuItem} from 'primeng/api';
+import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,8 @@ import { ReservationsComponent } from './reservations/reservations.component';
     SelectedCarComponent,
     ReservationSummaryComponent,
     EditUserComponent,
-    ReservationsComponent
+    ReservationsComponent,
+    FaqComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +65,8 @@ import { ReservationsComponent } from './reservations/reservations.component';
     FormsModule,
     KeyFilterModule,
     ToastModule,
-    ButtonModule
+    ButtonModule,
+    MenubarModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }, MessageService],
   bootstrap: [AppComponent]

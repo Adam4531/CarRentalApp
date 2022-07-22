@@ -12,6 +12,7 @@ import { SelectedCarComponent } from './selected-car/selected-car.component';
 import { ReservationSummaryComponent } from './reservation-summary/reservation-summary.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { AuthenticationGuard } from './authentication.guard';
+import { FaqComponent } from './faq/faq.component';
 
 const routes: Routes = [
     { path: '', canActivate:[AuthenticationGuard], children: [
@@ -23,7 +24,9 @@ const routes: Routes = [
     { path: 'register', component: RegistrationComponent },
     { path: 'filter', component: FilterComponent},
     { path: 'selected-car/:id', component: SelectedCarComponent},
+    { path: 'selected-car/', component: SelectedCarComponent},
     { path: 'edit', component: EditUserComponent},
+    { path: 'help', component: FaqComponent},
     { path: '**', redirectTo: '' }
   ]}
 ];

@@ -30,7 +30,8 @@ export class AuthenticationGuard implements CanActivate {
         let urlEdit = "/user/edit"
         let urlHistory = "/user/history"
         let urlCars = "/cars"
-        if(state.url == urlCars || state.url == urlHistory || state.url == urlEdit) { //TU DODAC /user/**
+        let urlSelectedCar = "/selected-car"
+        if(state.url == urlCars || state.url == urlHistory || state.url == urlEdit || state.url == urlSelectedCar) { //TU DODAC /user/**
           console.log("NIE JESTES ZALOGOWANY !!!!!!!!111!")
           this.messageService.add({life:3500, severity:'info', summary:'Login', detail:" You have to login first ! "})
           return this.router.parseUrl('/login');

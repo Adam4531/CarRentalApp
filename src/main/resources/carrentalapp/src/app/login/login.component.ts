@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { MessageService } from 'primeng/api';
+import { MenuItem, MessageService } from 'primeng/api';
 import { ErrorsListDto } from '../errorsList/errors-list-dto';
 
 @Component({
@@ -22,11 +22,78 @@ export class LoginComponent implements OnInit {
       private messageService: MessageService
   ) { }
 
+  items: MenuItem[] = [];
+  public emailTemp: any;
+
   ngOnInit(): void {
+
+    this.emailTemp = localStorage.getItem('email');
+    if(this.isLogged()) {
+
+      this.items = [
+        {
+          label: 'Contact Us',
+            items: [
+              {label: 'Warsaw', routerLink: "/warsaw",},
+              {label: 'Bratislava', routerLink: "/bratislava",},
+              {label: 'Berlin', routerLink: "/berlin",},
+          ]
+        },
+        {
+          label: 'Home',
+          routerLink: '/'
+        },
+        {
+          label: 'Rent a Car',
+          routerLink: '/cars'
+        },
+        {
+          label: 'My account',
+          routerLink: '/edit'
+        },
+        {
+          label: 'FAQ',
+          routerLink: '/help'
+        },
+    ];
+
+    }
+    else {
+      this.items = [
+        {
+          label: 'Contact Us',
+            items: [
+                {label: 'Warszawa', routerLink: "/warsaw",},
+                {label: 'Poznań', routerLink: "/poznan",},
+                {label: 'Berlin', routerLink: "/berlin",},
+          ]
+        },
+        {
+          label: 'Home',
+          routerLink: '/'
+        },
+        {
+          label: 'Rent a Car',
+          routerLink: '/login'
+        },
+        {
+          label: 'My account',
+          routerLink: '/login'
+        }
+      ];
+    }
+  }
+
+  public isLogged() {
+    return sessionStorage.length > 0;
   }
 
   btnLogin() {
     this.login();
+  }
+
+  btnClick(x: string) {
+    this.router.navigateByUrl(x);
   }
 
   login() {

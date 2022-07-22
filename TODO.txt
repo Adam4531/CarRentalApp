@@ -21,6 +21,10 @@ listę samochodów wypożyczonych przez siebie (aktualnie oraz historycznie).   
 
 
 
+//anulowanie + edycja rezerwacji jak Adam R zrobi swoje
+//przyciski front
+//stopka front z przyciskami
+//
 
 1.Rejestracja + Walidacja bazowa -> User dodany do bazy danych // GRZEGORZ
 2.Logowanie -> po zalogowaniu uzytkownik widzi swoje rezerwacje // Igor

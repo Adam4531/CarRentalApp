@@ -9,7 +9,7 @@
                 <div class="table-header">
                     List of Cars
                     <p>
-                        <a href="http://localhost:4200/home">HOME PAGE</a>
+                        <button type="button" pButton label=" Main Page" (click)="btnClick('/');"><i class="pi pi-arrow-circle-left"></i></button>
                     </p>
                 </div>
             </ng-template>
@@ -26,22 +26,16 @@
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-car>
-                <!-- <tr>
-                    <td *ngFor="let columns of columns">
-                            {{car[columns.field]}}
-                    </td>
-                </tr> -->
                 <tr>
-                    <!-- <td><img [src]="'assets/images/example_car.jpeg'" [alt]="car.brand" width="100" class="shadow-4" /></td>
-                    <td> {{ car.brand }}</td>
-                    <td> {{ car.model }}</td>
-                    <td> {{ car.bodyTypeEnum }}</td>
-                    <td> {{ car.engineCapacity }}</td>
-                    <td> {{ car.productionYear }}</td>
-                    <td> {{ car.rentCost | currency: 'EUR'}}</td>
-                    <td> {{ car.statusEnum }}</td> -->
-
-                    <td><a [routerLink]="['/selected-car',car.id]" class="row-link"><img [src]="'assets/images/example_car.jpeg'" [alt]="car.brand"/></a></td>
+                    <td><a [routerLink]="['/selected-car',car.id]" class="row-link">
+                            <img *ngIf="car.id%6==0" [src]="'assets/images/car1.jpg'" [alt]="car.brand"/>
+                            <img *ngIf="car.id%6==1" [src]="'assets/images/car2.jpg'" [alt]="car.brand"/>
+                            <img *ngIf="car.id%6==2" [src]="'assets/images/car3.jpg'" [alt]="car.brand"/>
+                            <img *ngIf="car.id%6==3" [src]="'assets/images/car4.jpg'" [alt]="car.brand"/>
+                            <img *ngIf="car.id%6==4" [src]="'assets/images/car5.jpg'" [alt]="car.brand"/>
+                            <img *ngIf="car.id%6==5" [src]="'assets/images/car6.jpg'" [alt]="car.brand"/>
+                        </a>
+                    </td>
                     <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.brand }}</a></td>
                     <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.model }}</a></td>
                     <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.bodyTypeEnum }}</a></td>
@@ -53,7 +47,13 @@
             </ng-template>
             <ng-template pTemplate="summary">
                 <div>
-                    In total there are {{cars.length}} cars in store.
+                    In total there are {{cars?.length}} cars in store.
+                </div>
+                <div class="table-footer">
+                    <p>
+                        <button type="button" pButton label="  Main Page" (click)="btnClick('/');"><i class="pi pi-arrow-circle-left"></i></button>
+                        <img>
+                    </p>
                 </div>
             </ng-template>
         </p-table>

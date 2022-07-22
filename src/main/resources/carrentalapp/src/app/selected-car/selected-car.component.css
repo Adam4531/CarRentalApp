@@ -8,16 +8,16 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 0 15px purple;
-    background-color: #1a001a;
+    box-shadow: 0 0 15px rgb(169, 133, 228);
+    background-color: #ffffff;
     width: 95%;
     height: 750px;
     margin: 0 auto;
   }
 
   .scroller {
-    box-shadow: 0 0 15px rgb(107, 21, 93);
-    background-color: #2e052e;
+    box-shadow: 0 0 15px rgb(169, 133, 228);
+    background-color: #f2e5f8;
     width: 400px;
     height: 100px;
     margin: 0 auto;

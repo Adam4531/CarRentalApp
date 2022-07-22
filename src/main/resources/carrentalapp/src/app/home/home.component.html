@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav">
-          <a class="nav-link" *ngIf="isLogged()" routerLink="/edit" routerLinkActive="active">
-            <input type="text" pInputText [(ngModel)]="this.emailTemp" placeholder="My account">
-        </a>
-      </ul>
-    </div>
-</nav>
+<section class="navbar">
+    <p-menubar [model]="items">
+        <ng-template pTemplate="start">
+            <img src="../../assets/images/car-LOGO2.png" height="40" class="mr-2">
+        </ng-template>
+        <ng-template pTemplate="end">
+            <p>
+                <a class="nav-link" *ngIf="isLogged()" routerLink="/edit" routerLinkActive="active">
+                    <input type="text" pInputText [(ngModel)]="this.emailTemp" placeholder="My account">
+                </a>
+            </p>
+        </ng-template>
+    </p-menubar>
+</section>
 
 <html>
     <head>
@@ -16,6 +21,10 @@
     </head>
     <body>
         <header>
+            <section class="showcase">
+                <!-- <video src="../../assets/pexels-kelly-lacy-9737916.mp4" autoplay loop></video> -->
+                <img src ="../../assets/Car-Rentals-Friedman-Memorial-Airport-Sun-Valley-Idaho.jpeg">
+            </section>
             <h1>CAR RENTAL</h1>
             <h2>We are a car rental company.<br>
                 We have over twenty one years of experience in the industry, which guarantees the high quality of our services.<br>
@@ -24,23 +33,28 @@
         </header>
             <main>
                 <div class="container">
-                    <p>
-                        <button type="button" *ngIf="isLogged()" pButton label="Available Cars" (click)="btnClick('/cars');"><i class="pi pi-car"></i></button>
-                    </p>
-                    <p>
-                        <button type="button" *ngIf="!isLogged()" pButton label="Login" (click)="btnClick('/login');"><i class="pi pi-lock-open"></i></button>
-                    </p>
-                    <p>
-                        <button type="button" pButton label="Register" (click)="btnClick('/register');"><i class="pi pi-user-plus"></i></button>
-                    </p>
-                    <p>
-                        <button type="button" *ngIf="isLogged()" pButton label="Your reservations" (click)="btnClick('/reservations')"><i class="pi pi-history"></i></button>
-                    </p>
-                    <p>
-                        <button type="button" pButton label="Logout" (click)="btnLogout()"><i class="pi pi-lock"></i></button>
-                    </p>
-                    <p-toast position="top-right"></p-toast>
+                    <div class="childContainer">
+                        <p>
+                            <button type="button" *ngIf="isLogged()" pButton label="Rent a Car" (click)="btnClick('/cars');"><i class="pi pi-car"></i></button>
+                        </p>
+                        <p>
+                            <button type="button" *ngIf="!isLogged()" pButton label="Login" (click)="btnClick('/login');"><i class="pi pi-lock-open"></i></button>
+                        </p>
+                        <p>
+                            <button type="button" pButton label="Register" (click)="btnClick('/register');"><i class="pi pi-user-plus"></i></button>
+                        </p>
+                        <p>
+                            <button type="button" *ngIf="isLogged()" pButton label="Your reservations" (click)="btnClick('/reservations')"><i class="pi pi-history"></i></button>
+                        </p>
+                        <p>
+                             <button type="button" *ngIf="isLogged()" pButton label="Logout" (click)="btnLogout()"><i class="pi pi-lock"></i></button>
+                        </p>
+                        <p-toast position="top-right"></p-toast>
+                    </div>
                 </div>
+
             </main>
     </body>
 </html>
+
+

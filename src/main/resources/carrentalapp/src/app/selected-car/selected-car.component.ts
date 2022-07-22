@@ -4,7 +4,7 @@ import { ReservationForCar } from './reservation-for-car';
 import { SelectedCarService } from './selected-car.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { ReservationRequestDto } from 'src/app/reservations/reservation-request-dto';
+import { ReservationRequestDto } from '../reservations/reservation-request-dto';
 import { ErrorsListDto } from '../errorsList/errors-list-dto';
 import { MessageService } from 'primeng/api';
 
@@ -26,8 +26,13 @@ export class SelectedCarComponent implements OnInit {
   reservationRequestDto: ReservationRequestDto = new ReservationRequestDto();
   errorsListDto: ErrorsListDto = new ErrorsListDto();
 
-  constructor(private selectedCarService: SelectedCarService, private _Activatedroute:ActivatedRoute, private router: Router, private messageService: MessageService) { }
-
+  constructor(
+    private selectedCarService: SelectedCarService,
+    private _Activatedroute:ActivatedRoute,
+    private router: Router,
+    private messageService: MessageService
+    ) {
+  }
   ngOnInit(): void {
     this.carId = this._Activatedroute.snapshot.params['id'];
     this.getCar();
@@ -111,7 +116,7 @@ export class SelectedCarComponent implements OnInit {
         setTimeout(() => {
           window.location.reload();
        }, 2000);
-        
+
       }
       });
     }

@@ -1,0 +1,17 @@
+button {
+    background-color:rgb(92, 0, 128);
+    margin-top: 1px;
+    margin-bottom: 1px;
+    height: 42px;
+    width: 250px;
+    font-size: large;
+}
+.btn {
+    text-align: right;
+}
+
+.table-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

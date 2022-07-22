@@ -4,6 +4,7 @@ import { ReservationDto } from './reservations';
 import { ReservationsService } from './reservations.service';
 import { UserService } from '../user/user.service';
 import { UserRequestDto } from '../user/user-request-dto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reservations',
@@ -17,7 +18,11 @@ export class ReservationsComponent implements OnInit {
 
   emailTemp: any;
 
-  constructor(private reservationsService: ReservationsService, private primengConfig: PrimeNGConfig) { }
+  constructor(
+    private reservationsService: ReservationsService,
+    private primengConfig: PrimeNGConfig,
+    private router: Router) {
+  }
 
   ngOnInit(): void {
 
@@ -36,6 +41,10 @@ export class ReservationsComponent implements OnInit {
     this.getReservations();
   }
 
+  public btnClick(x: string) {
+    this.router.navigateByUrl(x);
+  }
+
   public btnReservations(){
     this.emailTemp = localStorage.getItem('email');
     this.getReservations
@@ -49,6 +58,7 @@ export class ReservationsComponent implements OnInit {
     });
 
   }
-  
+
+
 
 }
