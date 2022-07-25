@@ -3,6 +3,9 @@ import { Car } from './car';
 import { CarService } from './car.service';
 import { PrimeNGConfig } from 'primeng/api';
 import { Router } from '@angular/router';
+import { CarFilterDto } from './car-filter-dto';
+import { BodyType } from './enums/body-type';
+import { TypeOfFuel } from './enums/type-of-fuel';
 
 @Component({
   selector: 'app-car',
@@ -14,11 +17,21 @@ export class CarComponent implements OnInit {
   public cars: Car[] = [];
   public columns: any[] = [];
 
+  carFilterDto : CarFilterDto = new CarFilterDto();
+  bodyTypes : BodyType[];
+  fuelTypes : TypeOfFuel[];
+
   constructor(
     private carService: CarService,
     private primengConfig: PrimeNGConfig,
     private router: Router
     ){
+      this.bodyTypes = [
+        BodyType.SUV, BodyType.STATION_WAGON, BodyType.SEDAN, BodyType.HATCHBACK, BodyType.COUPE, BodyType.CABRIOLET
+      ];
+      this.fuelTypes = [
+        TypeOfFuel.LPG, TypeOfFuel.ELECTRIC, TypeOfFuel.DIESEL, TypeOfFuel.BENZINE
+      ]
   }
 
   ngOnInit(): void{
@@ -48,4 +61,11 @@ export class CarComponent implements OnInit {
   public btnClick(url: string) {
     this.router.navigateByUrl(url);
   }
+
+  public btnRefreshCarList() {
+    // this.carService.getCarsWithFilter().subscribe((response: any) => {
+    //   this.cars = response;
+    // });
+  }
+  
 }
