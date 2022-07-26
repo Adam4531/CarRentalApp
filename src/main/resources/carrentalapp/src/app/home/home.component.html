@@ -7,9 +7,7 @@
         </ng-template>
         <ng-template pTemplate="end">
             <p>
-                <a class="nav-link" *ngIf="isLogged()" routerLink="/edit" routerLinkActive="active">
-                    <input type="text" pInputText [(ngModel)]="this.emailTemp" placeholder="My account">
-                </a>
+                <button pButton pRipple class="p-button-rounded p-button-help" type="button" *ngIf="isLogged()" icon="pi pi-user"  routerLink="/edit" routerLinkActive="active"></button>
             </p>
         </ng-template>
     </p-menubar>
@@ -37,22 +35,24 @@
                 <div class="container">
                     <div class="childContainer">
                         <p>
-                            <button type="button" pButton label="Rent a Car" (click)="btnRent();"><i class="pi pi-car"></i></button>
+                            <button type="button" class="p-button-rounded" pButton label="Rent a Car" (click)="btnRent();"><i class="pi pi-car"></i></button>
                         </p>
                         <p>
-                            <button type="button" *ngIf="!isLogged()" pButton label="Login" (click)="btnClick('/login');"><i class="pi pi-lock-open"></i></button>
+                            <button type="button" class="p-button-rounded" *ngIf="!isLogged()" pButton label="Login" (click)="btnClick('/login');"><i class="pi pi-lock-open"></i></button>
                         </p>
                         <p>
-                            <button type="button" pButton label="Register" (click)="btnClick('/register');"><i class="pi pi-user-plus"></i></button>
+                            <button type="button" class="p-button-rounded" pButton label="Register" (click)="btnClick('/register');"><i class="pi pi-user-plus"></i></button>
                         </p>
                         <p>
-                            <button type="button" *ngIf="isLogged()" pButton label="Your reservations" (click)="btnClick('/reservations')"><i class="pi pi-history"></i></button>
+                            <button pButton pRipple type="button" *ngIf="isLogged()" label="Your reservations" class="p-button-raised p-button-help p-button-text"><i class="pi pi-history"></i></button>
+                            <!-- <button type="button" class="p-button-rounded" *ngIf="isLogged()" pButton label="Your reservations" (click)="btnClick('/reservations')"><i class="pi pi-history"></i></button> -->
+                        </p>
+                        
+                        <p>
+                             <button type="button" class="p-button-rounded" *ngIf="isLogged()" pButton label="Logout" (click)="btnLogout()"><i class="pi pi-lock"></i></button>
                         </p>
                         <p>
-                             <button type="button" *ngIf="isLogged()" pButton label="Logout" (click)="btnLogout()"><i class="pi pi-lock"></i></button>
-                        </p>
-                        <p>
-                            <button type="button" pButton label="Find Us" (click)="showBasicDialog()" icon="pi pi-map-marker"></button>
+                            <button type="button" class="p-button-rounded" pButton label="Find Us" (click)="showBasicDialog()" icon="pi pi-map-marker"></button>
                         </p>
                         <p-toast position="top-right"></p-toast>
                     </div>
