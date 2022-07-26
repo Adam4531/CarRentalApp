@@ -82,7 +82,7 @@ public class ReservationService {
 
     public int getNumberOfReservationsOfTheMostPopularCar() {
         return reservationRepository.getCarsWithNumberOfReservations().values().stream().mapToInt(i -> i).max()
-                .orElseThrow(NoSuchElementException::new);
+                .orElse(0);
     }
 
 }
