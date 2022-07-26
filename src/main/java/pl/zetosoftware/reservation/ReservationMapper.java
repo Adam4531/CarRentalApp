@@ -4,6 +4,7 @@ import org.hibernate.Hibernate;
 import org.springframework.stereotype.Component;
 import pl.zetosoftware.car.CarEntity;
 import pl.zetosoftware.reservation.dto.ReservationDto;
+import pl.zetosoftware.reservation.dto.ReservationRequestDto;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,4 +35,12 @@ public class ReservationMapper {
                 .collect(Collectors.toList());
     }
 
+    public ReservationRequestDto fromReservationToReservationRequestDto(ReservationEntity reservationEntity){
+        return ReservationRequestDto.builder()
+                .email(reservationEntity.getUserId().getEmail().toString())
+                .carId(reservationEntity.getCarId().getId())
+                .dateStart(reservationEntity.getDate().getDateStart())
+                .dateEnd(reservationEntity.getDate().getDateEnd())
+                .build();
+    }
 }

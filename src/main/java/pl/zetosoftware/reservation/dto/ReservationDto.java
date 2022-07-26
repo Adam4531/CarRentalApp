@@ -1,7 +1,6 @@
 package pl.zetosoftware.reservation.dto;
 
 import lombok.*;
-import pl.zetosoftware.user.UserEntity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

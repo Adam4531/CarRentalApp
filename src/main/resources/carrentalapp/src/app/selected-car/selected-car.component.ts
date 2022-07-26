@@ -91,8 +91,13 @@ export class SelectedCarComponent implements OnInit {
     });
   }
 
+  public btnClick(x: string) {
+    this.router.navigateByUrl(x);
+  }
+
   btnReserve(): void {
     this.createReservation();
+    this.router.navigateByUrl('/reservations')
   }
 
   public createReservation() {

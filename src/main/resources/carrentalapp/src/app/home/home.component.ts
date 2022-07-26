@@ -44,9 +44,9 @@ export class HomeComponent implements OnInit {
         {
           label: 'Contact Us',
             items: [
-              {label: 'Warsaw', routerLink: "/warsaw",},
-              {label: 'Bratislava', routerLink: "/bratislava",},
-              {label: 'Berlin', routerLink: "/berlin",},
+              {label: 'Warsaw', routerLink: "/warsaw", icon: "pi pi-building", target: "tel:997"},
+              {label: 'Bratislava', routerLink: "/bratislava", icon: "pi pi-building", target: "tel:997"},
+              {label: 'Berlin', routerLink: "/berlin", icon: "pi pi-building", target: "tel:997"},
           ]
         },
         {
@@ -114,6 +114,16 @@ export class HomeComponent implements OnInit {
   public btnLogout() {
     console.log("WYLOGOWYWUJESZ SIE !!! ");
     this.logout();
+  }
+
+  public btnRent() {
+    if(sessionStorage.length > 0){
+      this.router.navigateByUrl('/cars')
+    }
+    else {
+      this.router.navigateByUrl('/login')
+      this.messageService.add({life:3000, severity:'info', summary:'Login', detail:" You have to log in first ! "})
+    }
   }
 
   public logout() {
