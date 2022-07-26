@@ -17,6 +17,7 @@ export class EditUserService {
   constructor(private http: HttpClient) { }
 
  public putUser(user: UserEditRequestDto): Observable<UserEditRequestDto> {
+  console.log(user)
    return this.http.put<any>(`${this.apiServerUrl}/users?email=${localStorage.getItem('email')}`, user);
   }
 

@@ -34,11 +34,14 @@ import { UserEditRequestDto } from '../user/user-edit-request-dto';
       }
 
     public btnUpdate() {
+        console.log(this.user)
         this.updateUser();
     }
 
     public updateUser(): void {
       this.editUserService.putUser(this.user).subscribe((response: any) => { 
+        console.log(this.user);
+        
         this.user = response;
       });
     }
