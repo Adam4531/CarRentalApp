@@ -54,20 +54,23 @@ public class ReservationService {
 
         if ( dateStart == null )  {
             errorsListDto.add("Please enter the date of when reservation starts !");
+            errorsListDto.setFieldName("dateStart");
         }
         if ( dateEnd == null ) {
             errorsListDto.add("Please enter the date of when reservation ends !");
+            errorsListDto.setFieldName("dateEnd");
         }
         if ( dateStart != null && dateEnd != null && !dateEnd.isAfter(dateStart) ) {
             errorsListDto.add("Date of reservation ending must be after date of start !");
+            errorsListDto.setFieldName("dateEnd");
         }
         if ( !reservationEditor.isReservationAvailable(getReservation(id), dateStart, dateEnd) ) {
             errorsListDto.add("Other reservation is in progress during this period !");
+            errorsListDto.setFieldName("dateEnd");
         }
         if ( errorsListDto.isListOfErrorsEmpty() ) {
             var reservation = getReservation(id);
-//            if (!reservationEditor.isReservationAvailable(reservation, dateStart, dateEnd))
-//                throw new IllegalStateException("Other reservation is in progress during this period!");
+
             reservation.changeReservationDates(dateStart, dateEnd);
             BigDecimal cost = reservationWebMapper
                     .setTotalCost(reservationMapper

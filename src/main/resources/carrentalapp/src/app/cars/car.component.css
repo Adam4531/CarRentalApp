@@ -40,7 +40,8 @@ img {
 }
 
 button {
-  width: 180px;
+  width: 280px;
+  margin-right: 20px;
 }
 
  .table-footer {
@@ -64,14 +65,12 @@ button {
 
 .search {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-right: 16px;
-  margin-bottom: 50px;
+  margin-right: 1px;
+  margin-bottom: 1px;
 }
 
 .search-button {
-  margin-left: 47%;
+  margin-left: 37%;
 }
 
 input {

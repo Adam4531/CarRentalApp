@@ -28,22 +28,41 @@
             </td>
             <td>
                 <div class="btn">
-                    <button type="button" pButton label=" Cancel" (click)="btnDelete(rowData.id);"><i class="pi pi-ban"></i></button>
-                    <!-- <p-dialog header="Are you sure?" [(visible)]="displayBasic" [style]="{width: '20vw'}" [baseZIndex]="10000" styleClass="shake">
-                        <button type="button" pButton label=" Yes" (click)="btnDelete(rowData[].id);"><i class="pi pi-check"></i></button>
-                        <button type="button" pButton label=" No" (click)="btnClick('/reservations');"><i class="pi pi-times"></i></button>
-                    </p-dialog> -->
-                    <button type="button" pButton label=" Edit" (click)="showBasicDialog();"><i class="pi pi-pencil"></i></button>
-                    <p-dialog header="Change date of your reservation" [(visible)]="displayBasic" [style]="{width: '30vw'}" [baseZIndex]="10000" styleClass="shake">
-                        <p-inputMask [(ngModel)]="from" mask="9999-99-99" placeholder="From" styleClass="input-mask-date"></p-inputMask>
-                        <!-- label pod walidację (2 nulle i od-do walidacja) -->
-                        <p-inputMask [(ngModel)]="to" mask="9999-99-99" placeholder="To" styleClass="input-mask-date"></p-inputMask>
-                        <button type="button" pButton label=" Accept" (click)="btnEdit(this.rowData.id);"><i class="pi pi-times"></i></button>
+                    <!-- <button type="button" pButton label=" Cancel" (click)="btnDelete(rowData.id);"><i class="pi pi-ban"></i></button> -->
+                    <!-- {{rowData.id}} -->
+
+                    <button type="button" pButton label=" Cancel" (click)="showBasicDialogCancel(rowData.id);"><i class="pi pi-pencil"></i></button>
+                    <p-dialog class="dialog1" header="Are you sure?" [(visible)]="displayBasicCancel" [style]="{width: '30vw'}" [baseZIndex]="10000" styleClass="shake">
+                        <button type="button" pButton label=" No" (click)="btnReload();"><i class="pi pi-times"></i></button>
+                        <button type="button" pButton label=" Yes" (click)="btnDelete();"><i class="pi pi-times"></i></button>
+                    </p-dialog>
+
+                    <button type="button" pButton label=" Edit" (click)="showBasicDialogEdit(rowData.id);"><i class="pi pi-pencil"></i></button>
+                    <p-dialog class="dialog2" header="Change date of your reservation" [(visible)]="displayBasicEdit" [style]="{width: '30vw'}" [baseZIndex]="10000" styleClass="shake">
+                        <p-inputMask inputId="dateStart" name="dateStart" id="dateStart" [(ngModel)]="from" mask="9999-99-99" placeholder="From" styleClass="input-mask-date"></p-inputMask>
+                        <p-inputMask inputId="dateEnd" name="dateEnd" id="dateEnd" [(ngModel)]="to" mask="9999-99-99" placeholder="To" styleClass="input-mask-date"></p-inputMask>
+
+                        <!-- ustawiony name dla powyższych inputMasków
+                            label jednak tego nie czyta i nie wyświetla niczego -->
+
+                        <!-- <div *ngIf="!isFieldNameDateStart();">
+                            Date start is required.
+                          </div> -->
+
+                        <!-- <label for="dateStart"> ERROR ERROR ERROR </label> -->
+                        <!-- <label for="dateEnd"> ERROR ERROR ERROR </label> -->
+                        
+                        <!-- <label for="from"> ERROR ERROR ERROR </label> -->
+                        <!-- <label for="to"> ERROR ERROR ERROR </label> -->
+
+                        <button type="button" pButton label=" Accept" (click)="btnEdit();"><i class="pi pi-times"></i></button>
                     </p-dialog>
                 </div>
             </td>
         </tr>
     </ng-template>
+    <p-toast position="center"></p-toast>
+
 
 </p-table>
 
