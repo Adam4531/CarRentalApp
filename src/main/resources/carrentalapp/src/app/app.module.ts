@@ -32,6 +32,7 @@ import { FaqComponent } from './faq/faq.component';
 import { DialogModule } from 'primeng/dialog';
 import { GMapModule } from 'primeng/gmap';
 import {DropdownModule} from 'primeng/dropdown';
+import { SelectedReservationComponent } from './selected-reservation/selected-reservation.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {DropdownModule} from 'primeng/dropdown';
     ReservationSummaryComponent,
     EditUserComponent,
     ReservationsComponent,
-    FaqComponent
+    FaqComponent,
+    SelectedReservationComponent
   ],
   imports: [
     BrowserModule,

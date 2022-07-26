@@ -2,12 +2,12 @@ package pl.zetosoftware.reservation;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 import pl.zetosoftware.reservation.dto.ReservationDto;
 import pl.zetosoftware.reservation.value_objects.ReservationDatesValidator;
-import pl.zetosoftware.user.value_objects.EmailValidator;
+import pl.zetosoftware.user.UserEntity;
 
-import javax.validation.constraints.Email;
 import java.util.List;
 
 @RestController
@@ -41,17 +41,17 @@ public class ReservationController {
         return reservationService.getAllReservationsByEmail(email);
     }
 
-//    @GetMapping("")
-//    @ResponseStatus(HttpStatus.OK)
-//    public List<ReservationDto> getAllReservations() {
-//        return reservationService.getAllReservations();
-//    }
-
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public List<ReservationDto> getAllReservationsByUser(@PathVariable Long id) {
-        return reservationService.getAllReservationsByEmail(id);
+        return reservationService.getAllReservationsByUserId(id);
     }
+
+//    @GetMapping("/{id}")
+//    @ResponseStatus(HttpStatus.OK)
+//    public ReservationDto getReservationById(@PathVariable Long id){
+//        return reservationService.getReservationByReservationId(id);
+//    }
 
     @GetMapping("/car/{id}")
     @ResponseStatus(HttpStatus.OK)

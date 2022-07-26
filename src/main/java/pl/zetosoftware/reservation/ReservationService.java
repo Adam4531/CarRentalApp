@@ -1,8 +1,12 @@
 package pl.zetosoftware.reservation;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.zetosoftware.car.CarEntity;
 import pl.zetosoftware.reservation.dto.ReservationDto;
+import pl.zetosoftware.user.UserEntity;
+import pl.zetosoftware.user.UserRepository;
 import pl.zetosoftware.user.value_objects.EmailValidator;
 
 import java.time.LocalDate;
@@ -16,11 +20,14 @@ public class ReservationService {
 
     private final ReservationValidator reservationEditor;
 
+    private final UserRepository userRepository;
+
     @Autowired
-    public ReservationService(ReservationRepository reservationRepository, ReservationMapper reservationMapper, ReservationValidator reservationEditor) {
+    public ReservationService(ReservationRepository reservationRepository, ReservationMapper reservationMapper, ReservationValidator reservationEditor, UserRepository userRepository) {
         this.reservationRepository = reservationRepository;
         this.reservationMapper = reservationMapper;
         this.reservationEditor = reservationEditor;
+        this.userRepository = userRepository;
     }
 
     public ReservationDto createReservation(ReservationEntity reservationEntity) {
@@ -64,8 +71,9 @@ public class ReservationService {
         return reservationRepository.findAll();
     }
 
-    public List<ReservationDto> getAllReservationsByEmail(Long Id) {
-        List<ReservationEntity> allReservationsByUserId = reservationRepository.getAllReservationsByUserId(Id);
+    public List<ReservationDto> getAllReservationsByUserId(Long id) {
+        UserEntity user = userRepository.findUserEntityById(id);
+        List<ReservationEntity> allReservationsByUserId = reservationRepository.findAllByUserId(user);
         return reservationMapper.fromReservationListToReservationDtoList(allReservationsByUserId);
     }
 

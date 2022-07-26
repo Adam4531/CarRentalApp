@@ -7,21 +7,22 @@ import lombok.NoArgsConstructor;
 import pl.zetosoftware.car.enums.BodyTypeEnum;
 import pl.zetosoftware.car.enums.TypeOfFuelEnum;
 import pl.zetosoftware.car.value_objects.*;
+import pl.zetosoftware.global.BasicEntity;
 
 import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 @Getter
 @Table(name = "CARS")
-@Builder
-public class CarEntity {
+//@Builder
+public class CarEntity extends BasicEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
-    private Long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(nullable = false)
+//    private Long id;
 
     @Embedded
     private BrandValidator brand;

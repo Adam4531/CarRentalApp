@@ -31,7 +31,8 @@ export class ReservationsComponent implements OnInit {
 
     this.columns = [
       // { field: 'id', header: 'ID'},
-      { field: 'carId', header: 'Car'},
+      { field: 'brand', header: 'Brand'},
+      { field: 'model', header: 'Model'},
       { field: 'dateStart', header: 'Start of reservation'},
       { field: 'dateEnd', header: 'End of reservation'},
       { field: 'cost', header: 'Total Cost'},
@@ -53,12 +54,7 @@ export class ReservationsComponent implements OnInit {
   public getReservations(): void {
     this.reservationsService.getAllReservationsByUserEmail(this.emailTemp).subscribe((response: any) => {
       this.reservations = response;
-      console.log(response);
-      console.log(localStorage.getItem('email'))
     });
-
   }
-
-
 
 }

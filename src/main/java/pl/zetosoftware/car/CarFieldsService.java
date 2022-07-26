@@ -51,8 +51,8 @@ public class CarFieldsService {
 
         for (ReservationDto reservationDto : allReservationsById) {
             if (!Objects.isNull(reservationDto)) {
-                if ((reservationDto.dateStart().isBefore(LocalDate.now()) || reservationDto.dateStart().equals(LocalDate.now()))
-                        && (reservationDto.dateEnd().isAfter(LocalDate.now())) || reservationDto.dateEnd().equals(LocalDate.now())) {
+                if ((reservationDto.getDateStart().isBefore(LocalDate.now()) || reservationDto.getDateStart().equals(LocalDate.now()))
+                        && (reservationDto.getDateEnd().isAfter(LocalDate.now())) || reservationDto.getDateEnd().equals(LocalDate.now())) {
                     return StatusEnum.RESERVED;
                 }
             }

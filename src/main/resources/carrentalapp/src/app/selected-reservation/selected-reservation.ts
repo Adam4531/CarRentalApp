@@ -1,9 +1,8 @@
-export class ReservationDto {
-    id!: number;
+export class SelectedReservationDto {
+    Id!: number;
     userId!: number;
-    carId!: number;
-    brand!: string;
     model!: string;
+    brand!: string;
     dateStart!: Date;
     dateEnd!: Date;
     cost!: number;

@@ -8,6 +8,8 @@ import pl.zetosoftware.user.value_objects.LoginValidator;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
+    UserEntity findUserEntityById(Long id);
+
     Boolean existsUserEntityByEmail(EmailValidator email);
     Boolean existsUserEntityByLogin(LoginValidator login);
 

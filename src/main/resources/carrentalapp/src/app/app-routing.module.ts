@@ -13,6 +13,7 @@ import { ReservationSummaryComponent } from './reservation-summary/reservation-s
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { AuthenticationGuard } from './authentication.guard';
 import { FaqComponent } from './faq/faq.component';
+import { SelectedReservationComponent } from './selected-reservation/selected-reservation.component';
 
 const routes: Routes = [
     { path: '', canActivate:[AuthenticationGuard], children: [
@@ -27,6 +28,8 @@ const routes: Routes = [
     { path: 'selected-car/', component: SelectedCarComponent},
     { path: 'edit', component: EditUserComponent},
     { path: 'help', component: FaqComponent},
+    { path: 'selected-reservation/:id', component: SelectedReservationComponent},
+    { path: 'selected-reservation/', component: SelectedReservationComponent},
     { path: '**', redirectTo: '' }
   ]}
 ];
