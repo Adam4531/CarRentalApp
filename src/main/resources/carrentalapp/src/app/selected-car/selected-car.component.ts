@@ -48,8 +48,6 @@ export class SelectedCarComponent implements OnInit {
     this.getReservationsForCar();
 
     this.reservationRequestDto.carId = this.carId;
-    //this.reservationRequestDto.userId = 10000;
-    //DO ZMIANY NA EMAIL - tu na sztywno przypisana wartość dla testów
     this.reservationRequestDto.email = localStorage.getItem('email');
   }
 
@@ -94,10 +92,13 @@ export class SelectedCarComponent implements OnInit {
   public btnClick(x: string) {
     this.router.navigateByUrl(x);
   }
+  
+  public btnBack() {
+    history.back();
+  }
 
   btnReserve(): void {
     this.createReservation();
-    this.router.navigateByUrl('/reservations')
   }
 
   public createReservation() {
@@ -117,7 +118,6 @@ export class SelectedCarComponent implements OnInit {
       }
       else{
         this.messageService.add({severity:'success', summary:'Reservation', detail:'Reserved successfully!'});
-        // this.router.navigateByUrl('/users');
         setTimeout(() => {
           window.location.reload();
        }, 2000);
