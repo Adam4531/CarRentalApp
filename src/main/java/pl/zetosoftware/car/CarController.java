@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.zetosoftware.car.dto.CarDto;
-import pl.zetosoftware.car.dto.ReservationCarDto;
 
 import java.util.List;
 
@@ -20,14 +19,13 @@ public class CarController {
 
     @GetMapping("")
     @ResponseStatus(HttpStatus.OK)
-    public List<ReservationCarDto> getAllCars (){
+    public List<CarDto> getAllCars (){
         return carService.getAllCars();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-//  public CarDto getCarById (@PathVariable("id") Long id){
-    public ReservationCarDto getCarById (@PathVariable("id") Long id){
+    public CarDto getCarById (@PathVariable("id") Long id){
         return carService.findCarById(id);
     }
 

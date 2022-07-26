@@ -14,13 +14,13 @@ import { UserEditRequestDto } from '../user/user-edit-request-dto';
   })
   export class EditUserComponent implements OnInit {
 
-    user: UserEditRequestDto = new UserEditRequestDto(); 
+    user: UserEditRequestDto = new UserEditRequestDto();
     emailTemp: any;
 
     constructor(
-      private editUserService: EditUserService, 
+      private editUserService: EditUserService,
       private router: Router
-      ) { 
+      ) {
     }
 
     public btnClick(url: string): void {
@@ -30,7 +30,7 @@ import { UserEditRequestDto } from '../user/user-edit-request-dto';
     ngOnInit(): void {
 
          this.getUserByEmail();
-         
+
       }
 
     public btnUpdate() {
@@ -39,13 +39,13 @@ import { UserEditRequestDto } from '../user/user-edit-request-dto';
     }
 
     public updateUser(): void {
-      this.editUserService.putUser(this.user).subscribe((response: any) => { 
+      this.editUserService.putUser(this.user).subscribe((response: any) => {
         console.log(this.user);
-        
+
         this.user = response;
       });
     }
-      
+
     public getUserByEmail(){
       this.emailTemp = localStorage.getItem('email');
       this.editUserService.getUserByEmail().subscribe((response: any) => {

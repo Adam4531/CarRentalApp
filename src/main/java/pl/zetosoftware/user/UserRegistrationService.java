@@ -1,5 +1,6 @@
 package pl.zetosoftware.user;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.zetosoftware.global.dto.ErrorsListDto;
 import pl.zetosoftware.user.dto.UserRequestDto;
@@ -9,16 +10,12 @@ import pl.zetosoftware.user.value_objects.LoginValidator;
 import java.util.ArrayList;
 
 @Service
+@RequiredArgsConstructor
 public class UserRegistrationService {
 
     private static final String POLISH_ALPHABET = "[a-zA-Z-\\p{IsAlphabetic}]+";
     private final UserRepository userRepository;
     private final UserMapper userMapper;
-
-    public UserRegistrationService(UserRepository userRepository, UserMapper userMapper) {
-        this.userRepository = userRepository;
-        this.userMapper = userMapper;
-    }
 
     public ErrorsListDto register(UserRequestDto userRequestDto) {
 
@@ -40,6 +37,7 @@ public class UserRegistrationService {
             var userEntity = userMapper.fromUserRequestDtoToUserEntity(userRequestDto);
             userRepository.save(userEntity);
         }
+        // sprawdzanie po peselu czy uzytkownik ktory chce sie zarejestrowac jest pelnoletni
 
         return errorsListDto;
     }

@@ -24,6 +24,11 @@ import { MessageService } from 'primeng/api';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { FilterComponent } from './filter/filter.component';
 import { SelectedCarComponent } from './selected-car/selected-car.component';
+import { ReservationSummaryComponent } from './reservation-summary/reservation-summary.component';
+import { ReservationsComponent } from './reservations/reservations.component';
+import {MenubarModule} from 'primeng/menubar';
+import {MenuItem} from 'primeng/api';
+import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +40,10 @@ import { SelectedCarComponent } from './selected-car/selected-car.component';
     UserComponent,
     FilterComponent,
     SelectedCarComponent,
-    EditUserComponent
+    ReservationSummaryComponent,
+    EditUserComponent,
+    ReservationsComponent,
+    FaqComponent
   ],
   imports: [
     BrowserModule,
@@ -57,10 +65,10 @@ import { SelectedCarComponent } from './selected-car/selected-car.component';
     FormsModule,
     KeyFilterModule,
     ToastModule,
-    ButtonModule
+    ButtonModule,
+    MenubarModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-

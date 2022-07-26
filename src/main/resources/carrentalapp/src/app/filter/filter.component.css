@@ -5,15 +5,15 @@
   h3 {
     text-align: center;
   }
-  
+
   .container {
     box-shadow: 0 0 15px purple;
-    background-color: #1a001a;
+    background-color: #e4dee4;
     width: 500px;
     height: 820px;
     margin: 0 auto;
   }
-  
+
   button {
     margin-top: 40px;
     margin-bottom: 20px;
@@ -24,7 +24,7 @@
   .container p {
     text-align: center;
   }
-  
+
   input {
     margin-top: 15px;
     margin-left: 20px;

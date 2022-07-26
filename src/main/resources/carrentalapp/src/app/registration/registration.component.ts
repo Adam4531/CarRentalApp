@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserRequestDto } from 'src/app/user/user-request-dto';
 import { RegistrationService } from './registration.service';
-import { Message, PrimeNGConfig } from 'primeng/api';
+import { MenuItem, Message, PrimeNGConfig } from 'primeng/api';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { ErrorsListDto } from '../errorsList/errors-list-dto';
@@ -14,7 +14,6 @@ import {MessageService} from 'primeng/api';
 })
 export class RegistrationComponent implements OnInit {
 
-
   letterNumberDotDashUnderscore: RegExp = /[a-zA-Z\d._-]+$/
 
   emailPattern: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -22,7 +21,6 @@ export class RegistrationComponent implements OnInit {
   userRequestDto: UserRequestDto = new UserRequestDto();
 
   errorsListDto: ErrorsListDto = new ErrorsListDto();
-
 
   constructor(
     private registrationService: RegistrationService,
@@ -32,13 +30,79 @@ export class RegistrationComponent implements OnInit {
     ){
   }
 
+  items: MenuItem[] = [];
+  public emailTemp: any;
+
   ngOnInit(): void {
 
+    this.emailTemp = localStorage.getItem('email')
+    if(this.isLogged()) {
+
+      this.items = [
+        {
+          label: 'Contact Us',
+            items: [
+              {label: 'Warsaw', routerLink: "/warsaw",},
+              {label: 'Bratislava', routerLink: "/bratislava",},
+              {label: 'Berlin', routerLink: "/berlin",},
+          ]
+        },
+        {
+          label: 'Home',
+          routerLink: '/'
+        },
+        {
+          label: 'Rent a Car',
+          routerLink: '/cars'
+        },
+        {
+          label: 'My account',
+          routerLink: '/edit'
+        },
+        {
+          label: 'FAQ',
+          routerLink: '/help'
+        },
+    ];
+
+    }
+    else {
+      this.items = [
+        {
+          label: 'Contact Us',
+            items: [
+                {label: 'Warszawa', routerLink: "/warsaw",},
+                {label: 'Poznań', routerLink: "/poznan",},
+                {label: 'Berlin', routerLink: "/berlin",},
+          ]
+        },
+        {
+          label: 'Home',
+          routerLink: '/'
+        },
+        {
+          label: 'Rent a Car',
+          routerLink: '/login'
+        },
+        {
+          label: 'My account',
+          routerLink: '/login'
+        }
+      ];
+    }
+  }
+
+  public isLogged() {
+    return sessionStorage.length > 0;
   }
 
   btnRegister(): void {
     console.log(this.userRequestDto);
     this.registerUser();
+  }
+
+  btnClick(x: string) {
+    this.router.navigateByUrl(x);
   }
 
   public registerUser() {

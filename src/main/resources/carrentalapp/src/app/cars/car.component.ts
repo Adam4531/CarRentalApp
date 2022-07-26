@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Car } from './car';
 import { CarService } from './car.service';
 import { PrimeNGConfig } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-car',
@@ -13,7 +14,11 @@ export class CarComponent implements OnInit {
   public cars: Car[] = [];
   public columns: any[] = [];
 
-  constructor(private carService: CarService, private primengConfig: PrimeNGConfig){
+  constructor(
+    private carService: CarService,
+    private primengConfig: PrimeNGConfig,
+    private router: Router
+    ){
   }
 
   ngOnInit(): void{
@@ -26,7 +31,6 @@ export class CarComponent implements OnInit {
       { field: 'bodyTypeEnum', header: 'Body Type' },
       { field: 'engineCapacity', header: 'Engine Capacity' },
       { field: 'productionYear', header: 'Production Year' },
-      // { field: 'newCarCost', header: 'Cost of new car from Saloon' },
       { field: 'typeOfFuelEnum', header: 'Type of Fuel' },
       { field: 'bodyTypeEnum', header: 'Body type'},
       { field: 'pricePerDayRent', header: 'Cost of rent per day' },
@@ -39,6 +43,9 @@ export class CarComponent implements OnInit {
     this.carService.getCars().subscribe((response: any) => {
       this.cars = response;
     });
+  }
 
-    }
+  public btnClick(url: string) {
+    this.router.navigateByUrl(url);
+  }
 }

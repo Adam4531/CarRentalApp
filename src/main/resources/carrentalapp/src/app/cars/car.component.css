@@ -3,22 +3,23 @@
     align-items: center;
     justify-content: space-between;
 }
-  
+
   table {
     border-collapse: collapse;
   }
-  
+
   td {
     border: 2px solid #ccd2ff;
     position: relative;
   }
-  
+
   tr:hover,
   tr:focus-within {
-    background: #1a001a;
-    outline: none;
+    background: #ffffff;
+    outline: #6d20ac;
+    color: rgb(134, 92, 173);
   }
-  
+
   td > a:first-child {
     display: flex;
     padding: 18px;
@@ -28,5 +29,16 @@
   }
 
   img {
-    width: 100px;
+    width: 250px;
+  }
+
+  button {
+    width: 180px;
+  }
+
+ .table-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: right;
   }

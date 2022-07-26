@@ -6,7 +6,7 @@ h1 {
 
   .container {
     box-shadow: 0 0 15px purple;
-    background-color: #1a001a;
+    background-color: #e4dee4;
     width: 500px;
     height: 640px;
     margin: 0 auto;
@@ -26,9 +26,9 @@ h1 {
   }
 
   input {
-    width: 222px;
+    width: 235px;
   }
 
   :host ::ng-deep .input-mask{
-    width: 222px;
+    width: 235px;
     }

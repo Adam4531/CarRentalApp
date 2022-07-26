@@ -6,10 +6,10 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Component
-public class ReservationEditorValidator {
+public class ReservationValidator {
     private final ReservationRepository reservationRepository;
 
-    public ReservationEditorValidator(ReservationRepository reservationRepository) {
+    public ReservationValidator(ReservationRepository reservationRepository) {
         this.reservationRepository = reservationRepository;
     }
 
@@ -30,7 +30,7 @@ public class ReservationEditorValidator {
         return LocalDate.now().isBefore(reservationToChange.getDate().getDateStart());
     }
 
-    public boolean isNewStartDayReservationAfterToday (LocalDate dateStart){
+    public boolean isNewStartDayReservationAfterPresentDay(LocalDate dateStart){
         return dateStart.isAfter(LocalDate.now());
     }
 
@@ -38,7 +38,7 @@ public class ReservationEditorValidator {
         if (!isPresentDayBeforeReservationToChange(reservationToChange)){
             throw new IllegalStateException("Not allowed to change started/completed reservations!");
         }
-        if (!isNewStartDayReservationAfterToday(dateStart)){
+        if (!isNewStartDayReservationAfterPresentDay(dateStart)){
             throw new IllegalStateException("Not allowed to change reservation's date to historical or present date!");
         }
         List<ReservationEntity> reservationEntitiesForSpecifiedCar = reservationRepository.findAll();

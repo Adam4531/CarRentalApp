@@ -2,6 +2,8 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import { MenuItem } from 'primeng/api';
+
 
 @Component({
   selector: 'app-home',
@@ -18,6 +20,7 @@ export class HomeComponent implements OnInit {
   }
 
   public emailTemp: any;
+  items: MenuItem[] = [];
 
   ngOnInit(): void {
     this.http.get<any>('/').subscribe(res => {
@@ -29,11 +32,74 @@ export class HomeComponent implements OnInit {
     });
     console.log(localStorage.getItem('email'))
     this.emailTemp = localStorage.getItem('email');
+
+
+    if(this.isLogged()) {
+
+      this.items = [
+        {
+          label: 'Contact Us',
+            items: [
+              {label: 'Warsaw', routerLink: "/warsaw",},
+              {label: 'Bratislava', routerLink: "/bratislava",},
+              {label: 'Berlin', routerLink: "/berlin",},
+          ]
+        },
+        {
+          label: 'Home',
+          routerLink: '/'
+        },
+        {
+          label: 'Rent a Car',
+          routerLink: '/cars'
+        },
+        {
+          label: 'My account',
+          routerLink: '/edit'
+        },
+        {
+          label: 'FAQ',
+          routerLink: '/help'
+        },
+    ];
+
+    }
+    else {
+      this.items = [
+        {
+          label: 'Contact Us',
+            items: [
+                {label: 'Warszawa', routerLink: "/warsaw",},
+                {label: 'Poznań', routerLink: "/poznan",},
+                {label: 'Berlin', routerLink: "/berlin",},
+          ]
+        },
+        {
+          label: 'Home',
+          routerLink: '/'
+        },
+        {
+          label: 'Rent a Car',
+          routerLink: '/login'
+        },
+        {
+          label: 'My account',
+          routerLink: '/login'
+        },
+        {
+          label: 'FAQ',
+          routerLink: '/help'
+        },
+    ];
+
   }
+
+
+}
 
   public btnClick(url: string): void {
     this.router.navigateByUrl(url);
-    }
+  }
 
   public isLogged() {
     return sessionStorage.length > 0;

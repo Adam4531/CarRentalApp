@@ -1,23 +1,23 @@
 h1 {
     text-align: center;
-    margin-top: 4%;
+    margin-top: 1%;
 
   }
 
   .container {
-    box-shadow: 0 0 15px purple;
-    background-color: #1a001a;
+    box-shadow: 0 0 15px rgb(95, 48, 139);
+    background-color: #e4dee4;
     width: 500px;
-    height: 640px;
+    height: 540px;
     margin: 0 auto;
   }
 
   button {
-    background-color:rgb(88, 3, 88);
-    margin-top: 40px;
+    background-color:rgb(92, 0, 129);
+    margin-top: 20px;
     margin-bottom: 20px;
-    height: 60px;
-    width: 400px;
+    height: 50px;
+    width: 300px;
     font-size: large;
   }
 
@@ -34,7 +34,7 @@ h1 {
   }
 
   input {
-    width: 222px;
+    width: 235px;
   }
 
   .input-top {
@@ -42,7 +42,7 @@ h1 {
   }
 
   :host ::ng-deep .input-mask{
-    width: 222px;
+    width: 235px;
     }
 
 

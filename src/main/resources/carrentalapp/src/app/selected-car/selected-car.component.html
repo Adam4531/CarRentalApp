@@ -1,9 +1,7 @@
-<!-- <p>WORKS</p>
-<p>CAR ID: {{selectedCar.id}}, brand: {{selectedCar.brand}}</p> -->
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{{selectedCar.brand}}</title>
+        <title>{{selectedCar.brand}} {{selectedCar.model}}</title>
     </head>
     <body>
         <header>
@@ -11,7 +9,12 @@
         </header>
             <main>
                 <div class="container">
-                    <img [src]="'assets/images/example_car.jpeg'" [alt]="selectedCar.brand + selectedCar.model"/>
+                    <img *ngIf="selectedCar.id%6==0" [src]="'assets/images/car1.jpg'" [alt]="selectedCar.brand + selectedCar.model"/>
+                    <img *ngIf="selectedCar.id%6==1" [src]="'assets/images/car2.jpg'" [alt]="selectedCar.brand + selectedCar.model"/>
+                    <img *ngIf="selectedCar.id%6==2" [src]="'assets/images/car3.jpg'" [alt]="selectedCar.brand + selectedCar.model"/>
+                    <img *ngIf="selectedCar.id%6==3" [src]="'assets/images/car4.jpg'" [alt]="selectedCar.brand + selectedCar.model"/>
+                    <img *ngIf="selectedCar.id%6==4" [src]="'assets/images/car5.jpg'" [alt]="selectedCar.brand + selectedCar.model"/>
+                    <img *ngIf="selectedCar.id%6==5" [src]="'assets/images/car6.jpg'" [alt]="selectedCar.brand + selectedCar.model"/>
                     <div class="details">
                         <h3>Engine Capacity: {{selectedCar.engineCapacity}}</h3>
                         <h3>Body Type: {{selectedCar.bodyTypeEnum}}</h3>
@@ -21,7 +24,7 @@
                         <h3>Status: {{selectedCar.status}}</h3>
                         <div>
                             <!-- DOBRZE BY BYLO ZMIENIC FUNKCJE getAllReservationsForCarId
-                                 NA FUNKCJE: getAllReservationsForCarIdFromToday (nie wyswietlac rezerwacji historycznych,
+                                 NA FUNKCJE: getAllReservationsForCarIdFromPresentDay (nie wyswietlac rezerwacji historycznych,
                                         ale przy okazji wyswietlic te, ktora jeszcze trwa) -->
                             <h3 class="reservations">Reservations:</h3>
                             <div class="scroller">
@@ -39,14 +42,18 @@
                             <p-inputMask [(ngModel)]="to" mask="9999-99-99" placeholder="To" styleClass="input-mask-date"></p-inputMask>
                             <!-- TO DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY -->
                         </p>
+                        <h3 class="reservations">Payment in Advance: {{selectedCar.paymentInAdvance}}€</h3>
+                        <h3 class="reservations">Rent Cost: {{price}}€</h3>
+                        <button class="calculate" type="button" pButton label="Calculate Price" (click)="finalPrice()"></button>
                         <p>
-                            <button type="button" pButton label="Reserve" (click)="btnClick('/reservations');"></button>
+                            <button type="button" pButton label="Reserve" (click)="btnReserve();"></button>
                         </p>
                         <p>
                             <a href="http://localhost:4200/home">HOME PAGE</a>
                         </p>
                     </div>
                 </div>
+                <p-toast position="top-right"></p-toast>
             </main>
     </body>
 </html>

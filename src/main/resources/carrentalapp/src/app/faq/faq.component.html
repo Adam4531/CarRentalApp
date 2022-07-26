@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<section class="navbar">
+    <p-menubar [model]="items">
+        <ng-template pTemplate="start">
+            <img src="../../assets/images/car-LOGO2.png" height="40" class="mr-2">
+        </ng-template>
+        <ng-template pTemplate="end">
+            <div class="btn">
+                <button type="button" pButton label=" Main Page" (click)="btnClick('/');"><i class="pi pi-arrow-circle-left"></i></button>
+            </div>
+        </ng-template>
+    </p-menubar>
+</section>
+
+<html>
+    <head>
+        <title>Car Rental</title>
+    </head>
+    <body>
+        <header>
+            <h1>Frequently Asked Questions</h1>
+            <p>
+                <b>
+                    1. Where can we find your Car Rental ? 
+                </b>
+                We are waiting for you in 3 places : Warszawa Jana Pawła II 24 08-300, Berlin Munichyn 23 23-2400, Bratislava Obojnika 22 11-10.
+            </p>
+            <p>
+                <b>
+                    2. How can we contact you ? 
+                </b>
+                Just click "Contact Us" on navigation bar, check the city and make a call.
+            </p>
+            <p>
+                <b>
+                    3. Is there any possibility to edit my reservation ? 
+                </b>
+                Sure, just make sure the reservations does not start today and get to your reservation history.
+            </p>
+            <p>
+                <b>
+                    4. Is there any possibility to cancel my reservation ? 
+                </b>
+                Yes, as above, make sure your reservations does start at least tomorrow and cancel it from your reservation history page.
+            </p>
+        </header>
+            <main>
+                <div class="container">
+                    
+                </div>
+
+            </main>
+    </body> 
+</html>
