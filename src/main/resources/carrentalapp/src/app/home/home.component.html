@@ -41,7 +41,7 @@
                             <button type="button" class="p-button-rounded" *ngIf="!isLogged()" pButton label="Login" (click)="btnClick('/login');"><i class="pi pi-lock-open"></i></button>
                         </p>
                         <p>
-                            <button type="button" class="p-button-rounded" pButton label="Register" (click)="btnClick('/register');"><i class="pi pi-user-plus"></i></button>
+                            <button type="button" class="p-button-rounded" *ngIf="!isLogged()" pButton label="Register" (click)="btnClick('/register');"><i class="pi pi-user-plus"></i></button>
                         </p>
                         <p>
                             <button type="button" class="p-button-rounded" *ngIf="isLogged()" pButton label="Your reservations" (click)="btnClick('/reservations')"><i class="pi pi-history"></i></button>

@@ -52,19 +52,19 @@ public class ReservationService {
 
         ErrorsListDto errorsListDto = new ErrorsListDto(new ArrayList<>());
 
-        if (dateStart != null) {
+        if ( dateStart == null )  {
             errorsListDto.add("Please enter the date of when reservation starts !");
         }
-        if (dateEnd != null) {
+        if ( dateEnd == null ) {
             errorsListDto.add("Please enter the date of when reservation ends !");
         }
-        if (dateStart != null && dateEnd != null && !dateEnd.isAfter(dateStart)) {
+        if ( dateStart != null && dateEnd != null && !dateEnd.isAfter(dateStart) ) {
             errorsListDto.add("Date of reservation ending must be after date of start !");
         }
-        if (!reservationEditor.isReservationAvailable(getReservation(id), dateStart, dateEnd)) {
+        if ( !reservationEditor.isReservationAvailable(getReservation(id), dateStart, dateEnd) ) {
             errorsListDto.add("Other reservation is in progress during this period !");
         }
-        if (errorsListDto.isListOfErrorsEmpty()) {
+        if ( errorsListDto.isListOfErrorsEmpty() ) {
             var reservation = getReservation(id);
 //            if (!reservationEditor.isReservationAvailable(reservation, dateStart, dateEnd))
 //                throw new IllegalStateException("Other reservation is in progress during this period!");
