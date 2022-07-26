@@ -44,9 +44,9 @@ export class HomeComponent implements OnInit {
         {
           label: 'Contact Us',
             items: [
-              {label: 'Warsaw', routerLink: "/warsaw",},
-              {label: 'Bratislava', routerLink: "/bratislava",},
-              {label: 'Berlin', routerLink: "/berlin",},
+              {label: 'Warsaw', routerLink: "/warsaw", icon: "pi pi-building", target: "tel:997"},
+              {label: 'Bratislava', routerLink: "/bratislava", icon: "pi pi-building", target: "tel:997"},
+              {label: 'Berlin', routerLink: "/berlin", icon: "pi pi-building", target: "tel:997"},
           ]
         },
         {

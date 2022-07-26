@@ -10,9 +10,9 @@ h1 {
     justify-content: space-between;
     box-shadow: 0 0 15px rgb(169, 133, 228);
     background-color: #ffffff;
-    width: 95%;
-    height: 750px;
-    margin: 0 auto;
+    width: 85%;
+    height: 800px;
+    margin: auto;
   }
 
   .scroller {
@@ -24,7 +24,7 @@ h1 {
   }
 
   .details {
-    margin-right: 16%;
+    margin-right: 12%;
     font-family: Arial, Helvetica, sans-serif;
   }
 

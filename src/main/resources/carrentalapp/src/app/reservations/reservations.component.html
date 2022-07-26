@@ -1,3 +1,7 @@
+<section class="showcase">
+    <img src ="../../assets/images/watercolor-abstract-purple-background_23-2149120778.png">
+</section>
+
 <p-table [columns]="columns" [value]="reservations" responsiveLayout="scroll">
 
     <ng-template pTemplate="caption">
@@ -20,9 +24,27 @@
     <ng-template pTemplate="body" let-rowData let-columns="columns">
         <tr>
             <td *ngFor="let col of columns">
-                {{rowData[col.field]}}
+                {{rowData[col.field]}} 
+            </td>
+            <td>
+                <div class="btn">
+                    <button type="button" pButton label=" Cancel" (click)="btnDelete(rowData.id);"><i class="pi pi-ban"></i></button>
+                    <!-- <p-dialog header="Are you sure?" [(visible)]="displayBasic" [style]="{width: '20vw'}" [baseZIndex]="10000" styleClass="shake">
+                        <button type="button" pButton label=" Yes" (click)="btnDelete(rowData[].id);"><i class="pi pi-check"></i></button>
+                        <button type="button" pButton label=" No" (click)="btnClick('/reservations');"><i class="pi pi-times"></i></button>
+                    </p-dialog> -->
+                    <button type="button" pButton label=" Edit" (click)="showBasicDialog();"><i class="pi pi-pencil"></i></button>
+                    <p-dialog header="Change date of your reservation" [(visible)]="displayBasic" [style]="{width: '30vw'}" [baseZIndex]="10000" styleClass="shake">
+                        <p-inputMask [(ngModel)]="from" mask="9999-99-99" placeholder="From" styleClass="input-mask-date"></p-inputMask>
+                        <!-- label pod walidację (2 nulle i od-do walidacja) -->
+                        <p-inputMask [(ngModel)]="to" mask="9999-99-99" placeholder="To" styleClass="input-mask-date"></p-inputMask>
+                        <button type="button" pButton label=" Accept" (click)="btnEdit(this.rowData.id);"><i class="pi pi-times"></i></button>
+                    </p-dialog>
+                </div>
             </td>
         </tr>
     </ng-template>
 
 </p-table>
+
+

@@ -25,11 +25,13 @@
                 <!-- <video src="../../assets/pexels-kelly-lacy-9737916.mp4" autoplay loop></video> -->
                 <img src ="../../assets/Car-Rentals-Friedman-Memorial-Airport-Sun-Valley-Idaho.jpeg">
             </section>
-            <h1>CAR RENTAL</h1>
-            <h2>We are a car rental company.<br>
-                We have over twenty one years of experience in the industry, which guarantees the high quality of our services.<br>
-                We operate in Poland, Germany and Slovakia.<br>
-            </h2>
+            <div class="containerz">
+                <h1>CAR RENTAL</h1>
+                <h2>We are a car rental company.<br>
+                    We have over twenty one years of experience in the industry, which guarantees the high quality of our services.<br>
+                    We operate in Poland, Germany and Slovakia.<br>
+                </h2>
+            </div>
         </header>
             <main>
                 <div class="container">
@@ -50,7 +52,7 @@
                              <button type="button" *ngIf="isLogged()" pButton label="Logout" (click)="btnLogout()"><i class="pi pi-lock"></i></button>
                         </p>
                         <p>
-                            <button type="button" pButton label="Find Us" (click)="showBasicDialog()" icon="pi pi-info-circle"></button>
+                            <button type="button" pButton label="Find Us" (click)="showBasicDialog()" icon="pi pi-map-marker"></button>
                         </p>
                         <p-toast position="top-right"></p-toast>
                     </div>

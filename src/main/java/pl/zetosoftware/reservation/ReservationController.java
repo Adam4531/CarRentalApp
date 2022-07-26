@@ -34,7 +34,6 @@ public class ReservationController {
         return reservationService.changeReservationDatesByReservationId(id, date.getDateStart(), date.getDateEnd());
     }
 
-
     @GetMapping("")
     @ResponseStatus(HttpStatus.OK)
     public List<ReservationDto> getAllReservationsByUserEmail(@RequestParam String email){

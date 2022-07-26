@@ -20,18 +20,11 @@
                     <p-inputMask [(ngModel)]="carFilterDto.freeTo" mask="9999-99-99" placeholder="To" styleClass="input-mask-to"></p-inputMask>
                 </div>
                 <button type="button" pButton label="Search" (click)="btnRefreshCarList();"><i class="pi pi-search"></i></button>
+                <button type="button" pButton label=" Main Page" (click)="btnClick('/');"><i class="pi pi-arrow-circle-left"></i></button>
                 <!-- wysyła zapytanie o samochod z podanymi danymi -->
             </div>
         </div>
         <p-table [value]="cars" [paginator]="true" [rows]="10">
-            <ng-template pTemplate="caption">
-                <div class="table-header">
-                    <div class="header-text">List of Cars</div>
-                    <p>
-                        <button type="button" pButton label=" Main Page" (click)="btnClick('/');"><i class="pi pi-arrow-circle-left"></i></button>
-                    </p>
-                </div>
-            </ng-template>
             <ng-template pTemplate="header">
                 <tr>
                     <th>Image</th>

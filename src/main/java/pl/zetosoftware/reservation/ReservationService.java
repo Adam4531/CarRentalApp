@@ -1,11 +1,15 @@
 package pl.zetosoftware.reservation;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import pl.zetosoftware.reservation.dto.ReservationDto;
+import pl.zetosoftware.reservation.value_objects.CostValidator;
 import pl.zetosoftware.user.value_objects.EmailValidator;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 @Service
@@ -13,14 +17,21 @@ public class ReservationService {
 
     private final ReservationRepository reservationRepository;
     private final ReservationMapper reservationMapper;
-
     private final ReservationValidator reservationEditor;
+    private final ReservationWebMapper reservationWebMapper;
 
     @Autowired
-    public ReservationService(ReservationRepository reservationRepository, ReservationMapper reservationMapper, ReservationValidator reservationEditor) {
+    @Lazy
+    public ReservationService(
+            ReservationRepository reservationRepository,
+            ReservationMapper reservationMapper,
+            ReservationValidator reservationEditor,
+            ReservationWebMapper reservationWebMapper
+    ) {
         this.reservationRepository = reservationRepository;
         this.reservationMapper = reservationMapper;
         this.reservationEditor = reservationEditor;
+        this.reservationWebMapper = reservationWebMapper;
     }
 
     public ReservationDto createReservation(ReservationEntity reservationEntity) {
@@ -41,6 +52,11 @@ public class ReservationService {
         if (!reservationEditor.isReservationAvailable(reservation, dateStart, dateEnd))
             throw new IllegalStateException("Other reservation is in progress during this period!");
         reservation.changeReservationDates(dateStart, dateEnd);
+        BigDecimal cost = reservationWebMapper
+                .setTotalCost(reservationMapper
+                .fromReservationToReservationRequestDto(reservation));
+
+        reservation.changeCost(cost);
         reservationRepository.save(reservation);
         return reservationMapper.fromReservationToReservationDto(reservation);
     }
