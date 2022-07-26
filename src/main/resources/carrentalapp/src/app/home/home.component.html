@@ -39,9 +39,6 @@
                         <p>
                             <button type="button" pButton label="Rent a Car" (click)="btnRent();"><i class="pi pi-car"></i></button>
                         </p>
-                        <!-- <p>
-                            <button type="button" pButton label="Rent a Car" (click)="btnRent();"><i class="pi pi-car"></i></button>
-                        </p> -->
                         <p>
                             <button type="button" *ngIf="!isLogged()" pButton label="Login" (click)="btnClick('/login');"><i class="pi pi-lock-open"></i></button>
                         </p>
