@@ -116,6 +116,16 @@ export class HomeComponent implements OnInit {
     this.logout();
   }
 
+  public btnRent() {
+    if(sessionStorage.length > 0){
+      this.router.navigateByUrl('/cars')
+    }
+    else {
+      this.router.navigateByUrl('/login')
+      this.messageService.add({life:3000, severity:'info', summary:'Login', detail:" You have to log in first ! "})
+    }
+  }
+
   public logout() {
     if(sessionStorage.length > 0){
       sessionStorage.removeItem('token')

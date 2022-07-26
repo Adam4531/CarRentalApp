@@ -29,19 +29,19 @@
                 <img src ="../../assets/images/watercolor-abstract-purple-background_23-2149120778.png">
             </section>
             <div class="containerz">
-                <h1>CAR RENTAL</h1>
-                <h2>We are a car rental company.<br>
-                    We have over twenty one years of experience in the industry, which guarantees the high quality of our services.<br>
-                    We operate in Poland, Germany and Slovakia.<br>
-                </h2>
+                <h1>Car Rental – Search, Rent, and Save up to 70%!</h1>
+                <h2>✓ No Hidden Costs ✓ 24/7 Support ✓ Free Cancellation<br><br></h2>
             </div>
         </header>
             <main>
                 <div class="container">
                     <div class="childContainer">
                         <p>
-                            <button type="button" *ngIf="isLogged()" pButton label="Rent a Car" (click)="btnClick('/cars');"><i class="pi pi-car"></i></button>
+                            <button type="button" pButton label="Rent a Car" (click)="btnRent();"><i class="pi pi-car"></i></button>
                         </p>
+                        <!-- <p>
+                            <button type="button" pButton label="Rent a Car" (click)="btnRent();"><i class="pi pi-car"></i></button>
+                        </p> -->
                         <p>
                             <button type="button" *ngIf="!isLogged()" pButton label="Login" (click)="btnClick('/login');"><i class="pi pi-lock-open"></i></button>
                         </p>
