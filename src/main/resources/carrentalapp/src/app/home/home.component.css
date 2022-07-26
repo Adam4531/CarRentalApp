@@ -33,7 +33,8 @@ h2 {
 
 button {
     position: initial;
-    background-color:rgb(90, 26, 128);
+    background-color:rgba(90, 26, 128, 0.95);
+    color: white;
     margin-top: 20px;
     margin-bottom: 20px;
     height: 50px;
@@ -78,5 +79,17 @@ nav {
     height: 100%;
     object-fit:cover;
     opacity: 0.68;
+    z-index: -1;
+  }
+
+  .showcasez img {
+    box-shadow: 0 0 15px rgb(157, 140, 201);
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+    opacity: 0.48;
     z-index: -1;
   }
