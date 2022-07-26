@@ -44,10 +44,8 @@
                             <button type="button" class="p-button-rounded" pButton label="Register" (click)="btnClick('/register');"><i class="pi pi-user-plus"></i></button>
                         </p>
                         <p>
-                            <button pButton pRipple type="button" *ngIf="isLogged()" label="Your reservations" class="p-button-raised p-button-help p-button-text"><i class="pi pi-history"></i></button>
-                            <!-- <button type="button" class="p-button-rounded" *ngIf="isLogged()" pButton label="Your reservations" (click)="btnClick('/reservations')"><i class="pi pi-history"></i></button> -->
+                            <button type="button" class="p-button-rounded" *ngIf="isLogged()" pButton label="Your reservations" (click)="btnClick('/reservations')"><i class="pi pi-history"></i></button>
                         </p>
-                        
                         <p>
                              <button type="button" class="p-button-rounded" *ngIf="isLogged()" pButton label="Logout" (click)="btnLogout()"><i class="pi pi-lock"></i></button>
                         </p>

@@ -39,12 +39,14 @@ h2 {
 button {
     position: initial;
     background-color:rgba(90, 26, 128, 0.95);
-    color: white;
+    box-shadow: 0 0 15px rgba(158, 145, 165, 0.68);
+    color: rgb(255, 255, 255);
     margin-top: 20px;
     margin-bottom: 20px;
     height: 50px;
     width: 350px;
     font-size: large;
+    font-weight: 500;
     z-index: 1001;
     opacity: 100%;
 }
