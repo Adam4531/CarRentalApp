@@ -8,8 +8,10 @@ import pl.zetosoftware.car.enums.BodyTypeEnum;
 import pl.zetosoftware.car.enums.TypeOfFuelEnum;
 import pl.zetosoftware.car.value_objects.*;
 import pl.zetosoftware.global.BasicEntity;
+import pl.zetosoftware.reservation.ReservationEntity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -29,6 +31,9 @@ public class CarEntity extends BasicEntity {
 
     @Embedded
     private ModelValidator model;
+
+    @OneToMany(mappedBy = "carId", fetch = FetchType.LAZY)
+    private List<ReservationEntity> reservationEntity;
 
     @Embedded
     private EngineCapacityValidator engineCapacity;

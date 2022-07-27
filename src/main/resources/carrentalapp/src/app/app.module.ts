@@ -22,7 +22,6 @@ import { RequestInterceptor } from './request.interceptor';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { EditUserComponent } from './edit-user/edit-user.component';
-import { FilterComponent } from './filter/filter.component';
 import { SelectedCarComponent } from './selected-car/selected-car.component';
 import { ReservationSummaryComponent } from './reservation-summary/reservation-summary.component';
 import { ReservationsComponent } from './reservations/reservations.component';
@@ -31,7 +30,9 @@ import { MenuItem } from 'primeng/api';
 import { FaqComponent } from './faq/faq.component';
 import { DialogModule } from 'primeng/dialog';
 import { GMapModule } from 'primeng/gmap';
-import {DropdownModule} from 'primeng/dropdown';
+import { DropdownModule } from 'primeng/dropdown';
+import { CalendarModule } from 'primeng/calendar';
+import { NavbarComponent } from './global/navbar/navbar.component';
 import { SelectedReservationComponent } from './selected-reservation/selected-reservation.component';
 
 @NgModule({
@@ -42,12 +43,12 @@ import { SelectedReservationComponent } from './selected-reservation/selected-re
     RegistrationComponent,
     CarComponent,
     UserComponent,
-    FilterComponent,
     SelectedCarComponent,
     ReservationSummaryComponent,
     EditUserComponent,
     ReservationsComponent,
     FaqComponent,
+    NavbarComponent,
     SelectedReservationComponent
   ],
   imports: [
@@ -75,7 +76,8 @@ import { SelectedReservationComponent } from './selected-reservation/selected-re
     DialogModule,
     GMapModule,
     ButtonModule,
-    DropdownModule
+    DropdownModule,
+    CalendarModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }, MessageService],
   bootstrap: [AppComponent]

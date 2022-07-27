@@ -23,6 +23,7 @@ public class ReservationService {
 
     private final ReservationRepository reservationRepository;
     private final ReservationMapper reservationMapper;
+
     private final ReservationValidator reservationEditor;
     private final ReservationWebMapper reservationWebMapper;
 
@@ -128,8 +129,11 @@ public class ReservationService {
     }
 
     public int getNumberOfReservationsOfTheMostPopularCar() {
-        return reservationRepository.getCarsWithNumberOfReservations().values().stream().mapToInt(i -> i).max()
-                .orElseThrow(NoSuchElementException::new);
+        return reservationRepository.getAllCarsByPopularityOfReservations().stream().mapToInt(i -> i).max()
+                .orElse(0);
     }
 
+    public int getNumberOfReservationsByCarId(Long id){
+        return reservationRepository.getAllNumberOfReservationsById(id);
+    }
 }

@@ -2,7 +2,9 @@ package pl.zetosoftware.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.zetosoftware.user.dto.UserEditRequestDto;
 import pl.zetosoftware.user.dto.UserRequestDto;
 import pl.zetosoftware.user.dto.UserResponseDto;
 
@@ -19,7 +21,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("")
+    @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)
     public List<UserResponseDto> getUsers(){
         return userService.getAllUsers();
@@ -31,11 +33,26 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    @PutMapping("/{id}")
+    @GetMapping("")
     @ResponseStatus(HttpStatus.OK)
-    public UserResponseDto changeUserField(@PathVariable Long id, @RequestBody UserRequestDto updatedUser){
-        return userService.updateUserWithPutMapping(id, updatedUser);
+    public UserEditRequestDto getUserByEmail(@RequestParam String email){
+        UserEntity userEntity = userService.getUserByEmail(email);
+        return UserEditRequestDto.builder()
+                .login(userEntity.getLogin().toString())
+                .firstName(userEntity.getFirstName().toString())
+                .secondName(userEntity.getSecondName().toString())
+                .phoneNumber(userEntity.getPhoneNumber().toString())
+                .email(userEntity.getEmail().toString())
+                .pesel(userEntity.getPesel().toString())
+                .build();
     }
+
+    @PutMapping("")
+    @ResponseStatus(HttpStatus.OK)
+    public UserEditRequestDto changeUserByEmail(@RequestParam String email, @RequestBody UserEditRequestDto updatedUser){
+       return userService.updateUserWithPutMapping(email, updatedUser);
+    }
+
 
     @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)

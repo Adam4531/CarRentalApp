@@ -6,6 +6,7 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import pl.zetosoftware.user.dto.UserEditRequestDto;
 import pl.zetosoftware.user.dto.UserRequestDto;
 import pl.zetosoftware.user.dto.UserResponseDto;
 import pl.zetosoftware.user.value_objects.EmailValidator;
@@ -38,8 +39,16 @@ public class UserService {
         return userMapper.fromUserEntityToUserResponseDto(user);
     }
 
-    public UserResponseDto updateUserWithPutMapping(Long id, UserRequestDto updatedUser) {//TODO uzupełnić
-        var userToBeChanged = getUser(id);
+    public UserEntity getUserByEmail(String email){
+        EmailValidator emailValidator = new EmailValidator(email);
+        if(userRepository.findUserByEmail(emailValidator) == null){
+            throw new NoSuchElementException("UserEntity with email: " + email + " does not exist!");
+        }
+        return  userRepository.findUserByEmail(emailValidator);
+    }
+
+    public UserEditRequestDto updateUserWithPutMapping(String email, UserEditRequestDto updatedUser) {
+        var userToBeChanged = getUserByEmail(email);
 
         userToBeChanged.changeEmail(updatedUser.email());
         userToBeChanged.changeFirstName(updatedUser.firstName());
@@ -49,7 +58,7 @@ public class UserService {
         userToBeChanged.changePesel(updatedUser.pesel());
 
         userRepository.save(userToBeChanged);
-        return userMapper.fromUserEntityToUserResponseDto(userToBeChanged);
+        return userMapper.fromUserEntityToUserEditRequestDto(userToBeChanged);
     }
 
     public UserResponseDto updateUserEmail(Long id, String email) {

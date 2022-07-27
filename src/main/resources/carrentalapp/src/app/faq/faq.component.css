@@ -31,6 +31,7 @@ button {
 .btn {
     text-align: right;
 }
+
 .container p {
     text-align: center;
 }
@@ -41,12 +42,7 @@ img {
     opacity: 86%;
 }
 
-nav {
-    box-shadow: 0 0 15px rgb(162, 150, 194);
-    text-align: left;
-}
-
-.showcase img {
+.showcasez img {
     box-shadow: 0 0 15px rgb(157, 140, 201);
     position:fixed;
     top: 0;
@@ -54,6 +50,6 @@ nav {
     width: 100%;
     height: 100%;
     object-fit:cover;
-    opacity: 0.68;
+    opacity: 0.60;
     z-index: -1;
   }
