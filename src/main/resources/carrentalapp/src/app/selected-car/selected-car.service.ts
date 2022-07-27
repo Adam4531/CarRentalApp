@@ -15,12 +15,12 @@ export class SelectedCarService {
 
   constructor(private http: HttpClient,) { }
 
-  public getCar(id: number): Observable<SelectedCar[]> {
-    return this.http.get<SelectedCar[]>(`${this.apiServerUrl}/cars/${id}`);
+  public getCar(id: number): Observable<SelectedCar> {
+    return this.http.get<SelectedCar>(`${this.apiServerUrl}/cars/${id}`);
   }
 
-  public getReservationsForCar(id: number): Observable<ReservationForCar[]> {
-    return this.http.get<ReservationForCar[]>(`${this.apiServerUrl}/reservations/car/${id}`);
+  public getReservationsForCar(id: number): Observable<ReservationForCar> {
+    return this.http.get<ReservationForCar>(`${this.apiServerUrl}/reservations/car/${id}`);
   }
 
   public createReservation(reservation: ReservationRequestDto): Observable<Object> {

@@ -18,7 +18,7 @@ export class SelectedReservationComponent implements OnInit {
     public selectedReservation = new ReservationDto();
     public reservationId!: number;
     public selectedCar: SelectedCar = new SelectedCar();
-    public carId!: number;
+    public carId: number = 1;
     
     errorsListDto: ErrorsListDto = new ErrorsListDto();
 
@@ -33,28 +33,17 @@ export class SelectedReservationComponent implements OnInit {
 
     ngOnInit(): void {
       this.reservationId = this._Activatedroute.snapshot.params['id'];
-      console.log(this.reservationId)
-      this.getReservation();
-
-      console.log(this.selectedReservation.brand);
-      console.log(this.selectedReservation.carId);
-      console.log(this.selectedCar);
-      console.log(this.carId);
-      this.getCar();
+      this.getReservationAndCar();
     }
 
-    public getReservation(): void {
+    public getReservationAndCar(): void {
         this.selectedReservationService.getReservation(this.reservationId).subscribe((response: any) => {
           this.selectedReservation = response;
           this.carId = this.selectedReservation.carId;
+          this.selectedCarService.getCar(this.carId).subscribe((response: any) => {
+            this.selectedCar = response;
+        })
         });
+        
       }
-
-    public getCar(): void {
-      this.selectedCarService.getCar(this.carId).subscribe((response: any) => {
-        this.selectedCar = response;
-        console.log(this.selectedCar);
-      })
-    }
-
 }

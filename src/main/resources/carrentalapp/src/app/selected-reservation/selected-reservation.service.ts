@@ -14,8 +14,8 @@ export class SelectedReservationService {
     constructor(private http: HttpClient,) { }
 
 
-    public getReservation(id: number): Observable<ReservationDto[]> {
-        return this.http.get<ReservationDto[]>(`${this.apiServerUrl}/reservations/user/${id}`);
+    public getReservation(id: number): Observable<ReservationDto> {
+        return this.http.get<ReservationDto>(`${this.apiServerUrl}/reservations/user/${id}`);
       }
 
 }

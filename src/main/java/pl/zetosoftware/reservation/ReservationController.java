@@ -47,11 +47,11 @@ public class ReservationController {
         return reservationService.getAllReservationsByUserId(id);
     }
 
-//    @GetMapping("/{id}")
-//    @ResponseStatus(HttpStatus.OK)
-//    public ReservationDto getReservationById(@PathVariable Long id){
-//        return reservationService.getReservationByReservationId(id);
-//    }
+    @GetMapping("/user/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ReservationDto getReservationById(@PathVariable Long id){
+        return reservationService.getReservationByReservationId(id);
+    }
 
     @GetMapping("/car/{id}")
     @ResponseStatus(HttpStatus.OK)

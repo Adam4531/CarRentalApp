@@ -2,12 +2,14 @@ package pl.zetosoftware.global.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.List;
 
 @NoArgsConstructor
 @Getter
+@Setter
 public class ErrorsListDto implements Serializable {
 
     private List<String> errors;
