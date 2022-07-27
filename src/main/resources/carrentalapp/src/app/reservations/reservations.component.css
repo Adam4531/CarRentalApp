@@ -98,3 +98,40 @@ h2 {
     opacity: 0.55;
     z-index: -1;
   }
+
+  button {
+    background-color:rgb(92, 0, 128);
+    margin-top: 1px;
+    margin-bottom: 1px;
+    margin-right: 4px;
+    margin-left: 4px;
+    height: 42px;
+    width: 180px;
+    font-size: large;
+}
+
+.btn {
+    text-align: right;
+}
+
+#btnDate {
+  margin-top: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+#toLabel {
+  margin-left: 15px;
+}
+
+.date1 {
+  text-align: left;
+  margin-left: 0px;
+  display: inline;
+}
+
+.date2 {
+  text-align: center;
+  margin-right: 35px;
+  display: inline;
+}
