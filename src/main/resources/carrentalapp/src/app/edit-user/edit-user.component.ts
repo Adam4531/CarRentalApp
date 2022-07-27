@@ -33,59 +33,6 @@ import { MenuItem } from 'primeng/api';
     ngOnInit(): void {
       this.emailTemp = localStorage.getItem('email')
       this.getUserByEmail();
-      if(this.isLogged()) {
-
-        this.items = [
-          {
-            label: 'Contact Us',
-              items: [
-                {label: 'Warsaw', routerLink: "/warsaw",},
-                {label: 'Bratislava', routerLink: "/bratislava",},
-                {label: 'Berlin', routerLink: "/berlin",},
-            ]
-          },
-          {
-            label: 'Home',
-            routerLink: '/'
-          },
-          {
-            label: 'Rent a Car',
-            routerLink: '/cars'
-          },
-          {
-            label: 'My account',
-            routerLink: '/edit'
-          },
-          {
-            label: 'FAQ',
-            routerLink: '/help'
-          },
-      ];
-
-      }else {
-        this.items = [
-          {
-            label: 'Contact Us',
-            items: [
-              {label: 'Warszawa', routerLink: "/warsaw",},
-              {label: 'Poznań', routerLink: "/poznan",},
-              {label: 'Berlin', routerLink: "/berlin",},
-            ]
-          },
-          {
-            label: 'Home',
-            routerLink: '/'
-          },
-          {
-            label: 'Rent a Car',
-            routerLink: '/login'
-          },
-          {
-            label: 'My account',
-            routerLink: '/login'
-          }
-        ];
-      }
     }
 
     public btnUpdate() {
@@ -96,7 +43,6 @@ import { MenuItem } from 'primeng/api';
     public updateUser(): void {
       this.editUserService.putUser(this.user).subscribe((response: any) => {
         console.log(this.user);
-
         this.user = response;
       });
     }

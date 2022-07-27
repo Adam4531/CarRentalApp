@@ -30,7 +30,8 @@ import { MenuItem } from 'primeng/api';
 import { FaqComponent } from './faq/faq.component';
 import { DialogModule } from 'primeng/dialog';
 import { GMapModule } from 'primeng/gmap';
-import {DropdownModule} from 'primeng/dropdown';
+import { DropdownModule } from 'primeng/dropdown';
+import { CalendarModule } from 'primeng/calendar';
 import { NavbarComponent } from './global/navbar/navbar.component';
 
 @NgModule({
@@ -73,7 +74,8 @@ import { NavbarComponent } from './global/navbar/navbar.component';
     DialogModule,
     GMapModule,
     ButtonModule,
-    DropdownModule
+    DropdownModule,
+    CalendarModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }, MessageService],
   bootstrap: [AppComponent]

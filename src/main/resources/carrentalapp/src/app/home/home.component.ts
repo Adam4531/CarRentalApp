@@ -2,6 +2,8 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import { MenuItem } from 'primeng/api';
+
 
 @Component({
   selector: 'app-home',
@@ -49,7 +51,7 @@ export class HomeComponent implements OnInit {
     }
     else {
       this.router.navigateByUrl('/login')
-      this.messageService.add({life:3000, severity:'info', summary:'Login', detail:" You have to log in first!"})
+      this.messageService.add({life:3000, severity:'info', summary:'Login', detail:" You have to log in first ! "})
     }
   }
 
@@ -57,15 +59,14 @@ export class HomeComponent implements OnInit {
     if(sessionStorage.length > 0){
       sessionStorage.removeItem('token')
       this.router.navigateByUrl('localhost:4200/');
-      this.messageService.add({life:3000, severity:'success', summary:'Logout', detail:" You have successfully logged out!"})
+      this.messageService.add({life:3000, severity:'success', summary:'Logout', detail:" You have successfully logged out ! "})
     }
     else {
-      this.messageService.add({life:3000, severity:'info', summary:'Logout', detail:" You have to log in first!"})
+      this.messageService.add({life:3000, severity:'info', summary:'Logout', detail:" You have to log in first ! "})
     }
   }
 
   showBasicDialog() {
     this.displayBasic = true;
   }
-
 }
