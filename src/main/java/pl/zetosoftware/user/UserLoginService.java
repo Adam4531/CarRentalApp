@@ -34,7 +34,6 @@ public class UserLoginService {
             }
             response.addToErrorList("You have entered bad credentials, try again!");
         }
-
         return response;
     }
 

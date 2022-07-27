@@ -102,7 +102,6 @@ export class SelectedCarComponent implements OnInit {
 
   btnReserve(): void {
     this.createReservation();
-    this.router.navigateByUrl('/reservations')
   }
 
   public createReservation() {
@@ -122,6 +121,7 @@ export class SelectedCarComponent implements OnInit {
       }
       else{
         this.messageService.add({severity:'success', summary:'Reservation', detail:'Reserved successfully!'});
+        this.router.navigateByUrl('/reservations')
         // this.router.navigateByUrl('/users');
         setTimeout(() => {
           window.location.reload();

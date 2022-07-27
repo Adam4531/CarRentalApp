@@ -26,7 +26,6 @@ public class CurrentUser implements UserDetails {
         return List.of(new SimpleGrantedAuthority("ADMIN"));
     }
 
-
     @Override
     public String getPassword() {
         return password;

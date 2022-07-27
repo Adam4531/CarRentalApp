@@ -3,6 +3,7 @@ package pl.zetosoftware.user;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.zetosoftware.global.dto.ErrorsListDto;
+import pl.zetosoftware.interfaces.UserValidator;
 import pl.zetosoftware.user.dto.UserRequestDto;
 import pl.zetosoftware.user.value_objects.EmailValidator;
 import pl.zetosoftware.user.value_objects.LoginValidator;
@@ -12,9 +13,7 @@ import java.util.ArrayList;
 
 @Service
 @RequiredArgsConstructor
-public class UserRegistrationService {
-
-    private static final String POLISH_ALPHABET = "[a-zA-Z-\\p{IsAlphabetic}]+";
+public class UserRegistrationService implements UserValidator {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
 
@@ -45,38 +44,6 @@ public class UserRegistrationService {
             userRepository.save(userEntity);
         }
         return errorsListDto;
-    }
-
-    public Boolean loginIsValidLength(String login) {
-        return login != null && login.length() > 6;
-    }
-
-    public Boolean emailContainsAtSign(String email) {
-        return email != null && email.contains("@");
-    }
-
-    public Boolean passwordIsValidLength(String password) {
-        return password != null && password.length() > 6;
-    }
-
-    public Boolean nameContainsValidSigns(String firstName, String secondName) {
-        return firstName != null && firstName.matches(POLISH_ALPHABET) &&
-                secondName != null && secondName.matches(POLISH_ALPHABET);
-    }
-
-    public Boolean isAnAdult(String pesel){
-        return pesel != null && LocalDate.now().getYear() - yearOfBirth(pesel) >= 18;
-    }
-
-    public int yearOfBirth (String pesel){
-        int lastTwoDigitsYearOfBirth = Integer.parseInt(pesel.substring(0,2));
-        int codedCentury = Integer.parseInt(pesel.substring(2,4));
-        int century = 1800;  //Powinno byc > 80 && < 93, ale nie robimy walidacji calego peselu
-
-        if (codedCentury < 13) century = 1900;  //Powinno byc > 0 && < 13, ale nie robimy walidacji calego peselu
-        if (codedCentury > 12 && codedCentury < 33) century = 2000; //Powinno byc > 20 && < 33, ale nie robimy walidacji calego peselu
-
-        return century + lastTwoDigitsYearOfBirth;
     }
 
     public boolean isEmailUnique(String email){

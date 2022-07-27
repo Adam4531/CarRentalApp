@@ -28,13 +28,11 @@ public class ReservationMapper {
         reservationDto.setPaymentInAdvance(reservationEntity.getPaymentInAdvance().getPaymentInAdvance());
         return reservationDto;
     }
-
     public List<ReservationDto> fromReservationListToReservationDtoList(List<ReservationEntity> reservationEntityList) {
         return reservationEntityList.stream()
                 .map(this::fromReservationToReservationDto)
                 .collect(Collectors.toList());
     }
-
     public ReservationRequestDto fromReservationToReservationRequestDto(ReservationEntity reservationEntity){
         return ReservationRequestDto.builder()
                 .email(reservationEntity.getUserId().getEmail().toString())

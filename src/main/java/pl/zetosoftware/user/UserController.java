@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.zetosoftware.global.dto.ErrorsListDto;
 import pl.zetosoftware.user.dto.UserEditRequestDto;
 import pl.zetosoftware.user.dto.UserRequestDto;
 import pl.zetosoftware.user.dto.UserResponseDto;
@@ -16,9 +17,14 @@ public class UserController {
 
     private final UserService userService;
 
+    private final UserEditService userEditService;
+
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(
+            UserService userService,
+            UserEditService userEditService) {
         this.userService = userService;
+        this.userEditService = userEditService;
     }
 
     @GetMapping("/all")
@@ -36,7 +42,7 @@ public class UserController {
     @GetMapping("")
     @ResponseStatus(HttpStatus.OK)
     public UserEditRequestDto getUserByEmail(@RequestParam String email){
-        UserEntity userEntity = userService.getUserByEmail(email);
+        UserEntity userEntity = userEditService.getUserByEmail(email);
         return UserEditRequestDto.builder()
                 .login(userEntity.getLogin().toString())
                 .firstName(userEntity.getFirstName().toString())
@@ -49,8 +55,8 @@ public class UserController {
 
     @PutMapping("")
     @ResponseStatus(HttpStatus.OK)
-    public UserEditRequestDto changeUserByEmail(@RequestParam String email, @RequestBody UserEditRequestDto updatedUser){
-       return userService.updateUserWithPutMapping(email, updatedUser);
+    public ErrorsListDto changeUserByEmail(@RequestParam String email, @RequestBody UserEditRequestDto updatedUser){
+       return userEditService.updateUserWithPutMapping(email, updatedUser);
     }
 
 

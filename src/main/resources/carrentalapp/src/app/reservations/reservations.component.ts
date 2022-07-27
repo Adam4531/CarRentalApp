@@ -89,9 +89,11 @@ export class ReservationsComponent implements OnInit {
 
   public changeReservationDatesByReservationId(): void {
     this.date2.dateStart = this.from;
+    this.date2.dateStart.setDate(this.date2.dateStart.getDate() + 1)
     console.log(this.rowId);
     console.log(this.from);
     this.date2.dateEnd = this.to;
+    this.date2.dateEnd.setDate(this.date2.dateEnd.getDate() + 1)
     console.log(this.to);
     if( !this.from ) {
       console.log("FROM DATE CANNOT BE NULL !");

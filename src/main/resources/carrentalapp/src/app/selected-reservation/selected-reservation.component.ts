@@ -44,6 +44,9 @@ export class SelectedReservationComponent implements OnInit {
             this.selectedCar = response;
         })
         });
-        
-      }
+    }
+
+    public btnBack() {
+      history.back();
+    }
 }
