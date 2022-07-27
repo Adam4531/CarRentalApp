@@ -1,42 +1,28 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>History of reservations</title>
-</head>
 <section class="showcase">
-        <img src ="../../assets/images/watercolor-abstract-purple-background_23-2149120778.png">
-    </section>
-<body>
-    <p-table [columns]="columns" [value]="reservations" responsiveLayout="scroll">
+    <img src ="../../assets/images/watercolor-abstract-purple-background_23-2149120778.png">
+</section>
 
-        <ng-template pTemplate="caption">
-            <div class="table-header">
-                List of reservations
-                <p>
-                    <button type="button" pButton label=" Main Page" (click)="btnClick('/');"><i
-                            class="pi pi-arrow-circle-left"></i></button>
-                </p>
-            </div>
-        </ng-template>
-        <ng-template pTemplate="header" let-columns>
-            <tr>
-                <th>Brand</th>
-                <th>Model</th>
-                <th>Start of reservation</th>
-                <th>End of reservation</th>
-                <th>Total Cost</th>
-                <th>Payment in Advance</th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-reservationDto>
-            <tr>
-                <!-- <td><mat-row [routerLink]="['/selected-reservation',reservationDto.id]" class="row-link" tabindex="-1">{{reservationDto.brand}}</mat-row></td>
-                <td><mat-row [routerLink]="['/selected-reservation',reservationDto.id]" class="row-link" tabindex="-1">{{reservationDto.model}</mat-row></td>
-                <td><mat-row [routerLink]="['/selected-reservation',reservationDto.id]" class="row-link" tabindex="-1">{{reservationDto.dateStart}</mat-row></td>
-                <td><mat-row [routerLink]="['/selected-reservation',reservationDto.id]" class="row-link" tabindex="-1">{{reservationDto.dateEnd}</mat-row></td>
-                <td><mat-row [routerLink]="['/selected-reservation',reservationDto.id]" class="row-link" tabindex="-1">{{reservationDto.cost | currency: 'EUR'}</mat-row></td>
-                <td><mat-row [routerLink]="['/selected-reservation',reservationDto.id]" class="row-link" tabindex="-1">{{reservationDto.paymentInAdvance | currency: 'EUR'}</mat-row></td> -->
+<p-table [columns]="columns" [value]="reservations" responsiveLayout="scroll">
+
+    <ng-template pTemplate="caption">
+        <div class="table-header">
+            History of your reservations
+            <p>
+                <button type="button" pButton label=" Main Page" (click)="btnClick('/');"><i class="pi pi-arrow-circle-left"></i></button>
+            </p>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-rowData let-reservationDto>
+        <tr>
                 <td><a [routerLink]="['/selected-reservation',reservationDto.id]" class="row-link" tabindex="-1"> {{
                         reservationDto.brand }}</a></td>
                 <td><a [routerLink]="['/selected-reservation',reservationDto.id]" class="row-link" tabindex="-1"> {{
@@ -49,11 +35,53 @@
                         reservationDto.cost | currency: 'EUR' }}</a></td>
                 <td><a [routerLink]="['/selected-reservation',reservationDto.id]" class="row-link" tabindex="-1"> {{
                         reservationDto.paymentInAdvance | currency: 'EUR'}}</a></td>
-            </tr>
-        </ng-template>
+            <td>
+                <div class="btn">
+                    <!-- <button type="button" pButton label=" Cancel" (click)="btnDelete(rowData.id);"><i class="pi pi-ban"></i></button> -->
+                    <!-- {{rowData.id}} -->
 
+                    <button type="button" pButton label=" Cancel" (click)="showBasicDialogCancel(rowData.id);"><i class="pi pi-pencil"></i></button>
+                    <p-dialog class="dialog1" header="Are you sure?" [(visible)]="displayBasicCancel" [style]="{width: '30vw'}" [baseZIndex]="10000" styleClass="shake">
+                        <button type="button" id="btnDate" pButton label=" No" (click)="btnReload();"><i class="pi pi-times"></i></button>
+                        <button type="button" id="btnDate" pButton label=" Yes" (click)="btnDelete();"><i class="pi pi-times"></i></button>
+                    </p-dialog>
 
-    </p-table>
-</body>
+                    <button type="button" pButton label=" Edit" (click)="showBasicDialogEdit(rowData.id);"><i class="pi pi-pencil"></i></button>
+                    <p-dialog class="dialog2" header="Change date of your reservation" [(visible)]="displayBasicEdit" [style]="{'width':'40%','height':'640px'}" [baseZIndex]="10000" styleClass="shake">
+                        <!-- <p-inputMask inputId="dateStart" name="dateStart" id="dateStart" [(ngModel)]="from" mask="9999-99-99" placeholder="From" styleClass="input-mask-date"></p-inputMask> -->
+                        <!-- <p-inputMask inputId="dateEnd" name="dateEnd" id="dateEnd" [(ngModel)]="to" mask="9999-99-99" placeholder="To" styleClass="input-mask-date"></p-inputMask> -->
+                        <div class="date1">
+                            <label for="from">From</label>
+                            <p-calendar appendTo="body" inputId="from" [(ngModel)]="from" dateFormat="yy-mm-dd">
+                                <ng-template pTemplate="footer"></ng-template>
+                            </p-calendar>
+                        </div>
+                        <div class="date2">
+                            <label for="to" id="toLabel">To</label>
+                            <p-calendar appendTo="body" inputId="to" [(ngModel)]="to" dateFormat="yy-mm-dd">
+                                <ng-template pTemplate="footer"></ng-template>
+                            </p-calendar>
+                        </div>
 
-</html>
+                        <!-- ustawiony name dla powyższych inputMasków
+                            label jednak tego nie czyta i nie wyświetla niczego -->
+
+                        <!-- <div *ngIf="!isFieldNameDateStart();">
+                            Date start is required.
+                          </div> -->
+
+                        <!-- <label for="dateStart"> ERROR ERROR ERROR </label> -->
+                        <!-- <label for="dateEnd"> ERROR ERROR ERROR </label> -->
+
+                        <!-- <label for="from"> ERROR ERROR ERROR </label> -->
+                        <!-- <label for="to"> ERROR ERROR ERROR </label> -->
+
+                        <button type="button" id="btnDate" pButton label=" Accept" (click)="btnEdit();"><i class="pi pi-times"></i></button>
+                    </p-dialog>
+                </div>
+            </td>
+        </tr>
+    </ng-template>
+    <p-toast position="center"></p-toast>
+</p-table>
+
