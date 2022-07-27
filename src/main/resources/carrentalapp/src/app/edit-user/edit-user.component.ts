@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { UserRequestDto } from '../user/user-request-dto';
 import { UserService} from '../user/user.service';
+import { UserEditRequestDto } from '../user/user-edit-request-dto';
 import { MenuItem } from 'primeng/api';
 
 @Component({
@@ -14,12 +15,16 @@ import { MenuItem } from 'primeng/api';
   })
   export class EditUserComponent implements OnInit {
 
-    user!: UserRequestDto;
+    user: UserEditRequestDto = new UserEditRequestDto();
     emailTemp: any;
     items: MenuItem[] = [];
 
 
-    constructor(private editUserService: EditUserService, private router: Router) { }
+    constructor(
+      private editUserService: EditUserService,
+      private router: Router
+      ) {
+    }
 
     public btnClick(url: string): void {
       this.router.navigateByUrl(url);
@@ -83,27 +88,26 @@ import { MenuItem } from 'primeng/api';
       }
     }
 
-      public btnUpdate(): void{
-        // this.updateUser(this.login, this.firstName, this.secondName, this.phoneNumber, this.email, this.password, this.pesel);
-        // console.log(this.user)
-        // console.log(this.user.login)
-        this.editUserService.putUser(this.user)
-       }
-
-
-      public getUserByEmail(){
-         this.emailTemp = localStorage.getItem('email');
-
-         this.editUserService.getUserByEmail().subscribe((response: any) => {
-          this.user = response;
-          console.log(response)
-          console.log(this.user)
-         })
-      }
-
-    public isLogged() {
-      return sessionStorage.length > 0;
+    public btnUpdate() {
+        console.log(this.user)
+        this.updateUser();
     }
 
+    public updateUser(): void {
+      this.editUserService.putUser(this.user).subscribe((response: any) => {
+        console.log(this.user);
 
+        this.user = response;
+      });
+    }
+
+    public getUserByEmail(){
+      this.emailTemp = localStorage.getItem('email');
+      this.editUserService.getUserByEmail().subscribe((response: any) => {
+        this.user = response;
+      })
+    }
+  public isLogged() {
+    return sessionStorage.length > 0;
+  }
   }

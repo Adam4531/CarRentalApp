@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { EditUser } from './edit-user';
 import { environment } from 'src/environments/environment';
 import { UserRequestDto } from "../user/user-request-dto";
+import { UserEditRequestDto } from "../user/user-edit-request-dto";
 
 @Injectable({
     providedIn: 'root'
@@ -15,11 +16,12 @@ export class EditUserService {
 
   constructor(private http: HttpClient) { }
 
- public putUser(user: UserRequestDto): Observable<UserRequestDto> {
+ public putUser(user: UserEditRequestDto): Observable<UserEditRequestDto> {
+  console.log(user)
    return this.http.put<any>(`${this.apiServerUrl}/users?email=${localStorage.getItem('email')}`, user);
   }
 
-  public getUserByEmail(): Observable<UserRequestDto>{
-    return this.http.get<UserRequestDto>(`${this.apiServerUrl}/users?email=${localStorage.getItem('email')}`);
+  public getUserByEmail(): Observable<UserEditRequestDto>{
+    return this.http.get<UserEditRequestDto>(`${this.apiServerUrl}/users?email=${localStorage.getItem('email')}`);
   }
 }
