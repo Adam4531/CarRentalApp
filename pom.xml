@@ -95,6 +95,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-jpamodelgen</artifactId>
+			<version>5.3.7.Final</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -104,12 +109,10 @@
 				<version>8.0.0</version>
 				<configuration>
 					<user>postgres</user>
-<!--					<password>osmiornicaZ691</password>-->
 					<password>postgres</password>
-<!--					<url>jdbc:postgresql://localhost:5432/car_rental</url>-->
-					<url>jdbc:postgresql://localhost:5432/carrental</url>
+                    <url>jdbc:postgresql://localhost:5432/carrental</url>
 					<schemas>
-						<schema>public</schema>
+						<schema>carrental</schema>
 					</schemas>
 				</configuration>
 			</plugin>
