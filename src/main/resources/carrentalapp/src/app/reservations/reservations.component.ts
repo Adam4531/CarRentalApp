@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { PrimeNGConfig } from 'primeng/api';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { ReservationDto } from './reservations';
 import { ReservationsService } from './reservations.service';
 import { UserService } from '../user/user.service';
 import { UserRequestDto } from '../user/user-request-dto';
 import { Router } from '@angular/router';
 import { ReservationDate } from './date';
+import { ErrorsListDto } from '../errorsList/errors-list-dto';
 
 @Component({
   selector: 'app-reservations',
@@ -16,17 +17,22 @@ export class ReservationsComponent implements OnInit {
 
   public reservations: ReservationDto[] = [];
   public columns: any[] = [];
-  displayBasic: boolean = false;
+  displayBasicCancel: boolean = false;
+  displayBasicEdit: boolean = false;
   emailTemp: any;
   public from!: any;
   public to!: any;
   public price!: number;
   public date2: ReservationDate = new ReservationDate();
+  public errorsListDto: ErrorsListDto = new ErrorsListDto();
+  public rowId!: number;
+  public xd!: string;
 
   constructor(
     private reservationsService: ReservationsService,
     private primengConfig: PrimeNGConfig,
-    private router: Router) {
+    private router: Router,
+    private messageService: MessageService) {
   }
 
   ngOnInit(): void {
@@ -54,17 +60,14 @@ export class ReservationsComponent implements OnInit {
     this.getReservations
   }
 
-  public btnDelete(id: number){
-    this.deleteReservationById(id);
+  public btnDelete(){
+    this.deleteReservationById();
     window.location.reload();
-    // this.displayBasic = false;
-    // this.router.navigateByUrl('/reservations');
   }
 
-  public btnEdit(id: number){
-    this.changeReservationDatesByReservationId(id);
-    this.displayBasic = false;
-    window.location.reload();
+  public btnEdit(){
+    this.changeReservationDatesByReservationId();
+    // window.location.reload();
   }
 
   public getReservations(): void {
@@ -75,38 +78,71 @@ export class ReservationsComponent implements OnInit {
     });
   }
 
-  public deleteReservationById(id: number): void {
+  public deleteReservationById(): void {
     console.log("DELETING RESERVATION WITH ID ");
-    console.log(id);
-    this.reservationsService.deleteReservationById(id).subscribe((response: any) => {
+    console.log(this.rowId);
+    this.reservationsService.deleteReservationById(this.rowId).subscribe((response: any) => {
       console.log(response);
     });
   }
 
-  public changeReservationDatesByReservationId(id: number): void {
+  public changeReservationDatesByReservationId(): void {
     this.date2.dateStart = this.from;
-    console.log(id);
+    console.log(this.rowId);
     console.log(this.from);
     this.date2.dateEnd = this.to;
     console.log(this.to);
-    this.reservationsService.changeReservationDatesByReservationId(id, this.date2).subscribe((response: any) => {
-      console.log(response);
-    });
+    if( !this.from ) {
+      console.log("FROM DATE CANNOT BE NULL !");
+      this.messageService.add({life: 3000, severity:'error', summary:'Reservation', detail:' You must enter date of when reservation starts !'});
+      this.errorsListDto.fieldName = "dateStart"
+    }
+    if( !this.to ) {
+      console.log("TO DATE CANNOT BE NULL !");
+      this.messageService.add({life: 3000, severity:'error', summary:'Reservation', detail:' You must enter date of when reservation ends !'});
+      this.errorsListDto.fieldName = "dateEnd"
+    }
+    else { 
+      this.reservationsService.changeReservationDatesByReservationId(this.rowId, this.date2).subscribe((response: any) => {
+        console.log(response);
+        this.errorsListDto = response;
+        if( this.errorsListDto.listOfErrorsEmpty ) {
+        this.messageService.add({life: 3000, severity:'success', summary:'Reservation', detail:' You have successfully edited your reservation !'});
+        this.displayBasicEdit = false;
+        window.location.reload();
+        }
+        else {
+          this.displayBasicEdit = true;
+          this.errorsListDto.errors.forEach((error) =>
+          this.messageService.add({life:3000, severity:'error', summary:'Reservation', detail: error})
+          );
+        }
+      });
+    }
   }
 
-  showBasicDialog() {
-    this.displayBasic = true;
+  public isToNull(): boolean {
+    return this.to == null;
   }
 
-  // public rentCost(): void {
-  //   const fromDate = new Date(this.from);
-  //   const toDate = new Date(this.to);
-  //   var diff = toDate.getTime() - fromDate.getTime();
-  //   if (diff > 0) {
-  //     diff = Math.ceil(diff / (1000 * 3600 * 24));
-  //     this.price = diff * this.selectedCar.pricePerDayRent;
-  //     this.price = Number(this.price.toFixed(2));
-  //   }
-  //     else this.price = 0;
-  // }
+  public isFieldNameDateStart(): boolean {
+    return this.errorsListDto.fieldName == "dateStart";
+  }
+  public isFieldNameDateEnd(): boolean {
+    return this.errorsListDto.fieldName == "dateEnd";
+  }
+
+
+  public btnReload(): void {
+    window.location.reload();
+  }
+  showBasicDialogCancel(id: number) {
+    this.displayBasicCancel = true;
+    this.rowId = id;
+  }
+
+  showBasicDialogEdit(id: number) {
+    this.displayBasicEdit = true;
+    this.rowId = id;
+  }
 }

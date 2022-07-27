@@ -1,27 +1,13 @@
+<div>
+    <app-navbar></app-navbar>
+</div>
 <!DOCTYPE html>
 <html>
     <head>
         <title>Login</title>
     </head>
     <section class="showcase">
-        <img src ="../../assets/images/watercolor-abstract-purple-background_23-2149120778.png">
-    </section>
-    <section class="navbar">
-        <p-menubar [model]="items">
-            <ng-template pTemplate="start">
-                <img src="../../assets/images/car-LOGO2.png" height="40" class="mr-2">
-            </ng-template>
-            <ng-template pTemplate="end">
-                <div class="navBarEnd">
-                    <p>
-                        <a class="nav-link" *ngIf="isLogged()" routerLink="/edit" routerLinkActive="active">
-                            <input type="text" pInputText [(ngModel)]="this.emailTemp" placeholder="My account">
-                        </a>
-                        <button type="button" pButton label=" Main Page" (click)="btnClick('/');"><i class="pi pi-arrow-circle-left"></i></button>
-                    </p>
-                </div>
-            </ng-template>
-        </p-menubar>
+        <img src ="../../assets/images/watercolor-abstract-purple-background_23-2149120778.png" alt="purple page's background">
     </section>
     <body>
         <header>

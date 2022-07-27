@@ -2,8 +2,6 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
-import { MenuItem } from 'primeng/api';
-
 
 @Component({
   selector: 'app-home',
@@ -19,8 +17,6 @@ export class HomeComponent implements OnInit {
     ) {
   }
 
-  public emailTemp: any;
-  items: MenuItem[] = [];
   displayBasic: boolean = false;
   options: any;
 
@@ -28,79 +24,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.http.get<any>('/').subscribe(res => {
-      if (res) {
-        console.log('YOU ARE LOGGED IN !! ', res);
-      } else {
-          alert("Failed GET '/' !!11!!!!!!!!!!")
-      }
-    });
-    console.log(localStorage.getItem('email'))
-    this.emailTemp = localStorage.getItem('email');
-
-    if(this.isLogged()) {
-
-      this.items = [
-        {
-          label: 'Contact Us',
-            items: [
-              {label: 'Warsaw', routerLink: "/warsaw", icon: "pi pi-building", target: "tel:997"},
-              {label: 'Bratislava', routerLink: "/bratislava", icon: "pi pi-building", target: "tel:997"},
-              {label: 'Berlin', routerLink: "/berlin", icon: "pi pi-building", target: "tel:997"},
-          ]
-        },
-        {
-          label: 'Home',
-          routerLink: '/'
-        },
-        {
-          label: 'Rent a Car',
-          routerLink: '/cars'
-        },
-        {
-          label: 'My account',
-          routerLink: '/edit'
-        },
-        {
-          label: 'FAQ',
-          routerLink: '/help'
-        },
-    ];
-
-    }
-    else {
-      this.items = [
-        {
-          label: 'Contact Us',
-            items: [
-                {label: 'Warszawa', routerLink: "/warsaw",},
-                {label: 'Poznań', routerLink: "/poznan",},
-                {label: 'Berlin', routerLink: "/berlin",},
-          ]
-        },
-        {
-          label: 'Home',
-          routerLink: '/'
-        },
-        {
-          label: 'Rent a Car',
-          routerLink: '/login'
-        },
-        {
-          label: 'My account',
-          routerLink: '/login'
-        },
-        {
-          label: 'FAQ',
-          routerLink: '/help'
-        },
-    ];
-  }
-
   this.options = {
     center: {lat: 53.7732837, lng: 20.4570858},
     zoom: 12
   };
+
 }
 
   public btnClick(url: string): void {
@@ -112,7 +40,6 @@ export class HomeComponent implements OnInit {
   }
 
   public btnLogout() {
-    console.log("WYLOGOWYWUJESZ SIE !!! ");
     this.logout();
   }
 
@@ -122,7 +49,7 @@ export class HomeComponent implements OnInit {
     }
     else {
       this.router.navigateByUrl('/login')
-      this.messageService.add({life:3000, severity:'info', summary:'Login', detail:" You have to log in first ! "})
+      this.messageService.add({life:3000, severity:'info', summary:'Login', detail:" You have to log in first!"})
     }
   }
 
@@ -130,16 +57,15 @@ export class HomeComponent implements OnInit {
     if(sessionStorage.length > 0){
       sessionStorage.removeItem('token')
       this.router.navigateByUrl('localhost:4200/');
-      this.messageService.add({life:3000, severity:'success', summary:'Logout', detail:" You have successfully logged out ! "})
+      this.messageService.add({life:3000, severity:'success', summary:'Logout', detail:" You have successfully logged out!"})
     }
     else {
-      this.messageService.add({life:3000, severity:'info', summary:'Logout', detail:" You have to log in first ! "})
+      this.messageService.add({life:3000, severity:'info', summary:'Logout', detail:" You have to log in first!"})
     }
   }
 
   showBasicDialog() {
     this.displayBasic = true;
   }
-
 
 }

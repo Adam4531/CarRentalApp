@@ -19,7 +19,7 @@ export class ReservationsService {
     return this.http.get<ReservationDto[]>(`${this.apiServerUrl}/reservations?email=${localStorage.getItem('email')}`);
   }
 
-  public changeReservationDatesByReservationId(id: number, date: ReservationDate): Observable<any> {
+  public changeReservationDatesByReservationId(id: number, date: ReservationDate): Observable<Object> {
     return this.http.patch<any>(`${this.apiServerUrl}/reservations/${id}`, date);
   }
 

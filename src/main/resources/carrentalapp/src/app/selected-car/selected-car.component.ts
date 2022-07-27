@@ -95,6 +95,10 @@ export class SelectedCarComponent implements OnInit {
   public btnClick(x: string) {
     this.router.navigateByUrl(x);
   }
+  
+  public btnBack() {
+    history.back();
+  }
 
   btnReserve(): void {
     this.createReservation();

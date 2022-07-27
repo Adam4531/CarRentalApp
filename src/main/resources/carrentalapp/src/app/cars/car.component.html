@@ -1,15 +1,18 @@
+<div>
+    <app-navbar></app-navbar>
+</div>
 <!DOCTYPE html>
 <html>
     <head>
         <title>Car List</title>
     </head>
     <section class="showcase">
-        <img src ="../../assets/images/watercolor-abstract-purple-background_23-2149120778.png">
+        <img src ="../../assets/images/watercolor-abstract-purple-background_23-2149120778.png" alt="purple page's background">
     </section>
     <body>
         <div class="container">
             <h2>Search car by:</h2>
-            <div class="search">                    
+            <div class="search-top">
                 <input type="text" pInputText [(ngModel)]="carFilterDto.brand" placeholder="Brand">
                 <input type="text" pInputText [(ngModel)]="carFilterDto.model" placeholder="Model">
                 <p-inputMask [(ngModel)]="carFilterDto.productionYear" mask="9999" [unmask]="true" placeholder="Production Year" styleClass="input-mask"></p-inputMask>
@@ -20,10 +23,11 @@
             <div class="search">
                 <div>
                     <p-inputMask [(ngModel)]="carFilterDto.freeFrom" mask="9999-99-99" placeholder="From" styleClass="input-mask"></p-inputMask>
+                </div>
+                <div>
                     <p-inputMask [(ngModel)]="carFilterDto.freeTo" mask="9999-99-99" placeholder="To" styleClass="input-mask-to"></p-inputMask>
                 </div>
                 <button class="search-button" type="button" pButton label="Search" (click)="btnRefreshCarList();"><i class="pi pi-search"></i></button>
-                <button type="button" pButton label=" Main Page" (click)="btnClick('/');"><i class="pi pi-arrow-circle-left"></i></button>
             </div>
         </div>
         <p-table [value]="cars" [paginator]="true" [rows]="10">
@@ -61,7 +65,7 @@
             </ng-template>
             <ng-template pTemplate="summary">
                 <div>
-                    In total there are {{cars?.length}} cars in store.
+                    In total there are {{cars.length}} cars in store.
                 </div>
                 <div class="table-footer">
                     <p>

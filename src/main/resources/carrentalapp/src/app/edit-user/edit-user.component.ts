@@ -14,13 +14,6 @@ import { MenuItem } from 'primeng/api';
   })
   export class EditUserComponent implements OnInit {
 
-    // firstName!: string;
-    // secondName!: string;
-    // login!: string;
-    // password!: string;
-    // email!: string;
-    // phoneNumber!: string;
-    // pesel!: string;
     user!: UserRequestDto;
     emailTemp: any;
     items: MenuItem[] = [];
@@ -29,8 +22,8 @@ import { MenuItem } from 'primeng/api';
     constructor(private editUserService: EditUserService, private router: Router) { }
 
     public btnClick(url: string): void {
-        this.router.navigateByUrl(url);
-        };
+      this.router.navigateByUrl(url);
+      };
 
     ngOnInit(): void {
       this.emailTemp = localStorage.getItem('email')

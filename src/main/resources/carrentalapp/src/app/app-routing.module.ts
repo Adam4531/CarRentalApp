@@ -7,7 +7,6 @@ import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { HomeComponent } from './home/home.component';
-import { FilterComponent } from './filter/filter.component';
 import { SelectedCarComponent } from './selected-car/selected-car.component';
 import { ReservationSummaryComponent } from './reservation-summary/reservation-summary.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
@@ -22,7 +21,6 @@ const routes: Routes = [
     { path: 'reservations', component: ReservationsComponent },
     { path: 'users', component: UserComponent },
     { path: 'register', component: RegistrationComponent },
-    { path: 'filter', component: FilterComponent},
     { path: 'selected-car/:id', component: SelectedCarComponent},
     { path: 'selected-car/', component: SelectedCarComponent},
     { path: 'edit', component: EditUserComponent},
