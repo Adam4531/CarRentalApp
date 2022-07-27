@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.zetosoftware.car.dto.CarDto;
 import pl.zetosoftware.car.dto.CarFilterDto;
+import pl.zetosoftware.car.enums.BodyTypeEnum;
+import pl.zetosoftware.car.enums.TypeOfFuelEnum;
 import pl.zetosoftware.car.value_objects.BrandValidator;
 import pl.zetosoftware.car.value_objects.EngineCapacityValidator;
 import pl.zetosoftware.car.value_objects.ModelValidator;
@@ -14,8 +16,11 @@ import pl.zetosoftware.reservation.value_objects.ReservationDatesValidator_;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.criteria.*;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 @RequiredArgsConstructor
@@ -105,6 +110,40 @@ public class CarFilterService {
         var isCollidingWithOtherReservation = criteriaBuilder.or(isReservedInGivenPeriod, isStartDateBetweenTwoGivenDates, isEndDateBetweenTwoGivenDates);
 
         return isCollidingWithOtherReservation;
+    }
+
+    public CarFilterDto getCarFilterDtoFromParams(String brand, String model, BigDecimal engineCapacity, BodyTypeEnum bodyType,
+                                        TypeOfFuelEnum typeOfFuel, Integer productionYear, String freeFrom, String freeTo) {
+
+        // if empty string is given in @RequestParam it is -> ' "" ' so it's necessary to check if it equals to ""
+        // it's also necessary to parse "freeFrom" and "freeTo" to LocalDate, even if it's given as LocalDate object
+        // spring will behave like it is String object, because it comes in @RequestParam
+        // those two dates must be cut, because it looks like "yyyy-mm-dd-randomCharacters"
+        // if date is picked, and then unpicked it's value gonna be "null", thats why "freeFrom.equals("null")" is used
+
+        LocalDate freeFromDate;
+        LocalDate freeToDate;
+
+        if( Objects.equals(freeFrom, "")  || freeFrom == null || freeFrom.equals("null")) {
+            freeFromDate = null;
+        } else {
+            freeFrom = freeFrom.substring(0,10);
+            freeFromDate = LocalDate.parse(freeFrom);
+        }
+        if( Objects.equals(freeTo, "") || freeTo == null || freeTo.equals("null")) {
+            freeToDate = null;
+        } else {
+            freeTo = freeTo.substring(0,10);
+            freeToDate = LocalDate.parse(freeTo);
+        }
+        if( Objects.equals(brand, "") ) {
+            brand = null;
+        }
+        if( Objects.equals(model, "") ) {
+            model = null;
+        }
+
+        return new CarFilterDto(brand, model, engineCapacity, bodyType, typeOfFuel, productionYear, freeFromDate, freeToDate);
     }
 
 }
