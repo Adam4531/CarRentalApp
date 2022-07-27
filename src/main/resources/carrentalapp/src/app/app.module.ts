@@ -22,7 +22,6 @@ import { RequestInterceptor } from './request.interceptor';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { EditUserComponent } from './edit-user/edit-user.component';
-import { FilterComponent } from './filter/filter.component';
 import { SelectedCarComponent } from './selected-car/selected-car.component';
 import { ReservationSummaryComponent } from './reservation-summary/reservation-summary.component';
 import { ReservationsComponent } from './reservations/reservations.component';
@@ -32,6 +31,7 @@ import { FaqComponent } from './faq/faq.component';
 import { DialogModule } from 'primeng/dialog';
 import { GMapModule } from 'primeng/gmap';
 import {DropdownModule} from 'primeng/dropdown';
+import { NavbarComponent } from './global/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -41,12 +41,12 @@ import {DropdownModule} from 'primeng/dropdown';
     RegistrationComponent,
     CarComponent,
     UserComponent,
-    FilterComponent,
     SelectedCarComponent,
     ReservationSummaryComponent,
     EditUserComponent,
     ReservationsComponent,
-    FaqComponent
+    FaqComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

@@ -1,18 +1,7 @@
+<div>
+    <app-navbar></app-navbar>
+</div>
 <!DOCTYPE html>
-
-<section class="navbar">
-    <p-menubar [model]="items">
-        <ng-template pTemplate="start">
-            <img src="../../assets/images/car-LOGO2.png" height="40" class="mr-2">
-        </ng-template>
-        <ng-template pTemplate="end">
-            <p>
-                <button pButton pRipple class="p-button-rounded p-button-help" type="button" *ngIf="isLogged()" icon="pi pi-user"  routerLink="/edit" routerLinkActive="active"></button>
-            </p>
-        </ng-template>
-    </p-menubar>
-</section>
-
 <html>
     <head>
         <title>Car Rental</title>
@@ -21,10 +10,10 @@
         <header>
             <section class="showcase">
                 <!-- <video src="../../assets/pexels-kelly-lacy-9737916.mp4" autoplay loop></video> -->
-                <img src ="../../assets/Car-Rentals-Friedman-Memorial-Airport-Sun-Valley-Idaho.jpeg">
+                <img src ="../../assets/Car-Rentals-Friedman-Memorial-Airport-Sun-Valley-Idaho.jpeg" alt="cars in page's background">
             </section>
             <section class="showcasez">
-                <img src ="../../assets/images/watercolor-abstract-purple-background_23-2149120778.png">
+                <img src ="../../assets/images/watercolor-abstract-purple-background_23-2149120778.png" alt="purple page's background">
             </section>
             <div class="containerz">
                 <h1>Car Rental – Search, Rent, and Save up to 70%!</h1>
@@ -47,7 +36,7 @@
                             <button type="button" class="p-button-rounded" *ngIf="isLogged()" pButton label="Your reservations" (click)="btnClick('/reservations')"><i class="pi pi-history"></i></button>
                         </p>
                         <p>
-                             <button type="button" class="p-button-rounded" *ngIf="isLogged()" pButton label="Logout" (click)="btnLogout()"><i class="pi pi-lock"></i></button>
+                             <button type="button" class="p-button-rounded" *ngIf="isLogged()" pButton label="Logout" (click)="btnLogout()"><i class="pi pi-sign-out"></i></button>
                         </p>
                         <p>
                             <button type="button" class="p-button-rounded" pButton label="Find Us" (click)="showBasicDialog()" icon="pi pi-map-marker"></button>
