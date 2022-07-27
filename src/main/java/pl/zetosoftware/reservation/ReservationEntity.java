@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
 import pl.zetosoftware.global.BasicEntity;
 import pl.zetosoftware.car.CarEntity;
 import pl.zetosoftware.reservation.value_objects.CostValidator;
@@ -29,6 +31,7 @@ public class ReservationEntity extends BasicEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "car_id", nullable = false)
     @JsonBackReference
+    @LazyToOne(LazyToOneOption.NO_PROXY)
     private CarEntity carId;
 
     @Column(columnDefinition = "DATE")
@@ -65,6 +68,5 @@ public class ReservationEntity extends BasicEntity {
     public void changePaymentInAdvance(BigDecimal paymentInAdvance) {
         this.paymentInAdvance = new PaymentInAdvanceValidator(paymentInAdvance);
     }
-
 
 }

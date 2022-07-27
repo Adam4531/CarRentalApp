@@ -11,18 +11,22 @@ import java.util.Objects;
 @Embeddable
 public class ModelValidator implements Validator {
 
-    private static final String MODEL_NAME_REGEX = "[a-zA-Z\\d_.-]+";
+    private static final String MODEL_NAME_REGEX = "[a-z A-Z\\d_.-]+";
     @Column
     private String model;
 
     public ModelValidator(String model) {
-        if(Objects.isNull(model))
+        if(Objects.isNull(model)) {
             throw new IllegalArgumentException("MODEL CANNOT BE NULL !!");
-        if(!containsValidCharacters(model, MODEL_NAME_REGEX))
+        }
+        if(!containsValidCharacters(model, MODEL_NAME_REGEX)) {
             throw new IllegalStateException("MODEL NAME MAY CONTAIN ONLY LETTERS, " +
-                                            "NUMBERS, DOTS, DASHES AND UNDERSCORE!!"); //add whitespaces option
-        if(!isValidLength(model, 2, 30))
+                    "NUMBERS, DOTS, DASHES AND UNDERSCORE!!");
+        }
+        if(!isValidLength(model, 2, 30)){
             throw new IllegalStateException("MODEL NAME MUST BE BETWEEN 2 AND 30 CHARACTERS !!");
+        }
+
         this.model = model;
     }
 
