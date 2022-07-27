@@ -12,6 +12,8 @@ public class ErrorsListDto implements Serializable {
 
     private List<String> errors;
 
+    private String fieldName; //nazwy pola pod ktorymi wyswietlane beda errory
+
     public ErrorsListDto(List<String> errors) {
         this.errors = errors;
     }

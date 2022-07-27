@@ -71,9 +71,10 @@ export class SelectedCarComponent implements OnInit {
   }
 
   public payment(): void {
-    this.selectedCar.paymentInAdvance = this.selectedCar.newCarCost * 0.01;
 
-    if (this.selectedCar.paymentInAdvance < 1000) this.selectedCar.paymentInAdvance = 1000;
+    this.selectedCar.paymentInAdvance = this.price * 0.25;
+
+    if (this.selectedCar.paymentInAdvance > 1000) this.selectedCar.paymentInAdvance = 500;
     this.selectedCar.paymentInAdvance = Number(this.selectedCar.paymentInAdvance.toFixed(2));
   }
 
@@ -91,8 +92,13 @@ export class SelectedCarComponent implements OnInit {
     });
   }
 
+  public btnClick(x: string) {
+    this.router.navigateByUrl(x);
+  }
+
   btnReserve(): void {
     this.createReservation();
+    this.router.navigateByUrl('/reservations')
   }
 
   public createReservation() {

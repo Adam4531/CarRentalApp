@@ -18,36 +18,9 @@ oraz samochodów już wypożyczonych (przez innych użytkowników). Oddzielnie u
 listę samochodów wypożyczonych przez siebie (aktualnie oraz historycznie).                                    //adam konczy
 
 
-
-
-
-//anulowanie + edycja rezerwacji jak Adam R zrobi swoje
-//przyciski front
+//anulowanie + edycja rezerwacji
+//renowacja
 //stopka front z przyciskami
-//
-
-1.Rejestracja + Walidacja bazowa -> User dodany do bazy danych // GRZEGORZ
-2.Logowanie -> po zalogowaniu uzytkownik widzi swoje rezerwacje // Igor
-3.Status auta // ADAM R.
-4.Wyliczenie ceny wypozyczenia  // MARTYNA
-5.Możliwość edycji + usunięcia rezerwacji // Adam T.
-6.Wyświetlanie dostepnych aut, Wyswietlanie wypozyczonych przez innych aut, Wyswietlania wypozyczonych przez siebie aut // Igor
-
-BACK:
-
-1. Utworzyć klasę UserRequest, aby dodawać obiekt bez konieczności podawania id (UserResponse jako UserDTO juz jest)
-                  CarRequest                                                    (CarResponse jako CarDTO juz jest)
-                  ReservationRequest                                            (ReservationResponse jako ReservationDTO juz jest)
-
-2. Dodać klasę obsługującą raport zwrotny z wypożyczenia / coś w tym stylu / co ma mieć w ogóle
-
-3. ...
-
-
-DALEKA PRZYSZŁOŚĆ:
-
-1. testy
-
-2. ...
+//upiększyć tabelę z listą aut (rezerwacji), https://car-rental.pl/flota/
 
 

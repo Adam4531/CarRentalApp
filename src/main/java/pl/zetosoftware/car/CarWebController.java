@@ -9,16 +9,16 @@ import pl.zetosoftware.car.dto.CarDto;
 import java.util.List;
 
 @RestController
-@RequestMapping("/cars")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class CarWebController {
 
     private final CarFilterService carFilterService;
 
-    @GetMapping("/filter")
+    @GetMapping("/filter/cars")
     @ResponseStatus(HttpStatus.OK)
     public List<CarDto> getAllCarsWithFilters(@RequestBody CarFilterDto carFilterDto){
-        return carFilterService.getCars(carFilterDto);
+        return carFilterService.getFilteredCars(carFilterDto);
     }
 
 }

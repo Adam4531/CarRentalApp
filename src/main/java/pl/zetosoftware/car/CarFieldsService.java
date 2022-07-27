@@ -23,14 +23,15 @@ public class CarFieldsService {
     public BigDecimal setInitialPrice(Long id) {
         CarEntity car = carRepository.getReferenceById(id);
         return BigDecimal.valueOf(car.getNewCarCost().toLong())
-                .multiply(BigDecimal.valueOf(0.001))
+                .multiply(BigDecimal.valueOf(0.01))
+//                .multiply(productionYearFactor(car))
                 .multiply(productionYearFactor(car))
-                .multiply(productionYearFactor(car)).setScale(2, RoundingMode.CEILING);
+                .multiply(popularityOfCar(id)).setScale(2, RoundingMode.CEILING);
     }
 
     public BigDecimal popularityOfCar(Long Id) {
         int numberOfReservationOfTheMostPopularCar = reservationService.getNumberOfReservationsOfTheMostPopularCar();
-        int numberOfReservationsOfTheSelectedCar = reservationService.getAllReservationsByCarId(Id).size();
+        int numberOfReservationsOfTheSelectedCar = reservationService.getNumberOfReservationsByCarId(Id);
 
         if (numberOfReservationsOfTheSelectedCar == numberOfReservationOfTheMostPopularCar) {
             return BigDecimal.valueOf(3);

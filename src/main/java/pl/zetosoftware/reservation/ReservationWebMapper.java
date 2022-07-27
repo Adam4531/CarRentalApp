@@ -37,7 +37,6 @@ public class ReservationWebMapper {
                 .build();
     }
 
-
     public BigDecimal setTotalCost(ReservationRequestDto reservationRequestDto){
         LocalDate dateStart = reservationRequestDto.dateStart();
         LocalDate dateEnd = reservationRequestDto.dateEnd();

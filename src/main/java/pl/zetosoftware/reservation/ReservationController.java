@@ -3,6 +3,7 @@ package pl.zetosoftware.reservation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import pl.zetosoftware.global.dto.ErrorsListDto;
 import pl.zetosoftware.reservation.dto.ReservationDto;
 import pl.zetosoftware.reservation.value_objects.ReservationDatesValidator;
 import pl.zetosoftware.user.value_objects.EmailValidator;
@@ -30,10 +31,9 @@ public class ReservationController {
 
     @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ReservationDto changeReservationDatesByReservationId(@PathVariable Long id, @RequestBody ReservationDatesValidator date) {
+    public ErrorsListDto changeReservationDatesByReservationId(@PathVariable Long id, @RequestBody ReservationDatesValidator date) {
         return reservationService.changeReservationDatesByReservationId(id, date.getDateStart(), date.getDateEnd());
     }
-
 
     @GetMapping("")
     @ResponseStatus(HttpStatus.OK)

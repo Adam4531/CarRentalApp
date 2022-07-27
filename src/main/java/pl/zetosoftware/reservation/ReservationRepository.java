@@ -19,10 +19,13 @@ public interface ReservationRepository extends JpaRepository<ReservationEntity, 
 
     List<ReservationEntity> findAllByUserIdEmail(EmailValidator email);
 
-    @Query(value = "SELECT car_id, COUNT(car_id) FROM reservations RIGHT JOIN cars ON cars.id=reservations.car_id GROUP BY car_id ORDER BY car_id", nativeQuery = true)
-    Map<Long, Integer> getCarsWithNumberOfReservations();
-
     ReservationEntity getReservationEntityByUserId(Long id);
+
+    @Query(value = "SELECT COUNT(car_id) FROM reservations GROUP BY car_id ORDER BY car_id", nativeQuery = true)
+    List<Integer> getAllCarsByPopularityOfReservations();
+
+    @Query(value = "SELECT COUNT(car_id) FROM reservations WHERE car_id=?1", nativeQuery = true)
+    Integer getAllNumberOfReservationsById(Long id);
 
 
 }

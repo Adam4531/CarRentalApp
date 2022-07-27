@@ -1,6 +1,7 @@
 package pl.zetosoftware.car;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import pl.zetosoftware.car.enums.BodyTypeEnum;
@@ -14,6 +15,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Getter
 @Table(name = "CARS")
+@Builder
 public class CarEntity {
 
     @Id

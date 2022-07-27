@@ -6,6 +6,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Builder
-public record ReservationDto(Long userId, Long carId, LocalDate dateStart, LocalDate dateEnd, BigDecimal cost, BigDecimal paymentInAdvance) {
+public record ReservationDto(Long id, Long userId, Long carId, LocalDate dateStart, LocalDate dateEnd, BigDecimal cost, BigDecimal paymentInAdvance) {
 
 }

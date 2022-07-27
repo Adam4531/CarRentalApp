@@ -1,4 +1,5 @@
 export class ReservationDto {
+    id!: number;
     userId!: number;
     carId!: number;
     dateStart!: Date;

@@ -4,6 +4,25 @@
         <title>Edit</title>
     </head>
     <body>
+        <section class="navbar">
+            <p-menubar [model]="items">
+                <ng-template pTemplate="start">
+                    <img src="../../assets/images/car-LOGO2.png" height="40" class="mr-2">
+                        <!-- <button type="button" *ngIf="isLogged()" pButton label="btnClick('')" (click)="btnClick('/edit');"><i class="pi pi-user"></i></button> -->
+                </ng-template>
+                <ng-template pTemplate="end">
+                    <div class="navBarEnd">
+                        <p>
+                            <button type="button" pButton label=" Main Page" (click)="btnClick('/');"><i class="pi pi-arrow-circle-left"></i></button>
+                        </p>
+                    </div>
+                </ng-template>
+            </p-menubar>
+        </section>
+        <section class="showcase">
+            <img src ="../../assets/images/watercolor-abstract-purple-background_23-2149120778.png">
+            <!-- <a href='https://www.freepik.com/photos/purple-wall'>Purple wall photo created by benzoix - www.freepik.com</a> -->
+        </section>
             <main>
                 <div class="container">
                     <p>
@@ -18,6 +37,29 @@
                     <p>
                         <input type="text" pInputText [(ngModel)]="user.password" placeholder="Password">
                     </p>
+                    <!-- <p>
+                        <p-password [toggleMask]="true" [(ngModel)]="password1" placeholder="Password">
+                         PASSWORD1 DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY
+                            <ng-template pTemplate="header">
+                                <h4>Password</h4>
+                            </ng-template>
+                            <ng-template pTemplate="footer">
+                                <p-divider></p-divider>
+                                <p class="mt-2">Suggestions</p>
+                                <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                                    <li>At least one lowercase</li>
+                                    <li>At least one uppercase</li>
+                                    <li>At least one numeric</li>
+                                    <li>At least one special character</li>
+                                    <li>Minimum 8 characters</li>
+                                </ul>
+                            </ng-template>
+                        </p-password>
+                    </p> -->
+                    <!-- <p>
+                        <p-password [feedback]="false" [toggleMask]="true" [(ngModel)]="password2" placeholder="Repeat password"></p-password>
+                        PASSWORD2 DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY
+                    </p> -->
                     <p>
                         <input type="text" pInputText [(ngModel)]="user.email" placeholder="Email address">
                     </p>
@@ -29,9 +71,6 @@
                     </p>
                     <p>
                         <button type="button" pButton label="Confirm edit" (click)="btnUpdate()"></button>
-                    </p>
-                    <p>
-                        <a href="http://localhost:4200/home">HOME PAGE</a>
                     </p>
                 </div>
             </main>

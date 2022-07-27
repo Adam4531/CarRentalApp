@@ -3,16 +3,30 @@
     <head>
         <title>Car List</title>
     </head>
+    <section class="showcase">
+        <img src ="../../assets/images/watercolor-abstract-purple-background_23-2149120778.png">
+    </section>
     <body>
-        <p-table [value]="cars">
-            <ng-template pTemplate="caption">
-                <div class="table-header">
-                    List of Cars
-                    <p>
-                        <button type="button" pButton label=" Main Page" (click)="btnClick('/');"><i class="pi pi-arrow-circle-left"></i></button>
-                    </p>
+        <div class="container">
+            <h2>Search car by:</h2>
+            <div class="search">                    
+                <input type="text" pInputText [(ngModel)]="carFilterDto.brand" placeholder="Brand">
+                <input type="text" pInputText [(ngModel)]="carFilterDto.model" placeholder="Model">
+                <p-inputMask [(ngModel)]="carFilterDto.productionYear" mask="9999" [unmask]="true" placeholder="Production Year" styleClass="input-mask"></p-inputMask>
+                <p-inputMask [(ngModel)]="carFilterDto.engineCapacity" mask="9.9" placeholder="Engine Capacity" styleClass="input-mask"></p-inputMask>
+                <p-dropdown [options]="fuelTypes" [(ngModel)]="carFilterDto.typeOfFuel" placeholder="Fuel Type" styleClass="input-mask"></p-dropdown>
+                <p-dropdown [options]="bodyTypes" [(ngModel)]="carFilterDto.bodyType" placeholder="Body type" styleClass="input-mask"></p-dropdown>                </div>
+            <h2>Search by period:</h2>
+            <div class="search">
+                <div>
+                    <p-inputMask [(ngModel)]="carFilterDto.freeFrom" mask="9999-99-99" placeholder="From" styleClass="input-mask"></p-inputMask>
+                    <p-inputMask [(ngModel)]="carFilterDto.freeTo" mask="9999-99-99" placeholder="To" styleClass="input-mask-to"></p-inputMask>
                 </div>
-            </ng-template>
+                <button class="search-button" type="button" pButton label="Search" (click)="btnRefreshCarList();"><i class="pi pi-search"></i></button>
+                <button type="button" pButton label=" Main Page" (click)="btnClick('/');"><i class="pi pi-arrow-circle-left"></i></button>
+            </div>
+        </div>
+        <p-table [value]="cars" [paginator]="true" [rows]="10">
             <ng-template pTemplate="header">
                 <tr>
                     <th>Image</th>
@@ -52,7 +66,6 @@
                 <div class="table-footer">
                     <p>
                         <button type="button" pButton label="  Main Page" (click)="btnClick('/');"><i class="pi pi-arrow-circle-left"></i></button>
-                        <img>
                     </p>
                 </div>
             </ng-template>

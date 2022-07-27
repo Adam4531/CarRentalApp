@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { CarFilterDto } from './car-filter-dto';
 
 import { Car } from './car';
 
@@ -18,10 +19,6 @@ export class CarService {
     return this.http.get<Car[]>(`${this.apiServerUrl}/cars`);
   }
 
-  public getCarsWithFilter(): Observable<Car[]>{
-    return this.http.get<Car[]>(`${this.apiServerUrl}/cars/filter`);
-  }
-
   public addCars(car: Car): Observable<Car> {
     return this.http.post<Car>(`${this.apiServerUrl}/cars`, car);
   }
@@ -33,5 +30,9 @@ export class CarService {
   public deleteCars(carId: number): Observable<void> {
     return this.http.delete<void>(`${this.apiServerUrl}/cars/${carId}`);
   }
+
+  // public getCarsWithFilter(carFilterDto: CarFilterDto): Observable<Car[]>{
+  //   return this.http.get<Car[]>(`${this.apiServerUrl}/api/filter/cars`, carFilterDto);
+  // }
 
 }
