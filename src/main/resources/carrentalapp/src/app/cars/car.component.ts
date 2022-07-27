@@ -17,6 +17,15 @@ export class CarComponent implements OnInit {
   public cars: Car[] = [];
   public columns: any[] = [];
 
+  public brand!: String;
+  public model!: String;
+  public engineCapacity!: number;
+  public productionYear!: number;
+  public bodyType!: BodyType;
+  public typeOfFuel!: TypeOfFuel;
+  public freeFrom!: Date;
+  public freeTo!: Date;
+
   carFilterDto : CarFilterDto = new CarFilterDto();
   bodyTypes : BodyType[];
   fuelTypes : TypeOfFuel[];
@@ -42,10 +51,9 @@ export class CarComponent implements OnInit {
       { field: 'brand', header: 'Brand' },
       { field: 'model', header: 'Model' },
       { field: 'bodyTypeEnum', header: 'Body Type' },
+      { field: 'typeOfFuelEnum', header: 'Type of Fuel' },
       { field: 'engineCapacity', header: 'Engine Capacity' },
       { field: 'productionYear', header: 'Production Year' },
-      { field: 'typeOfFuelEnum', header: 'Type of Fuel' },
-      { field: 'bodyTypeEnum', header: 'Body type'},
       { field: 'pricePerDayRent', header: 'Cost of rent per day' },
       { field: 'status', header: 'Status'}
     ];
@@ -62,10 +70,10 @@ export class CarComponent implements OnInit {
     this.router.navigateByUrl(url);
   }
 
-  public btnRefreshCarList() {
-    // this.carService.getCarsWithFilter().subscribe((response: any) => {
-    //   this.cars = response;
-    // });
+  public btnRefreshCarList(carFilterDto: CarFilterDto) {
+    this.carService.getFilteredCars(carFilterDto).subscribe((response: any) => {
+      this.cars = response;
+    });
   }
-  
+
 }

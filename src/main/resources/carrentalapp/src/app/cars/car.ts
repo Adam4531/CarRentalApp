@@ -5,7 +5,7 @@ export interface Car{
     model: string;
     engineCapacity: Big;
     bodyTypeEnum: string;
-    typeOfFuel: string;
+    typeOfFuelEnum: string;
     newCarCost: number;
     productionYear: number;
     pricePerDayRent: number;

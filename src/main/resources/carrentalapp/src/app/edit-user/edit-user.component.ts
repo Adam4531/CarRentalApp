@@ -1,12 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { EditUser } from './edit-user';
 import { EditUserService } from './edit-user.service';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
-import { UserRequestDto } from '../user/user-request-dto';
-import { UserService} from '../user/user.service';
 import { UserEditRequestDto } from '../user/user-edit-request-dto';
-import { MenuItem } from 'primeng/api';
 
 @Component({
     selector: 'app-edit-user',
@@ -17,18 +11,11 @@ import { MenuItem } from 'primeng/api';
 
     user: UserEditRequestDto = new UserEditRequestDto();
     emailTemp: any;
-    items: MenuItem[] = [];
-
 
     constructor(
-      private editUserService: EditUserService,
-      private router: Router
+      private editUserService: EditUserService
       ) {
     }
-
-    public btnClick(url: string): void {
-      this.router.navigateByUrl(url);
-      };
 
     ngOnInit(): void {
       this.emailTemp = localStorage.getItem('email')
@@ -36,16 +23,17 @@ import { MenuItem } from 'primeng/api';
     }
 
     public btnUpdate() {
-        console.log(this.user)
         this.updateUser();
     }
 
     public updateUser(): void {
       this.editUserService.putUser(this.user).subscribe((response: any) => {
         console.log(this.user);
+
         this.user = response;
       });
     }
+
 
     public getUserByEmail(){
       this.emailTemp = localStorage.getItem('email');
@@ -53,6 +41,7 @@ import { MenuItem } from 'primeng/api';
         this.user = response;
       })
     }
+
   public isLogged() {
     return sessionStorage.length > 0;
   }
