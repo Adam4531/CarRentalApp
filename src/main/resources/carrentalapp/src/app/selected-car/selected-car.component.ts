@@ -17,7 +17,8 @@ export class SelectedCarComponent implements OnInit {
 
   public reservations: ReservationForCar[] = [];
   public columns: any[] = [];
-  public price!: number;
+  public priceRent!: number;
+  public pricePaymentInAdvance!: number;
   public selectedCar!: SelectedCar;
   public carId!: number;
   public from!: string;
@@ -48,8 +49,6 @@ export class SelectedCarComponent implements OnInit {
     this.getReservationsForCar();
 
     this.reservationRequestDto.carId = this.carId;
-    //this.reservationRequestDto.userId = 10000;
-    //DO ZMIANY NA EMAIL - tu na sztywno przypisana wartość dla testów
     this.reservationRequestDto.email = localStorage.getItem('email');
   }
 
@@ -64,24 +63,28 @@ export class SelectedCarComponent implements OnInit {
     var diff = toDate.getTime() - fromDate.getTime();
     if (diff > 0) {
       diff = Math.ceil(diff / (1000 * 3600 * 24));
-      this.price = diff * this.selectedCar.pricePerDayRent;
-      this.price = Number(this.price.toFixed(2));
+      this.priceRent = diff * this.selectedCar.pricePerDayRent;
+      this.priceRent = Number(this.priceRent.toFixed(2));
     }
-      else this.price = 0;
+      else this.priceRent = 0;
   }
 
   public payment(): void {
 
-    this.selectedCar.paymentInAdvance = this.price * 0.25;
-
-    if (this.selectedCar.paymentInAdvance > 1000) this.selectedCar.paymentInAdvance = 500;
+    this.selectedCar.paymentInAdvance = this.selectedCar.newCarCost * 0.001;
+    if (this.selectedCar.paymentInAdvance < 1000) this.selectedCar.paymentInAdvance = 500;
     this.selectedCar.paymentInAdvance = Number(this.selectedCar.paymentInAdvance.toFixed(2));
   }
+
+  // public getPaymentInAdvance(): void {
+  //   this.pricePaymentInAdvance;
+  // }
 
   public getCar(): void {
 
     this.selectedCarService.getCar(this.carId).subscribe((response: any) => {
       this.selectedCar = response;
+      this.pricePaymentInAdvance = this.selectedCar.paymentInAdvance
     });
   }
 

@@ -15,16 +15,9 @@ import java.util.List;
 
 @Entity
 @NoArgsConstructor
-//@AllArgsConstructor
 @Getter
 @Table(name = "CARS")
-//@Builder
 public class CarEntity extends BasicEntity {
-
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(nullable = false)
-//    private Long id;
 
     @Embedded
     private BrandValidator brand;

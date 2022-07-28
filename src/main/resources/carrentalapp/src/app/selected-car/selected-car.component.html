@@ -54,7 +54,7 @@
                             <p-inputMask [(ngModel)]="to" mask="9999-99-99" placeholder="To" styleClass="input-mask-date"></p-inputMask>
                         </p>
                         <h3 class="reservations">Payment in Advance: {{selectedCar.paymentInAdvance}}€</h3>
-                        <h3 class="reservations">Rent Cost: {{price}}€</h3>
+                        <h3 class="reservations">Rent Cost: {{priceRent}}€</h3>
                         <p class="buttons">
                             <button type="button" pButton label="Calculate Price" (click)="finalPrice()"><i class="pi pi-euro"></i></button>
                             <button type="button" pButton label="Reserve" (click)="btnReserve();"><i class="pi pi-plus-circle"></i></button>

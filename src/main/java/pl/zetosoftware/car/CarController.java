@@ -10,7 +10,6 @@ import pl.zetosoftware.car.dto.CarFilterDto;
 
 import java.util.List;
 
-
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/cars")

@@ -32,5 +32,4 @@ public class CarWebController {
         var carFilterDto = carFilterService.getCarFilterDtoFromParams(brand, model, engineCapacity, bodyType, typeOfFuel, productionYear, freeFrom, freeTo);
         return carFilterService.getFilteredCars(carFilterDto);
     }
-
 }

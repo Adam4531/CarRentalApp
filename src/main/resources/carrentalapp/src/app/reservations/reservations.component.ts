@@ -71,9 +71,16 @@ export class ReservationsComponent implements OnInit {
     // window.location.reload();
   }
 
+  public x: number = 0;
   public getReservations(): void {
     this.reservationsService.getAllReservationsByUserEmail(this.emailTemp).subscribe((response: any) => {
       this.reservations = response;
+      // for(this.x = 0; this.x < this.reservations.length; this.x++){
+      //     this.reservations[this.x].paymentInAdvance = this.reservations[this.x].cost * 0.25;
+      //     if (this.reservations[this.x].paymentInAdvance > 1000) 
+      //       this.reservations[this.x].paymentInAdvance = 500;
+      //     this.reservations[this.x].paymentInAdvance = Number(this.reservations[this.x].paymentInAdvance.toFixed(2));
+      // }
       console.log(response);
       console.log(localStorage.getItem('email'))
     });
