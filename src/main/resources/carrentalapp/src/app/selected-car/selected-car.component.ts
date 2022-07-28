@@ -103,6 +103,9 @@ export class SelectedCarComponent implements OnInit {
     this.reservationRequestDto.dateStart = new Date(this.from);
     this.reservationRequestDto.dateEnd = new Date(this.to);
 
+    this.reservationRequestDto.dateStart.setDate(this.reservationRequestDto.dateStart.getDate() + 1)
+    this.reservationRequestDto.dateEnd.setDate(this.reservationRequestDto.dateEnd.getDate() + 1)
+
     this.selectedCarService
     .createReservation(this.reservationRequestDto)
     .subscribe( (response: any) => {

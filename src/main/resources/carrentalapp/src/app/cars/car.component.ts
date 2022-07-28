@@ -17,15 +17,6 @@ export class CarComponent implements OnInit {
   public cars: Car[] = [];
   public columns: any[] = [];
 
-  // public brand!: String;
-  // public model!: String;
-  // public engineCapacity!: number;
-  // public productionYear!: number;
-  // public bodyType!: BodyType | null;
-  // public typeOfFuel!: TypeOfFuel | null;
-  // public freeFrom!: Date;
-  // public freeTo!: Date;
-
   carFilterDto : CarFilterDto = new CarFilterDto();
   bodyTypes : BodyType[];
   fuelTypes : TypeOfFuel[];
@@ -44,9 +35,7 @@ export class CarComponent implements OnInit {
   }
 
   ngOnInit(): void{
-
     this.primengConfig.ripple = true;
-
     this.columns = [
       { field: 'brand', header: 'Brand' },
       { field: 'model', header: 'Model' },

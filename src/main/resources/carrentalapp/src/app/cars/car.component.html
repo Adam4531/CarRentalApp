@@ -21,30 +21,18 @@
                 <p-dropdown (onClear)="clearBodyType()" [options]="bodyTypes" [(ngModel)]="carFilterDto.bodyType" placeholder="Body type"  styleClass="input-mask" [showClear]="true"></p-dropdown>                </div>
             <h2>Search by period:</h2>
             <div class="search">
-
                 <div class="date1">
-
                     <label for="from">From</label>
-
                     <p-calendar appendTo="body" inputId="from" [(ngModel)]="carFilterDto.freeFrom" dateFormat="yy-mm-dd">
-
                         <ng-template pTemplate="footer"></ng-template>
-
                     </p-calendar>
-
                 </div>
                 <div class="date2">
-
                     <label for="to" id="toLabel">To</label>
-
                     <p-calendar appendTo="body" inputId="to" [(ngModel)]="carFilterDto.freeTo" dateFormat="yy-mm-dd">
-
                         <ng-template pTemplate="footer"></ng-template>
-
                     </p-calendar>
-
                 </div>
-
                 <button class="search-button" type="button" pButton label="Search" (click)="btnRefreshCarList(carFilterDto);"><i class="pi pi-search"></i></button>
             </div>
         </div>

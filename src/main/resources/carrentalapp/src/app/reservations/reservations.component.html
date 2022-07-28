@@ -40,16 +40,14 @@
                     <!-- <button type="button" pButton label=" Cancel" (click)="btnDelete(rowData.id);"><i class="pi pi-ban"></i></button> -->
                     <!-- {{rowData.id}} -->
 
-                    <button type="button" pButton label=" Cancel" (click)="showBasicDialogCancel(rowData.id);"><i class="pi pi-pencil"></i></button>
+                    <button type="button" pButton label=" Cancel" (click)="showBasicDialogCancel(rowData.id);"><i class="pi pi-thumbs-up"></i></button>
                     <p-dialog class="dialog1" header="Are you sure?" [(visible)]="displayBasicCancel" [style]="{width: '30vw'}" [baseZIndex]="10000" styleClass="shake">
                         <button type="button" id="btnDate" pButton label=" No" (click)="btnReload();"><i class="pi pi-times"></i></button>
-                        <button type="button" id="btnDate" pButton label=" Yes" (click)="btnDelete();"><i class="pi pi-times"></i></button>
+                        <button type="button" id="btnDate" pButton label=" Yes" (click)="btnDelete();"><i class="pi pi-thumbs-up"></i></button>
                     </p-dialog>
 
                     <button type="button" pButton label=" Edit" (click)="showBasicDialogEdit(rowData.id);"><i class="pi pi-pencil"></i></button>
                     <p-dialog class="dialog2" header="Change date of your reservation" [(visible)]="displayBasicEdit" [style]="{'width':'40%','height':'640px'}" [baseZIndex]="10000" styleClass="shake">
-                        <!-- <p-inputMask inputId="dateStart" name="dateStart" id="dateStart" [(ngModel)]="from" mask="9999-99-99" placeholder="From" styleClass="input-mask-date"></p-inputMask> -->
-                        <!-- <p-inputMask inputId="dateEnd" name="dateEnd" id="dateEnd" [(ngModel)]="to" mask="9999-99-99" placeholder="To" styleClass="input-mask-date"></p-inputMask> -->
                         <div class="date1">
                             <label for="from">From</label>
                             <p-calendar appendTo="body" inputId="from" [(ngModel)]="from" dateFormat="yy-mm-dd">
@@ -62,21 +60,7 @@
                                 <ng-template pTemplate="footer"></ng-template>
                             </p-calendar>
                         </div>
-
-                        <!-- ustawiony name dla powyższych inputMasków
-                            label jednak tego nie czyta i nie wyświetla niczego -->
-
-                        <!-- <div *ngIf="!isFieldNameDateStart();">
-                            Date start is required.
-                          </div> -->
-
-                        <!-- <label for="dateStart"> ERROR ERROR ERROR </label> -->
-                        <!-- <label for="dateEnd"> ERROR ERROR ERROR </label> -->
-
-                        <!-- <label for="from"> ERROR ERROR ERROR </label> -->
-                        <!-- <label for="to"> ERROR ERROR ERROR </label> -->
-
-                        <button type="button" id="btnDate" pButton label=" Accept" (click)="btnEdit();"><i class="pi pi-times"></i></button>
+                        <button type="button" id="btnDate" pButton label=" Accept" (click)="btnEdit();"><i class="pi pi-thumbs-up"></i></button>
                     </p-dialog>
                 </div>
             </td>
