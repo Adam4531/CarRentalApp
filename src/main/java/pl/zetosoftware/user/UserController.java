@@ -42,15 +42,7 @@ public class UserController {
     @GetMapping("")
     @ResponseStatus(HttpStatus.OK)
     public UserEditRequestDto getUserByEmail(@RequestParam String email){
-        UserEntity userEntity = userEditService.getUserByEmail(email);
-        return UserEditRequestDto.builder()
-                .login(userEntity.getLogin().toString())
-                .firstName(userEntity.getFirstName().toString())
-                .secondName(userEntity.getSecondName().toString())
-                .phoneNumber(userEntity.getPhoneNumber().toString())
-                .email(userEntity.getEmail().toString())
-                .pesel(userEntity.getPesel().toString())
-                .build();
+        return userEditService.getUserEditRequestDtoByEmail(email);
     }
 
     @PutMapping("")

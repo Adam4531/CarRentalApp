@@ -53,4 +53,15 @@ public class UserEditService implements UserValidator {
         }
         return errorsListDto;
     }
+    public UserEditRequestDto getUserEditRequestDtoByEmail( String email){
+        UserEntity userEntity = getUserByEmail(email);
+        return UserEditRequestDto.builder()
+                .login(userEntity.getLogin().toString())
+                .firstName(userEntity.getFirstName().toString())
+                .secondName(userEntity.getSecondName().toString())
+                .phoneNumber(userEntity.getPhoneNumber().toString())
+                .email(userEntity.getEmail().toString())
+                .pesel(userEntity.getPesel().toString())
+                .build();
+    }
 }
