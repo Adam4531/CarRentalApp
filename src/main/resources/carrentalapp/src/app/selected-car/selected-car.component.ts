@@ -18,7 +18,6 @@ export class SelectedCarComponent implements OnInit {
   public reservations: ReservationForCar[] = [];
   public columns: any[] = [];
   public priceRent!: number;
-  public pricePaymentInAdvance!: number;
   public selectedCar!: SelectedCar;
   public carId!: number;
   public from!: string;
@@ -70,21 +69,14 @@ export class SelectedCarComponent implements OnInit {
   }
 
   public payment(): void {
-
     this.selectedCar.paymentInAdvance = this.selectedCar.newCarCost * 0.001;
     if (this.selectedCar.paymentInAdvance < 1000) this.selectedCar.paymentInAdvance = 500;
     this.selectedCar.paymentInAdvance = Number(this.selectedCar.paymentInAdvance.toFixed(2));
   }
 
-  // public getPaymentInAdvance(): void {
-  //   this.pricePaymentInAdvance;
-  // }
-
   public getCar(): void {
-
     this.selectedCarService.getCar(this.carId).subscribe((response: any) => {
       this.selectedCar = response;
-      this.pricePaymentInAdvance = this.selectedCar.paymentInAdvance
     });
   }
 

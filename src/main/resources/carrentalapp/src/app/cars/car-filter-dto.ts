@@ -5,8 +5,8 @@ export class CarFilterDto {
     brand!: string;
     model!: string;
     engineCapacity!: number;
-    bodyType!: BodyType;
-    typeOfFuel!: TypeOfFuel;
+    bodyType!: BodyType | null;
+    typeOfFuel!: TypeOfFuel | null;
     productionYear!: number;
     freeFrom!: Date;
     freeTo!: Date;
