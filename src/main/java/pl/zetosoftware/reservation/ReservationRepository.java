@@ -15,8 +15,7 @@ public interface ReservationRepository extends JpaRepository<ReservationEntity, 
 
     List<ReservationEntity> findAllByUserId(UserEntity userId);
 
-    @Query(value = "SELECT * FROM reservations WHERE car_id=?1 ", nativeQuery = true)
-    List<ReservationEntity> getAllReservationsByCarId(Long id);
+    List<ReservationEntity> findAllByCarId(Long id);
 
     List<ReservationEntity> findAllByUserIdEmail(EmailValidator email);
 
@@ -29,7 +28,7 @@ public interface ReservationRepository extends JpaRepository<ReservationEntity, 
     List<Integer> getAllCarsByPopularityOfReservations();
 
     @Query(value = "SELECT COUNT(car_id) FROM reservations WHERE car_id=?1", nativeQuery = true)
-    Integer getAllNumberOfReservationsById(Long id);
+    Integer getAllNumberOfReservationsByCarId(Long id);
 
 
 }
