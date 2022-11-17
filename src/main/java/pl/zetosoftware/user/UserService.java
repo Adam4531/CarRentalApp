@@ -6,6 +6,7 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 import pl.zetosoftware.user.dto.UserEditRequestDto;
 import pl.zetosoftware.user.dto.UserRequestDto;
 import pl.zetosoftware.user.dto.UserResponseDto;
@@ -39,28 +40,6 @@ public class UserService {
         return userMapper.fromUserEntityToUserResponseDto(user);
     }
 
-    public UserEntity getUserByEmail(String email){
-        EmailValidator emailValidator = new EmailValidator(email);
-        if(userRepository.findUserByEmail(emailValidator) == null){
-            throw new NoSuchElementException("UserEntity with email: " + email + " does not exist!");
-        }
-        return  userRepository.findUserByEmail(emailValidator);
-    }
-
-    public UserEditRequestDto updateUserWithPutMapping(String email, UserEditRequestDto updatedUser) {
-        var userToBeChanged = getUserByEmail(email);
-
-        userToBeChanged.changeEmail(updatedUser.email());
-        userToBeChanged.changeFirstName(updatedUser.firstName());
-        userToBeChanged.changeSecondName(updatedUser.secondName());
-        userToBeChanged.changePhoneNumber(updatedUser.phoneNumber());
-        userToBeChanged.changeLogin(updatedUser.login());
-        userToBeChanged.changePesel(updatedUser.pesel());
-
-        userRepository.save(userToBeChanged);
-        return userMapper.fromUserEntityToUserEditRequestDto(userToBeChanged);
-    }
-
     public UserResponseDto updateUserEmail(Long id, String email) {
         var user = getUser(id);
         user.changeEmail(email);
@@ -74,7 +53,6 @@ public class UserService {
         return "User with id: " + id + " deleted successfully!";
     }
 
-    //do usuniecia?
     public UserResponseDto getCurrentLoggedUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {

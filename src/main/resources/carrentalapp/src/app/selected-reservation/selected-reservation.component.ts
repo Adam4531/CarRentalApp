@@ -42,8 +42,14 @@ export class SelectedReservationComponent implements OnInit {
           this.carId = this.selectedReservation.carId;
           this.selectedCarService.getCar(this.carId).subscribe((response: any) => {
             this.selectedCar = response;
+            this.selectedReservation.paymentInAdvance = this.selectedCar.newCarCost * 0.01;
+            if (this.selectedReservation.paymentInAdvance > 1000) this.selectedReservation.paymentInAdvance = 500;
+            this.selectedReservation.paymentInAdvance = Number(this.selectedReservation.paymentInAdvance.toFixed(2));
         })
         });
-        
-      }
+    }
+
+    public btnBack() {
+      history.back();
+    }
 }

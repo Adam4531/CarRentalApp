@@ -40,9 +40,4 @@ export class CarService {
   public deleteCars(carId: number): Observable<void> {
     return this.http.delete<void>(`${this.apiServerUrl}/cars/${carId}`);
   }
-
-  // public getCarsWithFilter(carFilterDto: CarFilterDto): Observable<Car[]>{
-  //   return this.http.get<Car[]>(`${this.apiServerUrl}/api/filter/cars`, carFilterDto);
-  // }
-
 }

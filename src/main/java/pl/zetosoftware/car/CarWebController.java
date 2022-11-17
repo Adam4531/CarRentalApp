@@ -22,6 +22,7 @@ public class CarWebController {
 
     private final CarFilterService carFilterService;
 
+    // zmienic na POST i ustawic requestBody
     @GetMapping(value = "/filter/cars", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public List<CarDto> getAllCarsWithFilters(@RequestParam(required = false) String brand, @RequestParam(required = false) String model,
@@ -32,5 +33,4 @@ public class CarWebController {
         var carFilterDto = carFilterService.getCarFilterDtoFromParams(brand, model, engineCapacity, bodyType, typeOfFuel, productionYear, freeFrom, freeTo);
         return carFilterService.getFilteredCars(carFilterDto);
     }
-
 }

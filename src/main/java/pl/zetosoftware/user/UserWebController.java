@@ -24,7 +24,6 @@ public class UserWebController {
     public ResponseEntity<UserLoginResponseDto> login(@RequestBody UserLoginDto user) {
         return ResponseEntity.ok(userLoginService.login(user));
     }
-
     @PostMapping("/registration")
     public ErrorsListDto create(@RequestBody UserRequestDto user) {
         return userRegistrationService.register(user);

@@ -71,9 +71,16 @@ export class ReservationsComponent implements OnInit {
     // window.location.reload();
   }
 
+  public x: number = 0;
   public getReservations(): void {
     this.reservationsService.getAllReservationsByUserEmail(this.emailTemp).subscribe((response: any) => {
       this.reservations = response;
+      // for(this.x = 0; this.x < this.reservations.length; this.x++){
+      //     this.reservations[this.x].paymentInAdvance = this.reservations[this.x].cost * 0.25;
+      //     if (this.reservations[this.x].paymentInAdvance > 1000) 
+      //       this.reservations[this.x].paymentInAdvance = 500;
+      //     this.reservations[this.x].paymentInAdvance = Number(this.reservations[this.x].paymentInAdvance.toFixed(2));
+      // }
       console.log(response);
       console.log(localStorage.getItem('email'))
     });
@@ -89,9 +96,11 @@ export class ReservationsComponent implements OnInit {
 
   public changeReservationDatesByReservationId(): void {
     this.date2.dateStart = this.from;
+    this.date2.dateStart.setDate(this.date2.dateStart.getDate() + 1)
     console.log(this.rowId);
     console.log(this.from);
     this.date2.dateEnd = this.to;
+    this.date2.dateEnd.setDate(this.date2.dateEnd.getDate() + 1)
     console.log(this.to);
     if( !this.from ) {
       console.log("FROM DATE CANNOT BE NULL !");

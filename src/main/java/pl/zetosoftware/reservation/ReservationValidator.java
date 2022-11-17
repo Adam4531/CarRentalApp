@@ -34,6 +34,7 @@ public class ReservationValidator {
         return dateStart.isAfter(LocalDate.now());
     }
 
+    //TODO -- WRZUCIC DO INTERFEJSU / W JEDNO MIEJSCE - I USUNAC THROWY + WRZUCIC TO POD WALIDACJE
     public boolean isReservationAvailable(ReservationEntity reservationToChange, LocalDate dateStart, LocalDate dateEnd){
         if (!isPresentDayBeforeReservationToChange(reservationToChange)){
             throw new IllegalStateException("Not allowed to change started/completed reservations!");

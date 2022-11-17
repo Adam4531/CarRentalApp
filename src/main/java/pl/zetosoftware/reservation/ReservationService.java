@@ -1,21 +1,16 @@
 package pl.zetosoftware.reservation;
 
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
-import pl.zetosoftware.car.CarEntity;
 import pl.zetosoftware.global.dto.ErrorsListDto;
 import pl.zetosoftware.reservation.dto.ReservationDto;
 import pl.zetosoftware.user.UserEntity;
 import pl.zetosoftware.user.UserRepository;
-import pl.zetosoftware.reservation.value_objects.CostValidator;
-import pl.zetosoftware.user.UserService;
 import pl.zetosoftware.user.value_objects.EmailValidator;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 @Service
@@ -124,7 +119,7 @@ public class ReservationService {
     }
 
     public List<ReservationDto> getAllReservationsByCarId(Long id){
-        List<ReservationEntity> allReservationsByCarId = reservationRepository.getAllReservationsByCarId(id);
+        List<ReservationEntity> allReservationsByCarId = reservationRepository.findAllByCarId(id);
         return reservationMapper.fromReservationListToReservationDtoList(allReservationsByCarId);
     }
 
@@ -134,6 +129,6 @@ public class ReservationService {
     }
 
     public int getNumberOfReservationsByCarId(Long id){
-        return reservationRepository.getAllNumberOfReservationsById(id);
+        return reservationRepository.getAllNumberOfReservationsByCarId(id);
     }
 }

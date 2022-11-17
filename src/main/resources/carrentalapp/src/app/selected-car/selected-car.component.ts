@@ -17,7 +17,7 @@ export class SelectedCarComponent implements OnInit {
 
   public reservations: ReservationForCar[] = [];
   public columns: any[] = [];
-  public price!: number;
+  public priceRent!: number;
   public selectedCar!: SelectedCar;
   public carId!: number;
   public from!: string;
@@ -48,8 +48,6 @@ export class SelectedCarComponent implements OnInit {
     this.getReservationsForCar();
 
     this.reservationRequestDto.carId = this.carId;
-    //this.reservationRequestDto.userId = 10000;
-    //DO ZMIANY NA EMAIL - tu na sztywno przypisana wartość dla testów
     this.reservationRequestDto.email = localStorage.getItem('email');
   }
 
@@ -64,22 +62,19 @@ export class SelectedCarComponent implements OnInit {
     var diff = toDate.getTime() - fromDate.getTime();
     if (diff > 0) {
       diff = Math.ceil(diff / (1000 * 3600 * 24));
-      this.price = diff * this.selectedCar.pricePerDayRent;
-      this.price = Number(this.price.toFixed(2));
+      this.priceRent = diff * this.selectedCar.pricePerDayRent;
+      this.priceRent = Number(this.priceRent.toFixed(2));
     }
-      else this.price = 0;
+      else this.priceRent = 0;
   }
 
   public payment(): void {
-
-    this.selectedCar.paymentInAdvance = this.price * 0.25;
-
-    if (this.selectedCar.paymentInAdvance > 1000) this.selectedCar.paymentInAdvance = 500;
+    this.selectedCar.paymentInAdvance = this.selectedCar.newCarCost * 0.001;
+    if (this.selectedCar.paymentInAdvance < 1000) this.selectedCar.paymentInAdvance = 500;
     this.selectedCar.paymentInAdvance = Number(this.selectedCar.paymentInAdvance.toFixed(2));
   }
 
   public getCar(): void {
-
     this.selectedCarService.getCar(this.carId).subscribe((response: any) => {
       this.selectedCar = response;
     });
@@ -102,12 +97,14 @@ export class SelectedCarComponent implements OnInit {
 
   btnReserve(): void {
     this.createReservation();
-    this.router.navigateByUrl('/reservations')
   }
 
   public createReservation() {
     this.reservationRequestDto.dateStart = new Date(this.from);
     this.reservationRequestDto.dateEnd = new Date(this.to);
+
+    this.reservationRequestDto.dateStart.setDate(this.reservationRequestDto.dateStart.getDate() + 1)
+    this.reservationRequestDto.dateEnd.setDate(this.reservationRequestDto.dateEnd.getDate() + 1)
 
     this.selectedCarService
     .createReservation(this.reservationRequestDto)
@@ -122,6 +119,7 @@ export class SelectedCarComponent implements OnInit {
       }
       else{
         this.messageService.add({severity:'success', summary:'Reservation', detail:'Reserved successfully!'});
+        this.router.navigateByUrl('/reservations')
         // this.router.navigateByUrl('/users');
         setTimeout(() => {
           window.location.reload();

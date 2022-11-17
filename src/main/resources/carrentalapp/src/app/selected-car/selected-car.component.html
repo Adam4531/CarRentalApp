@@ -49,14 +49,22 @@
                     </div>
                     <div class="right-bottom">
                         <h3 class="reservations">Enter Reservation Period:</h3>
-                        <p>
-                            <p-inputMask [(ngModel)]="from" mask="9999-99-99" placeholder="From" styleClass="input-mask-date"></p-inputMask>
-                            <p-inputMask [(ngModel)]="to" mask="9999-99-99" placeholder="To" styleClass="input-mask-date"></p-inputMask>
-                        </p>
-                        <h3 class="reservations">Payment in Advance: {{selectedCar.paymentInAdvance}}€</h3>
-                        <h3 class="reservations">Rent Cost: {{price}}€</h3>
+                            <div class="date1">
+                                <label for="from">From </label>
+                                <p-calendar appendTo="body" inputId="from" [(ngModel)]="from" dateFormat="yy-mm-dd">
+                                </p-calendar>
+                            </div>
+                            <div class="date2">
+                                <label for="to" id="toLabel">To </label>
+                                <p-calendar appendTo="body" inputId="to" [(ngModel)]="to" dateFormat="yy-mm-dd">
+                                    <ng-template pTemplate="footer"></ng-template>
+                                </p-calendar>
+                            </div>
+                        
+                        <h3 class="reservations">Payment in Advance: <span style="color:green">{{selectedCar.paymentInAdvance}}€</span></h3>
+                        <h3 class="reservations">Rent Cost: <span style="color:green">{{priceRent}}€</span></h3>
                         <p class="buttons">
-                            <button type="button" pButton label="Calculate Price" (click)="finalPrice()"><i class="pi pi-euro"></i></button>
+                            <button type="button" pButton label="Calculate Price" (click)="finalPrice();"><i class="pi pi-euro"></i></button>
                             <button type="button" pButton label="Reserve" (click)="btnReserve();"><i class="pi pi-plus-circle"></i></button>
                         </p>
                         <p>

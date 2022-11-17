@@ -10,7 +10,6 @@ import pl.zetosoftware.car.value_objects.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 @Component
 @RequiredArgsConstructor
 public class CarMapper {

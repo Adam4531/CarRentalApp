@@ -23,8 +23,7 @@ public class CarFieldsService {
     public BigDecimal setInitialPrice(Long id) {
         CarEntity car = carRepository.getReferenceById(id);
         return BigDecimal.valueOf(car.getNewCarCost().toLong())
-                .multiply(BigDecimal.valueOf(0.01))
-//                .multiply(productionYearFactor(car))
+                .multiply(BigDecimal.valueOf(0.001))
                 .multiply(productionYearFactor(car))
                 .multiply(popularityOfCar(id)).setScale(2, RoundingMode.CEILING);
     }
@@ -82,5 +81,4 @@ public class CarFieldsService {
     private boolean isBetween(ProductionYearValidator productionYear, LocalDate lower, LocalDate upper) {
         return lower.getYear() <= productionYear.toInteger() && productionYear.toInteger() <= upper.getYear();
     }
-
 }

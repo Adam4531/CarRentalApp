@@ -29,7 +29,7 @@
                                 <h3>Body Type: {{selectedCar.bodyTypeEnum}}</h3>
                                 <h3>Type of Fuel: {{selectedCar.typeOfFuelEnum}}</h3>
                                 <h3>Production Year: {{selectedCar.productionYear}}</h3>
-                                <h3>Rent Cost Per Day: {{selectedCar.pricePerDayRent}}€</h3>
+                                <h3>Rent Cost Per Day: <span style="color:rgb(5, 177, 13)">{{selectedCar.pricePerDayRent}}€</span></h3>
                                 <hr class="hr-class"> 
                             </div>
                         </div>
@@ -39,9 +39,12 @@
                                 <h2>Reservation details</h2>
                                 <hr class="hr-class">  
                                 <h3>Reservation From {{selectedReservation.dateStart}} to {{selectedReservation.dateEnd}}</h3>
-                                <h3>Payment in Advance: {{selectedReservation.paymentInAdvance}}€</h3>
-                                <h3>Rent Cost: {{selectedReservation.cost}}€</h3>
+                                <h3>Payment in Advance: <span style="color:rgb(5, 177, 13)">{{selectedReservation.paymentInAdvance}}€</span></h3>
+                                <h3>Rent Cost: <span style="color:rgb(5, 177, 13)">{{selectedReservation.cost}}€</span></h3>
                                 <hr class="hr-class"> 
+                                <p>
+                                    <button type="button" pButton label="  Go back" (click)="btnBack();"><i class="pi pi-arrow-circle-left"></i></button>
+                                </p>
                             </div>
                         </div>
                     </div>

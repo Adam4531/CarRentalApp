@@ -107,3 +107,16 @@ button {
   opacity: 0.55;
   z-index: -1;
 }
+
+.date1 {
+  text-align: center;
+  margin-left: 120px;
+  display: inline;
+}
+
+.date2 {
+  text-align: center;
+  margin-left: 15px;
+  margin-right: 35px;
+  display: inline;
+}

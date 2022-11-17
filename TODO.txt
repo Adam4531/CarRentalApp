@@ -6,7 +6,7 @@ Z OPISU WYKONAĆ :
 
 System do zarządzania wypożyczalnią samochodów.
 Użytkownik będzie mógł zalogować się loginem i hasłem do systemu.                                             //DONE
-Użytkownik będzie mógł wybrać samochód jaki chce wypożyczyć (marka, model itd.)                               //grzes sie zajmuje
+Użytkownik będzie mógł wybrać samochód jaki chce wypożyczyć (marka, model itd.)                               //DONE
 oraz dni, w których chce go wypożyczyć.                                                                       //DONE
 System sprawdzi czy wybrany samochód nie został zarezerwowany przez inną osobę w                              //DONE
 wybranych dniach oraz wyliczy odpowiednią kwotę do zapłaty                                                    //DONE
@@ -15,7 +15,7 @@ Od daty wypożyczenia samochód znika ze stanu placu do momentu oddania samochod
 Użytkownik będzie mógł edytować lub usunąć rezerwację jeśli nie nastąpił odbiór.                              //funkcje gotowe - zaimplementowac po stronie frontu
 (data odbioru > bieżąca data). Użytkownik będzie mógł przeglądać listę samochodów dostępnych do wypożyczenia, //DONE
 oraz samochodów już wypożyczonych (przez innych użytkowników). Oddzielnie użytkownik będzie mógł przeglądać   //DONE
-listę samochodów wypożyczonych przez siebie (aktualnie oraz historycznie).                                    //adam konczy
+listę samochodów wypożyczonych przez siebie (aktualnie oraz historycznie).                                    //DONE
 
 
 //anulowanie + edycja rezerwacji

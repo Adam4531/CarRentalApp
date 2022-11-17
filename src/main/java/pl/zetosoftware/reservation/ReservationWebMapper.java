@@ -48,8 +48,8 @@ public class ReservationWebMapper {
     public BigDecimal setPaymentInAdvance(Long carId){
         var car = carService.getCarEntityById(carId);
         var paymentInAdvance = BigDecimal.valueOf(car.getNewCarCost().toLong()).
-                multiply(BigDecimal.valueOf(0.01));
-        if (paymentInAdvance.compareTo(BigDecimal.valueOf(1000)) < 1) return BigDecimal.valueOf(1000.00);
+                multiply(BigDecimal.valueOf(0.001));
+        if (paymentInAdvance.compareTo(BigDecimal.valueOf(1000)) < 1) return BigDecimal.valueOf(500.00);
         return paymentInAdvance;
     }
 
